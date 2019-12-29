@@ -31,11 +31,16 @@ A collection of curated best practices on how to build successful, empathic and 
 
 <h3>Table of Contents</h3>
 
-- 1. TBD
-- 2. TBD
-- 3. TBD
+- (1) Command Line Experience
+- (2) Distribution
+- (3) Interoperability
+- (4) Accessibility
 
 <hr/>
+
+# Author
+
+**Node.js CLI Apps Best Practices** © [Liran Tal](https://github.com/lirantal), Released under [CC BY-SA 4.0](./LICENSE) License.
 
 # License
 
