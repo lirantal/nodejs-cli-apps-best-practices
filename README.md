@@ -1,3 +1,6 @@
+<!-- Project Logo -->
+<img src='.github/nodejs-cli-apps-best-practices-logo.svg' width="100px" align="left">
+
 <!-- Main Header Links -->
 <div align="right">
 	<a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
@@ -10,7 +13,10 @@
 
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface applications.
 
-- Best practices for building successful Node.js CLI applications
+- 8 best practices for building successful Node.js CLI applications
+- Read in other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) ]
+- Last update: 2019-12-29
+- <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter">Follow me</a> on twitter for more updates
 
 <!-- Shields -->
 <p align="center">
@@ -18,6 +24,7 @@ A collection of curated best practices on how to build successful, empathic and 
 <a href="https://itunes.apple.com/us/app/apple-store/id375380948?mt=8" target="_blank">
   <img src="https://img.shields.io/badge/Rating-&starf;&starf;&starf;&starf;&starf;-brightgreen.svg">
 </a>
+<a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter"><img src="https://badgen.net/twitter/follow/liran_tal" /></a>
 </p>
 
 <hr/>
