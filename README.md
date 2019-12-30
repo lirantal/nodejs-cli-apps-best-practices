@@ -38,6 +38,8 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
   - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
+- (5) Testing
+- (6) Errors
 
 ## (3) Interoperability
 
