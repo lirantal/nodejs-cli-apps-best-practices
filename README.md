@@ -36,6 +36,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
 - (3) Interoperability
   - (3.1) [Accept input as STDIN](#accept-input-as-stdin)
+  - (3.2) [Enable structured output](#enable-structured-output)
 - (4) Accessibility
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
@@ -91,6 +92,23 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 	<summary>➡️ <b>Details</b></summary>
 
 If the command line application works with data, such as performing some kind of task on a JSON file, which is usually specified with `--file <file.json>` command line argument
+
+</details>
+
+### (3.2) Enable structured output
+
+✅ **Do:**
+Enable a flag to allow structured output of the program's result, if such result is available, to enable parsing and easy manipulation of the data.
+
+❌ **Otherwise:**
+Users of the CLI may need to apply complicated regex parsing and matching techniques to extract the output data provided by your CLI.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+It is often useful for users of a command line application to parse the data and perform other tasks with it, such as using it to feed web dashboards, email notifications.
+
+Being able to easily extract the data of interest from a command line output provides a friendlier experience to consumers of the CLI.
 
 </details>
 
