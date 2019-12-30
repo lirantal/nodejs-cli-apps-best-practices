@@ -34,6 +34,7 @@ A collection of curated best practices on how to build successful, empathic and 
 - (1) Command Line Experience
 - (2) Distribution
 - (3) Interoperability
+  - (3.1) [Accept input as STDIN](#accept-input-as-stdin)
 - (4) Accessibility
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
@@ -50,6 +51,25 @@ This section answer questions such as:
 - _Can I export the output of this CLI for easy parsing?_
 - _Can I pipe the output of this CLI to the input of another command line tool?_
 - _Can I pipe the result of another tool to this CLI?_
+
+### (3.1) Accept input as STDIN
+
+✅ **Do:**
+For command line applicatios that are expected to work with data, make it available for a consumer to pipe the data to standard input (STDIN).
+
+❌ **Otherwise:**
+Other command line applications will not be able to provide their result, directly as input for the CLI you build and it prevents common UNIX one-liners such as:
+
+```bash
+$ curl -s "https://api.example.com/data.json" | your_node_cli
+```
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+If the command line application works with data, such as performing some kind of task on a JSON file, which is usually specified with `--file <file.json>` command line argument
+
+</details>
 
 ## (4) Accessibility
 
