@@ -33,6 +33,7 @@ A collection of curated best practices on how to build successful, empathic and 
 
 - (1) Command Line Experience
 - (2) Distribution
+  - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
 - (3) Interoperability
   - (3.1) [Accept input as STDIN](#accept-input-as-stdin)
 - (4) Accessibility
@@ -41,6 +42,27 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
 - (5) Testing
 - (6) Errors
+
+## (2) Distribution
+
+This section deals with best practices concerned with distributing and packaging a Node.js command line application in an optimal matter for consumers.
+
+### (2.1) Prefer a small dependency footprint
+
+✅ **Do:**
+Minimize your use of production dependencies, use alternative dependencies which are smaller, and vet your dependencies footprint as well for transitive dependencies cost to ensure an overall small bundle of the Node.js CLI. Be careful to not over-optimize on dependencies by reinventing the wheel.
+
+❌ **Otherwise:**
+The size and use of dependencies in the application will impact the install time of your Node.js CLI, potentially providing a poor user experience.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+A fast npm install for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency and transitive dependency footprint is kept to a reasonable size.
+
+Where-as with a global npm installation of a package, a slow-to-install npm package will be a one-off poor experience, the use of `npx` for users to invoke executable packages is more significant and visible in its degraded performance due to npx always fetching and installing packages from the registry.
+
+</details>
 
 ## (3) Interoperability
 
