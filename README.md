@@ -32,6 +32,7 @@ A collection of curated best practices on how to build successful, empathic and 
 <h3>Table of Contents</h3>
 
 - (1) Command Line Experience
+  - (1.1) [Respect the POSIX](#respect-the-posix)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
 - (3) Interoperability
@@ -44,6 +45,27 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.4) [Shebang autodetect the Node.js runtime](shebang-autodetect-the-nodejs-runtime)
 - (5) Testing
 - (6) Errors
+
+## (1) Command Line Experience
+
+This section deals with best practices concerned with creating beautiful and high-value user experience Node.js command line applications.
+
+### 1.1. Respect the POSIX
+
+✅ **Do:**
+Use [POSIX-compliant](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) command line argument syntax, which is widely accepted as a standard for command line tools.
+
+❌ **Otherwise:**
+Users may get frustrated when CLIs syntax for arguments, options or command parameters deviate from defacto standards that they are used to from the Unix world.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. These tools have effectively standardized the behavior of command line arguments, such as square brackets (`[]`) refer to optional arguments, or angle brackets (`<>`) refer to required arguments.
+
+Command line power users will expect another CLI tool to have similar conventions as to others in the Unix family.
+
+</details>
 
 ## (2) Distribution
 
