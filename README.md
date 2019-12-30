@@ -40,6 +40,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
   - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
+  - (4.4) [Shebang autodetect the Node.js runtime](shebang-autodetect-the-nodejs-runtime)
 - (5) Testing
 - (6) Errors
 
@@ -130,6 +131,23 @@ Don't level down the program code to use an older ECMAScript language specificat
 	<summary>➡️ <b>Details</b></summary>
 
 Sometimes it may be necessary to specifically target older Node.js versions which are missing new ECAMScript specification. For example, if you are building a Node.js CLI that is mostly geared towards DevOps or IT, they may not have an ideal Node.js environment with an up to date runtime. As a reference, Debian Stretch (oldstable) ships with [Node.js 8.11.1](https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=nodejs).
+
+</details>
+
+### (4.4) Shebang autodetect the Node.js runtime
+
+✅ **Do:**
+Use an installation-agnostic reference in your [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) declaration that locates the Node.js runtime automaticaly based on the runtime environment.
+
+❌ **Otherwise:**
+Using a hard-coded Node.js runtime location such as `#!/usr/local/bin/node` is only specific to your own environment and may render the Node.js CLI inoperable in other environments where the location of Node.js is different.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+It may be an easy start to develop a Node.js CLI by running the entry point file as `node cli.js`, and later on adding `#!/usr/local/bin/node` to the top of the `cli.js` file, however the latter is still a flawed approach to the matter as that filesystem location of the `node` executable is not guaranteed for other users environments.
+
+It should be noted that specifying `#!/usr/bin/env node` as the best practice, is still making the assumption that the Node.js runtime is referrenced as `node` and not `nodejs` or otherwise.
 
 </details>
 
