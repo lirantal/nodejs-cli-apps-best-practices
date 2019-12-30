@@ -77,11 +77,15 @@ There are many forms of packaging and distributing an executable and containeriz
 ✅ **Do:**
 Target old versions of Node.js such as Node.js 6 or Node.js 4 (both are End of Life) using a transpiler such as Babel to make sure the generated code is compliant with the version of V8 JavaScript engine shipped with those versions.
 
+Another workaround is to provide a container version of the CLI to avoid old targets. See Section [(4.1) Containerize the CLI](#containerize-the-cli).
+
 ❌ **Otherwise:**
 Don't level down the program code to use an older ECMAScript language specification that matches unmaintained or EOL Node.js versions that you target as this will only lead to complex code maintenance in time and will warrant a technical debt from the beginning.
 
 <details>
 	<summary>➡️ <b>Details</b></summary>
+
+Sometimes it may be necessary to specifically target older Node.js versions which are missing new ECAMScript specification. For example, if you are building a Node.js CLI that is mostly geared towards DevOps or IT, they may not have an ideal Node.js environment with an up to date runtime. As a reference, Debian Stretch (oldstable) ships with [Node.js 8.11.1](https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=nodejs).
 
 </details>
 
