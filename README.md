@@ -38,11 +38,21 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
 
-## 4. Accessibility
+## (3) Interoperability
+
+This section deals with best practices concerned with making the Node.js CLI seamlessly integrate with other command line tools and conventions which are natural for CLIs to operate in.
+
+This section answer questions such as:
+
+- _Can I export the output of this CLI for easy parsing?_
+- _Can I pipe the output of this CLI to the input of another command line tool?_
+- _Can I pipe the result of another tool to this CLI?_
+
+## (4) Accessibility
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
 
-### 4.1. Containerize the CLI
+### (4.1) Containerize the CLI
 
 ✅ **Do:**
 Create a docker image for the CLI and publish it to a public registry like Docker Hub so that users without a Node.js environment can use it.
