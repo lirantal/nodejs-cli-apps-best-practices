@@ -37,6 +37,7 @@ A collection of curated best practices on how to build successful, empathic and 
 - (4) Accessibility
   - (4.1) [Containerize the CLI](#containerize-the-cli)
   - (4.2) [Graceful downplay](#graceful-downplay)
+  - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
 
 ## (3) Interoperability
 
@@ -68,6 +69,19 @@ Installing Node.js CLI applications from the npm registry will typically be done
 However, if you are targeting a CLI application to be consumed by the general public, regardless of their affiliation with JavaScript or availability of this tooling, then distributing the CLI application only in the form of an install from the npm registry will be restricting. Moreover, if the CLI application is intended to be used in a build or CI environment then those may also be required to install Node.js related toolchain dependencies.
 
 There are many forms of packaging and distributing an executable and containerizing it as a Docker container that is pre-bundled with your CLI application is an easily consumable alternative and dependency-free (aside of requiring a Docker environment ready).
+
+</details>
+
+### (4.3) Node.js versions compatibility
+
+✅ **Do:**
+Target old versions of Node.js such as Node.js 6 or Node.js 4 (both are End of Life) using a transpiler such as Babel to make sure the generated code is compliant with the version of V8 JavaScript engine shipped with those versions.
+
+❌ **Otherwise:**
+Don't level down the program code to use an older ECMAScript language specification that matches unmaintained or EOL Node.js versions that you target as this will only lead to complex code maintenance in time and will warrant a technical debt from the beginning.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
 
 </details>
 
