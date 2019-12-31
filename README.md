@@ -35,6 +35,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (1.1) [Respect the POSIX](#respect-the-posix)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
+  - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
 - (3) Interoperability
   - (3.1) [Accept input as STDIN](#accept-input-as-stdin)
   - (3.2) [Enable structured output](#enable-structured-output)
@@ -85,6 +86,37 @@ The size and use of dependencies in the application will impact the install time
 A fast npm install for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency and transitive dependency footprint is kept to a reasonable size.
 
 Where-as with a global npm installation of a package, a slow-to-install npm package will be a one-off poor experience, the use of `npx` for users to invoke executable packages is more significant and visible in its degraded performance due to npx always fetching and installing packages from the registry.
+
+</details>
+
+### (2.2) Use the shrinkwrap, Luke
+
+✅ **Do:**
+Use npm's `npm-shrinkwrap.json` as a lockfile to ensure that pinned-down dependency versions (direct and transitive) propagate to your end users when they install your npm package.
+
+❌ **Otherwise:**
+Not forcing the versions of package dependencies will mean that the package manager (e.g. `npm`) will resolve them during installation, and transitive dependencies installed via version ranges may introduce breaking changes that you can't control, resulting with a potential breakage of a Node.js CLI application.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Use the ~~force~~ shrinkwrap, Luke!
+
+Typically, an npm package only defines its direct dependencies and their version range when being installed, and the npm package manager client will resolve all the transitive dependencies versions upon installation. Through time, the resolved versions of dependencies will vary as new direct and transitive dependencies will release new versions.
+
+Even though [Semantic Versioning](https://semver.org/) is broadly accepted among maintainers, npm is [known to introduce many dependencies](https://snyk.io/blog/how-much-do-we-really-know-about-how-packages-behave-on-the-npm-registry/) for an average package being installed, which adds the risk of a package introducing breaking changes or regressions that render an application dependent on these as non-functional.
+
+The flip side of using `npm-shrinkwrap.json` is the security implications you are forcing upon your consumers. The versions of dependencies being installed are pinned to specific versions, and so even if newer versions of these dependencies are released they won't be installed. This moves the responsibility on you, the maintainer, to stay up to date with security fixes in your dependencies, and release the CLI application regularly with security updates. Consider using [Snyk Dependency Upgrade](https://snyk.io/) to automatically fix security issues across your dependency tree. _Full disclosure: I am a developer advocate at Snyk._
+
+> 👍 Tip
+>
+> Use `npm shrinkwrap` command to generate the shrinkwrap lockfile, which is of the same
+> format as that of a `package-lock.json` file.
+
+References:
+
+- [Do you really know how a lockfile works for yarn and npm packages?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
+- [Yarn docs: Should lockfiles be committed to the repository?](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
 
 </details>
 
