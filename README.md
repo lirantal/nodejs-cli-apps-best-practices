@@ -207,6 +207,36 @@ There are many forms of packaging and distributing an executable and containeriz
 
 </details>
 
+### (4.2) Graceful downplay
+
+✅ **Do:**
+Provide users with the ability to opt-out of colorful and animation-rich display in unsupported environments, such as by skipping interactivity and providing formatted output in the form of JSON.
+
+❌ **Otherwise:**
+Having colorful output, using terminal interactive such as prompts and other display-rich interfaces may significantly degrade the end user experience for users not having a supported terminal and deter them away from using the CLI application.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+It is common to provide a rich terminal display in the form of colorful output, ascii charts, or even animation on the terminal and powerful prompt mechanism. These may contribute to a great a user experience for those who have a supported terminal, however it may display garbled text or be completely inoperable for those without it.
+
+To enable users with unsupported terminal to properly use the Node.js CLI application, one may choose to:
+
+- Auto-detect a terminal capability and evaluate during run-time whether to downplay the CLI interactivity
+- Provide an opt-in for users to explicitly toggle a graceful downplay such as by providing a `--json` command line argument to force it.
+
+```
+👍	Tip
+
+	Supporting a graceful downplay such as JSON output isn't only useful for
+	end-users and their unuspported terminals but is also valuable for running
+	in build and continuous integration environments, as well as enabling users
+	the ability to connect your program's output with other program's input or
+	export data if needed.
+```
+
+</details>
+
 ### (4.3) Node.js versions compatibility
 
 ✅ **Do:**
