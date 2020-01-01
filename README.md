@@ -33,6 +33,7 @@ A collection of curated best practices on how to build successful, empathic and 
 
 - (1) Command Line Experience
   - (1.1) [Respect the POSIX](#respect-the-posix)
+  - (1.2) [Build empathic CLIs](#build-empathic-clis)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
@@ -65,6 +66,23 @@ Users may get frustrated when CLIs syntax for arguments, options or command para
 Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. These tools have effectively standardized the behavior of command line arguments, such as square brackets (`[]`) refer to optional arguments, or angle brackets (`<>`) refer to required arguments.
 
 Command line power users will expect another CLI tool to have similar conventions as to others in the Unix family.
+
+</details>
+
+### (1.2) Build empathic CLIs
+
+✅ **Do:**
+Put workflows in place that assist the user to interact with the CLI successfully when otherwise such interactions will result in errors and frustration.
+
+❌ **Otherwise:**
+Failing to provide actionable assistance in supporting the user will result in frustration due to the lack of capability to operate the CLI.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+A command line interface for your program is no different than a web user interface in the sense of doing as much as you can as the program author to ensure that it is being used successfully.
+
+Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successfull interaction.
 
 </details>
 
