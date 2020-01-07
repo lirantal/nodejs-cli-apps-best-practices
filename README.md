@@ -47,6 +47,9 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.4) [Shebang autodetect the Node.js runtime](shebang-autodetect-the-nodejs-runtime)
 - (5) Testing
 - (6) Errors
+  - (6.1) [Informational errors](#informational-errors)
+  - (6.2) [Actionable errors](#actionable-errors)
+  - (6.3) [Provide debug mode](#provide-debug-mode)
 
 ## (1) Command Line Experience
 
