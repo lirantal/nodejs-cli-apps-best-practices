@@ -34,7 +34,7 @@ A collection of curated best practices on how to build successful, empathic and 
 - (1) Command Line Experience
   - (1.1) [Respect the POSIX](#respect-the-posix)
   - (1.2) [Build empathic CLIs](#build-empathic-clis)
-	- (1.3) [Stateful data](#stateful-data)
+  - (1.3) [Stateful data](#stateful-data)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
