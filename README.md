@@ -318,6 +318,10 @@ Don't skip debugging capabilities as it will be harder to collect feedback from 
 
 Utilize environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user and the maintainer to understand the program flow, inputs and outputs and other pieces of information that make problem solving easier.
 
+Reference projects:
+
+- [debug](https://www.npmjs.com/package/debug)
+
 </details>
 
 <hr/>
