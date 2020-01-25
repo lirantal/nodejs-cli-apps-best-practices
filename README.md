@@ -328,6 +328,25 @@ Error (E4002): please provide an API token via environment variables
 
 ### (6.2) Actionable errors
 
+✅ **Do:**
+A failing error message should hint the user as to what is required fixing rather than complaining on the error gap.
+
+❌ **Otherwise:**
+Users facing error messages with no hint of action would not be able to successfully drive to an end-to-end successful execution of the CLI application.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Example:
+
+```bash
+$ my-cli-tool --doSomething
+
+Error (E4002): please provide an API token via environment variables
+```
+
+</details>
+
 ### (6.3) Provide debug mode
 
 ✅ **Do:**
