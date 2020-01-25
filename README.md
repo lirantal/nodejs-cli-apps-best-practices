@@ -303,6 +303,29 @@ This section deals with best practices concerned with making a Node.js CLI appli
 
 ### (6.1) Informational errors
 
+✅ **Do:**
+When reporting errors, provide trackable error codes that can be looked up in the project's documentation and render troubleshooting the error message an easy task.
+
+If possible, extend informatioal error messages to any information being displayed so these can be easily parsed and context is clear.
+
+❌ **Otherwise:**
+Generic error messages tend to be ambigious as well as "difficult to google". Parsing and analyzing isn't as straight-forward, and referrencing them in documentation is not as clean either.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Ensure that when error messages are returned, they include a reference number to specific error codes that can later be consulted with. Just like HTTP status codes so do CLI applications require named or coded errors.
+
+Example:
+
+```bash
+$ my-cli-tool --doSomething
+
+Error (E4002): please provide an API token via environment variables
+```
+
+</details>
+
 ### (6.2) Actionable errors
 
 ### (6.3) Provide debug mode
