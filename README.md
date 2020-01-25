@@ -34,6 +34,7 @@ A collection of curated best practices on how to build successful, empathic and 
 - (1) Command Line Experience
   - (1.1) [Respect the POSIX](#respect-the-posix)
   - (1.2) [Build empathic CLIs](#build-empathic-clis)
+	- (1.3) [Stateful data](#stateful-data)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
@@ -86,6 +87,21 @@ Failing to provide actionable assistance in supporting the user will result in f
 A command line interface for your program is no different than a web user interface in the sense of doing as much as you can as the program author to ensure that it is being used successfully.
 
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successfull interaction.
+
+</details>
+
+### (1.3) Stateful data
+
+✅ **Do:**
+Provide a stateful experience between numerous invocations of the CLI app and remember values and data in order to provide a seamless and stateful interaction.
+
+❌ **Otherwise:**
+Requiring the user to repeatedly provide the same information with multiple invocations of the CLI is cumbersome and unuseful.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token or other preferences between multiple invocations of the CLI. Use a configuration helper that allows to persist such user settings that your CLI is able to read and write to. 
 
 </details>
 
