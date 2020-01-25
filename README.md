@@ -103,6 +103,11 @@ Requiring the user to repeatedly provide the same information with multiple invo
 
 It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token or other preferences between multiple invocations of the CLI. Use a configuration helper that allows to persist such user settings that your CLI is able to read and write to.
 
+Reference projects:
+
+- [configstore](https://www.npmjs.com/package/configstore)
+- [conf](https://www.npmjs.com/package/conf)
+
 </details>
 
 ## (2) Distribution
