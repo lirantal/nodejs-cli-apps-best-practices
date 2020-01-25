@@ -290,6 +290,31 @@ It should be noted that specifying `#!/usr/bin/env node` as the best practice, i
 
 </details>
 
+## (5) Testing
+
+## (6) Errors
+
+This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
+
+### (6.1) Informational errors
+
+### (6.2) Actionable errors
+
+### (6.3) Provide debug mode
+
+✅ **Do:**
+Allow power users to tap into further detailed information if they need to diagnose problems.
+
+❌ **Otherwise:**
+Don't skip debugging capabilities as it will be harder to collect feedback from users and for them to pinpoint cause of errors.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Utilize environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user and the maintainer to understand the program flow, inputs and outputs and other pieces of information that make problem solving easier.
+
+</details>
+
 <hr/>
 
 # Author
