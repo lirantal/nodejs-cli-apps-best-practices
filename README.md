@@ -101,7 +101,7 @@ Requiring the user to repeatedly provide the same information with multiple invo
 <details>
 	<summary>➡️ <b>Details</b></summary>
 
-It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token or other preferences between multiple invocations of the CLI. Use a configuration helper that allows to persist such user settings that your CLI is able to read and write to. 
+It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token or other preferences between multiple invocations of the CLI. Use a configuration helper that allows to persist such user settings that your CLI is able to read and write to.
 
 </details>
 
