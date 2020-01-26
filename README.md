@@ -36,6 +36,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (1.2) [Build empathic CLIs](#build-empathic-clis)
   - (1.3) [Stateful data](#stateful-data)
   - (1.4) [Provide colorful experience](#provide-colorful-experience)
+  - (1.5) [Rich interactions](#rich-interactions)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
@@ -131,6 +132,31 @@ Reference projects:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+
+</details>
+
+### (1.5) Rich interactions
+
+✅ **Do:**
+Leverage the use of rich command line interactions beyond the basics of text input prompt to provide a smoother experience for CLI users.
+
+❌ **Otherwise:**
+Text prompt as input may prove cumbersome for users when data to reason about is in the form of closed options (i.e: dropdowns).
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Rich interactivity can be introduced in the form of prompt inputs which are beyond free text form, such as dropdown select lists, radio button toggles, rating, auto-complete, or hidden password inputs.
+
+Another type of rich interactivity is in the form of animated loaders and progress-bar which provide a better experience for users when asynchoronous work is being performed.
+
+Some CLIs fit command line arguments without requiring any further interactive experience, and one shouldn't be forced upon them.
+
+Reference projects:
+
+- [enquirer](https://www.npmjs.com/package/enquirer)
+- [ora](https://www.npmjs.com/package/ora)
+- [ink](https://www.npmjs.com/package/ink)
 
 </details>
 
