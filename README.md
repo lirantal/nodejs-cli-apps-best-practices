@@ -13,7 +13,7 @@
 
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface applications.
 
-- 8 best practices for building successful Node.js CLI applications
+- 17 best practices for building successful Node.js CLI applications
 - Read in other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) ]
 - Last update: 2019-12-29
 - <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter">Follow me</a> on twitter for more updates
