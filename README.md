@@ -35,6 +35,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (1.1) [Respect the POSIX](#respect-the-posix)
   - (1.2) [Build empathic CLIs](#build-empathic-clis)
   - (1.3) [Stateful data](#stateful-data)
+  - (1.4) [Provide colorful experience](#provide-colorful-experience)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
@@ -108,6 +109,28 @@ Reference projects:
 
 - [configstore](https://www.npmjs.com/package/configstore)
 - [conf](https://www.npmjs.com/package/conf)
+
+</details>
+
+### (1.4) Provide colorful experience
+
+✅ **Do:**
+Make use of colors in your CLI application to highlight and structure a program's output, but provide a graceful degradation or color-detection to allow automatic opt-out so that output isn't garbled.
+
+❌ **Otherwise:**
+Information may easily get lost in pale program output, especially when the output is text-heavy.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Most terminals used today to interact with command line applications support colored text such as these enabled by specially crafted ANSI encoded characters.
+
+A colorful display in your command line application output may further contribute to a richer experience and increased interaction. This said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output.
+
+Reference projects:
+
+- [chalk](https://www.npmjs.com/package/chalk)
+- [colors](https://www.npmjs.com/package/colors)
 
 </details>
 
