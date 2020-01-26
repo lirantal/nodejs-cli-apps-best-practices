@@ -55,9 +55,14 @@ A collection of curated best practices on how to build successful, empathic and 
   - (6.2) [Actionable errors](#actionable-errors)
   - (6.3) [Provide debug mode](#provide-debug-mode)
 
+<br/>
+<br/>
+
 ## (1) Command Line Experience
 
 This section deals with best practices concerned with creating beautiful and high-value user experience Node.js command line applications.
+
+<br/>
 
 ### 1.1. Respect the POSIX
 
@@ -76,6 +81,8 @@ Command line power users will expect another CLI tool to have similar convention
 
 </details>
 
+<br/>
+
 ### (1.2) Build empathic CLIs
 
 ✅ **Do:**
@@ -92,6 +99,8 @@ A command line interface for your program is no different than a web user interf
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successfull interaction.
 
 </details>
+
+<br/>
 
 ### (1.3) Stateful data
 
@@ -112,6 +121,8 @@ Reference projects:
 - [conf](https://www.npmjs.com/package/conf)
 
 </details>
+
+<br/>
 
 ### (1.4) Provide colorful experience
 
@@ -134,6 +145,8 @@ Reference projects:
 - [colors](https://www.npmjs.com/package/colors)
 
 </details>
+
+<br/>
 
 ### (1.5) Rich interactions
 
@@ -160,9 +173,14 @@ Reference projects:
 
 </details>
 
+<br/>
+<br/>
+
 ## (2) Distribution
 
 This section deals with best practices concerned with distributing and packaging a Node.js command line application in an optimal matter for consumers.
+
+<br/>
 
 ### (2.1) Prefer a small dependency footprint
 
@@ -180,6 +198,8 @@ A fast npm install for Node.js CLIs invoked with `npx` will provide a better use
 Where-as with a global npm installation of a package, a slow-to-install npm package will be a one-off poor experience, the use of `npx` for users to invoke executable packages is more significant and visible in its degraded performance due to npx always fetching and installing packages from the registry.
 
 </details>
+
+<br/>
 
 ### (2.2) Use the shrinkwrap, Luke
 
@@ -212,6 +232,9 @@ References:
 
 </details>
 
+<br/>
+<br/>
+
 ## (3) Interoperability
 
 This section deals with best practices concerned with making the Node.js CLI seamlessly integrate with other command line tools and conventions which are natural for CLIs to operate in.
@@ -221,6 +244,8 @@ This section answer questions such as:
 - _Can I export the output of this CLI for easy parsing?_
 - _Can I pipe the output of this CLI to the input of another command line tool?_
 - _Can I pipe the result of another tool to this CLI?_
+
+<br/>
 
 ### (3.1) Accept input as STDIN
 
@@ -241,6 +266,8 @@ If the command line application works with data, such as performing some kind of
 
 </details>
 
+<br/>
+
 ### (3.2) Enable structured output
 
 ✅ **Do:**
@@ -258,9 +285,14 @@ Being able to easily extract the data of interest from a command line output pro
 
 </details>
 
+<br/>
+<br/>
+
 ## (4) Accessibility
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
+
+<br/>
 
 ### (4.1) Containerize the CLI
 
@@ -280,6 +312,8 @@ However, if you are targeting a CLI application to be consumed by the general pu
 There are many forms of packaging and distributing an executable and containerizing it as a Docker container that is pre-bundled with your CLI application is an easily consumable alternative and dependency-free (aside of requiring a Docker environment ready).
 
 </details>
+
+<br/>
 
 ### (4.2) Graceful downplay
 
@@ -311,6 +345,8 @@ To enable users with unsupported terminal to properly use the Node.js CLI applic
 
 </details>
 
+<br/>
+
 ### (4.3) Node.js versions compatibility
 
 ✅ **Do:**
@@ -327,6 +363,8 @@ Don't level down the program code to use an older ECMAScript language specificat
 Sometimes it may be necessary to specifically target older Node.js versions which are missing new ECAMScript specification. For example, if you are building a Node.js CLI that is mostly geared towards DevOps or IT, they may not have an ideal Node.js environment with an up to date runtime. As a reference, Debian Stretch (oldstable) ships with [Node.js 8.11.1](https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=nodejs).
 
 </details>
+
+<br/>
 
 ### (4.4) Shebang autodetect the Node.js runtime
 
@@ -345,7 +383,12 @@ It should be noted that specifying `#!/usr/bin/env node` as the best practice, i
 
 </details>
 
+<br/>
+<br/>
+
 ## (5) Testing
+
+<br/>
 
 ### (5.1) Put no trust in locales
 
@@ -369,9 +412,14 @@ When tests will run on locales that aren't English-based, and if your CLI argume
 
 </details>
 
+<br/>
+<br/>
+
 ## (6) Errors
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
+
+<br/>
 
 ### (6.1) Informational errors
 
@@ -398,6 +446,8 @@ Error (E4002): please provide an API token via environment variables
 
 </details>
 
+<br/>
+
 ### (6.2) Actionable errors
 
 ✅ **Do:**
@@ -419,6 +469,8 @@ Error (E4002): please provide an API token via environment variables
 
 </details>
 
+<br/>
+
 ### (6.3) Provide debug mode
 
 ✅ **Do:**
@@ -437,6 +489,9 @@ Reference projects:
 - [debug](https://www.npmjs.com/package/debug)
 
 </details>
+
+<br/>
+<br/>
 
 <hr/>
 
