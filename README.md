@@ -27,7 +27,7 @@ A collection of curated best practices on how to build successful, empathic and 
 <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter"><img src="https://badgen.net/twitter/follow/liran_tal" /></a>
 </p>
 
-<hr/>
+- - -
 
 <h3>Table of Contents</h3>
 
@@ -493,7 +493,7 @@ Reference projects:
 <br/>
 <br/>
 
-<hr/>
+- - -
 
 # Author
 
