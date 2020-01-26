@@ -47,6 +47,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
   - (4.4) [Shebang autodetect the Node.js runtime](shebang-autodetect-the-nodejs-runtime)
 - (5) Testing
+  - (5.1) [Put no trust in locales](#put-no-trust-in-locales)
 - (6) Errors
   - (6.1) [Informational errors](#informational-errors)
   - (6.2) [Actionable errors](#actionable-errors)
@@ -296,6 +297,28 @@ It should be noted that specifying `#!/usr/bin/env node` as the best practice, i
 </details>
 
 ## (5) Testing
+
+### (5.1) Put no trust in locales
+
+✅ **Do:**
+Don't assume output text to be equivalent to a string you assert for because tests may run on systems with different locales than yours, or the English default.
+
+❌ **Otherwise:**
+Developers will experience tests failures as they test on systems with different locales than the English default.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+As you choose to test the CLI by running it and parsing output, you may be inclined to grep for specific features to ensure that they exist in the output such as properly providing examples when the CLI is ran with no arguments. e.g:
+
+```js
+const output = execSync(cli);
+expect(output.indexOf("Examples:")).not.toBe(-1);
+```
+
+When tests will run on locales that aren't English-based, and if your CLI argument parsing library supports auto-detection of locales and adopting to it, then tests such as this will fail, due to language conversions from `Examples` to the locale-equivalent langauge being set as the default locale in the system.
+
+</details>
 
 ## (6) Errors
 
