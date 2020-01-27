@@ -27,7 +27,7 @@ A collection of curated best practices on how to build successful, empathic and 
 <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter"><img src="https://badgen.net/twitter/follow/liran_tal" /></a>
 </p>
 
-- - -
+---
 
 <h3>Table of Contents</h3>
 
@@ -64,7 +64,7 @@ This section deals with best practices concerned with creating beautiful and hig
 
 <br/>
 
-### 1.1. Respect the POSIX
+### (1.1) Respect the POSIX
 
 ✅ **Do:**
 Use [POSIX-compliant](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) command line argument syntax, which is widely accepted as a standard for command line tools.
@@ -493,7 +493,7 @@ Reference projects:
 <br/>
 <br/>
 
-- - -
+---
 
 # Author
 
