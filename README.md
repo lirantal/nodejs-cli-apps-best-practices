@@ -32,28 +32,28 @@ A collection of curated best practices on how to build successful, empathic and 
 <h3>Table of Contents</h3>
 
 - (1) Command Line Experience
-  - (1.1) [Respect the POSIX](#respect-the-posix)
-  - (1.2) [Build empathic CLIs](#build-empathic-clis)
-  - (1.3) [Stateful data](#stateful-data)
-  - (1.4) [Provide colorful experience](#provide-colorful-experience)
-  - (1.5) [Rich interactions](#rich-interactions)
+  - (1.1) [Respect the POSIX](#11-respect-the-posix)
+  - (1.2) [Build empathic CLIs](#12-build-empathic-clis)
+  - (1.3) [Stateful data](#13-stateful-data)
+  - (1.4) [Provide colorful experience](#14-provide-colorful-experience)
+  - (1.5) [Rich interactions](#15-rich-interactions)
 - (2) Distribution
-  - (2.1) [Prefer a small dependency footprint](#Prefer-a-small-dependency-footprint)
-  - (2.2) [Use the shrinkwrap, Luke](#use-the-shrinkwrap-luke)
+  - (2.1) [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
+  - (2.2) [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
 - (3) Interoperability
-  - (3.1) [Accept input as STDIN](#accept-input-as-stdin)
-  - (3.2) [Enable structured output](#enable-structured-output)
+  - (3.1) [Accept input as STDIN](#31-accept-input-as-stdin)
+  - (3.2) [Enable structured output](#32-enable-structured-output)
 - (4) Accessibility
-  - (4.1) [Containerize the CLI](#containerize-the-cli)
-  - (4.2) [Graceful downplay](#graceful-downplay)
-  - (4.3) [Node.js versions compatibility](#node.js-versions-compatibility)
-  - (4.4) [Shebang autodetect the Node.js runtime](shebang-autodetect-the-nodejs-runtime)
+  - (4.1) [Containerize the CLI](#41-containerize-the-cli)
+  - (4.2) [Graceful downplay](#42-graceful-downplay)
+  - (4.3) [Node.js versions compatibility](#43-node.js-versions-compatibility)
+  - (4.4) [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
 - (5) Testing
-  - (5.1) [Put no trust in locales](#put-no-trust-in-locales)
+  - (5.1) [Put no trust in locales](#51-put-no-trust-in-locales)
 - (6) Errors
-  - (6.1) [Informational errors](#informational-errors)
-  - (6.2) [Actionable errors](#actionable-errors)
-  - (6.3) [Provide debug mode](#provide-debug-mode)
+  - (6.1) [Informational errors](#61-informational-errors)
+  - (6.2) [Actionable errors](#62-actionable-errors)
+  - (6.3) [Provide debug mode](#63-provide-debug-mode)
 
 <br/>
 <br/>
