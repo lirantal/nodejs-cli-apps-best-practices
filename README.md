@@ -37,6 +37,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (1.3) [Stateful data](#13-stateful-data)
   - (1.4) [Provide colorful experience](#14-provide-colorful-experience)
   - (1.5) [Rich interactions](#15-rich-interactions)
+  - (1.6) [Hyperlinks everywhere](#16-hyperlinks-everywhere)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
@@ -170,6 +171,23 @@ Reference projects:
 - [enquirer](https://www.npmjs.com/package/enquirer)
 - [ora](https://www.npmjs.com/package/ora)
 - [ink](https://www.npmjs.com/package/ink)
+
+</details>
+
+<br/>
+
+## (1.6) Hyperlinks everywhere
+
+✅ **Do:**
+Use properly formatted hyperlinks in text output for both URLs (e.g: `https://www.github.com`), as well as source code (e.g: `src/Util.js:2:75`) - both of which a modern terminal is able to transform into a clickable link that opens the correct context program.
+
+❌ **Otherwise:**
+Avoid broken and non-interactive links like `git.io/abc` which requires the user to copy and paste manually.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+If you are sharing links to URLs or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that once clicked will open up the browser, or an IDE at the defined location.
 
 </details>
 
