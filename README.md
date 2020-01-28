@@ -148,6 +148,16 @@ Reference projects:
 
 </details>
 
+<details>
+	<summary>📦 <b>Recommended packages</b></summary>
+
+Reference to open source packages:
+
+- [chalk](https://www.npmjs.com/package/chalk)
+- [colors](https://www.npmjs.com/package/colors)
+
+</details>
+
 <br/>
 
 ### (1.5) Rich interactions
@@ -167,7 +177,12 @@ Another type of rich interactivity is in the form of animated loaders and progre
 
 Some CLIs fit command line arguments without requiring any further interactive experience, and one shouldn't be forced upon them.
 
-Reference projects:
+</details>
+
+<details>
+	<summary>📦 <b>Recommended packages</b></summary>
+
+Reference to open source packages:
 
 - [enquirer](https://www.npmjs.com/package/enquirer)
 - [ora](https://www.npmjs.com/package/ora)
@@ -503,7 +518,12 @@ Don't skip debugging capabilities as it will be harder to collect feedback from 
 
 Utilize environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user and the maintainer to understand the program flow, inputs and outputs and other pieces of information that make problem solving easier.
 
-Reference projects:
+</details>
+
+<details>
+	<summary>📦 <b>Recommended packages</b></summary>
+
+Reference to open source packages:
 
 - [debug](https://www.npmjs.com/package/debug)
 
