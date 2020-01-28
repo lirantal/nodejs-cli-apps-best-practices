@@ -38,6 +38,7 @@ A collection of curated best practices on how to build successful, empathic and 
   - (1.4) [Provide colorful experience](#14-provide-colorful-experience)
   - (1.5) [Rich interactions](#15-rich-interactions)
   - (1.6) [Hyperlinks everywhere](#16-hyperlinks-everywhere)
+  - (1.7) [Zero configuration](#17-zero-configuration) (TBD)
 - (2) Distribution
   - (2.1) [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - (2.2) [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
