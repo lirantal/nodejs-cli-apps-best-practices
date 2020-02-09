@@ -87,7 +87,7 @@ Some of my recent work of building Node.js CLIs include the following opensource
   - 4.3 [Node.js versions compatibility](#43-node.js-versions-compatibility)
   - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
 - 5 Testing
-  - (5.1) [Put no trust in locales](#51-put-no-trust-in-locales)
+  - 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
 - 6 Errors
   - 6.1 [Informational errors](#61-informational-errors)
   - 6.2 [Actionable errors](#62-actionable-errors)
