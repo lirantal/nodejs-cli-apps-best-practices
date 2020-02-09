@@ -192,7 +192,7 @@ Reference to open source packages:
 
 <br/>
 
-## (1.6) Hyperlinks everywhere
+### (1.6) Hyperlinks everywhere
 
 ✅ **Do:**
 Use properly formatted hyperlinks in text output for both URLs (e.g: `https://www.github.com`), as well as source code (e.g: `src/Util.js:2:75`) - both of which a modern terminal is able to transform into a clickable link that opens the correct context program.
