@@ -20,7 +20,7 @@ A collection of curated best practices on how to build successful, empathic and 
 
 <!-- Shields -->
 <p align="center">
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/gray"></a>
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"></a>
 <a href="https://itunes.apple.com/us/app/apple-store/id375380948?mt=8" target="_blank">
   <img src="https://img.shields.io/badge/Rating-&starf;&starf;&starf;&starf;&starf;-brightgreen.svg">
 </a>
@@ -31,42 +31,54 @@ A collection of curated best practices on how to build successful, empathic and 
 
 <h3>Table of Contents</h3>
 
-- (1) Command Line Experience
-  - (1.1) [Respect the POSIX](#11-respect-the-posix)
-  - (1.2) [Build empathic CLIs](#12-build-empathic-clis)
-  - (1.3) [Stateful data](#13-stateful-data)
-  - (1.4) [Provide colorful experience](#14-provide-colorful-experience)
-  - (1.5) [Rich interactions](#15-rich-interactions)
-  - (1.6) [Hyperlinks everywhere](#16-hyperlinks-everywhere)
-  - (1.7) [Zero configuration](#17-zero-configuration) (TBD)
-- (2) Distribution
-  - (2.1) [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
-  - (2.2) [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
-- (3) Interoperability
-  - (3.1) [Accept input as STDIN](#31-accept-input-as-stdin)
-  - (3.2) [Enable structured output](#32-enable-structured-output)
-- (4) Accessibility
-  - (4.1) [Containerize the CLI](#41-containerize-the-cli)
-  - (4.2) [Graceful downplay](#42-graceful-downplay)
-  - (4.3) [Node.js versions compatibility](#43-node.js-versions-compatibility)
-  - (4.4) [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
-- (5) Testing
+- 1 Command Line Experience
+  - 1.1 [Respect the POSIX](#11-respect-the-posix)
+  - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
+  - 1.3 [Stateful data](#13-stateful-data)
+  - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
+  - 1.5 [Rich interactions](#15-rich-interactions)
+  - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
+  - 1.7 [Zero configuration](#17-zero-configuration) (TBD)
+- 2 Distribution
+  - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
+  - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 3 Interoperability
+  - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
+  - 3.2 [Enable structured output](#32-enable-structured-output)
+- 4 Accessibility
+  - 4.1 [Containerize the CLI](#41-containerize-the-cli)
+  - 4.2 [Graceful downplay](#42-graceful-downplay)
+  - 4.3 [Node.js versions compatibility](#43-node.js-versions-compatibility)
+  - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
+- 5 Testing
   - (5.1) [Put no trust in locales](#51-put-no-trust-in-locales)
-- (6) Errors
-  - (6.1) [Informational errors](#61-informational-errors)
-  - (6.2) [Actionable errors](#62-actionable-errors)
-  - (6.3) [Provide debug mode](#63-provide-debug-mode)
+- 6 Errors
+  - 6.1 [Informational errors](#61-informational-errors)
+  - 6.2 [Actionable errors](#62-actionable-errors)
+  - 6.3 [Provide debug mode](#63-provide-debug-mode)
 
 <br/>
+
+---
+
 <br/>
 
-## (1) Command Line Experience
+# 1 Command Line Experience
 
 This section deals with best practices concerned with creating beautiful and high-value user experience Node.js command line applications.
 
+In this section:
+  - 1.1 [Respect the POSIX](#11-respect-the-posix)
+  - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
+  - 1.3 [Stateful data](#13-stateful-data)
+  - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
+  - 1.5 [Rich interactions](#15-rich-interactions)
+  - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
+  - 1.7 [Zero configuration](#17-zero-configuration) (TBD)
+
 <br/>
 
-### (1.1) Respect the POSIX
+### 1.1 Respect the POSIX
 
 ✅ **Do:**
 Use [POSIX-compliant](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) command line argument syntax, which is widely accepted as a standard for command line tools.
@@ -85,7 +97,7 @@ Command line power users will expect another CLI tool to have similar convention
 
 <br/>
 
-### (1.2) Build empathic CLIs
+### 1.2 Build empathic CLIs
 
 ✅ **Do:**
 Put workflows in place that assist the user to interact with the CLI successfully when otherwise such interactions will result in errors and frustration.
@@ -104,7 +116,7 @@ Optimize for successful interactions by building empathic CLIs that support the 
 
 <br/>
 
-### (1.3) Stateful data
+### 1.3 Stateful data
 
 ✅ **Do:**
 Provide a stateful experience between numerous invocations of the CLI app and remember values and data in order to provide a seamless and stateful interaction.
@@ -126,7 +138,7 @@ Reference projects:
 
 <br/>
 
-### (1.4) Provide colorful experience
+### 1.4 Provide colorful experience
 
 ✅ **Do:**
 Make use of colors in your CLI application to highlight and structure a program's output, but provide a graceful degradation or color-detection to allow automatic opt-out so that output isn't garbled.
@@ -160,7 +172,7 @@ Reference to open source packages:
 
 <br/>
 
-### (1.5) Rich interactions
+### 1.5 Rich interactions
 
 ✅ **Do:**
 Leverage the use of rich command line interactions beyond the basics of text input prompt to provide a smoother experience for CLI users.
@@ -192,7 +204,7 @@ Reference to open source packages:
 
 <br/>
 
-### (1.6) Hyperlinks everywhere
+### 1.6 Hyperlinks everywhere
 
 ✅ **Do:**
 Use properly formatted hyperlinks in text output for both URLs (e.g: `https://www.github.com`), as well as source code (e.g: `src/Util.js:2:75`) - both of which a modern terminal is able to transform into a clickable link that opens the correct context program.
@@ -210,13 +222,17 @@ If you are sharing links to URLs or pointing to a file and a specific line numbe
 <br/>
 <br/>
 
-## (2) Distribution
+# 2 Distribution
 
 This section deals with best practices concerned with distributing and packaging a Node.js command line application in an optimal matter for consumers.
 
+In this section:
+  - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
+  - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+
 <br/>
 
-### (2.1) Prefer a small dependency footprint
+### 2.1 Prefer a small dependency footprint
 
 ✅ **Do:**
 Minimize your use of production dependencies, use alternative dependencies which are smaller, and vet your dependencies footprint as well for transitive dependencies cost to ensure an overall small bundle of the Node.js CLI. Be careful to not over-optimize on dependencies by reinventing the wheel.
@@ -235,7 +251,7 @@ Where-as with a global npm installation of a package, a slow-to-install npm pack
 
 <br/>
 
-### (2.2) Use the shrinkwrap, Luke
+### 2.2 Use the shrinkwrap, Luke
 
 ✅ **Do:**
 Use npm's `npm-shrinkwrap.json` as a lockfile to ensure that pinned-down dependency versions (direct and transitive) propagate to your end users when they install your npm package.
@@ -269,7 +285,7 @@ References:
 <br/>
 <br/>
 
-## (3) Interoperability
+# 3 Interoperability
 
 This section deals with best practices concerned with making the Node.js CLI seamlessly integrate with other command line tools and conventions which are natural for CLIs to operate in.
 
@@ -281,7 +297,13 @@ This section answer questions such as:
 
 <br/>
 
-### (3.1) Accept input as STDIN
+In this section:
+  - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
+  - 3.2 [Enable structured output](#32-enable-structured-output)
+
+<br/>
+
+### 3.1 Accept input as STDIN
 
 ✅ **Do:**
 For command line applicatios that are expected to work with data, make it available for a consumer to pipe the data to standard input (STDIN).
@@ -302,7 +324,7 @@ If the command line application works with data, such as performing some kind of
 
 <br/>
 
-### (3.2) Enable structured output
+### 3.2 Enable structured output
 
 ✅ **Do:**
 Enable a flag to allow structured output of the program's result, if such result is available, to enable parsing and easy manipulation of the data.
@@ -322,13 +344,19 @@ Being able to easily extract the data of interest from a command line output pro
 <br/>
 <br/>
 
-## (4) Accessibility
+# 4 Accessibility
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
 
+In this section:
+  - 4.1 [Containerize the CLI](#41-containerize-the-cli)
+  - 4.2 [Graceful downplay](#42-graceful-downplay)
+  - 4.3 [Node.js versions compatibility](#43-node.js-versions-compatibility)
+  - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
+
 <br/>
 
-### (4.1) Containerize the CLI
+### 4.1 Containerize the CLI
 
 ✅ **Do:**
 Create a docker image for the CLI and publish it to a public registry like Docker Hub so that users without a Node.js environment can use it.
@@ -349,7 +377,7 @@ There are many forms of packaging and distributing an executable and containeriz
 
 <br/>
 
-### (4.2) Graceful downplay
+### 4.2 Graceful downplay
 
 ✅ **Do:**
 Provide users with the ability to opt-out of colorful and animation-rich display in unsupported environments, such as by skipping interactivity and providing formatted output in the form of JSON.
@@ -381,7 +409,7 @@ To enable users with unsupported terminal to properly use the Node.js CLI applic
 
 <br/>
 
-### (4.3) Node.js versions compatibility
+### 4.3 Node.js versions compatibility
 
 ✅ **Do:**
 Target old versions of Node.js such as Node.js 6 or Node.js 4 (both are End of Life) using a transpiler such as Babel to make sure the generated code is compliant with the version of V8 JavaScript engine shipped with those versions.
@@ -400,7 +428,7 @@ Sometimes it may be necessary to specifically target older Node.js versions whic
 
 <br/>
 
-### (4.4) Shebang autodetect the Node.js runtime
+### 4.4 Shebang autodetect the Node.js runtime
 
 ✅ **Do:**
 Use an installation-agnostic reference in your [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) declaration that locates the Node.js runtime automaticaly based on the runtime environment.
@@ -420,11 +448,14 @@ It should be noted that specifying `#!/usr/bin/env node` as the best practice, i
 <br/>
 <br/>
 
-## (5) Testing
+# 5 Testing
+
+In this section:
+  - 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
 
 <br/>
 
-### (5.1) Put no trust in locales
+### 5.1 Put no trust in locales
 
 ✅ **Do:**
 Don't assume output text to be equivalent to a string you assert for because tests may run on systems with different locales than yours, or the English default.
@@ -449,13 +480,18 @@ When tests will run on locales that aren't English-based, and if your CLI argume
 <br/>
 <br/>
 
-## (6) Errors
+# 6 Errors
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment than that which the maintainer designed the application.
 
+In this section:
+  - 6.1 [Informational errors](#61-informational-errors)
+  - 6.2 [Actionable errors](#62-actionable-errors)
+  - 6.3 [Provide debug mode](#63-provide-debug-mode)
+
 <br/>
 
-### (6.1) Informational errors
+### 6.1 Informational errors
 
 ✅ **Do:**
 When reporting errors, provide trackable error codes that can be looked up in the project's documentation and render troubleshooting the error message an easy task.
@@ -482,7 +518,7 @@ Error (E4002): please provide an API token via environment variables
 
 <br/>
 
-### (6.2) Actionable errors
+### 6.2 Actionable errors
 
 ✅ **Do:**
 A failing error message should hint the user as to what is required fixing rather than complaining on the error gap.
@@ -505,7 +541,7 @@ Error (E4002): please provide an API token via environment variables
 
 <br/>
 
-### (6.3) Provide debug mode
+### 6.3 Provide debug mode
 
 ✅ **Do:**
 Allow power users to tap into further detailed information if they need to diagnose problems.
@@ -540,4 +576,6 @@ Reference to open source packages:
 
 # License
 
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+[![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
+
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
