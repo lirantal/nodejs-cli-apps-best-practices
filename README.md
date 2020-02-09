@@ -13,9 +13,16 @@
 
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface applications.
 
-- 17 best practices for building successful Node.js CLI applications
-- Read in other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) ]
-- Last update: 2020-01-26
+### Why this guide?
+
+Building successful CLIs requires great attention for details, an increased sense of empathy for the user and a good level user experience. It is very easy to get wrong, and a bad CLI can easily discourage users from interacting with it.
+
+In this guide I have compiled a list of best practices across areas of focus which aim to optimize for the ideal user experience when interacting with a command line application.
+
+### Features:
+- ✅ 19 best practices for building successful Node.js CLI applications
+- 🙏 ~~Read~~ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
+- Last update: 2020-02-09
 - <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter">Follow me</a> on twitter for more updates
 
 <!-- Shields -->
@@ -24,8 +31,37 @@ A collection of curated best practices on how to build successful, empathic and 
 <a href="https://itunes.apple.com/us/app/apple-store/id375380948?mt=8" target="_blank">
   <img src="https://img.shields.io/badge/Rating-&starf;&starf;&starf;&starf;&starf;-brightgreen.svg">
 </a>
-<a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter"><img src="https://badgen.net/twitter/follow/liran_tal" /></a>
 </p>
+
+### Why me?
+
+My name is Liran Tal and I'm addicted to building command line applications.
+
+Some of my recent work of building Node.js CLIs include the following opensource projects:
+
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+     <td align="center">
+	    <a href="https://github.com/lirantal/dockly"><img src="https://repository-images.githubusercontent.com/71667498/d5576f00-69cd-11e9-83dd-2139ad967fdc" width="150px;" alt="dockly - Immersive terminal interface for managing docker containers and services"/><br /><sub><b>Dockly</b></sub></a><br/>Immersive terminal interface for managing docker containers and services
+     </td>
+     <td align="center">
+	    <a href="https://github.com/lirantal/npq"><img src="https://repository-images.githubusercontent.com/114298694/73d29f00-bb7d-11e9-80f5-5f94f25a76b4" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>safely install packages with npm/yarn by auditing them as part of your install process
+     </td>
+     <td align="center">
+	    <a href="https://github.com/lirantal/lockfile-lint"><img src="https://repository-images.githubusercontent.com/189734318/e6973f80-e55a-11e9-8446-c63299297f5a" width="150px;" alt="lockfile-lint - Lint an npm or yarn lockfile to analyze and detect security issues"/><br /><sub><b>lockfile-lint</b></sub></a><br/>Lint an npm or yarn lockfile to analyze and detect security issues
+     </td>
+     <td align="center">
+	    <a href="https://github.com/lirantal/is-website-vulnerable"><img src="https://repository-images.githubusercontent.com/212983914/2d33b500-e84d-11e9-820e-799f368c4c44" width="150px;" alt="is-website-vulnerable - finds publicly known security vulnerabilities in a website's frontend JavaScript libraries"/><br /><sub><b>is-website-vulnerable</b></sub></a><br/>finds publicly known security vulnerabilities in a website's frontend JavaScript libraries
+     </td>
+  </tr>
+</table>
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+
+<a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter"><img src="https://badgen.net/twitter/follow/liran_tal" /></a>
+
 
 ---
 
