@@ -21,9 +21,9 @@ In this guide I have compiled a list of best practices across areas of focus whi
 
 ### Features:
 - ✅ 19 best practices for building successful Node.js CLI applications
-- 🙏 ~~Read~~ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
+- ❤️ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
+- 🙏 Contributions are welcome 
 - Last update: 2020-02-09
-- <a href="https://twitter.com/liran_tal/" alt="follow Liran Tal twitter">Follow me</a> on twitter for more updates
 
 <!-- Shields -->
 <p align="center">
