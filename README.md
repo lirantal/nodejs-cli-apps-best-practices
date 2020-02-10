@@ -81,6 +81,7 @@ Some of my recent work of building Node.js CLIs include the following opensource
 - 3 Interoperability
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
+  - 3.3 [Cross-platform etiquette](#33-crossplatform-etiquettem)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful downplay](#42-graceful-downplay)
@@ -336,6 +337,7 @@ This section answer questions such as:
 In this section:
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
+  - 3.3 [Cross-platform etiquette](#33-crossplatform-etiquettem)
 
 <br/>
 
@@ -374,6 +376,51 @@ Users of the CLI may need to apply complicated regex parsing and matching techni
 It is often useful for users of a command line application to parse the data and perform other tasks with it, such as using it to feed web dashboards, email notifications.
 
 Being able to easily extract the data of interest from a command line output provides a friendlier experience to consumers of the CLI.
+
+</details>
+
+<br/>
+
+### 3.3 Cross-platform etiquette
+
+✅ **Do:**
+If a CLI is expected to function across platforms, a proper attention must be given to semantics of command shells and components such as file systems along with developers leveraging relevant programmig constructs.
+
+❌ **Otherwise:**
+The CLI will get crippled for other operatig systems by the smallest things such as incorrect path separator characters, even though there are no functional differences in the code.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Even though from a program's perspective the functionality isn't being stripped down and SHOULD execute well in different operating systems, some missed nuances may render the program inoperable. Let's explore several cases where cross-platform ethics should be honored.
+
+#### Wrongly spawnning a CLI
+You might need to spawn a process that runs a Node.js program. For example, you have the following script:
+
+program.js
+```
+#!/usr/bin/env node
+...
+...
+```
+
+This works:
+
+```
+const cliExecPath = 'program.js'
+const process = childProcess.spawn(cliExecPath, [])
+```
+
+Better, this is cross-platform too:
+
+```
+const cliExecPath = 'program.js'
+const process = childProcess.spawn('node', [cliExecPath])
+```
+
+Why is it better? the `program.js` source code begis with the Unix-like [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) notationl, however a Windows OS as an example, doesn't know how to interpret this. Mostly due to the fact that Shebang isn't a standardized thing and is expected to be used with absolute paths which differ between operating systems.
+
+
 
 </details>
 
