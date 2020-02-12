@@ -420,7 +420,7 @@ const process = childProcess.spawn('node', [cliExecPath])
 
 Why is it better? the `program.js` source code begis with the Unix-like [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) notationl, however a Windows OS as an example, doesn't know how to interpret this. Mostly due to the fact that Shebang isn't a standardized thing and is expected to be used with absolute paths which differ between operating systems.
 
-### Shell interpreters vary
+#### Shell interpreters vary
 Not all characters are treated the same across different shell interpreters.
 
 For example, the Windows command prompt doesn't treat a single quote the same as a double quote,
@@ -448,6 +448,27 @@ package.json
 ```
 
 In this example we had to use double quotes and escape them with the JSON notation.
+
+#### Avoid concatenating paths
+Paths identify differently acorss different platforms, and when they are built
+manually by concatenating string they are bound not to be interoperable between
+different platforms.
+
+Let's consider the following example which is an example of a bad practice:
+
+```
+   const myPath = `${__dirname}/../bin/myBin.js`
+```
+
+It assumes that forward slash is the path separator where on Windows, for example,
+a backslash is used.
+
+Instead of manually building filesystem paths, defer to Node.js's own `path`
+module to do this:
+
+```
+   const myPath = path.join(__dirname, '../bin/myBin.js`)
+```
 
 </details>
 
