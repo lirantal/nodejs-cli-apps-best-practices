@@ -82,6 +82,7 @@ Some of my recent work of building Node.js CLIs include the following opensource
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
   - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
+  - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful downplay](#42-graceful-downplay)
@@ -338,6 +339,7 @@ In this section:
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
   - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
+  - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
 
 <br/>
 
@@ -504,6 +506,30 @@ Instead, use the double ampersand or double pipe notations:
 ```
   const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`)
 ```
+
+</details>
+
+<br/>
+
+### 3.4 Allow environment overrides
+
+✅ **Do:**
+Allow configuration to be read from environment variables, and when it conflicts with command line arguments then allow environment variables to override.
+
+❌ **Otherwise:**
+Invoking the CLI with customized configuration will not be possible.
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Detect and support configuration setting using environment variables as this will be a common way in many toolchain to modify the behavior of the invoked CLI application.
+
+Moreover, a CLI application may be invoked in a way that requires a dynamic environmen variable setting to resolve configuration or flags values, in a way that doesn't allow passing command line arguments or simply makes defining
+this information via command line arguments very repeatitive and cumbersome.
+
+When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
+
+
 
 </details>
 
