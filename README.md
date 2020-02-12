@@ -491,6 +491,20 @@ module to do this:
    const myPath = path.join(__dirname, '../bin/myBin.js`)
 ```
 
+#### Avoid chaining commands with semicolons
+Linux shells are known to support a semicolon (`;`) to chain commands to run
+sequentially, such as: `cd /tmp; ls`. However, doing the same on Windows will fail.
+
+Avoid doing the following:
+```
+  const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`)
+```
+
+Instead, use the double ampersand or double pipe notations:
+```
+  const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`)
+```
+
 </details>
 
 <br/>
