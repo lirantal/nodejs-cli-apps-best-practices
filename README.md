@@ -74,7 +74,7 @@ Some of my recent work of building Node.js CLIs include the following opensource
   - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
   - 1.5 [Rich interactions](#15-rich-interactions)
   - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
-  - 1.7 [Zero configuration](#17-zero-configuration) (TBD)
+  - 1.7 [Zero configuration](#17-zero-configuration)
 - 2 Distribution
   - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
@@ -112,7 +112,7 @@ In this section:
   - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
   - 1.5 [Rich interactions](#15-rich-interactions)
   - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
-  - 1.7 [Zero configuration](#17-zero-configuration) (TBD)
+  - 1.7 [Zero configuration](#17-zero-configuration)
 
 <br/>
 
@@ -254,6 +254,27 @@ Avoid broken and non-interactive links like `git.io/abc` which requires the user
 	<summary>➡️ <b>Details</b></summary>
 
 If you are sharing links to URLs or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that once clicked will open up the browser, or an IDE at the defined location.
+
+</details>
+
+<br/>
+
+### 1.7 Zero configuration
+
+✅ **Do:**
+Optimize a plug-and-play experience by auto-detecting required configuration and command line arguments values
+
+❌ **Otherwise:**
+Don't force user interactivity if a command-line argument can be auto-detected in a reliable way and the action invoked doesn't explicitly require user interaction (such as confirming a deletion).
+
+<details>
+	<summary>➡️ <b>Details</b></summary>
+
+Aim to provide an experience of "works out of the box" when running the CLI application.
+
+Reference projects which are built around Zero configuration:
+ - The [Jest JavaScript Testing Framework](https://jestjs.io)
+ - [Parcel](https://parceljs.org), a web application bundler
 
 </details>
 
