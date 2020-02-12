@@ -420,6 +420,27 @@ const process = childProcess.spawn('node', [cliExecPath])
 
 Why is it better? the `program.js` source code begis with the Unix-like [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) notationl, however a Windows OS as an example, doesn't know how to interpret this. Mostly due to the fact that Shebang isn't a standardized thing and is expected to be used with absolute paths which differ between operating systems.
 
+This is also true for package.json scripts. Consider the following bad practice
+of defining an npm run script:
+
+```
+"scripts": {
+  "postinstall": "./bin/myInstall.js"
+}
+```
+
+This is due to the fact that the Shebang in `myInstalls.js` will not help Windows
+understand how to run this with the `node` interpreter.
+
+Instead, follow the best practice of:
+
+```
+"scripts": {
+  "postinstall": "node bin/myInstall.js"
+}
+```
+
+
 #### Shell interpreters vary
 Not all characters are treated the same across different shell interpreters.
 
