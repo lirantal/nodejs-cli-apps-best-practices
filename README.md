@@ -81,7 +81,7 @@ Some of my recent work of building Node.js CLIs include the following opensource
 - 3 Interoperability
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
-  - 3.3 [Cross-platform etiquette](#33-crossplatform-etiquettem)
+  - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful downplay](#42-graceful-downplay)
@@ -337,7 +337,7 @@ This section answer questions such as:
 In this section:
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
-  - 3.3 [Cross-platform etiquette](#33-crossplatform-etiquettem)
+  - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
 
 <br/>
 
@@ -394,7 +394,7 @@ The CLI will get crippled for other operatig systems by the smallest things such
 
 Even though from a program's perspective the functionality isn't being stripped down and SHOULD execute well in different operating systems, some missed nuances may render the program inoperable. Let's explore several cases where cross-platform ethics should be honored.
 
-#### Wrongly spawnning a CLI
+#### Wrongly spawning a command
 You might need to spawn a process that runs a Node.js program. For example, you have the following script:
 
 program.js
@@ -420,7 +420,34 @@ const process = childProcess.spawn('node', [cliExecPath])
 
 Why is it better? the `program.js` source code begis with the Unix-like [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) notationl, however a Windows OS as an example, doesn't know how to interpret this. Mostly due to the fact that Shebang isn't a standardized thing and is expected to be used with absolute paths which differ between operating systems.
 
+### Shell interpreters vary
+Not all characters are treated the same across different shell interpreters.
 
+For example, the Windows command prompt doesn't treat a single quote the same as a double quote,
+as would be expected on a bash shell, and so it doesn't recognize that the whole string inside
+a single quote belongs to the same string group, which will lead to errors.
+
+This will fail in a Windows Node.js environment that uses the Windows command prompt:
+
+package.json
+```
+"scripts": {
+  "format": "prettier-standard '**/*.js'",
+  ...
+}
+```
+
+To fix this so that this npm run script will indeed be cross-platform between Windows, macOS and Linux:
+
+package.json
+```
+"scripts": {
+  "format": "prettier-standard \"**/*.js\"",
+  ...
+}
+```
+
+In this example we had to use double quotes and escape them with the JSON notation.
 
 </details>
 
