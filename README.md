@@ -127,9 +127,14 @@ Users may get frustrated when CLIs syntax for arguments, options or command para
 <details>
 	<summary>➡️ <b>Details</b></summary>
 
-Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. These tools have effectively standardized the behavior of command line arguments, such as square brackets (`[]`) refer to optional arguments, or angle brackets (`<>`) refer to required arguments.
+Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. Such tools have effectively standardized the behavior of command line options (aka flags), options-arguments, and other operands.
 
-Command line power users will expect another CLI tool to have similar conventions as to others in the Unix family.
+Some examples of expected behavior:
+* option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
+* options specified using the short form singular `-` may container one alphanumeric character.
+* specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
+
+Command line power users will expect a command line application to have similar conventions as those in the Unix family.
 
 </details>
 
