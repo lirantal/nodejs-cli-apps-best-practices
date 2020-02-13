@@ -20,10 +20,10 @@ Building successful CLIs requires great attention for details, an increased sens
 In this guide I have compiled a list of best practices across areas of focus which aim to optimize for the ideal user experience when interacting with a command line application.
 
 ### Features:
-- ✅ 19 best practices for building successful Node.js CLI applications
+- ✅ 21 best practices for building successful Node.js CLI applications
 - ❤️ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
 - 🙏 Contributions are welcome 
-- Last update: 2020-02-09
+- Last update: 2020-02-13
 
 <!-- Shields -->
 <p align="center">
