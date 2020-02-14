@@ -223,6 +223,7 @@ Reference to open source packages:
 - [enquirer](https://www.npmjs.com/package/enquirer)
 - [ora](https://www.npmjs.com/package/ora)
 - [ink](https://www.npmjs.com/package/ink)
+- [prompts](https://www.npmjs.com/package/prompts)
 
 </details>
 
