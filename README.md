@@ -90,6 +90,7 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
   - 6.1 [Informational errors](#61-informational-errors)
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
+  - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
 
 ---
 
@@ -645,6 +646,7 @@ In this section:
   - 6.1 [Informational errors](#61-informational-errors)
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
+  - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
 
 <br/>
 
@@ -706,6 +708,51 @@ Don't skip debugging capabilities. It will be harder to collect feedback from us
   <summary>➡️ <b>Details</b></summary>
 
 Use environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user, and the maintainer, to understand the program flow, inputs and outputs, and other pieces of information that make problem solving easier.
+
+</details>
+
+<details>
+  <summary>📦 <b>Recommended packages</b></summary>
+
+Reference to open source packages:
+
+- [debug](https://www.npmjs.com/package/debug)
+
+</details>
+
+### 6.4 Proper use of exit codes
+
+✅ **Do:**
+Terminate your program with proper exit codes that convey a semantic meaning of the error or exit status.
+
+❌ **Otherwise:**
+An incorrect or missing exit code will impede the use of your CLI in a continuous integration flows and other command line scripting use-cases.
+
+<details>
+  <summary>➡️ <b>Details</b></summary>
+
+Command line scripts often make use of the shell's `$?` to infer a program's status code and act upon it. This is also utilized in continuous integratio (CI) flows to determine whether a step completed successfully or not.
+
+If your CLI always terminates with no specific status code, even on errors, then the shell and other programs that rely upon it have no way of knowing this. When an error happens that results in your program's termination, you should convey this meaning. For example:
+
+```js
+try {
+  // something
+} catch (err) {
+  // cleanup or otherwise
+  // then exit with proper status code
+  process.exit(1)
+}
+```
+
+A short reference for exit codes:
+- exit code 0 conveys a successful execution
+- exit code 1 conveys a failure
+
+You may also choose to use customized exit codes with semantics of your program, but if you do be sure to document these properly.
+
+Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.html) used by the BASH shell
+
 
 </details>
 
