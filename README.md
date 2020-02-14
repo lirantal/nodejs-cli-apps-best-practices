@@ -90,6 +90,8 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
   - 6.1 [Informational errors](#61-informational-errors)
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
+- 7 Development
+  - 7.1 [Use a bin object](#71-use-a-bin-object)
 
 ---
 
@@ -715,6 +717,36 @@ Use environment variables as well as command line arguments to set debug and tur
 Reference to open source packages:
 
 - [debug](https://www.npmjs.com/package/debug)
+
+</details>
+
+# 6 Errors
+
+This section deals with development and maintenance best practices of building a Node.js command line application.
+
+In this section:
+  - 7.1 [Use a bin object](#71-use-a-bin-object)
+
+<br/>
+
+### 7.1 Use a bin object
+
+✅ **Do:**
+Use an object to define the name of the executable and its path.
+
+❌ **Otherwise:**
+You will end up coupling the name of the package with the executable.
+
+<details>
+  <summary>➡️ <b>Details</b></summary>
+
+The following `package.json` shows an example of decoupling the name of the executable from the filename and its location in the project:
+
+```json
+  "bin": {
+    "myCli-is-cool": "./bin/myCli.js"
+  }
+```
 
 </details>
 
