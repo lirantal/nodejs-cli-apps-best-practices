@@ -64,13 +64,14 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
 <h3>Table of Contents</h3>
 
 - 1 Command Line Experience
-  - 1.1 [Respect the POSIX](#11-respect-the-posix)
+  - 1.1 [Respect POSIX args](#11-respect-posix-args)
   - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
   - 1.3 [Stateful data](#13-stateful-data)
   - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
   - 1.5 [Rich interactions](#15-rich-interactions)
   - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
   - 1.7 [Zero configuration](#17-zero-configuration)
+  - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
 - 2 Distribution
   - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
@@ -98,17 +99,18 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
 This section deals with best practices concerned with creating beautiful and high-value user experience Node.js command line applications.
 
 In this section:
-  - 1.1 [Respect the POSIX](#11-respect-the-posix)
+  - 1.1 [Respect POSIX args](#11-respect-posix-args)
   - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
   - 1.3 [Stateful data](#13-stateful-data)
   - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
   - 1.5 [Rich interactions](#15-rich-interactions)
   - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
   - 1.7 [Zero configuration](#17-zero-configuration)
+  - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
 
 <br/>
 
-### 1.1 Respect the POSIX
+### 1.1 Respect POSIX args
 
 ✅ **Do:**
 Use [POSIX-compliant](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) command line argument syntax, which is widely accepted as a standard for command line tools.
@@ -256,6 +258,25 @@ Aim to provide a "works out of the box" experience when running the CLI applicat
 Reference projects which are built around Zero configuration:
  - The [Jest JavaScript Testing Framework](https://jestjs.io)
  - [Parcel](https://parceljs.org), a web application bundler
+
+</details>
+
+### 1.8 Respect POSIX signals
+
+✅ **Do:**
+Ensure your program respects [POSIX signals](http://man7.org/linux/man-pages/man7/signal.7.html) to allow it proper interaction with users or other programs.
+
+❌ **Otherwise:**
+Your program will not play well with other programs and introduce unexpected behavior.
+
+<details>
+  <summary>➡️ <b>Details</b></summary>
+
+Especially for CLI applications, it is common to interact with user input and improperly managing keyboard events
+may result in unresponsive program to the `SIGINT` signal interrupt which is commonly used by users when they hit the `CTRL+C` keys.
+
+The problem of not respecting process signals worsens when the program is being orchestrated by non-human interaction. For example, a CLI that runs in a docker container but will not respond to software interrupt signals sent to it.
+
 
 </details>
 
