@@ -81,7 +81,7 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
   - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
-  - 4.2 [Graceful downplay](#42-graceful-downplay)
+  - 4.2 [Graceful degradation](#42-graceful-degradation)
   - 4.3 [Node.js versions compatibility](#43-nodejs-versions-compatibility)
   - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
 - 5 Testing
