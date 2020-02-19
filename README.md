@@ -168,7 +168,7 @@ Reference projects:
 ### 1.4 Provide a colorful experience
 
 ✅ **Do:**
-Make use of colors in your CLI application to highlight parts of your app's output, and provide a graceful degradation, or color detection, to allow automatic opt-out so that output isn't garbled. Ensure manual opt-out is also possible via CLI option, environment variable, and/or config file.
+Make use of colors in your CLI application to highlight parts of your app's output, and provide a graceful degradation, or color detection, to allow automatic opt-out so that output isn't garbled. Ensure manual opt-in and opt-out is possible via CLI option, environment variable, and/or config file.
 
 ❌ **Otherwise:**
 Information may easily get lost in pale program output, especially when the output is text-heavy.
