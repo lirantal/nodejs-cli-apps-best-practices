@@ -168,7 +168,7 @@ Reference projects:
 ### 1.4 Provide a colorful experience
 
 ✅ **Do:**
-Make use of colors in your CLI application to highlight parts of your app's output, and provide a graceful degradation, or color detection, to allow automatic opt-out so that output isn't garbled.
+Make use of colors in your CLI application to highlight parts of your app's output, and provide a graceful degradation, or color detection, to allow automatic opt-out so that output isn't garbled. Ensure manual opt-out is also possible via CLI option, environment variable, and/or config file.
 
 ❌ **Otherwise:**
 Information may easily get lost in pale program output, especially when the output is text-heavy.
@@ -178,7 +178,7 @@ Information may easily get lost in pale program output, especially when the outp
 
 Most terminals used today to interact with command line applications support colored text such as these enabled by specially crafted ANSI encoded characters.
 
-A colorful display in your command line application output may further contribute to a richer experience and increased interaction. That said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output.
+A colorful display in your command line application output may further contribute to a richer experience and increased interaction. That said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output. Even outside of build servers, a CLI may be used through an IDE's console that may not handle certain characters. Manual opt-out must be available.
 
 Reference projects:
 
