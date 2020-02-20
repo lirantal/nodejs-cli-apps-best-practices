@@ -273,7 +273,7 @@ Your program will not play well with other programs and introduce unexpected beh
   <summary>➡️ <b>Details</b></summary>
 
 Especially for CLI applications, it is common to interact with user input and improperly managing keyboard events
-may result in unresponsive program to the `SIGINT` signal interrupt which is commonly used by users when they hit the `CTRL+C` keys.
+may result in your app failing to respond to SIGINT interrupts, commonly used by users when they hit the `CTRL+C` keys.
 
 The problem of not respecting process signals worsens when the program is being orchestrated by non-human interaction. For example, a CLI that runs in a docker container but will not respond to software interrupt signals sent to it.
 
