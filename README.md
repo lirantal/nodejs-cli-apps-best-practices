@@ -749,7 +749,7 @@ A short reference for exit codes:
 - exit code 0 conveys a successful execution
 - exit code 1 conveys a failure
 
-You may also choose to use customized exit codes with semantics of your program, but if you do be sure to document these properly.
+You may also choose to use customized exit codes with semantics of your program, but if you do, be sure to document them properly.
 
 Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.html) used by the BASH shell
 
