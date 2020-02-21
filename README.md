@@ -159,7 +159,7 @@ Requiring your user to repeatedly provide the same information with multiple inv
 <details>
   <summary>➡️ <b>Details</b></summary>
 
-It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token, or other preferences between multiple invocations of the CLI. Use a configuration helper that allows the app to persist such user settings.
+It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token, or other preferences between multiple invocations of the CLI. Use a configuration helper that allows the app to persist such user settings. Be sure to follow the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) when reading/writing files (or choose a configuration helper that respects the spec). These keeps the user in control of where files are written and managed.
 
 Reference projects:
 
