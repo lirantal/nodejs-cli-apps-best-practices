@@ -62,35 +62,35 @@ Read in a different language: [🇨🇳](./translations/zh/README.md)
 
 <h3>目录</h3>
 
-- 1 Command Line Experience
-    - 1.1 [Respect POSIX args](#11-respect-posix-args)
-    - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
-    - 1.3 [Stateful data](#13-stateful-data)
-    - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
-    - 1.5 [Rich interactions](#15-rich-interactions)
-    - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
-    - 1.7 [Zero configuration](#17-zero-configuration)
-    - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
-- 2 Distribution
-    - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
-    - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
-- 3 Interoperability
-    - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
-    - 3.2 [Enable structured output](#32-enable-structured-output)
-    - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
-    - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
-- 4 Accessibility
-    - 4.1 [Containerize the CLI](#41-containerize-the-cli)
-    - 4.2 [Graceful downplay](#42-graceful-downplay)
-    - 4.3 [Node.js versions compatibility](#43-nodejs-versions-compatibility)
-    - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
-- 5 Testing
-    - 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
-- 6 Errors
-    - 6.1 [Informational errors](#61-informational-errors)
-    - 6.2 [Actionable errors](#62-actionable-errors)
-    - 6.3 [Provide debug mode](#63-provide-debug-mode)
-    - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
+- 1 命令行体验
+    - 1.1 [遵守POSIX参数](#11-respect-posix-args)
+    - 1.2 [构建富有同理心的CLI](#12-build-empathic-clis)
+    - 1.3 [状态数据](#13-stateful-data)
+    - 1.4 [提供丰富多彩的体验](#14-provide-colorful-experience)
+    - 1.5 [丰富的互动](#15-rich-interactions)
+    - 1.6 [超链接无处不在](#16-hyperlinks-everywhere)
+    - 1.7 [零配置](#17-zero-configuration)
+    - 1.8 [遵守POSIX信号](#18-respect-posix-signals)
+- 2 分发
+    - 2.1 [选择体积较小的依赖项](#21-prefer-a-small-dependency-footprint)
+    - 2.2 [使用shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 3 互通性
+    - 3.1 [接受如同STDIN的输入](#31-accept-input-as-stdin)
+    - 3.2 [启用结构化输出](#32-enable-structured-output)
+    - 3.3 [跨平台规范](#33-cross-platform-etiquette)
+    - 3.4 [允许环境覆盖](#34-allow-environment-overrides)
+- 4 辅助功能
+    - 4.1 [容器化CLI](#41-containerize-the-cli)
+    - 4.2 [优雅降级](#42-graceful-downplay)
+    - 4.3 [Node.js版本兼容性](#43-nodejs-versions-compatibility)
+    - 4.4 [Shebang自动检测Node.js运行时](#44-shebang-autodetect-the-nodejs-runtime)
+- 5 测试
+    - 5.1 [不信任区域设置](#51-put-no-trust-in-locales)
+- 6 错误
+    - 6.1 [信息性错误 ](#61-informational-errors)
+    - 6.2 [可行性错误](#62-actionable-errors)
+    - 6.3 [提供调试模式](#63-provide-debug-mode)
+    - 6.4 [正确使用退出代码](#64-proper-use-of-exit-codes)
 
 ---
 
@@ -146,7 +146,7 @@ Command line power-users will expect your command line application to have simil
 
 一个程序的命令行界面与web用户界面没有什么不同，因为您可以按照程序作者的意愿完成尽可能多的工作，以确保它被成功地使用。
 
-Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input, and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successful interaction.
+通过构建支持用户同理心的CLI来优化成功的交互。作为一个示例，让我们研究一下`curl`程序的情况，该程序期望将URL作为其主要数据输入，而用户没有提供它。此类故障将导致（希望）读取描述性错误消息或查看`curl --help`输出。然而，一个有同理心的CLI应该提供一个交互式的提示来捕获来自用户的输入，从而实现成功的交互。
 
 
 
@@ -712,7 +712,7 @@ Error (E4002): please provide an API token via environment variables
 
 ✅ **Do：**失败的错误消息应告诉用户解决方案需要什么，而不是抱怨存在错误。
 
-❌ **Otherwise:** Users facing error messages, with no hint of the action to resolve the error, may not be able to successfully use your CLI app.
+❌ **Otherwise:** 不要跳过调试功能。 从用户那里收集反馈，并找出错误的原因会变得更加困难。
 
 <details>
   <summary>➡️ <b>Details</b></summary>
