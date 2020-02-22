@@ -13,6 +13,8 @@
 
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
 
+Read in a different language: [🇨🇳](./translations/zh/README.md)
+
 ### Why this guide?
 
 A bad CLI can easily discourage users from interacting with it. Building successful CLIs requires attention to detail and empathy for the user in order to create a good user experience. It is very easy to get wrong.
@@ -20,6 +22,7 @@ A bad CLI can easily discourage users from interacting with it. Building success
 In this guide I have compiled a list of best practices across areas of focus which aim to optimize for an ideal user experience when interacting with a CLI application.
 
 ### Features:
+
 - ✅ 21 best practices for building successful Node.js CLI applications
 - ❤️ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
 - 🙏 Contributions are welcome
@@ -100,14 +103,15 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
 This section deals with best practices concerned with creating beautiful and high-value user experience Node.js command line applications.
 
 In this section:
-  - 1.1 [Respect POSIX args](#11-respect-posix-args)
-  - 1.2 [Build empathic CLIs](#12-build-empathic-clis)
-  - 1.3 [Stateful data](#13-stateful-data)
-  - 1.4 [Provide colorful experience](#14-provide-colorful-experience)
-  - 1.5 [Rich interactions](#15-rich-interactions)
-  - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
-  - 1.7 [Zero configuration](#17-zero-configuration)
-  - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
+
+- 1.1 [Respect POSIX args](#11-respect-posix-args)
+- 1.2 [Build empathic CLIs](#12-build-empathic-clis)
+- 1.3 [Stateful data](#13-stateful-data)
+- 1.4 [Provide colorful experience](#14-provide-colorful-experience)
+- 1.5 [Rich interactions](#15-rich-interactions)
+- 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
+- 1.7 [Zero configuration](#17-zero-configuration)
+- 1.8 [Respect POSIX signals](#18-respect-posix-signals)
 
 <br/>
 
@@ -125,11 +129,13 @@ Users may get frustrated when a CLI's syntax for arguments, options, or command 
 Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. Such tools have effectively standardized the behavior of command line options (aka flags), options-arguments, and other operands.
 
 Some examples of expected behavior:
-* option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
-* options specified using the short form singular `-` may container one alphanumeric character.
-* specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
 
-Command line power-users will expect your command line application to have similar conventions as  other Unix apps.
+- option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
+- options specified using the short form singular `-` may container one alphanumeric character.
+- specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
+
+Command line power-users will expect your command line application to have similar conventions as other Unix apps.
+
 </details>
 
 ### 1.2 Build empathic CLIs
@@ -146,6 +152,7 @@ Failing to provide actionable assistance in supporting the user will result in f
 A command line interface for your program is no different than a web user interface in the sense of doing as much as you can as the program author to ensure that it is being used successfully.
 
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input, and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successful interaction.
+
 </details>
 
 ### 1.3 Stateful data
@@ -216,6 +223,7 @@ Rich interactivity can be introduced in the form of prompt inputs, which are mor
 Another type of rich interactivity is in the form of animated loaders and progress-bars which provide a better experience for users when asynchronous work is being performed.
 
 Many CLIs provide default command line arguments without requiring any further interactive experience. Don't force your users to provide parameters that the app can work out for itself.
+
 </details>
 
 <details>
@@ -242,6 +250,7 @@ Avoid broken and non-interactive links like `git.io/abc` which requires your use
   <summary>➡️ <b>Details</b></summary>
 
 If you are sharing links to URLs, or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that, once clicked, will open up the browser, or an IDE at the defined location.
+
 </details>
 
 ### 1.7 Zero configuration
@@ -258,8 +267,9 @@ Don't force user interactivity if a command-line argument can be auto-detected i
 Aim to provide a "works out of the box" experience when running the CLI application.
 
 Reference projects which are built around Zero configuration:
- - The [Jest JavaScript Testing Framework](https://jestjs.io)
- - [Parcel](https://parceljs.org), a web application bundler
+
+- The [Jest JavaScript Testing Framework](https://jestjs.io)
+- [Parcel](https://parceljs.org), a web application bundler
 
 </details>
 
@@ -286,8 +296,9 @@ The problem of not respecting process signals worsens when the program is being 
 This section deals with best practices concerned with distributing and packaging a Node.js command line application in an optimal matter for consumers.
 
 In this section:
-  - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
-  - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+
+- 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
+- 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
 
 ### 2.1 Prefer a small dependency footprint
 
@@ -303,6 +314,7 @@ The size and use of dependencies in the application will impact the install time
 A fast `npm install` for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency, and transitive dependency, footprint is kept to a reasonable size.
 
 A one-off global `npm` installation of a slow-to-install `npm` package will offer a one-off poor experience, but the use of `npx` by users to invoke executable packages will make the degraded performance, due to `npx` always fetching and installing packages from the registry, more significant and obvious.
+
 </details>
 
 ### 2.2 Use the shrinkwrap, Luke
@@ -347,10 +359,11 @@ This section answers questions such as:
 - _Can I pipe the result of another tool to this CLI?_
 
 In this section:
-  - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
-  - 3.2 [Enable structured output](#32-enable-structured-output)
-  - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
-  - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
+
+- 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
+- 3.2 [Enable structured output](#32-enable-structured-output)
+- 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
+- 3.4 [Allow environment overrides](#34-allow-environment-overrides)
 
 ### 3.1 Accept input as STDIN
 
@@ -368,6 +381,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
   <summary>➡️ <b>Details</b></summary>
 
 If the command line application works with data, such as performing some kind of task on a JSON file that is usually specified with `--file <file.json>` command line argument.
+
 </details>
 
 ### 3.2 Enable structured output
@@ -384,6 +398,7 @@ Users of the CLI may need to apply complicated regex parsing and matching techni
 It is often useful for users of a command line application to parse the data and perform other tasks with it, such as using it to feed web dashboards, or email notifications.
 
 Being able to easily extract the data of interest from a command line output provides a friendlier experience to users of your CLI.
+
 </details>
 
 ### 3.3 Cross-platform etiquette
@@ -400,6 +415,7 @@ The CLI will break on other operating systems due to factors such as incorrect p
 Even though, from a program's perspective, the functionality isn't being stripped down and _should_ execute well in different operating systems, some missed nuances may render the program inoperable. Let's explore several cases where cross-platform ethics must be honored.
 
 #### Wrongly spawning a command
+
 You might need to spawn a process that runs a Node.js program. For example, you have the following script:
 
 `program.js`
@@ -424,7 +440,7 @@ const cliExecPath = 'program.js'
 const process = childProcess.spawn('node', [cliExecPath])
 ```
 
-Why is it better? The `program.js` source code begins with the Unix-like [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) notation, however Windows doesn't know how to interpret this due to the fact that Shebang isn't a cross-platform standard.
+Why is it better? The `program.js` source code begins with the Unix-like [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) notation, however Windows doesn't know how to interpret this due to the fact that Shebang isn't a cross-platform standard.
 
 This is also true for `package.json` scripts. Consider the following bad practice
 of defining an npm run script:
@@ -447,6 +463,7 @@ Instead, follow the best practice of:
 ```
 
 #### Shell interpreters vary
+
 Not all characters are treated the same across different shell interpreters.
 
 For example, the Windows command prompt doesn't treat a single quote the same as a double quote,
@@ -456,6 +473,7 @@ a single quote belongs to the same string group, which will lead to errors.
 This will fail in a Windows Node.js environment that uses the Windows command prompt:
 
 package.json
+
 ```
 "scripts": {
   "format": "prettier-standard '**/*.js'",
@@ -466,6 +484,7 @@ package.json
 To fix this so that this `npm run` script will indeed be cross-platform between Windows, macOS and Linux:
 
 package.json
+
 ```
 "scripts": {
   "format": "prettier-standard \"**/*.js\"",
@@ -476,6 +495,7 @@ package.json
 In this example we had to use double quotes and escape them with the JSON notation.
 
 #### Avoid concatenating paths
+
 Paths are constructed differently across different platforms. When they are built
 manually by concatenating strings they are bound not to be interoperable between
 different platforms.
@@ -483,7 +503,7 @@ different platforms.
 Let's consider the following bad practice example:
 
 ```js
-const myPath = `${__dirname}/../bin/myBin.js`
+const myPath = `${__dirname}/../bin/myBin.js`;
 ```
 
 It assumes that forward slash is the path separator where on Windows, for example,
@@ -493,23 +513,24 @@ Instead of manually building filesystem paths, defer to Node.js's own `path`
 module to do this:
 
 ```js
-const myPath = path.join(__dirname, '..', 'bin', 'myBin.js')
+const myPath = path.join(__dirname, "..", "bin", "myBin.js");
 ```
 
 #### Avoid chaining commands with semicolons
+
 Linux shells are known to support a semicolon (`;`) to chain commands to run
 sequentially, such as: `cd /tmp; ls`. However, doing the same on Windows will fail.
 
 Avoid doing the following:
 
 ```js
-const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`);
 ```
 
 Instead, use the double ampersand or double pipe notations:
 
 ```js
-const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ```
 
 </details>
@@ -538,10 +559,11 @@ When both a command line argument and an environment variable configure the same
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it, but who are lacking the environment for which the maintainer designed the application.
 
 In this section:
-  - 4.1 [Containerize the CLI](#41-containerize-the-cli)
-  - 4.2 [Graceful downplay](#42-graceful-downplay)
-  - 4.3 [Node.js versions compatibility](#43-nodejs-versions-compatibility)
-  - 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
+
+- 4.1 [Containerize the CLI](#41-containerize-the-cli)
+- 4.2 [Graceful downplay](#42-graceful-downplay)
+- 4.3 [Node.js versions compatibility](#43-nodejs-versions-compatibility)
+- 4.4 [Shebang autodetect the Node.js runtime](#44-shebang-autodetect-the-nodejs-runtime)
 
 ### 4.1 Containerize the CLI
 
@@ -635,7 +657,8 @@ It should be noted that specifying `#!/usr/bin/env node` as the best practice, i
 # 5 Testing
 
 In this section:
-  - 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
+
+- 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
 
 ### 5.1 Put no trust in locales
 
@@ -664,10 +687,11 @@ When tests will run on locales that aren't English-based, and if your CLI argume
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment for which the maintainer designed the application.
 
 In this section:
-  - 6.1 [Informational errors](#61-informational-errors)
-  - 6.2 [Actionable errors](#62-actionable-errors)
-  - 6.3 [Provide debug mode](#63-provide-debug-mode)
-  - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
+
+- 6.1 [Informational errors](#61-informational-errors)
+- 6.2 [Actionable errors](#62-actionable-errors)
+- 6.3 [Provide debug mode](#63-provide-debug-mode)
+- 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
 
 <br/>
 
@@ -762,18 +786,18 @@ try {
 } catch (err) {
   // cleanup or otherwise
   // then exit with proper status code
-  process.exit(1)
+  process.exit(1);
 }
 ```
 
 A short reference for exit codes:
+
 - exit code 0 conveys a successful execution
 - exit code 1 conveys a failure
 
 You may also choose to use customized exit codes with semantics of your program, but if you do, be sure to document them properly.
 
 Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.html) used by the BASH shell
-
 
 </details>
 
