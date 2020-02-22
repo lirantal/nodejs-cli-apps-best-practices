@@ -14,7 +14,7 @@
 
 一个关于如何构建成功，富有同理心且用户友好的Node.js命令行界面（CLI）应用程序的精选最佳实践的集合。
 
-Read in a different language: [🇨🇳](./translations/zh/README.md)
+用其他语言阅读： [🇨🇳](./translations/zh/README.md)
 
 ### 为什么使用本指南？
 
@@ -118,7 +118,7 @@ Read in a different language: [🇨🇳](./translations/zh/README.md)
 ❌ **Otherwise:** 当CLI的参数、选项或命令参数的语法偏离他们习惯的Unix标准时，用户可能会感到沮丧。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 类似于Unix的操作系统普及了使用命令行和诸如`awk` ， `sed`工具。这样的工具已经有效地标准化了命令行选项（又名标志），选项参数和其他操作数的行为。
@@ -129,7 +129,7 @@ Read in a different language: [🇨🇳](./translations/zh/README.md)
 - 使用缩写形式`-`指定的选项可以包含一个字母数字字符。
 - 指定多个没有值的选项可以进行分组，例如`myCli -abc`等同于`myCli -a -b -c` 。
 
-Command line power-users will expect your command line application to have similar conventions as other Unix apps.
+命令行高级用户希望您的命令行应用程序具有与其他Unix应用程序类似的约定。
 
 
 
@@ -141,7 +141,7 @@ Command line power-users will expect your command line application to have simil
 ❌ **Otherwise:** 如果不能在支持用户方面提供可操作的帮助，将会因为缺乏操作CLI的能力而导致受挫。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 一个程序的命令行界面与web用户界面没有什么不同，因为您可以按照程序作者的意愿完成尽可能多的工作，以确保它被成功地使用。
@@ -158,10 +158,10 @@ Command line power-users will expect your command line application to have simil
 ❌ **Otherwise:** 要求您的用户通过多次调用CLI重复提供相同的信息，将会使您的用户感到烦恼。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
-It may happen that you find yourself needing to provide storage persistence for your CLI application, such as remembering a username, email, API token, or other preferences between multiple invocations of the CLI. Use a configuration helper that allows the app to persist such user settings. Be sure to follow the [XDG Base Directory Specification](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) when reading/writing files (or choose a configuration helper that respects the spec). These keeps the user in control of where files are written and managed.
+可能会发现您需要为CLI应用程序提供存储持久性，例如记住用户名，电子邮件，API令牌或CLI多次调用之间的其他首选项。使用允许应用程序保留此类用户设置的配置助手。读取/写入文件时，请确保遵循[XDG基本目录规范](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html) （或选择符合规范的配置帮助程序）。这些使用户可以控制文件的写入和管理位置。
 
 参考项目：
 
@@ -178,7 +178,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 苍白的程序输出中可能容易丢失信息，尤其是当输出文本繁重的时候。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 如今，大多数用于与命令行应用程序交互的终端都支持彩色文本，例如通过特制ANSI编码字符启用的文本。
@@ -194,7 +194,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 
 
 <details>
-  <summary>📦 <b>Recommended packages</b></summary>
+  <summary>📦 <b>推荐套餐</b></summary>
 </details>
 
 参考开源软件包：
@@ -212,7 +212,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 当数据是以封闭选项（即下拉菜单）的形式出现时，作为输入的文本提示可能对用户来说很麻烦。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 丰富的交互性可以以提示输入的形式引入，提示输入比自由文本更复杂，例如下拉选择列表、单选按钮切换、评级、自动完成或隐藏密码输入。
@@ -225,7 +225,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 
 
 <details>
-  <summary>📦 <b>Recommended packages</b></summary>
+  <summary>📦 <b>推荐套餐</b></summary>
 </details>
 
 参考开源软件包：
@@ -245,7 +245,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 避免像`git.io/abc`这样需要用户手动复制和粘贴的中断且非交互式的链接。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 如果您分享指向URL的链接，或者指向某个文件以及该文件中的特定行号和列，则可以提供指向这两个示例的格式正确的链接，一旦单击这些链接，就会在浏览器或IDE定义的位置打开。
@@ -260,7 +260,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 如果可以用可靠的方式自动检测命令行参数，并且调用的操作不需要显式要求用户交互（例如确认删除），则不要强制用户交互。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 目的是在运行CLI应用程序时提供“开箱即用”的体验。
@@ -280,7 +280,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 您的程序将不能很好地与其他程序配合使用，并引入意外行为。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 尤其是对于CLI应用程序，与用户输入交互是很常见的，如果管理不当，可能会导致您的应用程序无法响应SIGINT中断，用户在按下`CTRL+C`键时通常会使用SIGINT中断。
@@ -306,7 +306,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 应用程序中依赖项的大小和使用将影响Node.js CLI的安装时间，从而可能会带来糟糕的用户体验。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 使用`npx`调用的Node.js CLI的快速`npm安装`将提供更好的用户体验。当总体依赖关系和传递依赖关系的占用空间保持在合理大小时，就可以做到这一点。
@@ -323,7 +323,7 @@ It may happen that you find yourself needing to provide storage persistence for 
 ❌ **Otherwise:** 不修复应用程序依赖项的版本将意味着程序包管理器（例如` npm `）将在安装过程中解决它们，而通过版本范围安装的可传递依赖项可能会导致您无法控制的重大更改， 可能会导致您的Node.js CLI应用程序无法构建或运行。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 使用~~ force ~~ shrinkwrap, Luke!
@@ -373,7 +373,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 ```
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 如果命令行应用程序处理数据，例如对通常使用`--file <file.json>`命令行参数指定的JSON文件执行某种任务。
@@ -388,7 +388,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 ❌ **Otherwise：** CLI的用户可能需要应用复杂的正则表达式解析和匹配技术来提取CLI提供的输出数据。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 对于命令行应用程序的用户来说，解析数据并执行数据通常非常有用，例如使用它来填充Web仪表板或电子邮件通知。
@@ -405,7 +405,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 ❌ **Otherwise:** 即使代码中没有功能差异，由于诸如路径分隔符错误等因素，CLI在其他操作系统上也会中断。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 即使从程序的角度来看，该功能并没有被剥离，并且*应该*在不同的操作系统中很好地执行，但是某些细微的差别可能会使程序无法运行。让我们探讨必须尊重跨平台规范的几种情况。
@@ -530,7 +530,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 无法使用自定义配置调用CLI。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 使用环境变量来检测和支持配置设置，因为这将是许多工具链中用于修改所调用的CLI应用程序行为的常用方法。
@@ -560,7 +560,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 没有Node.js环境的用户将无法使用`npm`或`npx`，因此将无法运行您的CLI应用程序。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 从npm注册表安装Node.js CLI应用程序通常使用Node.js原生工具链，如`npm`或`npx`。 这些在JavaScript和Node.js开发人员中很常见，预计将在安装说明中引用。
@@ -579,7 +579,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 对于没有受支持终端的用户，使用终端交互(如提示和其他显示丰富的界面)可能会显著降低最终用户体验，并阻碍他们使用CLI应用程序，因为它具有丰富多彩的输出。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 通常以丰富多彩的输出，ASCII图表甚至是终端上的动画和强大的提示机制的形式提供丰富的终端显示。对于拥有受支持的终端的用户而言，这些功能可能会带来出色的用户体验，但是对于那些没有显示内容的用户而言，它可能会显示乱码或完全无法使用。
@@ -611,7 +611,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 试图与旧的和不受支持的Node.js版本保持兼容的代码库将很难维护，并且会失去语言和运行时特性的好处。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 有时可能需要专门针对缺少新ECAMScript功能的旧版Node.js。例如，如果您要构建主要用于DevOps或IT的Node.js CLI，则它们可能没有理想的Node.js环境，并且运行时是最新的。作为参考，Debian Stretch（oldstable）随[Node.js 8.11.1一起提供](https://packages.debian.org/search?suite=default&section=all&arch=any&searchon=names&keywords=nodejs) 。
@@ -632,7 +632,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 使用硬编码的Node.js运行时位置(如`#！/usr/local/bin/node`)仅适用于您自己的环境，可能会导致Node.js CLI在Node.js位置不同的其他环境中无法运行。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 通过将入口点文件作为`node cli.js`运行，然后将`#！/usr/local/bin/node`添加到`cli.js`文件的顶部，开发Node.js CLI可能是一个简单的开始，但是后者仍然是一种有缺陷的方法，因为不能保证`node`可执行文件的位置
@@ -655,7 +655,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ❌ **Otherwise:** 开发人员在与英语默认语言环境不同的系统上测试时，将会遇到测试失败的情况。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 当您选择通过运行CLI并分析输出来测试CLI时，您可能倾向于grep特定功能，以确保它们存在于输出中，例如在不带参数的情况下运行CLI时正确提供示例。例如：
@@ -692,7 +692,7 @@ expect(output).to.contain("Examples:"));
 ❌ **Otherwise:** 一般的错误消息往往是模棱两可的，使用户很难搜索解决方案。解析和分析不是那么简单，在文档中引用它们也不是那么清晰。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 确保在返回错误消息时，它们包含参考号码或特定的错误代码，以后可以查阅。与HTTP状态代码非常相似，因此CLI应用程序需要命名错误或编码错误。
@@ -715,7 +715,7 @@ Error (E4002): please provide an API token via environment variables
 ❌ **Otherwise:** 不要跳过调试功能。 从用户那里收集反馈，并找出错误的原因会变得更加困难。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 例如：
@@ -736,7 +736,7 @@ Error (E4002): please provide an API token via environment variables
 ❌ **Otherwise:** 不要跳过调试功能。 从用户那里收集反馈，并找出错误的原因会变得更加困难。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 使用环境变量以及命令行参数来设置调试并打开扩展的详细级别。在代码中有意义的地方，植入调试消息，以帮助用户和维护者理解程序流，输入和输出以及其他使解决问题变得容易的信息。
@@ -745,7 +745,7 @@ Error (E4002): please provide an API token via environment variables
 
 
 <details>
-  <summary>📦 <b>Recommended packages</b></summary>
+  <summary>📦 <b>推荐套餐</b></summary>
 </details>
 
 参考开源软件包：
@@ -762,7 +762,7 @@ Error (E4002): please provide an API token via environment variables
 ❌ **Otherwise:** 不正确或缺失的退出代码将阻碍CLI在持续集成流和其他命令行脚本编写用例中的使用。
 
 <details>
-  <summary>➡️ <b>Details</b></summary>
+  <summary>Details️ <b>详细信息</b></summary>
 </details>
 
 命令行脚本经常利用shell的`$?`推断程序的状态码并对其执行操作。在持续集成（CI）流程中也可以使用它来确定步骤是否成功完成。
@@ -792,7 +792,7 @@ try {
 
 
 <details>
-  <summary>📦 <b>Recommended packages</b></summary>
+  <summary>📦 <b>推荐套餐</b></summary>
 </details>
 
 参考开源软件包：
