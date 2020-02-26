@@ -266,8 +266,8 @@
 
 在本节中：
 
-- 2.1 [选择体积较小的依赖](#21-prefer-a-small-dependency-footprint)
-- 2.2 [使用 shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 2.1 [选择体积较小的依赖](#21-选择体积较小的依赖)
+- 2.2 [使用 shrinkwrap, Luke](#22-使用-shrinkwrap,-Luke)
 
 ### 2.1 选择体积较小的依赖
 
@@ -566,7 +566,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 如果您确实需要定位 Node.js 的旧版本（例如 Node.js 8、6 或 4），它们都是生命周期终止的，则建议使用 Babel 这样的编译器，以确保生成的代码与该版本兼容这些版本附带的 V8 JavaScript 引擎和 Node.js 运行时。
 
-另一个解决方法是提供 CLI 的容器化版本以避免旧目标。请参见 [(4.1) 容器化 CLI](#%E5%AE%B9%E5%99%A8%E5%8C%96-CLI).
+另一个解决方法是提供 CLI 的容器化版本以避免旧目标。请参见 [(4.1) 容器化 CLI](#41-%E5%AE%B9%E5%99%A8%E5%8C%96-CLI).
 
 不要精简程序代码，以使用与未维护或 EOL Node.js 版本匹配的旧 ECMAScript 语言规范，因为这只会导致代码维护问题。
 
