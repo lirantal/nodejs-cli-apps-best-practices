@@ -635,6 +635,8 @@ Another workaround is to provide a containerized version of the CLI to avoid old
 
 Don't dumb down your program code to use an older ECMAScript language specification that matches unmaintained or EOL Node.js versions as this will only lead to code maintenance issues.
 
+If the CLI is invoked i an unsupported environment, attempt to detect it and exit with a descriptive error message to present a friendly and information error message. See [this example](https://github.com/lirantal/dockly/blob/42d8c09631bc5348f108a50c3ce9601851fb760b/index.js#L25) for dockly.
+
 </details>
 
 ### 4.4 Shebang autodetect the Node.js runtime
