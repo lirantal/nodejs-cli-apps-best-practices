@@ -572,7 +572,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ### 4.4 Shebang 自动检测 Node.js 运行时
 
-✅**可行:** 在[Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)声明中使用与安装无关的引用，该引用根据运行时环境自动定位 Node.js 运行时。
+✅**可行:** 在[Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)声明中使用与安装无关的引用，该引用根据运行时环境自动定位 Node.js 运行时，如 `#!/usr/bin/env node`。
 
 ❌**否则:** 使用硬编码的 Node.js 运行时位置(如`#!/usr/local/bin/node` )仅适用于您自己的环境，可能会导致 Node.js CLI 在 Node.js 位置不同的其他环境中无法运行。
 
