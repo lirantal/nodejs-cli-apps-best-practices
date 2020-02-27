@@ -640,7 +640,7 @@ Don't dumb down your program code to use an older ECMAScript language specificat
 ### 4.4 Shebang autodetect the Node.js runtime
 
 ✅ **Do:**
-Use an installation-agnostic reference in your [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) declaration that locates the Node.js runtime automatically based on the runtime environment.
+Use an installation-agnostic reference in your [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) declaration that locates the Node.js runtime automatically based on the runtime environment, such as `#!/usr/bin/env node`.
 
 ❌ **Otherwise:**
 Using a hard-coded Node.js runtime location such as `#!/usr/local/bin/node` is only specific to your own environment and may render the Node.js CLI inoperable in other environments where the location of Node.js is different.
