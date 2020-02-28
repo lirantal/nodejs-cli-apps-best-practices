@@ -95,6 +95,9 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
   - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
+- 7 Development
+  - 7.1 [Use a bin object](#71-use-a-bin-object)
+
 
 ---
 
@@ -775,6 +778,7 @@ Terminate your program with proper exit codes that convey a semantic meaning of 
 ❌ **Otherwise:**
 An incorrect or missing exit code will impede the use of your CLI in a continuous integration flows and other command line scripting use-cases.
 
+
 <details>
   <summary>➡️ <b>Details</b></summary>
 
@@ -803,12 +807,33 @@ Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.htm
 
 </details>
 
+# 7 Development
+
+This section deals with development and maintenance best practices of building a Node.js command line application.
+
+In this section:
+  - 7.1 [Use a bin object](#71-use-a-bin-object)
+
+<br/>
+
+### 7.1 Use a bin object
+
+✅ **Do:**
+Use an object to define the name of the executable and its path.
+
+❌ **Otherwise:**
+You will end up coupling the name of the package with the executable.
+
 <details>
-  <summary>📦 <b>Recommended packages</b></summary>
+  <summary>➡️ <b>Details</b></summary>
 
-Reference to open source packages:
+The following `package.json` shows an example of decoupling the name of the executable from the filename and its location in the project:
 
-- [debug](https://www.npmjs.com/package/debug)
+```json
+  "bin": {
+    "myCli-is-cool": "./bin/myCli.js"
+  }
+```
 
 </details>
 
