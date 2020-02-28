@@ -1,19 +1,13 @@
 <!-- Project Logo -->
-<img src='.github/nodejs-cli-apps-best-practices-logo.svg' width="100px" align="left">
+<p align="center">
+  <img src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices.png" height="400px" />
+</p>
 
-<!-- Main Header Links -->
-<div align="right">
-  <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
-    <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
-  </a>
-</div>
+<p align="center">
+  <h1 align="center">Node.js CLI Apps Best Practices</h1>
 
-<!-- Project Title -->
-<h1>Node.js CLI Apps Best Practices</h1>
-
-A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
-
-
+  A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
+</p>
 
 ### Why this guide?
 
@@ -31,6 +25,9 @@ In this guide I have compiled a list of best practices across areas of focus whi
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
 <img src="https://badgen.net/badge/Last%20Update/Feb%202020/green" />
+<a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
+  <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
+</a>
 </p>
 
 ### Why me?
