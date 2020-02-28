@@ -13,7 +13,7 @@
 
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
 
-Read in a different language: [🇨🇳](./translations/zh/README.md)
+
 
 ### Why this guide?
 
@@ -24,13 +24,13 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - ✅ 21 best practices for building successful Node.js CLI applications
-- ❤️ Help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
+- ✅ Read in a different language: [🇨🇳](./translations/zh/README.md) or help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
 - 🙏 Contributions are welcome
-- ⏰ Last update: 2020-02-22
 
 <!-- Shields -->
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
+<img src="https://badgen.net/badge/Last%20Update/Feb%202020/green" />
 </p>
 
 ### Why me?
