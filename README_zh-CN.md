@@ -1,20 +1,12 @@
 <!-- Project Logo -->
+<p align="center">
+  <img src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices.png" height="400px" />
+</p>
 
-<img src="../../.github/nodejs-cli-apps-best-practices-logo.svg" width="100px" align="left">
-
-<!-- Main Header Links -->
-
-<div align="right">
-  <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">     <img src="https://badgen.net/badge/Node.js%20CLI%20Apps/Best%20Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"></a>
-</div>
-
-<!-- Project Title -->
-
-<h1>Node.js CLI 应用最佳实践</h1>
-
-关于如何构建成功，富有同情心且用户友好的 Node.js 命令行界面（CLI）应用程序的精选最佳实践的集合。
-
-用其他语言阅读: [🇨🇳](./README.md)
+<p align="center">
+  <h1 align="center">Node.js CLI 应用最佳实践</h1>
+  关于如何构建成功，富有同情心且用户友好的 Node.js 命令行界面（CLI）应用程序的精选最佳实践的集合。
+</p>
 
 ### 为什么会有这个指南 ?
 
@@ -25,14 +17,17 @@
 ### 特性:
 
 - ✅ 21 种构建成功 Node.js CLI 应用程序的最佳实践
-- ❤️ 帮助翻译成其他语言: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ? ]
+- ✅ 用其他语言阅读: [🇨🇳](./README_zh-CN.md) 或者 帮助翻译其他语言: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
 - 🙏 欢迎贡献
-- ⏰ 最后更新: 2020-02-22
 
 <!-- Shields -->
 
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC%20BY-SA%204.0/green"></a>
+<img src="https://badgen.net/badge/Last%20Update/Feb%202020/green" />
+<a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
+  <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
+</a>
 </p>
 
 ### 为什么是我?
@@ -91,6 +86,8 @@
   - 6.2[ 可行性错误](#62-%E5%8F%AF%E8%A1%8C%E6%80%A7%E9%94%99%E8%AF%AF)
   - 6.3[ 提供调试模式](#63-%E6%8F%90%E4%BE%9B%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F)
   - 6.4[ 正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
+- 7 开发
+  - 7.1 [使用 bin 对象](#71-使用-bin-对象)
 
 ---
 
@@ -117,9 +114,7 @@
 
 ❌ **否则:** 当 CLI 的参数、选项或命令参数的语法偏离他们习惯的 Unix 标准时，用户可能会感到苦恼。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 类 UNIX 操作系统普及了命令行和工具的使用，如`awk`、`sed`。 这些工具有效地标准化了命令行选项(又名标志)、选项参数和其他操作参数的行为。
 
@@ -137,9 +132,7 @@
 
 ❌ **否则:** 如果不提供可操作的帮助来支持用户，将由于缺乏操作 CLI 的能力而导致沮丧。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 一个程序的命令行界面与 web 用户界面没有什么不同，因为您可以按照程序作者的意愿完成尽可能多的工作，以确保它被成功地使用。
 
@@ -151,9 +144,7 @@
 
 ❌ **否则:** 要求您的用户通过多次调用 CLI 重复提供相同的信息，将会使您的用户感到烦恼。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 您可能会发现自己需要为 CLI 应用程序提供存储持久性，例如在多次调用 CLI 之间记住用户名、电子邮件、API 令牌或其他首选项。使用允许应用程序保留此类用户设置的配置助手。读/写文件时一定要遵循[XDG 基本目录规范](https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html)(或选择一个符合规范的配置助手). 这使用户能够控制写入和管理文件的位置。
 
@@ -168,9 +159,7 @@
 
 ❌ **否则:** 苍白的程序输出中可能容易丢失信息，尤其是当输出文本繁重的时候。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 如今，大多数用于与命令行应用程序交互的终端都支持彩色文本，例如通过特制 ANSI 编码字符启用的文本。
 
@@ -181,11 +170,9 @@
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
 
-<details>
-  <summary>📦 <b>推荐的依赖包</b></summary>
-</details>
+📦 **推荐软件包**
 
-参考开源软件包：
+参考开源 Node.js 软件包：
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
@@ -196,9 +183,7 @@
 
 ❌ **否则:** 当数据是以封闭选项（即下拉菜单）的形式出现时，作为输入的文本提示可能对用户来说很麻烦。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 丰富的交互性可以以提示输入的形式引入，提示输入比自由文本更复杂，例如下拉选择列表、单选按钮切换、评级、自动完成或隐藏密码输入。
 
@@ -206,11 +191,9 @@
 
 许多 CLI 提供默认的命令行参数，而无需任何进一步的交互体验。不要强迫你的用户提供应用程序可以自行解决的参数。
 
-<details>
-  <summary>📦 <b>推荐的依赖包</b></summary>
-</details>
+📦 **推荐软件包**
 
-参考开源软件包：
+参考开源 Node.js 软件包：
 
 - [enquirer](https://www.npmjs.com/package/enquirer)
 - [ora](https://www.npmjs.com/package/ora)
@@ -223,9 +206,7 @@
 
 ❌ **否则:** 避免像`git.io/abc` 这样需要用户手动复制和粘贴的中断且非交互式的链接。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 如果您分享指向 URL 的链接，或者指向某个文件以及该文件中的特定行号和列，则可以提供指向这两个示例的格式正确的链接，一旦单击这些链接，就会在浏览器或 IDE 定义的位置打开。
 
@@ -235,9 +216,7 @@
 
 ❌ **否则:** 如果可以用可靠的方式自动检测命令行参数，并且调用的操作不需要显式要求用户交互（例如确认删除），则不要强制用户交互。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 目的是在运行 CLI 应用程序时提供“开箱即用”的体验。
 
@@ -252,9 +231,7 @@
 
 ❌ **否则:** 您的程序将不能很好地与其他程序配合使用，并会出现意外的行为。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 尤其是对于 CLI 应用程序，与用户输入交互是很常见的，如果管理不当，可能会导致您的应用程序无法响应 SIGINT 中断，用户在按下`CTRL+C` 键时通常会使用 SIGINT 中断。
 
@@ -275,9 +252,7 @@
 
 ❌ **否则:** 应用程序中依赖项的大小和使用将影响 Node.js CLI 的安装时间，从而可能会带来糟糕的用户体验。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 使用`npx`调用的 Node.js CLI 的快速`npm install`将提供更好的用户体验。当总体依赖关系和传递依赖关系的占用空间保持在合理大小时，就可以做到这一点。
 
@@ -289,9 +264,7 @@
 
 ❌ **否则:** 不修复应用程序依赖项的版本将意味着程序包管理器（例如`npm`）将在安装过程中解决它们，而通过版本范围安装的可传递依赖项可能会导致您无法控制的重大更改， 可能会导致您的 Node.js CLI 应用程序无法构建或运行。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 使用~~ force ~~ shrinkwrap, Luke!
 
@@ -336,9 +309,7 @@
 $ curl -s "https://api.example.com/data.json" | your_node_cli
 ```
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 如果命令行应用程序处理数据，例如对通常使用`--file <file.json>`命令行参数指定的 JSON 文件执行某种任务。
 
@@ -348,9 +319,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 ❌ **否则:** CLI 的用户可能需要应用复杂的正则表达式解析和匹配技术来提取 CLI 提供的输出数据。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 对于命令行应用程序的用户来说，解析数据并执行数据通常非常有用，例如使用它来填充 Web 仪表板或电子邮件通知。
 
@@ -362,9 +331,7 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 ❌ **否则:** 即使代码中没有功能差异，由于诸如路径分隔符错误等因素，CLI 在其他操作系统上也会中断。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 即使从程序的角度来看，该功能并没有被剥离，并且*应该*在不同的操作系统中很好地执行，但是某些细微的差别可能会使程序无法运行。让我们探讨必须尊重跨平台规范的几种情况。
 
@@ -484,9 +451,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 无法使用自定义配置调用 CLI。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 使用环境变量来检测和支持配置设置，因为这将是许多工具链中用于修改所调用的 CLI 应用程序行为的常用方法。
 
@@ -511,9 +476,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 没有 Node.js 环境的用户将没有`npm`或`npx`可用，因此将无法运行您的 CLI 应用程序。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 从 npm 注册表中安装 Node.js CLI 应用程序通常将使用 Node.js 本机工具链（例如`npm`或`npx` 。这些在 JavaScript 和 Node.js 开发人员中很常见，并且有望在安装说明中引用。
 
@@ -527,9 +490,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 对于没有受支持终端的用户，使用终端交互(如提示和其他显示丰富的界面)可能会显著降低最终用户体验，并阻碍他们使用 CLI 应用程序，因为它具有丰富多彩的输出。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 通常以丰富多彩的输出，ASCII 图表甚至是终端上的动画和强大的提示机制的形式提供丰富的终端显示。对于拥有受支持的终端的用户而言，这些功能可能会带来出色的用户体验，但是对于那些没有显示内容的用户而言，它可能会显示乱码或完全无法使用。
 
@@ -556,9 +517,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 试图与旧的和不受支持的 Node.js 版本保持兼容的代码库将很难维护，并且会失去语言和运行时特性的好处。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 有时可能需要专门针对缺少新 ECAMScript 功能的较旧 Node.js 版本。
 例如，如果您构建的 Node.js CLI 主要面向 DevOps 或 IT，那么他们可能没有最新运行时的理想 Node.js 环境。
@@ -570,15 +529,15 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 不要精简程序代码，以使用与未维护或 EOL Node.js 版本匹配的旧 ECMAScript 语言规范，因为这只会导致代码维护问题。
 
+如果在不受支持的环境中调用 CLI，请尝试对其进行检测并以描述性错误消息退出，以显示友好的信息错误消息。请参阅 dockly [这个示例](https://github.com/lirantal/dockly/blob/42d8c09631bc5348f108a50c3ce9601851fb760b/index.js#L25)。
+
 ### 4.4 Shebang 自动检测 Node.js 运行时
 
 ✅**可行:** 在[Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>)声明中使用与安装无关的引用，该引用根据运行时环境自动定位 Node.js 运行时，如 `#!/usr/bin/env node`。
 
 ❌**否则:** 使用硬编码的 Node.js 运行时位置(如`#!/usr/local/bin/node` )仅适用于您自己的环境，可能会导致 Node.js CLI 在 Node.js 位置不同的其他环境中无法运行。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 通过将入口点文件作为`node cli.js`运行，然后将`#！/usr/local/bin/node`添加到`cli.js`文件的顶部，开发 Node.js CLI 可能是一个简单的开始，但是后者仍然是一种有缺陷的方法，因为不能保证`node`可执行文件的位置
 
@@ -596,9 +555,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 开发人员在使用与英语默认语言环境不同的语言环境的系统上进行测试时，将遇到测试失败。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 当您选择通过运行 CLI 并分析输出来测试 CLI 时，您可能倾向于 grep 特定功能，以确保它们存在于输出中，例如在不带参数的情况下运行 CLI 时正确提供示例。例如：
 
@@ -630,9 +587,7 @@ expect(output).to.contain("Examples:"));
 
 ❌ **否则:** 一般的错误消息往往是模棱两可的，使用户很难搜索解决方案。解析和分析不是那么简单，在文档中引用它们也不是那么清晰。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 确保在返回错误消息时，它们包含参考号码或特定的错误代码，以后可以查阅。与 HTTP 状态代码非常相似，因此 CLI 应用程序需要命名错误或编码错误。
 
@@ -650,9 +605,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **否则:** 面对错误消息的用户，如果没有任何解决错误信息的提示，则可能无法成功的使用 CLI 应用程序。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 例如：
 
@@ -668,17 +621,13 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **否则:** 不要跳过调试功能。 从用户那里收集反馈，并找出错误的原因会变得更加困难。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 使用环境变量以及命令行参数来设置调试并打开扩展的详细级别。在代码中有意义的地方，植入调试消息，以帮助用户和维护者理解程序流，输入和输出以及其他使解决问题变得容易的信息。
 
-<details>
-  <summary>📦 <b>推荐的依赖包</b></summary>
-</details>
+📦 **推荐软件包**
 
-参考开源软件包：
+参考开源 Node.js 软件包：
 
 - [debug](https://www.npmjs.com/package/debug)
 
@@ -688,9 +637,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **否则:** 不正确或缺失的退出代码将阻碍 CLI 在持续集成流和其他命令行脚本编写用例中的使用。
 
-<details>
-  <summary>➡️ <b>详情</b></summary>
-</details>
+ℹ️ **详情**
 
 命令行脚本经常利用 shell 的 `$?` 推断程序的状态码并对其执行操作。在持续集成（CI）流程中也可以使用它来确定步骤是否成功完成。
 
@@ -715,13 +662,31 @@ try {
 
 参考: Bash shell 使用的[退出代码列表](http://www.tldp.org/LDP/abs/html/exitcodes.html)
 
-<details>
-  <summary>📦 <b>推荐的依赖包</b></summary>
-</details>
+# 7 开发
 
-参考开源软件包：
+本节介绍了构建 Node.js 命令行应用程序的开发和维护最佳实践。
 
-- [debug](https://www.npmjs.com/package/debug)
+在本节中:
+
+- 7.1 [使用 bin 对象](#71-使用-bin-对象)
+
+### 7.1 使用 bin 对象
+
+✅ **可行:**
+使用对象定义可执行文件的名称及其路径。
+
+❌ **否则:**
+您最终将把程序包的名称与可执行文件耦合在一起。
+
+ℹ️ **详情**
+
+以下的`package.json`文件展示了一个将可执行文件的名称与文件名及其在项目中的位置去耦的示例：
+
+```json
+  "bin": {
+    "myCli-is-cool": "./bin/myCli.js"
+  }
+```
 
 ---
 
