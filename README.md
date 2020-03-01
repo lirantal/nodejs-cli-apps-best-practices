@@ -6,7 +6,8 @@
 <p align="center">
   <h1 align="center">Node.js CLI Apps Best Practices</h1>
 
-  A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
+A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
+
 </p>
 
 ### Why this guide?
@@ -18,7 +19,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - ✅ 21 best practices for building successful Node.js CLI applications
-- ✅ Read in a different language: [🇨🇳](./translations/zh/README.md) or help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
+- ✅ Read in a different language: [🇨🇳](./README_zh-CN.md) or help translate to other languages: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
 - 🙏 Contributions are welcome
 
 <!-- Shields -->
@@ -95,7 +96,6 @@ Some of my recent work, building Node.js CLIs, includes the following open sourc
 - 7 Development
   - 7.1 [Use a bin object](#71-use-a-bin-object)
 
-
 ---
 
 # 1 Command Line Experience
@@ -123,7 +123,6 @@ Use [POSIX-compliant](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/
 ❌ **Otherwise:**
 Users may get frustrated when a CLI's syntax for arguments, options, or command parameters deviate from the de facto Unix standards they are used to.
 
-
 ℹ️ **Details**
 
 Unix-like operating systems popularized the use of the command line and tools such as `awk`, `sed`. Such tools have effectively standardized the behavior of command line options (aka flags), options-arguments, and other operands.
@@ -136,7 +135,6 @@ Some examples of expected behavior:
 
 Command line power-users will expect your command line application to have similar conventions as other Unix apps.
 
-
 ### 1.2 Build empathic CLIs
 
 ✅ **Do:**
@@ -145,13 +143,11 @@ Put workflows in place that assist the user to interact with the CLI successfull
 ❌ **Otherwise:**
 Failing to provide actionable assistance in supporting the user will result in frustration due to the lack of capability to operate the CLI.
 
-
 ℹ️ **Details**
 
 A command line interface for your program is no different than a web user interface in the sense of doing as much as you can as the program author to ensure that it is being used successfully.
 
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input, and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successful interaction.
-
 
 ### 1.3 Stateful data
 
@@ -169,7 +165,6 @@ Reference projects:
 
 - [configstore](https://www.npmjs.com/package/configstore)
 - [conf](https://www.npmjs.com/package/conf)
-
 
 ### 1.4 Provide a colorful experience
 
@@ -197,7 +192,6 @@ Reference to open source Node.js packages:
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
 
-
 ### 1.5 Rich interactions
 
 ✅ **Do:**
@@ -214,7 +208,6 @@ Another type of rich interactivity is in the form of animated loaders and progre
 
 Many CLIs provide default command line arguments without requiring any further interactive experience. Don't force your users to provide parameters that the app can work out for itself.
 
-
 📦 **Recommended packages**
 
 Reference to open source Node.js packages:
@@ -223,7 +216,6 @@ Reference to open source Node.js packages:
 - [ora](https://www.npmjs.com/package/ora)
 - [ink](https://www.npmjs.com/package/ink)
 - [prompts](https://www.npmjs.com/package/prompts)
-
 
 ### 1.6 Hyperlinks everywhere
 
@@ -236,7 +228,6 @@ Avoid broken and non-interactive links like `git.io/abc` which requires your use
 ℹ️ **Details**
 
 If you are sharing links to URLs, or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that, once clicked, will open up the browser, or an IDE at the defined location.
-
 
 ### 1.7 Zero configuration
 
@@ -255,7 +246,6 @@ Reference projects which are built around Zero configuration:
 - The [Jest JavaScript Testing Framework](https://jestjs.io)
 - [Parcel](https://parceljs.org), a web application bundler
 
-
 ### 1.8 Respect POSIX signals
 
 ✅ **Do:**
@@ -270,7 +260,6 @@ Especially for CLI applications, it is common to interact with user input and im
 may result in your app failing to respond to SIGINT interrupts, commonly used by users when they hit the `CTRL+C` keys.
 
 The problem of not respecting process signals worsens when the program is being orchestrated by non-human interaction. For example, a CLI that runs in a docker container but will not respond to software interrupt signals sent to it.
-
 
 # 2 Distribution
 
@@ -294,7 +283,6 @@ The size and use of dependencies in the application will impact the install time
 A fast `npm install` for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency, and transitive dependency, footprint is kept to a reasonable size.
 
 A one-off global `npm` installation of a slow-to-install `npm` package will offer a one-off poor experience, but the use of `npx` by users to invoke executable packages will make the degraded performance, due to `npx` always fetching and installing packages from the registry, more significant and obvious.
-
 
 ### 2.2 Use the shrinkwrap, Luke
 
@@ -323,8 +311,6 @@ References:
 
 - [Do you really know how a lockfile works for yarn and npm packages?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Yarn docs: Should lockfiles be committed to the repository?](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
-
-
 
 # 3 Interoperability
 
@@ -359,7 +345,6 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 If the command line application works with data, such as performing some kind of task on a JSON file that is usually specified with `--file <file.json>` command line argument.
 
-
 ### 3.2 Enable structured output
 
 ✅ **Do:**
@@ -373,7 +358,6 @@ Users of the CLI may need to apply complicated regex parsing and matching techni
 It is often useful for users of a command line application to parse the data and perform other tasks with it, such as using it to feed web dashboards, or email notifications.
 
 Being able to easily extract the data of interest from a command line output provides a friendlier experience to users of your CLI.
-
 
 ### 3.3 Cross-platform etiquette
 
@@ -506,7 +490,6 @@ Instead, use the double ampersand or double pipe notations:
 const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ```
 
-
 ### 3.4 Allow environment overrides
 
 ✅ **Do:**
@@ -522,7 +505,6 @@ Detect and support configuration setting using environment variables as this wil
 Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments veryrepetitive and cumbersome.
 
 When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
-
 
 # 4 Accessibility
 
@@ -551,7 +533,6 @@ However, if you are targeting a CLI application to be consumed by the general pu
 
 There are many ways to package and distribute an executable, and containerizing it as a Docker container that is pre-bundled with your CLI application is an easily consumable alternative and dependency-free (aside of requiring a Docker environment).
 
-
 ### 4.2 Graceful degradation
 
 ✅ **Do:**
@@ -579,7 +560,6 @@ To enable users with an unsupported terminal to properly use the Node.js CLI app
   export data if needed.
 ```
 
-
 ### 4.3 Node.js versions compatibility
 
 ✅ **Do:**
@@ -600,7 +580,6 @@ Don't dumb down your program code to use an older ECMAScript language specificat
 
 If the CLI is invoked i an unsupported environment, attempt to detect it and exit with a descriptive error message to present a friendly and information error message. See [this example](https://github.com/lirantal/dockly/blob/42d8c09631bc5348f108a50c3ce9601851fb760b/index.js#L25) for dockly.
 
-
 ### 4.4 Shebang autodetect the Node.js runtime
 
 ✅ **Do:**
@@ -614,7 +593,6 @@ Using a hard-coded Node.js runtime location such as `#!/usr/local/bin/node` is o
 It may be an easy start to develop a Node.js CLI by running the entry point file as `node cli.js`, and later on adding `#!/usr/local/bin/node` to the top of the `cli.js` file, however the latter is still a flawed approach as that location of the `node` executable is not guaranteed for other users' environments.
 
 It should be noted that specifying `#!/usr/bin/env node` as the best practice, is still making the assumption that the Node.js runtime is referenced as `node` and not `nodejs` or otherwise.
-
 
 # 5 Testing
 
@@ -692,7 +670,6 @@ $ my-cli-tool --doSomething
 Error (E4002): please provide an API token via environment variables
 ```
 
-
 ### 6.3 Provide debug mode
 
 ✅ **Do:**
@@ -705,13 +682,11 @@ Don't skip debugging capabilities. It will be harder to collect feedback from us
 
 Use environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user, and the maintainer, to understand the program flow, inputs and outputs, and other pieces of information that make problem solving easier.
 
-
 📦 **Recommended packages**
 
 Reference to open source Node.js packages:
 
 - [debug](https://www.npmjs.com/package/debug)
-
 
 ### 6.4 Proper use of exit codes
 
@@ -751,8 +726,8 @@ Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.htm
 This section deals with development and maintenance best practices of building a Node.js command line application.
 
 In this section:
-  - 7.1 [Use a bin object](#71-use-a-bin-object)
 
+- 7.1 [Use a bin object](#71-use-a-bin-object)
 
 ### 7.1 Use a bin object
 
