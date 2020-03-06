@@ -31,6 +31,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "davesag",
+      "name": "Dave Sag",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/387098?v=4",
+      "profile": "https://about.me/davesag",
+      "contributions": [
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,
