@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "vvni",
+      "name": "Vanilla",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/50414099?v=4",
+      "profile": "https://blog.vvni.top/",
+      "contributions": [
+        "translation"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "nodejs-cli-apps-best-practices",
+  "projectOwner": "lirantal",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
