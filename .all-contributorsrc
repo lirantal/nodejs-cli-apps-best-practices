@@ -22,6 +22,15 @@
       "contributions": [
         "content"
       ]
+    },
+    {
+      "login": "jasonkarns",
+      "name": "Jason Karns",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/119972?v=4",
+      "profile": "http://jasonkarns.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
