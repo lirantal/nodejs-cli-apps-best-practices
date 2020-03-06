@@ -13,6 +13,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "terkelg",
+      "name": "Terkel",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2302254?v=4",
+      "profile": "https://terkel.com",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
