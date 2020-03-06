@@ -30,7 +30,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 </a>
 <!-- Project Logo -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img src="https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square" alt="All Contributors" />
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 </p>
@@ -72,6 +72,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://blog.vvni.top/"><img src="https://avatars2.githubusercontent.com/u/50414099?v=4" width="100px;" alt=""/><br /><sub><b>Vanilla</b></sub></a><br /><a href="#translation-vvni" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://terkel.com"><img src="https://avatars2.githubusercontent.com/u/2302254?v=4" width="100px;" alt=""/><br /><sub><b>Terkel</b></sub></a><br /><a href="#content-terkelg" title="Content">🖋</a></td>
   </tr>
 </table>
 
