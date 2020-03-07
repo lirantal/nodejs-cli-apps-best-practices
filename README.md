@@ -362,6 +362,30 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 If the command line application works with data, such as performing some kind of task on a JSON file that is usually specified with `--file <file.json>` command line argument.
 
+An example that is based on the official [Node.js API docs for the for readline module](https://nodejs.org/api/readline.html)  of how taking input from a command pipe is as follows:
+
+```js
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question("What do you think of Node.js? ", answer => {
+  // TODO: Log the answer in a database
+  console.log(`Thank you for your valuable feedback: ${answer}`);
+
+  rl.close();
+});
+```
+
+Then pipe the input to the above Node.js application:
+
+```sh
+echo "Node.js is amazing" | node cli.js
+```
+
 ### 3.2 Enable structured output
 
 ✅ **Do:**
