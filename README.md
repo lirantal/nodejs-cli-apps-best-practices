@@ -152,6 +152,12 @@ Some examples of expected behavior:
 
 Command line power-users will expect your command line application to have similar conventions as other Unix apps.
 
+📦 **Recommended packages**
+
+Reference to open source Node.js packages:
+
+- [yargs](https://github.com/yargs/yargs)
+
 ### 1.2 Build empathic CLIs
 
 ✅ **Do:**
