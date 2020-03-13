@@ -1,4 +1,4 @@
-<p align="center">   <img src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices.png" height="400px"> </p>
+<p align="center"><img height="400px" src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices.png"></p>
 
 <p align="center">
   </p>
