@@ -18,7 +18,7 @@
 ### 特点:
 
 - ✅ 21种构建成功的Node.js CLI应用程序的最佳实践
-- ✅ 用不同语言阅读: [🇨🇳](./README_zh.md) 或者帮忙翻译其他语言: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
+- ✅ 用不同语言阅读: [🇨🇳](./README_zh-CN.md) 或者帮忙翻译其他语言: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
 - 🙏 欢迎贡献
 
 <!-- Shields -->
