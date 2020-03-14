@@ -34,7 +34,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 
 Hi there, I'm [Liran Tal](https://twitter.com/liran_tal) and I'm addicted to building command line applications.
 
-Some of my recent work, building Node.js CLIs, includes the following open source projects:
+Some of my recent work, building Node.js CLIs, includes the following Open Source projects:
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
@@ -154,7 +154,7 @@ Command line power-users will expect your command line application to have simil
 
 📦 **Recommended packages**
 
-Reference to open source Node.js packages:
+Reference to Open Source Node.js packages:
 
 - [yargs](https://github.com/yargs/yargs)
 
@@ -210,7 +210,7 @@ Reference projects:
 
 📦 **Recommended packages**
 
-Reference to open source Node.js packages:
+Reference to Open Source Node.js packages:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
@@ -233,7 +233,7 @@ Many CLIs provide default command line arguments without requiring any further i
 
 📦 **Recommended packages**
 
-Reference to open source Node.js packages:
+Reference to Open Source Node.js packages:
 
 - [enquirer](https://www.npmjs.com/package/enquirer)
 - [ora](https://www.npmjs.com/package/ora)
@@ -731,7 +731,7 @@ Use environment variables as well as command line arguments to set debug and tur
 
 📦 **Recommended packages**
 
-Reference to open source Node.js packages:
+Reference to Open Source Node.js packages:
 
 - [debug](https://www.npmjs.com/package/debug)
 
@@ -745,7 +745,7 @@ An incorrect or missing exit code will impede the use of your CLI in a continuou
 
 ℹ️ **Details**
 
-Command line scripts often make use of the shell's `$?` to infer a program's status code and act upon it. This is also utilized in continuous integratio (CI) flows to determine whether a step completed successfully or not.
+Command line scripts often make use of the shell's `$?` to infer a program's status code and act upon it. This is also utilized in continuous integration (CI) flows to determine whether a step completed successfully or not.
 
 If your CLI always terminates with no specific status code, even on errors, then the shell and other programs that rely upon it have no way of knowing this. When an error happens that results in your program's termination, you should convey this meaning. For example:
 
