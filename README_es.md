@@ -18,7 +18,7 @@ En esta guía he recopilado una lista con las mejores prácticas en distintos en
 ### Características:
 
 - ✅ 21 mejores prácticas para crear aplicaciones CLI en Node.js
-- ✅ Leer en un idioma diferente: [🇨🇳](./README_zh.md) o ayuda a traducirlas a otro idioma: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
+- ✅ Leer en un idioma diferente: [🇨🇳](./README_zh.md), [🇪🇸](./README_es.md) o ayuda a traducirlas a otro idioma: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 Las contribuciones son bienvenidas
 
 <!-- Shields -->
@@ -71,6 +71,7 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
     <td align="center">
 <a href="https://about.me/davesag"><img width="100px;" alt="" src="https://avatars0.githubusercontent.com/u/387098?v=4"></a><a href="https://about.me/davesag"><br><sub><b>Dave Sag</b></sub></a><br><a href="#mantenimiento-davesag" title="Maintenance">🚧</a>
 </td>
+    <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
   </tr>
 </table>
 
