@@ -1,13 +1,9 @@
-<p align="center"><img height="400px" src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices_es.png"></p>
+<p align="center"><img height="400px" src=".github/node-js-cli-apps-best-practices_es.png"></p>
 
 <p align="center">
-  </p>
-<h1 align="center">Buenas Prácticas para las Aplicaciones CLI en Node.js</h1>
-
+  <h1 align="center">Buenas Prácticas para las Aplicaciones CLI en Node.js</h1>
 Aquí encontrarás una colección de buenas prácticas sobre cómo crear aplicaciones de interfaz de línea de comando (CLI) empáticas y fáciles de usar.
-
-
-
+</p>
 
 ### El porqué de la guía
 
