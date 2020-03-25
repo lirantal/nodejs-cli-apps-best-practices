@@ -1,12 +1,10 @@
 <p align="center">
-  <img src="https://github.com/lirantal/nodejs-cli-apps-best-practices/blob/master/.github/node-js-cli-apps-best-practices.png" height="400px" />
+  <img src=".github/node-js-cli-apps-best-practices.png" height="400px" />
 </p>
 
 <p align="center">
   <h1 align="center">Node.js CLI Apps Best Practices</h1>
-
 A collection of curated best practices on how to build successful, empathic and user-friendly Node.js Command Line Interface (CLI) applications.
-
 </p>
 
 ### Why this guide?
