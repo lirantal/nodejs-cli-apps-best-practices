@@ -805,7 +805,17 @@ You will end up with incorrect file paths and won't be able to access files.
 
 ℹ️ **Details**
 
-TBD
+You may find yourself with the need to access files within the project's files scope, or to access files that are provided
+from the user's input, such as log, JSON files or others. Confusing the use of `process.cwd()` or `__dirname` can lead 
+to errors, as well as not using neither of them.
+
+How to properly access files:
+- `process.cwd()`: use it when the file path that you need to access depends on the relative location of the 
+Node.js CLI. A good example for this is when the CLI supports file paths to create logs, such as: `myCli --outfile ../../out.json`. If `myCli` is installed in `/usr/local/node_modules/myCli/bin/myCli.js` then `process.cwd()` will not
+refer to that location, but rather to the current working directory, which is whicever the directory the user is at
+when the CLI was invoked.
+- `__dirname`: use it when you need to access a file from within the CLI's source code and refer to a file from the relevant
+location of the file which the code lies in. For example, when the CLI needs to access a JSON data file in another directory: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
 
 ---
 
