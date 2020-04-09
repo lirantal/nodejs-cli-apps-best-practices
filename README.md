@@ -111,6 +111,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
 - 7 Development
   - 7.1 [Use a bin object](#71-use-a-bin-object)
+  - 7.2 [Use relative paths](#72-use-relative-paths)
 
 ---
 
@@ -774,6 +775,7 @@ This section deals with development and maintenance best practices of building a
 In this section:
 
 - 7.1 [Use a bin object](#71-use-a-bin-object)
+- 7.2 [Use relative paths](#71-use-relative-paths)
 
 ### 7.1 Use a bin object
 
@@ -792,6 +794,18 @@ The following `package.json` shows an example of decoupling the name of the exec
     "myCli-is-cool": "./bin/myCli.js"
   }
 ```
+
+### 7.2 Use relative paths
+
+✅ **Do:**
+Use `process.cwd()` to access user input paths and use `__dirname` to access project-based paths.
+
+❌ **Otherwise:**
+You will end up with incorrect file paths and won't be able to access files.
+
+ℹ️ **Details**
+
+TBD
 
 ---
 
