@@ -18,7 +18,7 @@
 ### 特点:
 
 - ✅ 21种构建成功的Node.js CLI应用程序的最佳实践
-- ✅ 用不同语言阅读: [🇨🇳](./README_zh-CN.md) 或者帮忙翻译其他语言: [ [🇪🇸](./README-es.md) , [🇩🇪](./README-de.md) , ... ]
+- ✅ 用不同语言阅读: [🇨🇳](./README_zh-CN.md), [🇪🇸](./README-es.md), 或者帮忙翻译其他语言: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 欢迎贡献
 
 <!-- Shields -->
@@ -58,21 +58,13 @@
 
 <table>
   <tr>
-    <td align="center">
-<a href="https://blog.vvni.top/"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/50414099?v=4"><br><sub><b>Vanilla</b></sub></a><br><a href="#%E7%BF%BB%E8%AF%91vvni" title="Translation">🌍</a>
-</td>
-    <td align="center">
-<a href="https://terkel.com"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/2302254?v=4"><br><sub><b>Terkel</b></sub></a><br><a href="#%E5%86%85%E5%AE%B9%E5%86%85%E5%AE%B9" title="Content">🖋</a>
-</td>
-    <td align="center">
-<a href="http://jasonkarns.com"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/119972?v=4"><br><sub><b>Jason Karns</b></sub></a><br><a href="#%E5%86%85%E5%AE%B9jasonkarns" title="Content">🖋</a>
-</td>
-    <td align="center">
-<a href="https://about.me/davesag"><img width="100px;" alt="" src="https://avatars0.githubusercontent.com/u/387098?v=4"><br><sub><b>Dave Sag</b></sub></a><br><a href="#%E7%BB%B4%E6%8A%A4davesag" title="Maintenance">🚧</a>
-</td>
+    <td align="center"><a href="https://blog.vvni.top/"><img src="https://avatars2.githubusercontent.com/u/50414099?v=4" width="100px;" alt=""/><br /><sub><b>Vanilla</b></sub></a><br /><a href="#translation-vvni" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://terkel.com"><img src="https://avatars2.githubusercontent.com/u/2302254?v=4" width="100px;" alt=""/><br /><sub><b>Terkel</b></sub></a><br /><a href="#content-terkelg" title="Content">🖋</a></td>
+    <td align="center"><a href="http://jasonkarns.com"><img src="https://avatars2.githubusercontent.com/u/119972?v=4" width="100px;" alt=""/><br /><sub><b>Jason Karns</b></sub></a><br /><a href="#content-jasonkarns" title="Content">🖋</a></td>
+    <td align="center"><a href="https://about.me/davesag"><img src="https://avatars0.githubusercontent.com/u/387098?v=4" width="100px;" alt=""/><br /><sub><b>Dave Sag</b></sub></a><br /><a href="#maintenance-davesag" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
   </tr>
 </table>
-
 <!-- markdownlint-enable -->
 
 <!-- prettier-ignore-end -->
@@ -114,7 +106,7 @@
     - 6.4 [正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
 - 7 开发
     - 7.1 [使用bin对象](#71-%E4%BD%BF%E7%94%A8bin%E5%AF%B9%E8%B1%A1)
-
+    - 7.2 [使用相对路径](#72-使用相对路径)
 ---
 
 # 1 命令行体验
@@ -715,6 +707,7 @@ try {
 在本节中：
 
 - 7.1 [使用bin对象](#71-%E4%BD%BF%E7%94%A8bin%E5%AF%B9%E8%B1%A1)
+- 7.2 [使用相对路径](#72-使用相对路径)
 
 ### 7.1 使用bin对象
 
@@ -732,6 +725,22 @@ try {
   }
 ```
 
+### 7.2 使用相对路径
+
+✅ **可行：**
+使用`process.cwd()`访问用户输入路径，使用`__dirname`访问基于项目的路径。
+
+❌ **否则：**
+您最终将获得不正确的文件路径，并且将无法访问文件。
+
+ℹ️ **详情**
+
+您可能会发现自己需要访问项目文件范围内的文件，或者需要访问提供的文件。
+来自用户的输入，例如日志、JSON文件或其他。混淆`process.cwd()`和`__dirname`会导致错误，并且两者都不会使用。
+
+如何正确访问文件：
+- `process.cwd()`: 当您需要访问的文件路径取决于Node.js CLI的相对位置时，请使用它。一个很好的例子是当CLI支持创建日志的文件路径时，例如：`myCli--outfil../../out.json`。如果`myCli`安装在`/usr/local/node_module/myCli/bin/myCli.js`中，则`process.cwd()`不会指向该位置，而是指向当前工作目录，即调用CLI时用户所在的目录。
+- `__dirname`: 当您需要从CLI的源代码中访问文件并从代码所在的文件的相关位置引用文件时，请使用它。例如，当CLI需要访问另一个目录下的JSON数据文件时：`fs.readFile(path.join(__dirname，‘..’，‘myDataFile.json’))`。
 ---
 
 # 作者
