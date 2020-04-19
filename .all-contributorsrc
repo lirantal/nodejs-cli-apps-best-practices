@@ -49,6 +49,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "m-sureshraj",
+      "name": "Sureshraj",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12813750?v=4",
+      "profile": "https://twitter.com/MSuresh100",
+      "contributions": [
+        "content"
+      ]
     }
   ],
   "contributorsPerLine": 7,
