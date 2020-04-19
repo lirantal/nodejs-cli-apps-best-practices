@@ -207,6 +207,7 @@ Reference projects:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://github.com/lukeed/kleur)
 
 📦 **Recommended packages**
 
@@ -214,6 +215,7 @@ Reference to Open Source Node.js packages:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://github.com/lukeed/kleur)
 
 ### 1.5 Rich interactions
 
@@ -251,6 +253,10 @@ Avoid broken and non-interactive links like `git.io/abc` which requires your use
 ℹ️ **Details**
 
 If you are sharing links to URLs, or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that, once clicked, will open up the browser, or an IDE at the defined location.
+
+Reference projects:
+
+- [open](https://github.com/sindresorhus/open)
 
 ### 1.7 Zero configuration
 
@@ -306,6 +312,10 @@ The size and use of dependencies in the application will impact the install time
 A fast `npm install` for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency, and transitive dependency, footprint is kept to a reasonable size.
 
 A one-off global `npm` installation of a slow-to-install `npm` package will offer a one-off poor experience, but the use of `npx` by users to invoke executable packages will make the degraded performance, due to `npx` always fetching and installing packages from the registry, more significant and obvious.
+
+Reference projects:
+
+- [Bundlephobia](https://bundlephobia.com/) is a tool to help you find the cost of a npm package.
 
 ### 2.2 Use the shrinkwrap, Luke
 
@@ -552,6 +562,10 @@ Detect and support configuration setting using environment variables as this wil
 Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments veryrepetitive and cumbersome.
 
 When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
+
+Reference projects:
+
+- [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
 # 4 Accessibility
 
