@@ -354,7 +354,7 @@ References:
 Cleanup configuration files when the CLI application gets uninstalled. Optionally, CLI applications can prompt your users to keep the configuration files to skip the re-initialising phase on the next installation for a better user experience.
 
 ❌ **Otherwise:**
-We want to keep the file system clean of any remaining configuration or identifiable data that the CLI tool might have left in when being installed on the system.
+The user's file system may contain residue in the form of orphaned configuration files, and identifiable data which the CLI tool introduced when installed.
 
 ℹ️ **Details**
 
@@ -867,4 +867,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-
