@@ -93,6 +93,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 - 2 Distribution
   - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+  - 2.3 [Cleanup configuration files](#23-cleanup-configuration-files)
 - 3 Interoperability
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
@@ -299,6 +300,7 @@ In this section:
 
 - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
 - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 2.3 [Cleanup configuration files](#23-cleanup-configuration-files)
 
 ### 2.1 Prefer a small dependency footprint
 
@@ -345,6 +347,20 @@ References:
 
 - [Do you really know how a lockfile works for yarn and npm packages?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Yarn docs: Should lockfiles be committed to the repository?](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
+
+### 2.3 Cleanup configuration files
+
+✅ **Do:**
+Cleanup configuration files when the CLI application gets uninstalled. Optionally, CLI applications can prompt your users to keep the configuration files to skip the re-initialising phase on the next installation for a better user experience.
+
+❌ **Otherwise:**
+The user's file system may contain residue in the form of orphaned configuration files, and identifiable data which the CLI tool introduced when installed.
+
+ℹ️ **Details**
+
+As mentioned in the [stateful data section](#13-stateful-data), if your CLI application uses persistent storage, such as to save configuration files, then the CLI application should also be responsible for removing its configuration files when it gets uninstalled.
+
+You can use NPMs `pre` or `post` uninstall [script](https://docs.npmjs.com/misc/scripts) for this purpose. You can find a working example in this [repository](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
 
 # 3 Interoperability
 
@@ -851,4 +867,3 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
 This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-
