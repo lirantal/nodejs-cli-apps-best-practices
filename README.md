@@ -69,6 +69,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://jasonkarns.com"><img src="https://avatars2.githubusercontent.com/u/119972?v=4" width="100px;" alt=""/><br /><sub><b>Jason Karns</b></sub></a><br /><a href="#content-jasonkarns" title="Content">🖋</a></td>
     <td align="center"><a href="https://about.me/davesag"><img src="https://avatars0.githubusercontent.com/u/387098?v=4" width="100px;" alt=""/><br /><sub><b>Dave Sag</b></sub></a><br /><a href="#maintenance-davesag" title="Maintenance">🚧</a></td>
     <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://twitter.com/MSuresh100"><img src="https://avatars3.githubusercontent.com/u/12813750?v=4" width="100px;" alt=""/><br /><sub><b>Sureshraj</b></sub></a><br /><a href="#content-m-sureshraj" title="Content">🖋</a></td>
   </tr>
 </table>
 
@@ -208,6 +209,7 @@ Reference projects:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://github.com/lukeed/kleur)
 
 📦 **Recommended packages**
 
@@ -215,6 +217,7 @@ Reference to Open Source Node.js packages:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://github.com/lukeed/kleur)
 
 ### 1.5 Rich interactions
 
@@ -252,6 +255,10 @@ Avoid broken and non-interactive links like `git.io/abc` which requires your use
 ℹ️ **Details**
 
 If you are sharing links to URLs, or pointing to a file and a specific line number and column in the file, you can provide properly formatted links to both of these examples that, once clicked, will open up the browser, or an IDE at the defined location.
+
+Reference projects:
+
+- [open](https://github.com/sindresorhus/open)
 
 ### 1.7 Zero configuration
 
@@ -308,6 +315,10 @@ The size and use of dependencies in the application will impact the install time
 A fast `npm install` for Node.js CLIs invoked with `npx` will provide a better user experience. This is made possible when the overall dependency, and transitive dependency, footprint is kept to a reasonable size.
 
 A one-off global `npm` installation of a slow-to-install `npm` package will offer a one-off poor experience, but the use of `npx` by users to invoke executable packages will make the degraded performance, due to `npx` always fetching and installing packages from the registry, more significant and obvious.
+
+Reference projects:
+
+- [Bundlephobia](https://bundlephobia.com/) is a tool to help you find the cost of a npm package.
 
 ### 2.2 Use the shrinkwrap, Luke
 
@@ -568,6 +579,10 @@ Detect and support configuration setting using environment variables as this wil
 Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments veryrepetitive and cumbersome.
 
 When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
+
+Reference projects:
+
+- [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
 # 4 Accessibility
 
@@ -843,7 +858,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <!-- Project Logo -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 
