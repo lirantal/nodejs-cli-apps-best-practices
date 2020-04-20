@@ -87,6 +87,7 @@
 - 2 分发
     - 2.1 [选择占用较小的依赖项](#21-%E9%80%89%E6%8B%A9%E5%8D%A0%E7%94%A8%E8%BE%83%E5%B0%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9)
     - 2.2 [使用shrinkwrap, Luke](#22-%E4%BD%BF%E7%94%A8shrinkwrap,-Luke)
+    - 2.3 [清理配置文件](#23-清理配置文件)
 - 3 互通性
     - 3.1 [接受STDIN输入](#31-%E6%8E%A5%E5%8F%97STDIN%E8%BE%93%E5%85%A5)
     - 3.2 [启用结构化输出](#32-%E5%90%AF%E7%94%A8%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA)
@@ -269,6 +270,7 @@
 
 - 2.1 [选择占用较小的依赖项](#21-%E9%80%89%E6%8B%A9%E5%8D%A0%E7%94%A8%E8%BE%83%E5%B0%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9)
 - 2.2 [使用shrinkwrap, Luke](#22-%E4%BD%BF%E7%94%A8shrinkwrap,-Luke)
+- 2.3 [清理配置文件](#23-清理配置文件)
 
 ### 2.1 选择占用较小的依赖项
 
@@ -305,6 +307,20 @@
 
 - [您真的知道锁文件如何处理yarn和npm软件包吗？](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Yarn文档：应该将锁定文件提交到存储库吗？](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
+
+### 2.3 清理配置文件
+
+✅ **可行:**
+卸载CLI应用程序时清理配置文件。（可选）CLI应用程序可以提示您的用户保留配置文件，以跳过下一次安装时的重新初始化阶段，从而获得更好的用户体验。
+
+❌ **否则:**
+用户的文件系统可能包含单独配置文件形式的残留物，以及CLI工具在安装时引入的可识别数据。
+
+ℹ️ **详情**
+
+如[有状态数据部分](#13-%E6%9C%89%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE)所述，如果您的CLI应用程序使用持久性存储（例如保存配置文件），则CLI应用程序还应负责在卸载时删除其配置文件。
+
+为此，您可以使用NPM的pre或post卸载[脚本](https://docs.npmjs.com/misc/scripts)。 您可以在此[存储库](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js)中找到一个有效的示例。
 
 # 3 互通性
 
