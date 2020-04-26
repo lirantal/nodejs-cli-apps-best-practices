@@ -114,6 +114,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 - 7 Development
   - 7.1 [Use a bin object](#71-use-a-bin-object)
   - 7.2 [Use relative paths](#72-use-relative-paths)
+  - 7.3 [Use the files field](#73-use-the-files-field)
 
 ---
 
@@ -806,7 +807,8 @@ This section deals with development and maintenance best practices of building a
 In this section:
 
 - 7.1 [Use a bin object](#71-use-a-bin-object)
-- 7.2 [Use relative paths](#71-use-relative-paths)
+- 7.2 [Use relative paths](#72-use-relative-paths)
+- 7.3 [Use the files field](#73-use-the-files-field)
 
 ### 7.1 Use a bin object
 
@@ -847,6 +849,28 @@ refer to that location, but rather to the current working directory, which is wh
 when the CLI was invoked.
 - `__dirname`: use it when you need to access a file from within the CLI's source code and refer to a file from the relevant
 location of the file which the code lies in. For example, when the CLI needs to access a JSON data file in another directory: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
+
+### 7.3 Use the `files` field
+
+✅ **Do:**
+Use `files` field to only include necessary files in your published packages.
+
+❌ **Otherwise:**
+You will end up with a package that contains files that may not be needed to run your CLI application. e.g. (test files, development configurations, etc.)
+
+ℹ️ **Details**
+
+To keep the published [package size small](#21-prefer-a-small-dependency-footprint), we should only include files 
+that are required to run our CLI application. See this [post](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b) for more details.
+
+The following `files` field tells NPM to include all the files inside the src directory except the spec files.
+
+```json
+"files": [
+  "src",
+  "!src/**/*.spec.js"
+],
+```
 
 ---
 
