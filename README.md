@@ -863,7 +863,7 @@ You will end up with a package that contains files that may not be needed to run
 To keep the published [package size small](#21-prefer-a-small-dependency-footprint), we should only include files 
 that are required to run our CLI application. See this [post](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b) for more details.
 
-The following `files` field tells NPM to include all the files inside the src directory except the spec files.
+The following `files` field tells the npm CLI to include all the files inside the src directory except the spec files.
 
 ```json
 "files": [
