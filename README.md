@@ -577,7 +577,7 @@ Invoking the CLI with customized configuration will not be possible.
 
 Detect and support configuration setting using environment variables as this will be a common way in many toolchains to modify the behavior of the invoked CLI application.
 
-Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments veryrepetitive and cumbersome.
+Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments very repetitive and cumbersome.
 
 When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
 
