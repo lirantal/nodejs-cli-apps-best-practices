@@ -265,7 +265,7 @@ Reference projects:
 ### 1.7 Zero configuration
 
 ✅ **Do:**
-Optimize a plug-and-play experience by auto-detecting required configuration and command line arguments values
+Optimize a plug-and-play experience by auto-detecting required configuration and command line arguments values.
 
 ❌ **Otherwise:**
 Don't force user interactivity if a command-line argument can be auto-detected in a reliable way, and the action invoked doesn't explicitly require user interaction (such as confirming a deletion).
@@ -273,6 +273,7 @@ Don't force user interactivity if a command-line argument can be auto-detected i
 ℹ️ **Details**
 
 Aim to provide a "works out of the box" experience when running the CLI application.
+For example, [POSIX defines a standard for environment variable configuration](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html) used for different purposes, such as: `TMPDIR`, `NO_COLOR`, `DEBUG`, `HTTP_PROXY` and others. Detect these automatically and prompt for confirmation when necessary.
 
 Reference projects which are built around Zero configuration:
 
