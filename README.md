@@ -107,7 +107,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 - 5 Testing
   - 5.1 [Put no trust in locales](#51-put-no-trust-in-locales)
 - 6 Errors
-  - 6.1 [Informational errors](#61-informational-errors)
+  - 6.1 [Trackable errors](#61-trackable-errors)
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
   - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
@@ -702,19 +702,21 @@ When tests will run on locales that aren't English-based, and if your CLI argume
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment for which the maintainer designed the application.
 
+In essence, the goals of the best practices layed out in this section is to help users troubleshoot errors quickly and easily, without needing to consult documentation or source code to understand errors.
+
 In this section:
 
-- 6.1 [Informational errors](#61-informational-errors)
+- 6.1 [Trackable errors](#61-trackable-errors)
 - 6.2 [Actionable errors](#62-actionable-errors)
 - 6.3 [Provide debug mode](#63-provide-debug-mode)
 - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
 
-### 6.1 Informational errors
+### 6.1 Trackable errors
 
 ✅ **Do:**
-When reporting errors, provide trackable error codes that can be looked up in the project's documentation and so simplify troubleshooting the error message.
+When reporting errors, provide trackable error codes that can be looked up in the project's documentation and simplify troubleshooting the error message.
 
-If possible, extend informational error messages to any information being displayed so these can be easily parsed and context is clear.
+If possible, extend trackale error codes with further information so these can be easily parsed and context is clear.
 
 ❌ **Otherwise:**
 Generic error messages tend to be ambiguous and make it hard for users to search for solutions. Parsing and analyzing isn't as straight-forward, and referencing them in documentation is not as clean either.
@@ -759,7 +761,7 @@ Don't skip debugging capabilities. It will be harder to collect feedback from us
 
 ℹ️ **Details**
 
-Use environment variables as well as command line arguments to set debug and turn on extended verbosity levels. Where it make sense in your code, plant debug messages that aid the user, and the maintainer, to understand the program flow, inputs and outputs, and other pieces of information that make problem solving easier.
+Use environment variables as well as command line arguments to enable extended debug verbosity levels. Where it make sense in your code, plant debug messages that aid the user, and the maintainer, to understand the program flow, inputs and outputs, and other pieces of information that make problem solving easier.
 
 📦 **Recommended packages**
 
