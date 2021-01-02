@@ -151,6 +151,7 @@ Unix-like operating systems popularized the use of the command line and tools su
 Some examples of expected behavior:
 
 - option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
+- allow short-form single letter arguments as aliases for long-form arguments (see referene from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
 - options specified using the short form singular `-` may container one alphanumeric character.
 - specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
 
