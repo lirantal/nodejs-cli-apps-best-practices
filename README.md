@@ -116,6 +116,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 7.1 [Use a bin object](#71-use-a-bin-object)
   - 7.2 [Use relative paths](#72-use-relative-paths)
   - 7.3 [Use the files field](#73-use-the-files-field)
+- 8 Analytics
+  - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
 
 ---
 
@@ -812,7 +814,6 @@ Make it an effortless task to submit bug reports by providing a URL to open an i
 ❌ **Otherwise:**
 Users get frustrated searching for how to report a bug and may end up with little helpful information, or not submitting an issue at all.
 
-
 # 7 Development
 
 This section deals with development and maintenance best practices of building a Node.js command line application.
@@ -884,6 +885,33 @@ The following `files` field tells the npm CLI to include all the files inside th
   "!src/**/*.spec.js"
 ],
 ```
+
+# 8 Analytics
+
+This section deals with analytics collections in Node.js command line applications.
+
+In this section:
+
+- 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
+
+### 8.1 Strict Opt-in Analytics
+
+✅ **Do:**
+Always prompt, ask, or opt-in users in an explicit way to submit usage and product analytics to a remote location.
+
+❌ **Otherwise:**
+You risk privacy concerns for users and surprising CLI behavior which users wouldn't expect.
+
+ℹ️ **Details**
+
+Understandably, as a maintainer of a CLI application you would want to understand better how users are using it. However, stealthly and by-default "phone home" type of behavior without asking consent from users will be frawned upon.
+
+Guidelines:
+- Let the users know which data will be collected and what are you doing with it.
+- Be mindful about privacy concerns and collecting potentially personal identifyable information.
+- How, where and for which period of time is data stored.
+
+References for other CLIs which collect analytics are [Angular CLI](https://angular.io/analytics), and [Next.js](https://nextjs.org/telemetry) CLI.
 
 ---
 
