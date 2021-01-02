@@ -98,7 +98,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
   - 3.2 [Enable structured output](#32-enable-structured-output)
   - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
-  - 3.4 [Allow environment overrides](#34-allow-environment-overrides)
+  - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful degradation](#42-graceful-degradation)
@@ -380,7 +380,7 @@ In this section:
 - 3.1 [Accept input as STDIN](#31-accept-input-as-stdin)
 - 3.2 [Enable structured output](#32-enable-structured-output)
 - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
-- 3.4 [Allow environment overrides](#34-allow-environment-overrides)
+- 3.4 [Support configuration precedence](#34-support-configuration-precedence)
 
 ### 3.1 Accept input as STDIN
 
@@ -567,21 +567,24 @@ Instead, use the double ampersand or double pipe notations:
 const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ```
 
-### 3.4 Allow environment overrides
+### 3.4 Support configuration precedence
 
 ✅ **Do:**
-Allow configuration to be read from environment variables, and when it conflicts with command line arguments then allow environment variables to override.
+Allow configuration to be obtained from multiple sources, by order of precedence. Command line arguments take highest priority, followed by shell variables, and then different levels of configuration.
 
 ❌ **Otherwise:**
-Invoking the CLI with customized configuration will not be possible.
+Users face frustration when customizing their experience with the CLI.
 
 ℹ️ **Details**
 
 Detect and support configuration setting using environment variables as this will be a common way in many toolchains to modify the behavior of the invoked CLI application.
 
-Moreover, a CLI application may be invoked in a way that requires a dynamic environment variable setting to resolve configuration or flag values, in a way that doesn't allow passing command line arguments or simply makes defining this information via command line arguments very repetitive and cumbersome.
-
-When both a command line argument and an environment variable configure the same setting, a precedence should be granted to environment variables to override the setting.
+Configuration order of precedence for command line applications should follow this:
+- Command line arguments specified when the application is invoked.
+- The spawned shell's environment variables, and any other environment variables available to the application.
+- The project scope configuration, e.g: a local directory `.git/config` file.
+- The user scope configuration, e.g: the user's home directory configuration file: `~/.gitconfig` or its XDG equivalent: `~/.config/git/config`.
+- The system scope configuration, e.g: `/etc/gitconfig`.
 
 Reference projects:
 
