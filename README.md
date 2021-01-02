@@ -111,6 +111,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 6.2 [Actionable errors](#62-actionable-errors)
   - 6.3 [Provide debug mode](#63-provide-debug-mode)
   - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
+  - 6.5 [Effortless bug reports](#65-effortless-bug-reports)
 - 7 Development
   - 7.1 [Use a bin object](#71-use-a-bin-object)
   - 7.2 [Use relative paths](#72-use-relative-paths)
@@ -710,6 +711,7 @@ In this section:
 - 6.2 [Actionable errors](#62-actionable-errors)
 - 6.3 [Provide debug mode](#63-provide-debug-mode)
 - 6.4 [Proper use of exit codes](#64-proper-use-of-exit-codes)
+- 6.5 [Effortless bug reports](#65-effortless-bug-reports)
 
 ### 6.1 Trackable errors
 
@@ -801,6 +803,15 @@ A short reference for exit codes:
 You may also choose to use customized exit codes with semantics of your program, but if you do, be sure to document them properly.
 
 Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.html) used by the BASH shell
+
+### 6.5 Effortless bug reports
+
+✅ **Do:**
+Make it an effortless task to submit bug reports by providing a URL to open an issue and prepopulating the required data as much as possible. [Issue templates, like on GitHub](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository), allow to further guide the users as to which information is necessary. 
+
+❌ **Otherwise:**
+Users get frustrated searching for how to report a bug and may end up with little helpful information, or not submitting an issue at all.
+
 
 # 7 Development
 
