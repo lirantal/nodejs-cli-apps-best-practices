@@ -212,7 +212,7 @@ Reference projects:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
-- [kleur](https://github.com/lukeed/kleur)
+- [kleur](https://www.npmjs.com/package/kleur)
 
 📦 **Recommended packages**
 
@@ -220,7 +220,7 @@ Reference to Open Source Node.js packages:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
-- [kleur](https://github.com/lukeed/kleur)
+- [kleur](https://www.npmjs.com/package/kleur)
 
 ### 1.5 Rich interactions
 
