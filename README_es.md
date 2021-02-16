@@ -254,7 +254,8 @@ Si está compartiendo enlaces a URL o apuntando a un archivo y a un número de l
 
 ℹ️ **Detalles**
 
-Proporcionar una experiencia "lista para usar" cuando ejecute la aplicación CLI.
+Trate de proporcionar una experiencia "lista para usar" al ejecutar la aplicación CLI.
+Por ejemplo, [POSIX define un estándar para la configuración de variables de entorno] (https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html) utilizado para diferentes propósitos, como: `TMPDIR`,` NO_COLOR`, `DEBUG`,` HTTP_PROXY` y otros. Detecte estos automáticamente y solicite confirmación cuando sea necesario.
 
 Proyectos de referencia que se construyen bajo la idea de la Cero Configuración:
 
@@ -281,6 +282,7 @@ En esta sección:
 
 - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
 - 2.2 [Utilice shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 2.3 [Limpieza en los archivos de configuración](#23-cleanup-configuration-files)
 
 ### 2.1 Prefiera dependencias pequeñas
 
@@ -293,6 +295,10 @@ En esta sección:
 Un rápido `npm install` con el que invocar las aplicaciones de lineas de comandos en Node.js CLIs con `npx` puede proporcionar una mejor experiencia de usuario. Esto es posible cuando la dependencia general, y la dependencia transitiva mantiene a un tamaño razonable.
 
 La instalación global `npm` de un paquete de `npm` es de instalación lenta y ofrecerá una mala experiencia, pero el uso de `npx` para invocar paquetes ejecutables hará que el rendimiento mejore, debido a que `npx` siempre busca e instala paquetes desde su registro que son más significativos.
+
+Proyectos de referencia:
+
+- [Bundlephobia](https://bundlephobia.com/) es una herramienta para ayudarlo a encontrar el costo de un paquete npm.
 
 ### 2.2 Utilice shrinkwrap, Luke
 
