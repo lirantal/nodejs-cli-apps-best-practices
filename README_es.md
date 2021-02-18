@@ -308,13 +308,13 @@ Proyectos de referencia:
 
 ℹ️ **Detalles**
 
-Utilice el ~~force~~, Luke!
+Utilice el ~~force~~ shrinkwrap, Luke!
 
 Normalmente, un paquete npm solo define sus dependencias directas, y su rango de versiones, cuando se instala, y el administrador de paquetes npm resolverá todas las versiones de dependencias transitivas después de la instalación. Con el tiempo, las versiones de las dependencias variarán, ya que las nuevas dependencias directas y transitivas lanzarán nuevas versiones.
 
 Aunque el [Versionado Semántico](https://semver.org/) es ampliamente aceptado, sabemos que npm [introduce muchas dependencias](https://snyk.io/blog/how-much-do-we-really-know-about-how-packages-behave-on-the-npm-registry/) en el paquete que se está instalando, lo que aumenta el riesgo de que un paquete introduzca cambios que puedan dañar su aplicación.
 
-La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. *Revelación: soy defensor de los desarrolladores en Snyk*.
+La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. *Revelación: soy un desarrolladores defensor en Snyk*.
 
 > 👍 Consejo
 > Utilice el comando `npm shrinkwrap` para generar el archivo de bloqueo shrinkwrap, que tiene el mismo formato que el archivo `package-lock.json`.
@@ -323,6 +323,18 @@ Referencias:
 
 - [¿Realmente sabes cómo funciona un archivo de bloqueo para paquetes de Yarn y npm?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Documentos de Yarn: ¿Deben comprometerse los archivos de bloqueo en el repositorio?](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
+
+### 2.3 Limpieza en los archivos de configuración
+
+✅ **Haga:** Limpie los archivos de configuración cuando se desinstale la aplicación CLI. Opcionalmente, las aplicaciones CLI pueden solicitar a sus usuarios que guarden los archivos de configuración para omitir la configuración en la fase de reinicialización para una mejor experiencia de usuario.
+
+❌ **De lo contrario:** El sistema de almacenamiento del usuario puede contener residuos en forma de archivos de configuración huérfanos y datos identificables que la herramienta CLI generó cuando se instaló.
+
+ℹ️ **Detalles**
+
+Como se menciona en la [Stateful del dato] (#13-stateful-data), si su aplicación CLI usa almacenamiento persistente para guardar archivos de configuración, la aplicación CLI también debería ser responsable de eliminar dichos archivos cuando se desinstale .
+
+Puede usar NPMs `pre` o` post` desinstalar [script](https://docs.npmjs.com/misc/scripts) para conseguirlo. Puede encontrar un ejemplo funcional en este [repositorio](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
 
 # 3 Interoperabilidad
 
@@ -427,7 +439,7 @@ const cliExecPath = 'program.js'
 const process = childProcess.spawn('node', [cliExecPath])
 ```
 
-¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))  similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
+¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
 
 Esto también ocurre en los scripts `package.json`. Considere lo siguiente como una mala práctica a la hora de definir un script de ejecución npm:
 
@@ -519,11 +531,18 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ℹ️ **Detalles**
 
-Detecte y de soporte a la configuración utilizando variables de entorno, ya que esta será una forma común en muchas herramientas para modificar el comportamiento de la aplicación CLI invocada.
+Detecte y admita la configuración mediante variables de entorno, ya que será una forma común en muchas herramientas con el fin de modificar el comportamiento de la aplicación CLI ejecutada.
 
-Además, se puede invocar una aplicación CLI que requiera una configuración de variable de entorno de forma dinámica para resolver la configuración de esta manera y que la definición de esta información a través de argumentos de línea de comando no sea muy repetitiva y engorrosa .
+El orden de precedencia de configuración para las aplicaciones de línea de comandos debe seguir estas reglas:
+- Argumentos de la línea de comando especificados cuando se invoca la aplicación.
+- Las variables de entorno del shell generada y cualquier otra variable de entorno disponible para la aplicación.
+- La configuración del proyecto, por ejemplo: un archivo de directorio local `.git / config`.
+- La configuración del usuario, por ejemplo: el archivo de configuración del directorio de inicio del usuario: `~ / .gitconfig` o su equivalente XDG:` ~ / .config / git / config`.
+- La configuración del sistema, por ejemplo: `/ etc / gitconfig`.
 
-Cuando un argumento de línea de comando y una variable de entorno preparan la misma configuración, se debe otorgar prioridad a las variables de entorno para anular la configuración.
+Proyectos de referencia:
+
+- [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
 # 4 Accesibilidad
 
