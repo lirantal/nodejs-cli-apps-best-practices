@@ -1,4 +1,6 @@
-<p align="center"><img height="400px" src=".github/node-js-cli-apps-best-practices_es.png"></p>
+<p align="center">
+  <img height="400px" src=".github/node-js-cli-apps-best-practices_es.png">
+</p>
 
 <p align="center">
   <h1 align="center">Buenas Prácticas para las Aplicaciones CLI en Node.js</h1>
@@ -18,8 +20,13 @@ En esta guía he recopilado una lista con las mejores prácticas en distintos en
 - 🙏 Las contribuciones son bienvenidas
 
 <!-- Shields -->
-
-<p align="center"> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"></a><img src="https://badgen.net/badge/License/CC%20BY-SA%204.0/green"> <img src="https://badgen.net/badge/Last%20Update/Feb%202020/green"> <a target="_blank" href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices">   <img style="margin:8px;" alt="Node.js CLI Apps Best Practices" src="https://badgen.net/badge/Node.js%20CLI%20Apps/Best%20Practices/purple"> </a></p>
+<p align="center">
+<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
+<img src="https://badgen.net/badge/Last%20Update/Feb%202020/green" />
+<a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
+  <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
+</a>
+</p>
 
 ### Algo más sobre mi
 
@@ -28,16 +35,21 @@ Hola, Soy [Liran Tal](https://twitter.com/liran_tal) y soy un adicto a la creaci
 Algunos de mis trabajos más recientes con la creación de aplicaciones CLI en Node.js incluyen los siguientes proyectos Open Source:
 
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
-
 <table>
   <tr>
-     <td align="center">       <a href="https://github.com/lirantal/dockly"><img width="150px;" alt="dockly - Immersive terminal interface for managing docker containers and services" src="https://repository-images.githubusercontent.com/71667498/d5576f00-69cd-11e9-83dd-2139ad967fdc"><br><sub><b>Dockly</b></sub></a><br>Interfaz de terminal inmersiva para administrar contenedores y servicios acoplables</td>
-     <td align="center">       <a href="https://github.com/lirantal/npq"><img width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process" src="https://repository-images.githubusercontent.com/114298694/73d29f00-bb7d-11e9-80f5-5f94f25a76b4"><br><sub><b>npq</b></sub></a><br>Instale paquetes de forma segura con npm/yarn auditándolos como parte de su proceso de instalación</td>
      <td align="center">
-<a href="https://github.com/lirantal/lockfile-lint"><img width="150px;" alt="lockfile-lint - Lint an npm or yarn lockfile to analyze and detect security issues" src="https://repository-images.githubusercontent.com/189734318/d2d03200-5bfb-11ea-9eb6-70144dbe2197"><br><sub><b>lockfile-lint</b></sub></a><br>Lint para lockfile de npm o yarn para analizar y detectar problemas de seguridad</td>
-     <td align="center">       <a href="https://github.com/lirantal/is-website-vulnerable"><img width="150px;" alt="is-website-vulnerable - finds publicly known security vulnerabilities in a website's frontend JavaScript libraries" src="https://repository-images.githubusercontent.com/212983914/2d33b500-e84d-11e9-820e-799f368c4c44"><br><sub><b>is-website-vulnerable</b></sub></a><br>Encuentre vulnerabilidades de seguridad conocidas públicamente en las bibliotecas JavaScript frontend de un sitio web</td>
+      <a href="https://github.com/lirantal/dockly"><img src="https://repository-images.githubusercontent.com/71667498/d5576f00-69cd-11e9-83dd-2139ad967fdc" width="150px;" alt="dockly - Immersive terminal interface for managing docker containers and services"/><br /><sub><b>Dockly</b></sub></a><br/>Interfaz de terminal inmersiva para administrar contenedores y servicios acoplables
+     </td>
+     <td align="center">
+      <a href="https://github.com/lirantal/npq"><img src="https://repository-images.githubusercontent.com/114298694/73d29f00-bb7d-11e9-80f5-5f94f25a76b4" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>Instale paquetes de forma segura con npm/yarn auditándolos como parte de su proceso de instalación
+     </td>
+     <td align="center">
+      <a href="https://github.com/lirantal/lockfile-lint"><img src="https://repository-images.githubusercontent.com/189734318/d2d03200-5bfb-11ea-9eb6-70144dbe2197" width="150px;" alt="lockfile-lint - Lint an npm or yarn lockfile to analyze and detect security issues"/><br /><sub><b>lockfile-lint</b></sub></a><br/>Lint para lockfile de npm o yarn para analizar y detectar problemas de seguridad
+     </td>
+     <td align="center">
+      <a href="https://github.com/lirantal/is-website-vulnerable"><img src="https://repository-images.githubusercontent.com/212983914/2d33b500-e84d-11e9-820e-799f368c4c44" width="150px;" alt="is-website-vulnerable - finds publicly known security vulnerabilities in a website's frontend JavaScript libraries"/><br /><sub><b>is-website-vulnerable</b></sub></a><br/>Encuentre vulnerabilidades de seguridad conocidas públicamente en las bibliotecas JavaScript frontend de un sitio web
+     </td>
   </tr>
 </table>
 <!-- markdownlint-enable -->
@@ -48,33 +60,21 @@ Algunos de mis trabajos más recientes con la creación de aplicaciones CLI en N
 Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
-
 <table>
   <tr>
-    <td align="center">
-<a href="https://blog.vvni.top/"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/50414099?v=4"><br><sub><b>Vanilla</b></sub></a><br><a href="#traducci%C3%B3n-vvni" title="Translation">🌍</a>
-</td>
-    <td align="center">
-<a href="https://terkel.com"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/2302254?v=4"><br><sub><b>Terkel</b></sub></a><br><a href="#contenido-terkelg" title="Content">🖋</a>
-</td>
-    <td align="center">
-<a href="http://jasonkarns.com"><img width="100px;" alt="" src="https://avatars2.githubusercontent.com/u/119972?v=4"></a><a href="http://jasonkarns.com"><br><sub><b>Jason Karns</b></sub></a><br><a href="#contenido-jasonkarns" title="Content">🖋</a>
-</td>
-    <td align="center">
-<a href="https://about.me/davesag"><img width="100px;" alt="" src="https://avatars0.githubusercontent.com/u/387098?v=4"></a><a href="https://about.me/davesag"><br><sub><b>Dave Sag</b></sub></a><br><a href="#mantenimiento-davesag" title="Maintenance">🚧</a>
-</td>
-    <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://blog.vvni.top/"><img src="https://avatars2.githubusercontent.com/u/50414099?v=4" width="100px;" alt=""/><br /><sub><b>Vanilla</b></sub></a><br /><a href="#translation-vvni" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://terkel.com"><img src="https://avatars2.githubusercontent.com/u/2302254?v=4" width="100px;" alt=""/><br /><sub><b>Terkel</b></sub></a><br /><a href="#content-terkelg" title="Content">🖋</a></td>
+    <td align="center"><a href="http://jasonkarns.com"><img src="https://avatars2.githubusercontent.com/u/119972?v=4" width="100px;" alt=""/><br /><sub><b>Jason Karns</b></sub></a><br /><a href="#content-jasonkarns" title="Content">🖋</a></td>
+    <td align="center"><a href="https://about.me/davesag"><img src="https://avatars0.githubusercontent.com/u/387098?v=4" width="100px;" alt=""/><br /><sub><b>Dave Sag</b></sub></a><br /><a href="#maintenance-davesag" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. (Pepe)</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://twitter.com/MSuresh100"><img src="https://avatars3.githubusercontent.com/u/12813750?v=4" width="100px;" alt=""/><br /><sub><b>Sureshraj</b></sub></a><br /><a href="#content-m-sureshraj" title="Content">🖋</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
-
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
@@ -82,36 +82,40 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
 <h3>Contenido</h3>
 
 - 1 Experiencia en Línea de Comando
-    - 1.1 [Respeta los argumentos POSIX](#11-respect-posix-args)
-    - 1.2 [Crea CLIs empáticos](#12-build-empathic-clis)
-    - 1.3 [Stateful del dato](#13-stateful-data)
-    - 1.4 [Proporcione una experiencia con color](#14-provide-a-colorful-experience)
-    - 1.5 [Interacciones enriquecidas](#15-rich-interactions)
-    - 1.6 [Hipervínculos en todas partes](#16-hyperlinks-everywhere)
-    - 1.7 [Cero configuración](#17-zero-configuration)
-    - 1.8 [Respetar las señales POSIX](#18-respect-posix-signals)
+  - 1.1 [Respeta los argumentos POSIX](#11-respect-posix-args)
+  - 1.2 [Crea CLIs empáticos](#12-build-empathic-clis)
+  - 1.3 [Stateful del dato](#13-stateful-data)
+  - 1.4 [Proporcione una experiencia con color](#14-provide-a-colorful-experience)
+  - 1.5 [Interacciones enriquecidas](#15-rich-interactions)
+  - 1.6 [Hipervínculos en todas partes](#16-hyperlinks-everywhere)
+  - 1.7 [Cero configuración](#17-zero-configuration)
+  - 1.8 [Respetar las señales POSIX](#18-respect-posix-signals)
 - 2 Distribución
-    - 2.1 [Prefiera dependencias pequeñas](#21-prefer-a-small-dependency-footprint)
-    - 2.2 [Utilice shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+  - 2.1 [Prefiera dependencias pequeñas](#21-prefer-a-small-dependency-footprint)
+  - 2.2 [Utilice shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+  - 2.3 [Limpieza en los archivos de configuración](#23-cleanup-configuration-files)
 - 3 Interoperabilidad
-    - 3.1 [Aceptar entradas como STDIN](#31-accept-input-as-stdin)
-    - 3.2 [Habilitar una salida estructurada](#32-enable-structured-output)
-    - 3.3 [Etiqueta multiplataforma](#33-cross-platform-etiquette)
-    - 3.4 [Permita anulaciones del entorno](#34-allow-environment-overrides)
+  - 3.1 [Aceptar entradas como STDIN](#31-accept-input-as-stdin)
+  - 3.2 [Habilitar una salida estructurada](#32-enable-structured-output)
+  - 3.3 [Etiqueta multiplataforma](#33-cross-platform-etiquette)
+  - 3.4 [Permita anulaciones del entorno](#34-allow-environment-overrides)
 - 4 Accesibilidad
-    - 4.1 [Contenedor para la CLI](#41-containerize-the-cli)
-    - 4.2 [Graceful degradation](#42-graceful-degradation)
-    - 4.3 [Compatibilidad con versiones de Node.js](#43-nodejs-versions-compatibility)
-    - 4.4 [Shebang para detectar de forma automática el runtime de Node.js](#44-shebang-autodetect-the-nodejs-runtime)
+  - 4.1 [Contenedor para la CLI](#41-containerize-the-cli)
+  - 4.2 [Graceful degradation](#42-graceful-degradation)
+  - 4.3 [Compatibilidad con versiones de Node.js](#43-nodejs-versions-compatibility)
+  - 4.4 [Shebang para detectar de forma automática el runtime de Node.js](#44-shebang-autodetect-the-nodejs-runtime)
 - 5 Testing
-    - 5.1 [No confíes en los locales](#51-put-no-trust-in-locales)
+  - 5.1 [No confíes en los locales](#51-put-no-trust-in-locales)
 - 6 Errores
-    - 6.1 [Errores informativos](#61-informational-errors)
-    - 6.2 [Errores procesados](#62-actionable-errors)
-    - 6.3 [Proporcionar el modo de depuración](#63-provide-debug-mode)
-    - 6.4 [Uso adecuado de los códigos de salida.](#64-proper-use-of-exit-codes)
+  - 6.1 [Errores informativos](#61-informational-errors)
+  - 6.2 [Errores procesados](#62-actionable-errors)
+  - 6.3 [Proporcionar el modo de depuración](#63-provide-debug-mode)
+  - 6.4 [Uso adecuado de los códigos de salida.](#64-proper-use-of-exit-codes)
+  - 6.5 [Informes de errores sin esfuerzo](#65-effortless-bug-reports)
 - 7 Desarrollo
-    - 7.1 [Use un objeto bin](#71-use-a-bin-object)
+  - 7.1 [Utilice un objeto bin](#71-use-a-bin-object)
+  - 7.2 [Utilice rutas relativas](#72-use-relative-paths)
+  - 7.3 [Utilice el campo `files`](#73-use-the-files-field)
 
 ---
 
@@ -199,6 +203,7 @@ Proyectos de referencia:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://www.npmjs.com/package/kleur)
 
 📦 **Paquetes recomendados**
 
@@ -206,6 +211,7 @@ Paquetes de referencia Open Source para Node.js:
 
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
+- [kleur](https://www.npmjs.com/package/kleur)
 
 ### 1.5 Interacciones enriquecidas
 
@@ -248,7 +254,8 @@ Si está compartiendo enlaces a URL o apuntando a un archivo y a un número de l
 
 ℹ️ **Detalles**
 
-Proporcionar una experiencia "lista para usar" cuando ejecute la aplicación CLI.
+Trate de proporcionar una experiencia "lista para usar" al ejecutar la aplicación CLI.
+Por ejemplo, [POSIX define un estándar para la configuración de variables de entorno] (https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html) utilizado para diferentes propósitos, como: `TMPDIR`,` NO_COLOR`, `DEBUG`,` HTTP_PROXY` y otros. Detecte estos automáticamente y solicite confirmación cuando sea necesario.
 
 Proyectos de referencia que se construyen bajo la idea de la Cero Configuración:
 
@@ -275,6 +282,7 @@ En esta sección:
 
 - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
 - 2.2 [Utilice shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
+- 2.3 [Limpieza en los archivos de configuración](#23-cleanup-configuration-files)
 
 ### 2.1 Prefiera dependencias pequeñas
 
@@ -288,6 +296,10 @@ Un rápido `npm install` con el que invocar las aplicaciones de lineas de comand
 
 La instalación global `npm` de un paquete de `npm` es de instalación lenta y ofrecerá una mala experiencia, pero el uso de `npx` para invocar paquetes ejecutables hará que el rendimiento mejore, debido a que `npx` siempre busca e instala paquetes desde su registro que son más significativos.
 
+Proyectos de referencia:
+
+- [Bundlephobia](https://bundlephobia.com/) es una herramienta para ayudarlo a encontrar el costo de un paquete npm.
+
 ### 2.2 Utilice shrinkwrap, Luke
 
 ✅ **Haga:** Utilice `npm-shrinkwrap.json` de npm como un archivo de bloqueo para garantizar que las versiones de dependencia fijadas (directas y transitivas) se propaguen a sus usuarios finales cuando instalen su paquete npm.
@@ -296,13 +308,13 @@ La instalación global `npm` de un paquete de `npm` es de instalación lenta y o
 
 ℹ️ **Detalles**
 
-Utilice el ~~force~~, Luke!
+Utilice el ~~force~~ shrinkwrap, Luke!
 
 Normalmente, un paquete npm solo define sus dependencias directas, y su rango de versiones, cuando se instala, y el administrador de paquetes npm resolverá todas las versiones de dependencias transitivas después de la instalación. Con el tiempo, las versiones de las dependencias variarán, ya que las nuevas dependencias directas y transitivas lanzarán nuevas versiones.
 
 Aunque el [Versionado Semántico](https://semver.org/) es ampliamente aceptado, sabemos que npm [introduce muchas dependencias](https://snyk.io/blog/how-much-do-we-really-know-about-how-packages-behave-on-the-npm-registry/) en el paquete que se está instalando, lo que aumenta el riesgo de que un paquete introduzca cambios que puedan dañar su aplicación.
 
-La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. *Revelación: soy defensor de los desarrolladores en Snyk*.
+La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. *Revelación: soy un desarrolladores defensor en Snyk*.
 
 > 👍 Consejo
 > Utilice el comando `npm shrinkwrap` para generar el archivo de bloqueo shrinkwrap, que tiene el mismo formato que el archivo `package-lock.json`.
@@ -311,6 +323,18 @@ Referencias:
 
 - [¿Realmente sabes cómo funciona un archivo de bloqueo para paquetes de Yarn y npm?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Documentos de Yarn: ¿Deben comprometerse los archivos de bloqueo en el repositorio?](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
+
+### 2.3 Limpieza en los archivos de configuración
+
+✅ **Haga:** Limpie los archivos de configuración cuando se desinstale la aplicación CLI. Opcionalmente, las aplicaciones CLI pueden solicitar a sus usuarios que guarden los archivos de configuración para omitir la configuración en la fase de reinicialización para una mejor experiencia de usuario.
+
+❌ **De lo contrario:** El sistema de almacenamiento del usuario puede contener residuos en forma de archivos de configuración huérfanos y datos identificables que la herramienta CLI generó cuando se instaló.
+
+ℹ️ **Detalles**
+
+Como se menciona en la [Stateful del dato] (#13-stateful-data), si su aplicación CLI usa almacenamiento persistente para guardar archivos de configuración, la aplicación CLI también debería ser responsable de eliminar dichos archivos cuando se desinstale .
+
+Puede usar NPMs `pre` o` post` desinstalar [script](https://docs.npmjs.com/misc/scripts) para conseguirlo. Puede encontrar un ejemplo funcional en este [repositorio](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
 
 # 3 Interoperabilidad
 
@@ -415,7 +439,7 @@ const cliExecPath = 'program.js'
 const process = childProcess.spawn('node', [cliExecPath])
 ```
 
-¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix))  similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
+¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
 
 Esto también ocurre en los scripts `package.json`. Considere lo siguiente como una mala práctica a la hora de definir un script de ejecución npm:
 
@@ -507,11 +531,18 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ℹ️ **Detalles**
 
-Detecte y de soporte a la configuración utilizando variables de entorno, ya que esta será una forma común en muchas herramientas para modificar el comportamiento de la aplicación CLI invocada.
+Detecte y admita la configuración mediante variables de entorno, ya que será una forma común en muchas herramientas con el fin de modificar el comportamiento de la aplicación CLI ejecutada.
 
-Además, se puede invocar una aplicación CLI que requiera una configuración de variable de entorno de forma dinámica para resolver la configuración de esta manera y que la definición de esta información a través de argumentos de línea de comando no sea muy repetitiva y engorrosa .
+El orden de precedencia de configuración para las aplicaciones de línea de comandos debe seguir estas reglas:
+- Argumentos de la línea de comando especificados cuando se invoca la aplicación.
+- Las variables de entorno del shell generada y cualquier otra variable de entorno disponible para la aplicación.
+- La configuración del proyecto, por ejemplo: un archivo de directorio local `.git / config`.
+- La configuración del usuario, por ejemplo: el archivo de configuración del directorio de inicio del usuario: `~ / .gitconfig` o su equivalente XDG:` ~ / .config / git / config`.
+- La configuración del sistema, por ejemplo: `/ etc / gitconfig`.
 
-Cuando un argumento de línea de comando y una variable de entorno preparan la misma configuración, se debe otorgar prioridad a las variables de entorno para anular la configuración.
+Proyectos de referencia:
+
+- [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
 # 4 Accesibilidad
 
@@ -622,6 +653,7 @@ En esta sección:
 - 6.2 [Errores procesados](#62-actionable-errors)
 - 6.3 [Proporcionar el modo de depuración](#63-provide-debug-mode)
 - 6.4 [Uso adecuado de los códigos de salida.](#64-proper-use-of-exit-codes)
+- 6.5 [Informes de errores sin esfuerzo](#65-effortless-bug-reports)
 
 ### 6.1 Errores informativos
 
@@ -706,17 +738,25 @@ También puede optar por utilizar códigos de salida personalizados con la semá
 
 Referencia: Una [lista de códigos existentes](http://www.tldp.org/LDP/abs/html/exitcodes.html) usados por el BASH shell
 
+### 6.5 Informes de errores sin esfuerzo
+
+✅ **Haga:** Convierta el envío de informes de errores en una tarea sencilla proporcionando una URL para abrir una issue y rellenando previamente los datos necesarios tanto como sea posible. [Plantilla Issue de ejemplo, como en GitHub](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository), permite orientar a los los usuarios sobre qué información es necesaria.
+
+❌ **De lo contrario:** Los usuarios se pueden sentir frustrados al buscar cómo informar un error y pueden terminar enviando poca información útil o incluso sin enviar ninguna issue.
+
 # 7 Desarrollo
 
 Esta sección trata sobre las mejores prácticas de desarrollo y mantenimiento para construir una aplicación de línea de comando Node.js.
 
 En esta sección:
 
-- 7.1 [Use un objeto bin](#71-use-a-bin-object)
+- 7.1 [Utilice un objeto bin](#71-use-a-bin-object)
+- 7.2 [Utilice rutas relativas](#72-use-relative-paths)
+- 7.3 [Utilice el campo `files`](#73-use-the-files-field)
 
-### 7.1 Use un objeto bin
+### 7.1 Utilice un objeto bin
 
-✅ **Haga:** Use un objeto para definir el nombre del ejecutable y su ruta.
+✅ **Haga:** Utilice un objeto para definir el nombre del ejecutable y su ruta.
 
 ❌ **De lo contrario:** Terminará acoplando el nombre del paquete con el ejecutable.
 
@@ -730,6 +770,36 @@ El siguiente `package.json` muestra un ejemplo de desacoplamiento del nombre del
   }
 ```
 
+### 7.2 Utilice rutas relativas
+
+✅ **Haga:** Use `process.cwd()` para acceder a las rutas del usuario y use `__dirname` para acceder a las rutas del proyecto.
+
+❌ **De lo contrario:** Terminará con rutas de archivo incorrectas y no podrá acceder a ellos.
+
+ℹ️ **Detalles**
+
+Puede encontrarse con la necesidad de acceder a archivos dentro del alcance del proyecto, o acceder a los archivos que se proporcionan
+de la entrada del usuario, como log, archivos JSON u otros. Confundir el uso de `process.cwd()` o `__dirname` puede llevar a errores, además de no utilizar ninguno de ellos.
+
+Cómo acceder correctamente a los archivos:
+- `process.cwd()`: utilícelo cuando la ruta del archivo al que necesita acceder dependa de la ubicación relativa de la CLI de Node.js. Un buen ejemplo es cuando la CLI admite rutas de archivo para crear registros, como: `myCli --outfile ../../out.json`. Si `myCli` está instalado en `/usr/local/node_modules/myCli/bin/myCli.js` entonces `process.cwd()` no se hará referencia a esa ubicación, sino al directorio de trabajo actual, que corresponde al directorio en el que se encuentre el usuario al ejecutar la CLI.
+- `__dirname`: utilícelo cuando necesite acceder a un archivo desde el código fuente de la CLI y refiérase a un archivo desde la ubicación relevante del archivo en el que se encuentra el código. Por ejemplo, cuando la CLI necesita acceder a datos de un archivo JSON archivo alojado en otro directorio: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
+
+### 7.3 Utilice el campo `files`
+
+✅ **Haga:** Utilice el campo `files` para incluir solo los archivos necesarios en los paquetes que publique.
+
+❌ **De lo contrario:** Terminará con un paquete que contiene archivos que pueden no ser necesarios para ejecutar su aplicación CLI. p.ej. (archivos de prueba, configuraciones de desarrollo, etc.)
+
+ℹ️ **Detalles**
+
+```json
+"files": [
+  "src",
+  "!src/**/*.spec.js"
+],
+```
+
 ---
 
 # Autor
@@ -739,11 +809,8 @@ El siguiente `package.json` muestra un ejemplo de desacoplamiento del nombre del
 Este proyecto sigue las especificaciones de todos los [contribuyentes](https://github.com/all-contributors/all-contributors). ¡Cualquier contribución será bienvenidas!
 
 <!-- Project Logo -->
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Licencia
