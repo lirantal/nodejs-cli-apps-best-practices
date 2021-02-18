@@ -115,7 +115,7 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
 - 7 Desarrollo
   - 7.1 [Utilice un objeto bin](#71-use-a-bin-object)
   - 7.2 [Utilice rutas relativas](#72-use-relative-paths)
-  - 7.3 [Utilice el field de archivos](#73-use-the-files-field)
+  - 7.3 [Utilice el campo `files`](#73-use-the-files-field)
 
 ---
 
@@ -750,11 +750,13 @@ Esta sección trata sobre las mejores prácticas de desarrollo y mantenimiento p
 
 En esta sección:
 
-- 7.1 [Use un objeto bin](#71-use-a-bin-object)
+- 7.1 [Utilice un objeto bin](#71-use-a-bin-object)
+- 7.2 [Utilice rutas relativas](#72-use-relative-paths)
+- 7.3 [Utilice el campo `files`](#73-use-the-files-field)
 
-### 7.1 Use un objeto bin
+### 7.1 Utilice un objeto bin
 
-✅ **Haga:** Use un objeto para definir el nombre del ejecutable y su ruta.
+✅ **Haga:** Utilice un objeto para definir el nombre del ejecutable y su ruta.
 
 ❌ **De lo contrario:** Terminará acoplando el nombre del paquete con el ejecutable.
 
@@ -768,6 +770,36 @@ El siguiente `package.json` muestra un ejemplo de desacoplamiento del nombre del
   }
 ```
 
+### 7.2 Utilice rutas relativas
+
+✅ **Haga:** Use `process.cwd()` para acceder a las rutas del usuario y use `__dirname` para acceder a las rutas del proyecto.
+
+❌ **De lo contrario:** Terminará con rutas de archivo incorrectas y no podrá acceder a ellos.
+
+ℹ️ **Detalles**
+
+Puede encontrarse con la necesidad de acceder a archivos dentro del alcance del proyecto, o acceder a los archivos que se proporcionan
+de la entrada del usuario, como log, archivos JSON u otros. Confundir el uso de `process.cwd()` o `__dirname` puede llevar a errores, además de no utilizar ninguno de ellos.
+
+Cómo acceder correctamente a los archivos:
+- `process.cwd()`: utilícelo cuando la ruta del archivo al que necesita acceder dependa de la ubicación relativa de la CLI de Node.js. Un buen ejemplo es cuando la CLI admite rutas de archivo para crear registros, como: `myCli --outfile ../../out.json`. Si `myCli` está instalado en `/usr/local/node_modules/myCli/bin/myCli.js` entonces `process.cwd()` no se hará referencia a esa ubicación, sino al directorio de trabajo actual, que corresponde al directorio en el que se encuentre el usuario al ejecutar la CLI.
+- `__dirname`: utilícelo cuando necesite acceder a un archivo desde el código fuente de la CLI y refiérase a un archivo desde la ubicación relevante del archivo en el que se encuentra el código. Por ejemplo, cuando la CLI necesita acceder a datos de un archivo JSON archivo alojado en otro directorio: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
+
+### 7.3 Utilice el campo `files`
+
+✅ **Haga:** Utilice el campo `files` para incluir solo los archivos necesarios en los paquetes que publique.
+
+❌ **De lo contrario:** Terminará con un paquete que contiene archivos que pueden no ser necesarios para ejecutar su aplicación CLI. p.ej. (archivos de prueba, configuraciones de desarrollo, etc.)
+
+ℹ️ **Detalles**
+
+```json
+"files": [
+  "src",
+  "!src/**/*.spec.js"
+],
+```
+
 ---
 
 # Autor
@@ -777,11 +809,8 @@ El siguiente `package.json` muestra un ejemplo de desacoplamiento del nombre del
 Este proyecto sigue las especificaciones de todos los [contribuyentes](https://github.com/all-contributors/all-contributors). ¡Cualquier contribución será bienvenidas!
 
 <!-- Project Logo -->
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Licencia
