@@ -653,6 +653,7 @@ En esta sección:
 - 6.2 [Errores procesados](#62-actionable-errors)
 - 6.3 [Proporcionar el modo de depuración](#63-provide-debug-mode)
 - 6.4 [Uso adecuado de los códigos de salida.](#64-proper-use-of-exit-codes)
+- 6.5 [Informes de errores sin esfuerzo](#65-effortless-bug-reports)
 
 ### 6.1 Errores informativos
 
@@ -736,6 +737,12 @@ Una breve referencia para los códigos de salida:
 También puede optar por utilizar códigos de salida personalizados con la semántica de su programa, pero si lo hace, asegúrese de documentarlos correctamente.
 
 Referencia: Una [lista de códigos existentes](http://www.tldp.org/LDP/abs/html/exitcodes.html) usados por el BASH shell
+
+### 6.5 Informes de errores sin esfuerzo
+
+✅ **Haga:** Convierta el envío de informes de errores en una tarea sencilla proporcionando una URL para abrir una issue y rellenando previamente los datos necesarios tanto como sea posible. [Plantilla Issue de ejemplo, como en GitHub](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository), permite orientar a los los usuarios sobre qué información es necesaria.
+
+❌ **De lo contrario:** Los usuarios se pueden sentir frustrados al buscar cómo informar un error y pueden terminar enviando poca información útil o incluso sin enviar ninguna issue.
 
 # 7 Desarrollo
 
