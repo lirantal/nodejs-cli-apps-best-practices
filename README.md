@@ -151,7 +151,7 @@ Unix-like operating systems popularized the use of the command line and tools su
 Some examples of expected behavior:
 
 - option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
-- allow short-form single letter arguments as aliases for long-form arguments (see referene from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
+- allow short-form single letter arguments as aliases for long-form arguments (see reference from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
 - options specified using the short form singular `-` may container one alphanumeric character.
 - specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
 
@@ -663,7 +663,7 @@ Another workaround is to provide a containerized version of the CLI to avoid old
 
 Don't dumb down your program code to use an older ECMAScript language specification that matches unmaintained or EOL Node.js versions as this will only lead to code maintenance issues.
 
-If the CLI is invoked i an unsupported environment, attempt to detect it and exit with a descriptive error message to present a friendly and information error message. See [this example](https://github.com/lirantal/dockly/blob/42d8c09631bc5348f108a50c3ce9601851fb760b/index.js#L25) for dockly.
+If the CLI is invoked in an unsupported environment, attempt to detect it and exit with a descriptive error message to present a friendly and information error message. See [this example](https://github.com/lirantal/dockly/blob/42d8c09631bc5348f108a50c3ce9601851fb760b/index.js#L25) for dockly.
 
 ### 4.4 Shebang autodetect the Node.js runtime
 
@@ -708,7 +708,7 @@ When tests will run on locales that aren't English-based, and if your CLI argume
 
 This section deals with best practices concerned with making a Node.js CLI application available to users who wish to consume it but are lacking an ideal environment for which the maintainer designed the application.
 
-In essence, the goals of the best practices layed out in this section is to help users troubleshoot errors quickly and easily, without needing to consult documentation or source code to understand errors.
+In essence, the goals of the best practices laid out in this section is to help users troubleshoot errors quickly and easily, without needing to consult documentation or source code to understand errors.
 
 In this section:
 
@@ -723,7 +723,7 @@ In this section:
 ✅ **Do:**
 When reporting errors, provide trackable error codes that can be looked up in the project's documentation and simplify troubleshooting the error message.
 
-If possible, extend trackale error codes with further information so these can be easily parsed and context is clear.
+If possible, extend trackable error codes with further information so these can be easily parsed and context is clear.
 
 ❌ **Otherwise:**
 Generic error messages tend to be ambiguous and make it hard for users to search for solutions. Parsing and analyzing isn't as straight-forward, and referencing them in documentation is not as clean either.
@@ -863,7 +863,7 @@ to errors, as well as not using neither of them.
 How to properly access files:
 - `process.cwd()`: use it when the file path that you need to access depends on the relative location of the 
 Node.js CLI. A good example for this is when the CLI supports file paths to create logs, such as: `myCli --outfile ../../out.json`. If `myCli` is installed in `/usr/local/node_modules/myCli/bin/myCli.js` then `process.cwd()` will not
-refer to that location, but rather to the current working directory, which is whicever the directory the user is at
+refer to that location, but rather to the current working directory, which is whichever the directory the user is at
 when the CLI was invoked.
 - `__dirname`: use it when you need to access a file from within the CLI's source code and refer to a file from the relevant
 location of the file which the code lies in. For example, when the CLI needs to access a JSON data file in another directory: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
