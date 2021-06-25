@@ -151,6 +151,7 @@
 
 对开源Node.js包的参考：
 
+- [commander](https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md)
 - [yargs](https://github.com/yargs/yargs)
 
 ### 1.2 构建富有同理心的CLI

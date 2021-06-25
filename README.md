@@ -161,6 +161,7 @@ Command line power-users will expect your command line application to have simil
 
 Reference to Open Source Node.js packages:
 
+- [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
 
 ### 1.2 Build empathic CLIs
