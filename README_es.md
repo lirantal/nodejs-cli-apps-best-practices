@@ -158,6 +158,7 @@ Los usuarios avanzados con la línea de comando esperarán que su aplicación de
 
 Referencia a los paquetes Open Source para Node.js:
 
+- [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
 
 ### 1.2 Crea CLIs empáticos
