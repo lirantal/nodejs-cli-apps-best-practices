@@ -248,6 +248,8 @@
 
 目的是在运行 CLI 应用程序时提供「开箱即用」的体验。
 
+例如，[POSIX 定义了环境变量配置的标准](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html)，例如：`TMPDIR`、`NO_COLOR`、`DEBUG`、`HTTP_PROXY` 等。 自动检测这些并在必要时提示确认。
+
 围绕零配置构建的参考项目：
 
 - [Jest JavaScript 测试框架](https://jestjs.io)
@@ -359,19 +361,19 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 下面是一个基于官方 [Node.js API 文档的 readline 模块](https://nodejs.org/api/readline.html) 示例，该示例说明如何从命令管道获取输入：
 
 ```js
-const readline = require('readline')
+const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
-})
+  output: process.stdout,
+});
 
-rl.question('What do you think of Node.js? ', (answer) => {
+rl.question("What do you think of Node.js? ", (answer) => {
   // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`)
+  console.log(`Thank you for your valuable feedback: ${answer}`);
 
-  rl.close()
-})
+  rl.close();
+});
 ```
 
 然后将输入通过管道传递到上述 Node.js 应用程序：
@@ -485,7 +487,7 @@ package.json
 让我们思考以下不良做法示例：
 
 ```js
-const myPath = `${__dirname}/../bin/myBin.js`
+const myPath = `${__dirname}/../bin/myBin.js`;
 ```
 
 假定正斜杠是路径分隔符，例如在 Windows 上使用反斜杠。
@@ -493,7 +495,7 @@ const myPath = `${__dirname}/../bin/myBin.js`
 与其手动构建文件系统路径，不如使用 Node.js 自己的 `path` 模块来执行此操作：
 
 ```js
-const myPath = path.join(__dirname, '..', 'bin', 'myBin.js')
+const myPath = path.join(__dirname, "..", "bin", "myBin.js");
 ```
 
 #### 避免用分号链接命令
@@ -503,13 +505,13 @@ const myPath = path.join(__dirname, '..', 'bin', 'myBin.js')
 避免执行以下操作：
 
 ```js
-const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`);
 ```
 
 而是使用「&&」号或「||」符号：
 
 ```js
-const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ```
 
 ### 3.4 允许环境覆盖
@@ -706,7 +708,7 @@ try {
 } catch (err) {
   // cleanup or otherwise
   // then exit with proper status code
-  process.exit(1)
+  process.exit(1);
 }
 ```
 
