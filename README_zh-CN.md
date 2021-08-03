@@ -103,6 +103,7 @@
   - 6.2 [可行性错误](#62-%E5%8F%AF%E8%A1%8C%E6%80%A7%E9%94%99%E8%AF%AF)
   - 6.3 [提供调试模式](#63-%E6%8F%90%E4%BE%9B%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F)
   - 6.4 [正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
+  - 6.5 [轻松的错误报告](#65-轻松的错误报告)
 - 7 开发
   - 7.1 [使用 bin 对象](#71-%E4%BD%BF%E7%94%A8bin%E5%AF%B9%E8%B1%A1)
   - 7.2 [使用相对路径](#72-使用相对路径)
@@ -637,6 +638,7 @@ expect(output).to.contain("Examples:"));
 - 6.2 [可行性错误](#62-%E5%8F%AF%E8%A1%8C%E6%80%A7%E9%94%99%E8%AF%AF)
 - 6.3 [提供调试模式](#63-%E6%8F%90%E4%BE%9B%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F)
 - 6.4 [正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
+- 6.5 [轻松的错误报告](#65-轻松的错误报告)
 
 ### 6.1 可追踪的错误
 
@@ -720,6 +722,14 @@ try {
 您也可以选择使用具有程序语义的自定义退出代码，但是如果这样做，请确保正确记录它们。
 
 参考：BASH shell 使用的 [退出代码列表](http://www.tldp.org/LDP/abs/html/exitcodes.html)
+
+### 轻松的错误报告
+
+✅ **可行:**
+通过提供一个 URL 来打开问题并尽可能多的预填充所需的数据，使提交错误报告变得轻松。[问题模板，例如在 GitHub 上](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository)，允许进一步指导用户哪些信息是必要的。
+
+❌ **否则:**
+用户在搜索如何报告错误时感到沮丧，最终可能得不到有用的信息，或者根本不提交问题。
 
 # 7 开发
 
