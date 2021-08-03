@@ -97,9 +97,9 @@
   - 4.3 [Node.js 版本兼容性](#43-Node.js%E7%89%88%E6%9C%AC%E5%85%BC%E5%AE%B9%E6%80%A7)
   - 4.4 [Shebang 自动检测 Node.js 运行时](#44-Shebang%E8%87%AA%E5%8A%A8%E6%A3%80%E6%B5%8BNode.js%E8%BF%90%E8%A1%8C%E6%97%B6)
 - 5 测试
-  - 5.1 [不信任语言环境](#51-%E4%B8%8D%E4%BF%A1%E4%BB%BB%E8%AF%AD%E8%A8%80%E7%8E%AF%E5%A2%83)
+  - 5.1 [不信任语言环境](#51-不信任语言环境)
 - 6 错误
-  - 6.1 [信息性错误](#61-%E4%BF%A1%E6%81%AF%E6%80%A7%E9%94%99%E8%AF%AF)
+  - 6.1 [可追踪的错误](#61-可追踪的错误)
   - 6.2 [可行性错误](#62-%E5%8F%AF%E8%A1%8C%E6%80%A7%E9%94%99%E8%AF%AF)
   - 6.3 [提供调试模式](#63-%E6%8F%90%E4%BE%9B%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F)
   - 6.4 [正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
@@ -359,19 +359,19 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 下面是一个基于官方 [Node.js API 文档的 readline 模块](https://nodejs.org/api/readline.html) 示例，该示例说明如何从命令管道获取输入：
 
 ```js
-const readline = require('readline')
+const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
-})
+  output: process.stdout,
+});
 
-rl.question('What do you think of Node.js? ', (answer) => {
+rl.question("What do you think of Node.js? ", (answer) => {
   // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`)
+  console.log(`Thank you for your valuable feedback: ${answer}`);
 
-  rl.close()
-})
+  rl.close();
+});
 ```
 
 然后将输入通过管道传递到上述 Node.js 应用程序：
@@ -485,7 +485,7 @@ package.json
 让我们思考以下不良做法示例：
 
 ```js
-const myPath = `${__dirname}/../bin/myBin.js`
+const myPath = `${__dirname}/../bin/myBin.js`;
 ```
 
 假定正斜杠是路径分隔符，例如在 Windows 上使用反斜杠。
@@ -493,7 +493,7 @@ const myPath = `${__dirname}/../bin/myBin.js`
 与其手动构建文件系统路径，不如使用 Node.js 自己的 `path` 模块来执行此操作：
 
 ```js
-const myPath = path.join(__dirname, '..', 'bin', 'myBin.js')
+const myPath = path.join(__dirname, "..", "bin", "myBin.js");
 ```
 
 #### 避免用分号链接命令
@@ -503,13 +503,13 @@ const myPath = path.join(__dirname, '..', 'bin', 'myBin.js')
 避免执行以下操作：
 
 ```js
-const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath}; ${cliExecPath2}`);
 ```
 
 而是使用「&&」号或「||」符号：
 
 ```js
-const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`)
+const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 ```
 
 ### 3.4 允许环境覆盖
@@ -629,18 +629,20 @@ expect(output).to.contain("Examples:"));
 
 本节介绍了有关使 Node.js CLI 应用程序可供希望使用它但缺乏维护人员为其设计应用程序的理想环境的用户使用的最佳实践。
 
+本质上，本节中列出的最佳实践的目标是帮助用户快速轻松地排查错误，而无需查阅文档或源代码来查找错误。
+
 在本节中：
 
-- 6.1 [信息性错误](#61-%E4%BF%A1%E6%81%AF%E6%80%A7%E9%94%99%E8%AF%AF)
+- 6.1 [可追踪的错误](#61-%E4%BF%A1%E6%81%AF%E6%80%A7%E9%94%99%E8%AF%AF)
 - 6.2 [可行性错误](#62-%E5%8F%AF%E8%A1%8C%E6%80%A7%E9%94%99%E8%AF%AF)
 - 6.3 [提供调试模式](#63-%E6%8F%90%E4%BE%9B%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F)
 - 6.4 [正确使用退出代码](#64-%E6%AD%A3%E7%A1%AE%E4%BD%BF%E7%94%A8%E9%80%80%E5%87%BA%E4%BB%A3%E7%A0%81)
 
-### 6.1 信息性错误
+### 6.1 可追踪的错误
 
 ✅ **可行:** 报告错误时，提供可以在项目文档中查找的可跟踪错误代码，从而简化对错误消息的故障排除。
 
-如果可能，将信息错误消息扩展到所显示的任何信息，以便可以轻松分析这些错误消息并弄清上下文。
+如果可能，请使用更多信息扩展跟踪错误代码，以便可以轻松分析这些错误消息并弄清上下文。
 
 ❌ **否则:** 一般的错误消息往往是模棱两可的，使用户很难搜索解决方案。解析和分析不是那么简单，在文档中引用它们也不是那么清晰。
 
@@ -680,7 +682,7 @@ Error (E4002): please provide an API token via environment variables
 
 ℹ️ **详情**
 
-使用环境变量和命令行参数设置调试并打开扩展的详细级别。在代码中有意义的地方设置调试消息，帮助用户和维护人员了解程序流、输入和输出以及其他使问题解决更容易的信息。
+使用环境变量以及命令行参数来启用扩展的调试详细级别。 在您的代码中有意义的地方，植入有助于用户和维护者理解程序流、输入和输出以及其他使问题解决更容易的调试消息。
 
 📦 **推荐的软件包**
 
@@ -706,7 +708,7 @@ try {
 } catch (err) {
   // cleanup or otherwise
   // then exit with proper status code
-  process.exit(1)
+  process.exit(1);
 }
 ```
 
