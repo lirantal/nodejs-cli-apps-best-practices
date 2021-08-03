@@ -16,7 +16,7 @@ En esta guía he recopilado una lista con las mejores prácticas en distintos en
 ### Características:
 
 - ✅ 21 mejores prácticas para crear aplicaciones CLI en Node.js
-- ✅ Leer en un idioma diferente: [🇨🇳](./README_zh.md), [🇪🇸](./README_es.md) o ayuda a traducirlas a otro idioma: [ [🇩🇪](./README-de.md) , ... ]
+- ✅ Leer en un idioma diferente: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md) o ayuda a traducirlas a otro idioma: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 Las contribuciones son bienvenidas
 
 <!-- Shields -->
@@ -75,6 +75,7 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
@@ -315,7 +316,7 @@ Normalmente, un paquete npm solo define sus dependencias directas, y su rango de
 
 Aunque el [Versionado Semántico](https://semver.org/) es ampliamente aceptado, sabemos que npm [introduce muchas dependencias](https://snyk.io/blog/how-much-do-we-really-know-about-how-packages-behave-on-the-npm-registry/) en el paquete que se está instalando, lo que aumenta el riesgo de que un paquete introduzca cambios que puedan dañar su aplicación.
 
-La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. *Revelación: soy un desarrolladores defensor en Snyk*.
+La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. _Revelación: soy un desarrolladores defensor en Snyk_.
 
 > 👍 Consejo
 > Utilice el comando `npm shrinkwrap` para generar el archivo de bloqueo shrinkwrap, que tiene el mismo formato que el archivo `package-lock.json`.
@@ -343,9 +344,9 @@ Esta sección sobre las mejores prácticas relacionadas con hacer que su CLI de 
 
 En esta sección encontrarás respuestas a preguntas como:
 
-- *¿Puedo exportar la salida de la CLI para un parsing fácil?*
-- *¿Puedo canalizar la salida de esta CLI a la entrada de otra herramienta de línea de comando?*
-- *¿Puedo canalizar el resultado de otra herramienta a mi CLI?*
+- _¿Puedo exportar la salida de la CLI para un parsing fácil?_
+- _¿Puedo canalizar la salida de esta CLI a la entrada de otra herramienta de línea de comando?_
+- _¿Puedo canalizar el resultado de otra herramienta a mi CLI?_
 
 En esta sección:
 
@@ -375,10 +376,10 @@ const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-rl.question("What do you think of Node.js? ", answer => {
+rl.question("What do you think of Node.js? ", (answer) => {
   // TODO: Log the answer in a database
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
@@ -412,7 +413,7 @@ Poder extraer fácilmente los datos de interés de una salida de línea de coman
 
 ℹ️ **Detalles**
 
-Aunque, desde la perspectiva del programa la funcionalidad no se está reduciendo y *debería* ejecutarse bien en diferentes sistemas operativos, algunos matices pueden hacer que el programa no funcione. Revisemos algunos casos en los que se debe respetar la ética multiplataforma.
+Aunque, desde la perspectiva del programa la funcionalidad no se está reduciendo y _debería_ ejecutarse bien en diferentes sistemas operativos, algunos matices pueden hacer que el programa no funcione. Revisemos algunos casos en los que se debe respetar la ética multiplataforma.
 
 #### El aparecer un comando de forma incorrecta
 
@@ -440,7 +441,7 @@ const cliExecPath = 'program.js'
 const process = childProcess.spawn('node', [cliExecPath])
 ```
 
-¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
+¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
 
 Esto también ocurre en los scripts `package.json`. Considere lo siguiente como una mala práctica a la hora de definir un script de ejecución npm:
 
@@ -535,6 +536,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 Detecte y admita la configuración mediante variables de entorno, ya que será una forma común en muchas herramientas con el fin de modificar el comportamiento de la aplicación CLI ejecutada.
 
 El orden de precedencia de configuración para las aplicaciones de línea de comandos debe seguir estas reglas:
+
 - Argumentos de la línea de comando especificados cuando se invoca la aplicación.
 - Las variables de entorno del shell generada y cualquier otra variable de entorno disponible para la aplicación.
 - La configuración del proyecto, por ejemplo: un archivo de directorio local `.git / config`.
@@ -611,7 +613,7 @@ Si se invoca la CLI en un entorno no compatible, intente detectarlo y muestre co
 
 ### 4.4 Shebang para detectar de forma automática el runtime de Node.js
 
-✅ **Haga:** Utilice una referencia [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) para una instalación agnóstica que localice el tiempo de ejecución automáticamente el entorno de Node.js, como `#!/usr/bin/env node`.
+✅ **Haga:** Utilice una referencia [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) para una instalación agnóstica que localice el tiempo de ejecución automáticamente el entorno de Node.js, como `#!/usr/bin/env node`.
 
 ❌ **De lo contrario:** Utilizar una ubicación de Node.js "hard-coded" como `#!/usr/local/bin/node` solo es específico de su propio entorno y puede hacer que la CLI de Node.js no funcione en otros entornos donde la ubicación de Node.js es diferente.
 
@@ -783,6 +785,7 @@ Puede encontrarse con la necesidad de acceder a archivos dentro del alcance del 
 de la entrada del usuario, como log, archivos JSON u otros. Confundir el uso de `process.cwd()` o `__dirname` puede llevar a errores, además de no utilizar ninguno de ellos.
 
 Cómo acceder correctamente a los archivos:
+
 - `process.cwd()`: utilícelo cuando la ruta del archivo al que necesita acceder dependa de la ubicación relativa de la CLI de Node.js. Un buen ejemplo es cuando la CLI admite rutas de archivo para crear registros, como: `myCli --outfile ../../out.json`. Si `myCli` está instalado en `/usr/local/node_modules/myCli/bin/myCli.js` entonces `process.cwd()` no se hará referencia a esa ubicación, sino al directorio de trabajo actual, que corresponde al directorio en el que se encuentre el usuario al ejecutar la CLI.
 - `__dirname`: utilícelo cuando necesite acceder a un archivo desde el código fuente de la CLI y refiérase a un archivo desde la ubicación relevante del archivo en el que se encuentra el código. Por ejemplo, cuando la CLI necesita acceder a datos de un archivo JSON archivo alojado en otro directorio: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
 
@@ -811,7 +814,9 @@ Este proyecto sigue las especificaciones de todos los [contribuyentes](https://g
 
 <!-- Project Logo -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # Licencia
