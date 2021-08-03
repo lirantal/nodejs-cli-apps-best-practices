@@ -16,7 +16,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - ✅ 28 best practices for building successful Node.js CLI applications
-- ✅ Read in a different language: [🇨🇳](./README_zh-CN.md), [🇪🇸](./README_es.md), or help translate to other languages: [ [🇩🇪](./README-de.md) , ... ]
+- ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or help translate to other languages: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 Contributions are welcome
 
 <!-- Shields -->
@@ -75,6 +75,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 ---
@@ -400,17 +401,17 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 If the command line application works with data, such as performing some kind of task on a JSON file that is usually specified with `--file <file.json>` command line argument.
 
-An example that is based on the official [Node.js API docs for the for readline module](https://nodejs.org/api/readline.html)  of how taking input from a command pipe is as follows:
+An example that is based on the official [Node.js API docs for the for readline module](https://nodejs.org/api/readline.html) of how taking input from a command pipe is as follows:
 
 ```js
 const readline = require("readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout
+  output: process.stdout,
 });
 
-rl.question("What do you think of Node.js? ", answer => {
+rl.question("What do you think of Node.js? ", (answer) => {
   // TODO: Log the answer in a database
   console.log(`Thank you for your valuable feedback: ${answer}`);
 
@@ -582,6 +583,7 @@ Users face frustration when customizing their experience with the CLI.
 Detect and support configuration setting using environment variables as this will be a common way in many toolchains to modify the behavior of the invoked CLI application.
 
 Configuration order of precedence for command line applications should follow this:
+
 - Command line arguments specified when the application is invoked.
 - The spawned shell's environment variables, and any other environment variables available to the application.
 - The project scope configuration, e.g: a local directory `.git/config` file.
@@ -813,11 +815,10 @@ Reference: A [list of exit codes](http://www.tldp.org/LDP/abs/html/exitcodes.htm
 ### 6.5 Effortless bug reports
 
 ✅ **Do:**
-Make it an effortless task to submit bug reports by providing a URL to open an issue and prepopulating the required data as much as possible. [Issue templates, like on GitHub](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository), allow to further guide the users as to which information is necessary. 
+Make it an effortless task to submit bug reports by providing a URL to open an issue and prepopulating the required data as much as possible. [Issue templates, like on GitHub](https://docs.github.com/en/free-pro-team@latest/github/building-a-strong-community/configuring-issue-templates-for-your-repository), allow to further guide the users as to which information is necessary.
 
 ❌ **Otherwise:**
 Users get frustrated searching for how to report a bug and may end up with little helpful information, or not submitting an issue at all.
-
 
 # 7 Development
 
@@ -858,16 +859,17 @@ You will end up with incorrect file paths and won't be able to access files.
 ℹ️ **Details**
 
 You may find yourself with the need to access files within the project's files scope, or to access files that are provided
-from the user's input, such as log, JSON files or others. Confusing the use of `process.cwd()` or `__dirname` can lead 
+from the user's input, such as log, JSON files or others. Confusing the use of `process.cwd()` or `__dirname` can lead
 to errors, as well as not using neither of them.
 
 How to properly access files:
-- `process.cwd()`: use it when the file path that you need to access depends on the relative location of the 
-Node.js CLI. A good example for this is when the CLI supports file paths to create logs, such as: `myCli --outfile ../../out.json`. If `myCli` is installed in `/usr/local/node_modules/myCli/bin/myCli.js` then `process.cwd()` will not
-refer to that location, but rather to the current working directory, which is whichever the directory the user is at
-when the CLI was invoked.
+
+- `process.cwd()`: use it when the file path that you need to access depends on the relative location of the
+  Node.js CLI. A good example for this is when the CLI supports file paths to create logs, such as: `myCli --outfile ../../out.json`. If `myCli` is installed in `/usr/local/node_modules/myCli/bin/myCli.js` then `process.cwd()` will not
+  refer to that location, but rather to the current working directory, which is whichever the directory the user is at
+  when the CLI was invoked.
 - `__dirname`: use it when you need to access a file from within the CLI's source code and refer to a file from the relevant
-location of the file which the code lies in. For example, when the CLI needs to access a JSON data file in another directory: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
+  location of the file which the code lies in. For example, when the CLI needs to access a JSON data file in another directory: `fs.readFile(path.join(__dirname, '..', 'myDataFile.json'))`.
 
 ### 7.3 Use the `files` field
 
@@ -879,7 +881,7 @@ You will end up with a package that contains files that may not be needed to run
 
 ℹ️ **Details**
 
-To keep the published [package size small](#21-prefer-a-small-dependency-footprint), we should only include files 
+To keep the published [package size small](#21-prefer-a-small-dependency-footprint), we should only include files
 that are required to run our CLI application. See this [post](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b) for more details.
 
 The following `files` field tells the npm CLI to include all the files inside the src directory except the spec files.
@@ -901,9 +903,10 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <!-- Project Logo -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
+[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # License
 

@@ -15,7 +15,7 @@
 ### 特点:
 
 - ✅ 28 种构建成功的 Node.js CLI 应用程序的最佳实践
-- ✅ 用不同语言阅读: [🇨🇳](./README_zh-CN.md), [🇪🇸](./README_es.md), 或者帮忙翻译其他语言: [ [🇩🇪](./README-de.md) , ... ]
+- ✅ 用不同语言阅读: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), 或者帮忙翻译其他语言: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 欢迎贡献
 
 <!-- Shields -->
@@ -151,7 +151,7 @@
 
 对开源 Node.js 包的参考：
 
-- [commander](https://github.com/tj/commander.js/blob/master/Readme_zh-CN.md)
+- [commander](https://github.com/tj/commander.js/blob/master/README_zh-Hans.md)
 - [yargs](https://github.com/yargs/yargs)
 
 ### 1.2 构建富有同理心的 CLI
