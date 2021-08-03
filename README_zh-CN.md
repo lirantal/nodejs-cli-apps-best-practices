@@ -249,6 +249,8 @@
 
 目的是在运行 CLI 应用程序时提供「开箱即用」的体验。
 
+例如，[POSIX 定义了环境变量配置的标准](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html)，例如：`TMPDIR`、`NO_COLOR`、`DEBUG`、`HTTP_PROXY` 等。 自动检测这些并在必要时提示确认。
+
 围绕零配置构建的参考项目：
 
 - [Jest JavaScript 测试框架](https://jestjs.io)
