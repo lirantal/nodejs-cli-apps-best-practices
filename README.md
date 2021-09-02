@@ -15,7 +15,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 
 ### Features:
 
-- ✅ 28 best practices for building successful Node.js CLI applications
+- ✅ 29 best practices for building successful Node.js CLI applications
 - ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or help translate to other languages: [ [🇩🇪](./README-de.md) , ... ]
 - 🙏 Contributions are welcome
 
@@ -916,6 +916,7 @@ You risk privacy concerns for users and surprising CLI behavior which users woul
 Understandably, as a maintainer of a CLI application you would want to understand better how users are using it. However, stealthly and by-default "phone home" type of behavior without asking consent from users will be frawned upon.
 
 Guidelines:
+
 - Let the users know which data will be collected and what are you doing with it.
 - Be mindful about privacy concerns and collecting potentially personal identifyable information.
 - How, where and for which period of time is data stored.
