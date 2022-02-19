@@ -932,7 +932,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 | Name  | Description | Npm | Github | Stars and downloads |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | oclif  | A framework for building a command line interface.  | [Link to npm](https://www.npmjs.com/package/oclif) | [Link to Github](https://github.com/oclif/oclif) | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)
-| inquirer  | A collection of common interactive command line user interfaces.  | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to Github](https://github.com/SBoudrias/Inquirer.js) |![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)
+| inquirer  | A collection of common interactive command line user interfaces.  | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js) |![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)
 | ink | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink) | [Link to Github](https://github.com/vadimdemedes/ink) | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)
 |blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to GitHub](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
 
