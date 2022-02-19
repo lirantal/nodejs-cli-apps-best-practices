@@ -929,51 +929,17 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 
 ### 9.1 CLI Frameworks Table
 
-<!-- markdownlint-disable -->
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Npm</th>
-    <th>Github</th>
-    <th>Stars and downloads</th>
-  </tr>
-  <tr>
-    <td>oclif</td>
-    <td>A framework for building a command line interface</td>
-    <td><a href="https://www.npmjs.com/package/oclif">Link to npm</a></td>
-   <td> <a href="https://github.com/oclif/oclif">Link to Github</a></td>
-    <td><img src="https://badgen.net/badge/Stars/7.1k/yellow"/>
-    <img src="https://img.shields.io/npm/dt/oclif.svg"/></td>
+| Name  | Description | Npm | Github | Stars and downloads |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| oclif  | A framework for building a command line interface.  | [Link to npm](https://www.npmjs.com/package/oclif) | [Link to Github](https://github.com/oclif/oclif) | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)
+| inquirer  | A collection of common interactive command line user interfaces.  | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to Github](https://github.com/SBoudrias/Inquirer.js) |![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)
+| ink | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink) | [Link to Github](https://github.com/vadimdemedes/ink) | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)
+|blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to Github](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
 
-  </tr>
-  <tr>
-    <td>inquirer</td>
-     <td>A collection of common interactive command line user interfaces.</td>
-    <td><a href="https://www.npmjs.com/package/inquirer">Link to npm</a></td>
-    <td><a href="https://github.com/SBoudrias/Inquirer.js/">Link to Github</a></td>
-    <td><img src="https://badgen.net/badge/Stars/15.8k/yellow"/>
-    <img src="https://img.shields.io/npm/dt/inquirer.svg"/></td>
-  </tr>
-  <tr>
-    <td>ink</td>
-     <td>Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps.</td>
-    <td><a href="https://www.npmjs.com/package/ink">Link to npm</a></td>
-    <td><a href="https://github.com/vadimdemedes/ink">Link to Github</a></td>
-    <td><img src="https://badgen.net/badge/Stars/17.8k/yellow"/>
-    <img src="https://img.shields.io/npm/dt/ink.svg"/></td>
-  </tr>
-   <tr>
-    <td>blessed</td>
-     <td>A curses-like library with a high level terminal interface API for node.js.
-</td>
-    <td><a href="https://www.npmjs.com/package/blessed">Link to npm</a></td>
-    <td><a href="https://github.com/chjj/blessed/">Link to Github</a></td>
-    <td><img src="https://badgen.net/badge/Stars/10.4k/yellow"/>
-    <img src="https://img.shields.io/npm/dt/blessed.svg"/></td>
-  </tr>
- 
-</table>
+
+<!-- markdownlint-disable -->
+
+
 <!-- markdownlint-enable -->
 
 ---
