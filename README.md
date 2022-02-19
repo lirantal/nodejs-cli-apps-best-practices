@@ -119,6 +119,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 7.3 [Use the files field](#73-use-the-files-field)
 - 8 Analytics
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
+- 9 Appendix: CLI Frameworks
+  - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
 
 ---
 
@@ -922,6 +924,23 @@ Guidelines:
 - How, where and for which period of time is data stored.
 
 References for other CLIs which collect analytics are [Angular CLI](https://angular.io/analytics), and [Next.js](https://nextjs.org/telemetry) CLI.
+
+# 9 Appendix: CLI Frameworks
+
+### 9.1 CLI Frameworks Table
+
+| Name  | Description | npm | GitHub | Stars and downloads |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| oclif  | A framework for building a command line interface.  | [Link to npm](https://www.npmjs.com/package/oclif) | [Link to GitHub](https://github.com/oclif/oclif) | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)
+| inquirer  | A collection of common interactive command line user interfaces.  | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js) |![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)
+| ink | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink) | [Link to Github](https://github.com/vadimdemedes/ink) | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)
+|blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to GitHub](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
+
+
+<!-- markdownlint-disable -->
+
+
+<!-- markdownlint-enable -->
 
 ---
 
