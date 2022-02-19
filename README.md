@@ -941,7 +941,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
     <td>A framework for building a command line interface</td>
     <a href="https://www.npmjs.com/package/oclif"><td>Link to npm</td></a>
     <a href="https://github.com/oclif/oclif"><td>Link to Github</td></a>
-    <td><img src="http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat"/>
+    <td><img src="http://githubbadges.com/star.svg?user=oclif&repo=oclif"/>
     <img src="https://img.shields.io/npm/dt/oclif.svg"/></td>
 
   </tr>
