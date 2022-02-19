@@ -119,6 +119,8 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 7.3 [Use the files field](#73-use-the-files-field)
 - 8 Analytics
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
+- 9 Appendix: CLI Frameworks
+  - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
 
 ---
 
@@ -922,6 +924,56 @@ Guidelines:
 - How, where and for which period of time is data stored.
 
 References for other CLIs which collect analytics are [Angular CLI](https://angular.io/analytics), and [Next.js](https://nextjs.org/telemetry) CLI.
+
+# 9 Appendix: CLI Frameworks
+### 9.1 CLI Frameworks Table
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Npm</th>
+    <th>Github</th>
+    <th>Stars and downloads</th>
+  </tr>
+  <tr>
+    <td>oclif</td>
+    <td>A framework for building a command line interface</td>
+    <a href="https://www.npmjs.com/package/oclif"><td>Link to npm</td></a>
+    <a href="https://github.com/oclif/oclif"><td>Link to Github</td></a>
+    <td><img src="http://githubbadges.com/star.svg?user=ddavison&repo=github-badges&background=007ecg&color=bbb&style=flat"/>
+    <img src="https://img.shields.io/npm/dt/oclif.svg"/></td>
+
+  </tr>
+  <tr>
+    <td>inquirer</td>
+     <td>A collection of common interactive command line user interfaces.</td>
+    <a href="https://www.npmjs.com/package/inquirer"><td>Link to npm</td></a>
+    <a href="https://github.com/SBoudrias/Inquirer.js/"><td>Link to Github</td></a>
+    <td><img src="https://badgen.net/badge/Stars/7.1k/yellow"/></td>
+  </tr>
+  <tr>
+    <td>Ernst Handel</td>
+    <td>Roland Mendel</td>
+    <td>Austria</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>Helen Bennett</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Yoshi Tannamuri</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Giovanni Rovelli</td>
+    <td>Italy</td>
+  </tr>
+</table>
+<!-- markdownlint-enable -->
 
 ---
 
