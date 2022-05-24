@@ -370,7 +370,11 @@ The user's file system may contain residue in the form of orphaned configuration
 
 As mentioned in the [stateful data section](#13-stateful-data), if your CLI application uses persistent storage, such as to save configuration files, then the CLI application should also be responsible for removing its configuration files when it gets uninstalled.
 
-You can use NPMs `pre` or `post` uninstall [script](https://docs.npmjs.com/misc/scripts) for this purpose. You can find a working example in this [repository](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
+Due to npm package manager not providing uninstall hook since npm v7, your program should include an uninstallation option, either via [arguments](#11-respect-posix-args) (e.g. `--uninstall`) or via [rich interaction](#15-rich-interactions).
+
+> 👍 Tip
+>
+> Optionally you can provide `pre` and `post` uninstall [script](https://docs.npmjs.com/misc/scripts) which will be automatically called if the **npm version is 6 or lower**. You can find a working example in this [repository](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js). 
 
 # 3 Interoperability
 
