@@ -13,16 +13,14 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Crowdin action
-        uses: crowdin/github-action@1.0.4
+        uses: crowdin/github-action@1.4.9
         with:
           upload_sources: true
           upload_translations: true
           download_translations: true
-          language: "en"
           push_translations: true
           localization_branch_name: l10n_crowdin_action
           create_pull_request: true
-          config: "../../crowdin.yml"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
