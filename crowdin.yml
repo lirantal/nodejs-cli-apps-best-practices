@@ -16,6 +16,12 @@ api_token_env: CROWDIN_PERSONAL_TOKEN
 files: [
   {
     "source": "/README.md",
-    "translation": "/%original_file_name%.%locale_with_underscore%.md",
+    "translation": "/%original_file_name%_%locale%.md",
+    "languages_mapping": {
+        "locale": {
+            "es": "es",
+            "zh-CN": "zh-Hans"
+        }
+    }
   },
 ]
