@@ -16,7 +16,7 @@ jobs:
         uses: crowdin/github-action@1.4.9
         with:
           upload_sources: true
-          upload_translations: true
+          upload_translations: false
           download_translations: true
           push_translations: true
           localization_branch_name: l10n_crowdin_action
