@@ -941,6 +941,10 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 |blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to GitHub](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
 
 
+# 10 Appendix: CLI educational resources
+* https://clig.dev/
+* https://primer.style/cli/getting-started/principles
+
 <!-- markdownlint-disable -->
 
 
