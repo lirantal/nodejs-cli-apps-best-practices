@@ -1,5 +1,5 @@
 <p align="center">
-  <img height="400px" src=".github/node-js-cli-apps-best-practices_es.png">
+  <img src=".github/node-js-cli-apps-best-practices_es.png" height="400px" />
 </p>
 
 <p align="center">
@@ -22,7 +22,7 @@ En esta guía he recopilado una lista con las mejores prácticas en distintos en
 <!-- Shields -->
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
-<img src="https://badgen.net/badge/Last%20Update/Feb%202020/green" />
+<img src="https://badgen.net/badge/Last%20Update/Jan%202021/green" />
 <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
   <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
 </a>
@@ -117,6 +117,10 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
   - 7.1 [Utilice un objeto bin](#71-use-a-bin-object)
   - 7.2 [Utilice rutas relativas](#72-use-relative-paths)
   - 7.3 [Utilice el campo `files`](#73-use-the-files-field)
+- 8 Analytics
+  - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
+- 9 Appendix: CLI Frameworks
+  - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
 
 ---
 
@@ -135,7 +139,7 @@ En esta sección:
 - 1.7 [Cero configuración](#17-zero-configuration)
 - 1.8 [Respetar las señales POSIX](#18-respect-posix-signals)
 
-<br>
+<br/>
 
 ### 1.1 Respeta los argumentos POSIX
 
@@ -150,6 +154,7 @@ Los sistemas operativos tipo Unix popularizaron el uso de la línea de comandos 
 Algunos ejemplos de comportamiento:
 
 - Argumentos de opción u opciones se pueden anotar en la ayuda y/o en ejemplos con corchetes (`[]`) para indicar que son opcionales, o con corchetes angulares (`<>`) para indicar que son obligatorios.
+- allow short-form single letter arguments as aliases for long-form arguments (see reference from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
 - Opciones especificadas utilizando la forma abreviada singular `-` puede contener un carácter alfanumérico.
 - Especificación de múltiples opciones sin valores pueden ser agrupadas como `myCli -abc` siendo equivalente a `myCli -a -b -c`.
 
@@ -157,7 +162,7 @@ Los usuarios avanzados con la línea de comando esperarán que su aplicación de
 
 📦 **Paquetes recomendados**
 
-Referencia a los paquetes Open Source para Node.js:
+Paquetes de referencia Open Source para Node.js:
 
 - [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
@@ -248,6 +253,10 @@ Paquetes de referencia Open Source para Node.js:
 
 Si está compartiendo enlaces a URL o apuntando a un archivo y a un número de línea y columna específicos en el archivo, puede proporcionar enlaces formateados a estos dos ejemplos que, una vez que se haga clic, abrirán el navegador o un IDE con la zona definida.
 
+Proyectos de referencia:
+
+- [open](https://github.com/sindresorhus/open)
+
 ### 1.7 Cero configuración
 
 ✅ **Haga:** Optimice una experiencia plug-and-play al detectar automáticamente la configuración requerida y los valores de los argumentos de la línea de comandos
@@ -256,8 +265,7 @@ Si está compartiendo enlaces a URL o apuntando a un archivo y a un número de l
 
 ℹ️ **Detalles**
 
-Trate de proporcionar una experiencia "lista para usar" al ejecutar la aplicación CLI.
-Por ejemplo, [POSIX define un estándar para la configuración de variables de entorno] (https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html) utilizado para diferentes propósitos, como: `TMPDIR`,` NO_COLOR`, `DEBUG`,` HTTP_PROXY` y otros. Detecte estos automáticamente y solicite confirmación cuando sea necesario.
+Trate de proporcionar una experiencia "lista para usar" al ejecutar la aplicación CLI. Por ejemplo, [POSIX define un estándar para la configuración de variables de entorno](https://pubs.opengroup.org/onlinepubs/009695399/basedefs/xbd_chap08.html) utilizado para diferentes propósitos, como: `TMPDIR`,`NO_COLOR`, `DEBUG`,`HTTP_PROXY` y otros. Detecte estos automáticamente y solicite confirmación cuando sea necesario.
 
 Proyectos de referencia que se construyen bajo la idea de la Cero Configuración:
 
@@ -319,6 +327,7 @@ Aunque el [Versionado Semántico](https://semver.org/) es ampliamente aceptado, 
 La otra cara del uso de `npm-shrinkwrap.json` son las implicaciones de seguridad que imponemos. Las dependencias que se instalan están ancladas a versiones específicas, por lo que incluso si se lanzan versiones más nuevas de estas dependencias, no se instalarán. Esto le transfiere la responsabilidad a usted, la persona que mantiene el proyecto, de tenerlo actualizado con cualquier corrección de seguridad en sus dependencias, y lanzar su aplicación CLI regularmente con actualizaciones de seguridad. Considere usar la [Actualización de dependencia de Snyk](https://snyk.io/) para corregir automáticamente los problemas de seguridad en su árbol de dependencias. _Revelación: soy un desarrolladores defensor en Snyk_.
 
 > 👍 Consejo
+> 
 > Utilice el comando `npm shrinkwrap` para generar el archivo de bloqueo shrinkwrap, que tiene el mismo formato que el archivo `package-lock.json`.
 
 Referencias:
@@ -334,9 +343,13 @@ Referencias:
 
 ℹ️ **Detalles**
 
-Como se menciona en la [Stateful del dato] (#13-stateful-data), si su aplicación CLI usa almacenamiento persistente para guardar archivos de configuración, la aplicación CLI también debería ser responsable de eliminar dichos archivos cuando se desinstale .
+Como se menciona en la \[Stateful del dato\] (#13-stateful-data), si su aplicación CLI usa almacenamiento persistente para guardar archivos de configuración, la aplicación CLI también debería ser responsable de eliminar dichos archivos cuando se desinstale .
 
-Puede usar NPMs `pre` o` post` desinstalar [script](https://docs.npmjs.com/misc/scripts) para conseguirlo. Puede encontrar un ejemplo funcional en este [repositorio](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
+Due to npm package manager not providing uninstall hook since npm v7, your program should include an uninstallation option, either via [arguments](#11-respect-posix-args) (e.g. `--uninstall`) or via [rich interaction](#15-rich-interactions).
+
+> 👍 Consejo
+> 
+> Puede usar NPMs `pre` o`post` desinstalar [script](https://docs.npmjs.com/misc/scripts) para conseguirlo. Puede encontrar un ejemplo funcional en este [repositorio](https://github.com/m-sureshraj/jenni/blob/master/src/scripts/pre-uninstall.js).
 
 # 3 Interoperabilidad
 
@@ -441,7 +454,7 @@ const cliExecPath = 'program.js'
 const process = childProcess.spawn('node', [cliExecPath])
 ```
 
-¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
+¿Por qué es mejor? El código de `program.js` comienza con la notación [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) similar a Unix, sin embargo, Windows no sabe cómo interpretarlo debido a que Shebang no es un estándar multiplataforma.
 
 Esto también ocurre en los scripts `package.json`. Considere lo siguiente como una mala práctica a la hora de definir un script de ejecución npm:
 
@@ -527,7 +540,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ### 3.4 Permita anulaciones del entorno
 
-✅ **Haga:** Permita que la configuración se lea desde las variables de entorno y, cuando entre en conflicto con los argumentos de la línea de comandos, permita que las variables de entorno se anulen.
+✅ **Haga:** Permita que la configuración se lea desde las variables de entorno y, cuando entre en conflicto con los argumentos de la línea de comandos, permita que las variables de entorno se anulen. Command line arguments take highest priority, followed by shell variables, and then different levels of configuration.
 
 ❌ **De lo contrario:** No se podrá invocar la CLI con una configuración personalizada.
 
@@ -540,7 +553,7 @@ El orden de precedencia de configuración para las aplicaciones de línea de com
 - Argumentos de la línea de comando especificados cuando se invoca la aplicación.
 - Las variables de entorno del shell generada y cualquier otra variable de entorno disponible para la aplicación.
 - La configuración del proyecto, por ejemplo: un archivo de directorio local `.git / config`.
-- La configuración del usuario, por ejemplo: el archivo de configuración del directorio de inicio del usuario: `~ / .gitconfig` o su equivalente XDG:` ~ / .config / git / config`.
+- La configuración del usuario, por ejemplo: el archivo de configuración del directorio de inicio del usuario: `~ / .gitconfig` o su equivalente XDG:`~ / .config / git / config`.
 - La configuración del sistema, por ejemplo: `/ etc / gitconfig`.
 
 Proyectos de referencia:
@@ -613,7 +626,7 @@ Si se invoca la CLI en un entorno no compatible, intente detectarlo y muestre co
 
 ### 4.4 Shebang para detectar de forma automática el runtime de Node.js
 
-✅ **Haga:** Utilice una referencia [Shebang](<https://en.wikipedia.org/wiki/Shebang_(Unix)>) para una instalación agnóstica que localice el tiempo de ejecución automáticamente el entorno de Node.js, como `#!/usr/bin/env node`.
+✅ **Haga:** Utilice una referencia [Shebang](https://en.wikipedia.org/wiki/Shebang_(Unix)) para una instalación agnóstica que localice el tiempo de ejecución automáticamente el entorno de Node.js, como `#!/usr/bin/env node`.
 
 ❌ **De lo contrario:** Utilizar una ubicación de Node.js "hard-coded" como `#!/usr/local/bin/node` solo es específico de su propio entorno y puede hacer que la CLI de Node.js no funcione en otros entornos donde la ubicación de Node.js es diferente.
 
@@ -649,6 +662,8 @@ Cuando las pruebas se ejecuten entornos con configuraciones regionales que no es
 # 6 Errores
 
 Esta sección trata las mejores prácticas relacionadas con la creación de una aplicación Node.js CLI y que esté disponible para los usuarios que desean consumirla pero que carecen de un entorno ideal para el cual el responsable la diseñó.
+
+In essence, the goals of the best practices laid out in this section is to help users troubleshoot errors quickly and easily, without needing to consult documentation or source code to understand errors.
 
 En esta sección:
 
@@ -702,7 +717,7 @@ Error (E4002): please provide an API token via environment variables
 
 ℹ️ **Detalles**
 
-Utilice variables de entorno, así como argumentos de línea de comandos para establecer la depuración y activar niveles de verbosidad. Donde tenga sentido en su código, coloque mensajes de depuración que ayuden al usuario y a los colaboradores a comprender el flujo del programa, las entradas y salidas y otras piezas de información que faciliten la resolución de problemas.
+Utilice variables de entorno, así como argumentos de línea de comandos para establecer la depuración y activar niveles de verbosidad. Donde tenga sentido en su código, coloque mensajes de depuración que ayuden al usuario y a los colaboradores a comprender el flujo del programa, las entradas y salidas y otras piezas de información que faciliten la resolución de problemas.
 
 📦 **Paquetes recomendados**
 
@@ -781,8 +796,7 @@ El siguiente `package.json` muestra un ejemplo de desacoplamiento del nombre del
 
 ℹ️ **Detalles**
 
-Puede encontrarse con la necesidad de acceder a archivos dentro del alcance del proyecto, o acceder a los archivos que se proporcionan
-de la entrada del usuario, como log, archivos JSON u otros. Confundir el uso de `process.cwd()` o `__dirname` puede llevar a errores, además de no utilizar ninguno de ellos.
+Puede encontrarse con la necesidad de acceder a archivos dentro del alcance del proyecto, o acceder a los archivos que se proporcionan de la entrada del usuario, como log, archivos JSON u otros. Confundir el uso de `process.cwd()` o `__dirname` puede llevar a errores, además de no utilizar ninguno de ellos.
 
 Cómo acceder correctamente a los archivos:
 
@@ -797,12 +811,64 @@ Cómo acceder correctamente a los archivos:
 
 ℹ️ **Detalles**
 
+To keep the published [package size small](#21-prefer-a-small-dependency-footprint), we should only include files that are required to run our CLI application. See this [post](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b) for more details.
+
+The following `files` field tells the npm CLI to include all the files inside the src directory except the spec files.
+
 ```json
 "files": [
   "src",
   "!src/**/*.spec.js"
 ],
 ```
+
+# 8 Analytics
+
+This section deals with analytics collections in Node.js command line applications.
+
+En esta sección:
+
+- 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
+
+### 8.1 Strict Opt-in Analytics
+
+✅ **Do:** Always prompt, ask, or opt-in users in an explicit way to submit usage and product analytics to a remote location.
+
+❌ **Otherwise:** You risk privacy concerns for users and surprising CLI behavior which users wouldn't expect.
+
+ℹ️ **Detalles**
+
+Understandably, as a maintainer of a CLI application you would want to understand better how users are using it. However, stealthly and by-default "phone home" type of behavior without asking consent from users will be frawned upon.
+
+Guidelines:
+
+- Let the users know which data will be collected and what are you doing with it.
+- Be mindful about privacy concerns and collecting potentially personal identifyable information.
+- How, where and for which period of time is data stored.
+
+References for other CLIs which collect analytics are [Angular CLI](https://angular.io/analytics), and [Next.js](https://nextjs.org/telemetry) CLI.
+
+# 9 Appendix: CLI Frameworks
+
+### 9.1 CLI Frameworks Table
+
+| Name     | Description                                                                                                               | npm                                                   | GitHub                                                     | Stars and downloads                                                                                           |
+| -------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| oclif    | A framework for building a command line interface.                                                                        | [Link to npm](https://www.npmjs.com/package/oclif)    | [Link to GitHub](https://github.com/oclif/oclif)           | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)              |
+| inquirer | A collection of common interactive command line user interfaces.                                                          | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js) | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg) |
+| ink      | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink)      | [Link to Github](https://github.com/vadimdemedes/ink)      | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)           |
+| blessed  | A curses-like library with a high level terminal interface API for node.js.                                               | [Link to npm](https://www.npmjs.com/package/blessed)  | [Link to GitHub](https://github.com/chjj/blessed)          | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)           |
+| prompts  | Lightweight, beautiful and user-friendly interactive prompts                                                              | [Link to npm](https://npmjs.org/package/prompts)      | [Link to GitHub](https://github.com/terkelg/prompts)       | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)        |
+
+
+# 10 Appendix: CLI educational resources
+* https://clig.dev/
+* https://primer.style/cli/getting-started/principles
+
+<!-- markdownlint-disable -->
+
+
+<!-- markdownlint-enable -->
 
 ---
 
