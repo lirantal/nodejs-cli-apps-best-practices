@@ -16,7 +16,7 @@
 ### 特点:
 
 - ✅ 29 种构建成功的 Node.js CLI 应用程序的最佳实践
-- ✅ 用不同语言阅读: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), 或者帮忙翻译其他语言: [ [🇩🇪](./README-de.md) , ... ]
+- ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 欢迎贡献
 
 <!-- Shields -->
