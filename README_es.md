@@ -24,7 +24,10 @@ En esta guía he recopilado una lista con las mejores prácticas en distintos en
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
 <img src="https://badgen.net/badge/Last%20Update/Jan%202021/green" />
 <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
-  <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" style="margin:8px;" alt="Node.js CLI Apps Best Practices"/>
+  <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" alt="Node.js CLI Apps Best Practices"/>
+</a>
+<a href="https://crowdin.com/project/nodejs-cli-apps-best-practices" target="_blank">
+  <img src="https://badges.crowdin.net/nodejs-cli-apps-best-practices/localized.svg"/>
 </a>
 </p>
 
