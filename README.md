@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
 - 9 Appendix: CLI Frameworks
   - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
+- 10 Appendix: CLI educational resources
 
 ---
 
@@ -946,8 +947,10 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 
 
 # 10 Appendix: CLI educational resources
+
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
+* [@simonplend](https://twitter.com/simonplend)'s [workshop on crafting human friendly CLIs](https://github.com/simonplend/workshop-crafting-human-friendly-clis)
 
 <!-- markdownlint-disable -->
 
