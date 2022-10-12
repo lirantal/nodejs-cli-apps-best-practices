@@ -950,7 +950,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
-* [@simonplend](https://twitter.com/simonplend)'s [workshop on crafting human friendly CLIs](https://github.com/simonplend/workshop-crafting-human-friendly-clis)
+* [@simonplend](https://twitter.com/simonplend) and [@dolearning](https://twitter.com/dolearning/)'s [workshop on crafting human friendly CLIs](https://github.com/simonplend/workshop-crafting-human-friendly-clis)
 
 <!-- markdownlint-disable -->
 
