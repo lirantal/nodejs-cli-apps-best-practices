@@ -861,8 +861,8 @@ try {
 | inquire | 一个通用交互式命令行用户界面。                                              | [前往 npm](https://www.npmjs.com/package/inquirer) | [前往Github](https://github.com/SBoudrias/Inquirer.js) | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg) |
 | ink     | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。              | [前往 npm](https://www.npmjs.com/package/ink)      | [前往Github](https://github.com/vadimdemedes/ink)      | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)           |
 | blessed | 一个类似曲线的库，为node.js设置一个高级终端界面 API 。                            | [前往 npm](https://www.npmjs.com/package/blessed)  | [前往Github](https://github.com/chjj/blessed)          | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)           |
-| prompts | Lightweight, beautiful and user-friendly interactive prompts | [Link to npm](https://npmjs.org/package/prompts) | [Link to GitHub](https://github.com/terkelg/prompts) | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)        |
-
+| prompts | Lightweight, beautiful and user-friendly interactive prompts | [前往 npm](https://npmjs.org/package/prompts) | [前往Github](https://github.com/terkelg/prompts) | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)        |
+| vue-termui  | 一个基于Vue.js的终端UI框架，帮助用户轻松构建现代终端应用。 | [前往 npm](https://www.npmjs.org/package/vue-termui)      | [前往Github](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
 
 # 10 附录：CLI 教育资源
 * https://clig.dev/
