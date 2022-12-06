@@ -944,7 +944,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 | ink | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink) | [Link to Github](https://github.com/vadimdemedes/ink) | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)
 |blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to GitHub](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
 | prompts | Lightweight, beautiful and user-friendly interactive prompts | [Link to npm](https://npmjs.org/package/prompts) | [Link to GitHub](https://github.com/terkelg/prompts) | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)
-
+| vue-termui  | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)      | [Link to GitHub](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
 
 # 10 Appendix: CLI educational resources
 
