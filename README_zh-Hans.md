@@ -124,6 +124,7 @@
   - 8.1 [严格选择加入分析](#81-严格选择加入分析)
 - 9 附录: CLI 框架
   - 9.1 [CLI 框架表](#91-cli-frameworks-table)
+- 10 Appendix: CLI educational resources
 
 ---
 
@@ -158,7 +159,7 @@
 
 - 可以在帮助或示例中将选项参数或选项标记为方括号（ `[]` ）表示它们是可选的，或带有尖括号（ `<>` ）表示它们是必需的。
 - 允许使用短格式的单个字母参数作为长格式参数的别名(请参阅[GNU 编码标准](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
-- 使用缩写形式单数指定的选项 `-` 可以包含一个字母数字字符。
+- options specified using the short form singular `-` may contain one alphanumeric character.
 - 指定多个没有值的选项可以进行分组，例如 `myCli -abc` 等效于 `myCli -a -b -c`。
 
 命令行高级用户希望您的命令行应用程序具有与其他 Unix 应用程序类似的约定。
@@ -855,18 +856,20 @@ try {
 
 ### 9.1 CLI 框架表
 
-| 名称      | 简介                                                           | npm                                              | GitHub                                               | 关注以及下载量                                                                                                       |
-| ------- | ------------------------------------------------------------ | ------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| oclif   | 构建命令行界面的框架。                                                  | [前往 npm](https://www.npmjs.com/package/oclif)    | [前往Github](https://github.com/oclif/oclif)           | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)              |
-| inquire | 一个通用交互式命令行用户界面。                                              | [前往 npm](https://www.npmjs.com/package/inquirer) | [前往Github](https://github.com/SBoudrias/Inquirer.js) | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg) |
-| ink     | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。              | [前往 npm](https://www.npmjs.com/package/ink)      | [前往Github](https://github.com/vadimdemedes/ink)      | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)           |
-| blessed | 一个类似曲线的库，为node.js设置一个高级终端界面 API 。                            | [前往 npm](https://www.npmjs.com/package/blessed)  | [前往Github](https://github.com/chjj/blessed)          | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)           |
-| prompts | Lightweight, beautiful and user-friendly interactive prompts | [前往 npm](https://npmjs.org/package/prompts) | [前往Github](https://github.com/terkelg/prompts) | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)        |
-| vue-termui  | 一个基于Vue.js的终端UI框架，帮助用户轻松构建现代终端应用。 | [前往 npm](https://www.npmjs.org/package/vue-termui)      | [前往Github](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
+| 名称         | 简介                                                                                                    | npm                                                     | GitHub                                                       | 关注以及下载量                                                                                                           |
+| ---------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| oclif      | 构建命令行界面的框架。                                                                                           | [前往 npm](https://www.npmjs.com/package/oclif)           | [前往Github](https://github.com/oclif/oclif)                   | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                  |
+| inquire    | 一个通用交互式命令行用户界面。                                                                                       | [前往 npm](https://www.npmjs.com/package/inquirer)        | [前往Github](https://github.com/SBoudrias/Inquirer.js)         | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)     |
+| ink        | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。                                                       | [前往 npm](https://www.npmjs.com/package/ink)             | [前往Github](https://github.com/vadimdemedes/ink)              | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)               |
+| blessed    | 一个类似曲线的库，为node.js设置一个高级终端界面 API 。                                                                     | [前往 npm](https://www.npmjs.com/package/blessed)         | [前往Github](https://github.com/chjj/blessed)                  | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)               |
+| prompts    | Lightweight, beautiful and user-friendly interactive prompts                                          | [Link to npm](https://npmjs.org/package/prompts)        | [Link to GitHub](https://github.com/terkelg/prompts)         | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)            |
+| vue-termui | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui) | [Link to GitHub](https://github.com/vue-terminal/vue-termui) | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg) |
 
 # 10 附录：CLI 教育资源
+
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
+* [@simonplend](https://twitter.com/simonplend) and [@dolearning](https://twitter.com/dolearning/)'s [workshop on crafting human friendly CLIs](https://github.com/simonplend/workshop-crafting-human-friendly-clis)
 
 <!-- markdownlint-disable -->
 

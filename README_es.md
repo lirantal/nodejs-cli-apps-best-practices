@@ -124,6 +124,7 @@ Gracias a estas maravillosas personas ([emoji key](https://allcontributors.org/d
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
 - 9 Appendix: CLI Frameworks
   - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
+- 10 Appendix: CLI educational resources
 
 ---
 
@@ -158,7 +159,7 @@ Algunos ejemplos de comportamiento:
 
 - Argumentos de opción u opciones se pueden anotar en la ayuda y/o en ejemplos con corchetes (`[]`) para indicar que son opcionales, o con corchetes angulares (`<>`) para indicar que son obligatorios.
 - allow short-form single letter arguments as aliases for long-form arguments (see reference from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
-- Opciones especificadas utilizando la forma abreviada singular `-` puede contener un carácter alfanumérico.
+- options specified using the short form singular `-` may contain one alphanumeric character.
 - Especificación de múltiples opciones sin valores pueden ser agrupadas como `myCli -abc` siendo equivalente a `myCli -a -b -c`.
 
 Los usuarios avanzados con la línea de comando esperarán que su aplicación de línea de comando tenga convenciones similares a otras aplicaciones de Unix.
@@ -855,18 +856,20 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 
 ### 9.1 CLI Frameworks Table
 
-| Name     | Description                                                                                                               | npm                                                   | GitHub                                                     | Stars and downloads                                                                                           |
-| -------- | ------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------- | ---------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| oclif    | A framework for building a command line interface.                                                                        | [Link to npm](https://www.npmjs.com/package/oclif)    | [Link to GitHub](https://github.com/oclif/oclif)           | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)              |
-| inquirer | A collection of common interactive command line user interfaces.                                                          | [Link to npm](https://www.npmjs.com/package/inquirer) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js) | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg) |
-| ink      | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink)      | [Link to Github](https://github.com/vadimdemedes/ink)      | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)           |
-| blessed  | A curses-like library with a high level terminal interface API for node.js.                                               | [Link to npm](https://www.npmjs.com/package/blessed)  | [Link to GitHub](https://github.com/chjj/blessed)          | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)           |
-| prompts  | Lightweight, beautiful and user-friendly interactive prompts                                                              | [Link to npm](https://npmjs.org/package/prompts)      | [Link to GitHub](https://github.com/terkelg/prompts)       | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)        |
-| vue-termui  | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)      | [Link to GitHub](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
+| Name       | Description                                                                                                               | npm                                                     | GitHub                                                       | Stars and downloads                                                                                               |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| oclif      | A framework for building a command line interface.                                                                        | [Link to npm](https://www.npmjs.com/package/oclif)      | [Link to GitHub](https://github.com/oclif/oclif)             | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                  |
+| inquirer   | A collection of common interactive command line user interfaces.                                                          | [Link to npm](https://www.npmjs.com/package/inquirer)   | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js)   | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)     |
+| ink        | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink)        | [Link to Github](https://github.com/vadimdemedes/ink)        | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)               |
+| blessed    | A curses-like library with a high level terminal interface API for node.js.                                               | [Link to npm](https://www.npmjs.com/package/blessed)    | [Link to GitHub](https://github.com/chjj/blessed)            | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)               |
+| prompts    | Lightweight, beautiful and user-friendly interactive prompts                                                              | [Link to npm](https://npmjs.org/package/prompts)        | [Link to GitHub](https://github.com/terkelg/prompts)         | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)            |
+| vue-termui | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease.                     | [Link to npm](https://www.npmjs.org/package/vue-termui) | [Link to GitHub](https://github.com/vue-terminal/vue-termui) | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg) |
 
 # 10 Appendix: CLI educational resources
+
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
+* [@simonplend](https://twitter.com/simonplend) and [@dolearning](https://twitter.com/dolearning/)'s [workshop on crafting human friendly CLIs](https://github.com/simonplend/workshop-crafting-human-friendly-clis)
 
 <!-- markdownlint-disable -->
 
