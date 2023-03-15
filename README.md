@@ -945,6 +945,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 |blessed |A curses-like library with a high level terminal interface API for node.js.| [Link to npm](https://www.npmjs.com/package/blessed) | [Link to GitHub](https://github.com/chjj/blessed) | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)
 | prompts | Lightweight, beautiful and user-friendly interactive prompts | [Link to npm](https://npmjs.org/package/prompts) | [Link to GitHub](https://github.com/terkelg/prompts) | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)
 | vue-termui  | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)      | [Link to GitHub](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
+| clack       | Effortlessly build beautiful command-line apps   | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)
 
 # 10 Appendix: CLI educational resources
 
