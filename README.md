@@ -15,7 +15,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 
 ### Features:
 
-- ✅ 29 best practices for building successful Node.js CLI applications
+- ✅ 36 best practices for building successful Node.js CLI applications
 - ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Contributions are welcome
 
@@ -123,15 +123,15 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 - 8 Analytics
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
 - 9 Versioning
-  - 9.1 [Include a `--version` Flag]()
-  - 9.2 [Use Semantic Versioning]()
-  - 9.3 [Provide Version Information in a 'package.json' file]()
-  - 9.4 [Display Version in Error Messages and Help Text]()
-  - 9.5 [Backward Compatibility]()
-  - 9.6 [Publish Versioned Releases on npm]()
-  - 9.7 [Update Your App's Version Documents]()
+  - 9.1 [Include a `--version` Flag](#91-include-a---version-flag)
+  - 9.2 [Use Semantic Versioning](#92-use-semantic-versioning)
+  - 9.3 [Provide Version Information in a 'package.json' file](#93-provide-version-information-in-a-packagejson-file)
+  - 9.4 [Display Version in Error Messages and Help Text](#94-display-version-in-error-messages-and-help-text)
+  - 9.5 [Backward Compatibility](#95-backward-compatibility)
+  - 9.6 [Publish Versioned Releases on npm](#96-publish-versioned-releases-on-npm)
+  - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Appendix: CLI Frameworks
-  - 10.1 [CLI Frameworks Table](#91-cli-frameworks-table)
+  - 10.1 [CLI Frameworks Table](#101-cli-frameworks-table)
 - 11 Appendix: CLI educational resources
 
 ---
@@ -947,13 +947,13 @@ Following these best practices for version information in Node.js CLI apps enhan
 
 In this section:
 
-- 9.1 [Include a `--version` Flag]()
-- 9.2 [Use Semantic Versioning]()
-- 9.3 [Provide Version Information in a 'package.json' file]()
-- 9.4 [Display Version in Error Messages and Help Text]()
-- 9.5 [Backward Compatibility]()
-- 9.6 [Publish Versioned Releases on npm]()
-- 9.7 [Update Your App's Version Documents]()
+- 9.1 [Include a `--version` Flag](#91-include-a---version-flag)
+- 9.2 [Use Semantic Versioning](#92-use-semantic-versioning)
+- 9.3 [Provide Version Information in a 'package.json' file](#93-provide-version-information-in-a-packagejson-file)
+- 9.4 [Display Version in Error Messages and Help Text](#94-display-version-in-error-messages-and-help-text)
+- 9.5 [Backward Compatibility](#95-backward-compatibility)
+- 9.6 [Publish Versioned Releases on npm](#96-publish-versioned-releases-on-npm)
+- 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 
 ### 9.1. Include a `--version` Flag
 
