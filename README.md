@@ -122,9 +122,17 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 7.3 [Use the files field](#73-use-the-files-field)
 - 8 Analytics
   - 8.1 [Strict Opt-in Analytics](#81-strict-opt-in-analytics)
-- 9 Appendix: CLI Frameworks
-  - 9.1 [CLI Frameworks Table](#91-cli-frameworks-table)
-- 10 Appendix: CLI educational resources
+- 9 Versioning
+  - 9.1 [Include a `--version` Flag]()
+  - 9.2 [Use Semantic Versioning]()
+  - 9.3 [Provide Version Information in a 'package.json' file]()
+  - 9.4 [Display Version in Error Messages and Help Text]()
+  - 9.5 [Backward Compatibility]()
+  - 9.6 [Publish Versioned Releases on npm]()
+  - 9.7 [Update Your App's Version Documents]()
+- 10 Appendix: CLI Frameworks
+  - 10.1 [CLI Frameworks Table](#91-cli-frameworks-table)
+- 11 Appendix: CLI educational resources
 
 ---
 
@@ -933,9 +941,115 @@ Guidelines:
 
 References for other CLIs which collect analytics are [Angular CLI](https://angular.io/analytics), and [Next.js](https://nextjs.org/telemetry) CLI.
 
-# 9 Appendix: CLI Frameworks
+# 9 Versioning
 
-### 9.1 CLI Frameworks Table
+Following these best practices for version information in Node.js CLI apps enhances user experience, facilitates debugging, and ensures efficient project management. 
+
+In this section:
+
+- 9.1 [Include a `--version` Flag]()
+- 9.2 [Use Semantic Versioning]()
+- 9.3 [Provide Version Information in a 'package.json' file]()
+- 9.4 [Display Version in Error Messages and Help Text]()
+- 9.5 [Backward Compatibility]()
+- 9.6 [Publish Versioned Releases on npm]()
+- 9.7 [Update Your App's Version Documents]()
+
+### 9.1. Include a `--version` Flag
+
+✅ **Do:** 
+Use a proper flag to allow users to check the application's version easily.
+
+❌ **Otherwise:** 
+Users won't know which version they are using, making it challenging to track updates or report issues accurately.
+
+ℹ️ **Details**
+
+As the maintainer of the CLI project, you need to implement a functionality to display the program's version on standard output with the proper flag without any argument, and exit from the program(often also prints compiled-in configuration details as well). You can also use the `-V` as the short flag.
+
+Example:
+
+```sh
+$ my-cli-tool --version
+
+my-cli-tool version 11.0.5, build 11.0.5-0ubuntu1~22.04.1
+```
+
+### 9.2. Use Semantic Versioning
+
+✅ **Do:** 
+Like other projects, use the SemVer format. It provides a clear, standardized way to convey version information, making it easier for users to understand the significance of updates.
+
+❌ **Otherwise:** 
+Users might not understand the impact of updates, leading to confusion or unexpected behavior.
+
+### 9.3. Provide Version Information in a 'package.json' file
+
+✅ **Do:** 
+Try to add version information in `package.json` file because this ensures consistency across your project and makes it easy to automate version updates.
+
+❌ **Otherwise:** 
+You and your program's users will face difficulty in tracking dependencies and managing the project's version.
+
+ℹ️ **Details**
+
+Tools like `npm` or `yarn` offer version management features that simplify handling dependencies and versioning.
+
+> 👍 Tip
+>
+> Use the option of automating version increments that these tools bring, (e.g., `npm version`) to reduce the risk of human error and streamline the release process
+
+### 9.4. Display Version in Error Messages and Help Text
+
+✅ **Do:** 
+Provide the version in error messages so that users can include version information when reporting issues, aiding debugging and support.
+
+❌ **Otherwise:** 
+Debugging becomes more challenging, and users might not know which version to reference when seeking help or even when they use your program as a dependency on other programs.
+   
+### 9.5. Backward Compatibility
+
+✅ **Do:** 
+Ensuring backward compatibility with older versions of your app allows users to upgrade without breaking their workflows.
+
+❌ **Otherwise:** 
+Frequent updates that break compatibility can frustrate users and hinder adoption.
+
+ℹ️ **Details**
+
+Ensure that, even when you remove any functionality or change the format of input/outputs, you come with some description for the user. 
+
+> 👍 Tip
+>
+> Use the document pages to provide an overview of features that are deprecated or soon going to be deprecated and their replacements. Display a message to your users and ask them to learn about the end of support for features by referring to the release notes.
+
+Example:
+
+```sh
+DEPRECATED: The blah-blah-feat is deprecated and will be removed in a future release.
+            Install the blah-feat component to do the blah:
+            <https://url/to/docs>
+```
+
+### 9.6. Publish Versioned Releases on npm
+
+✅ **Do:** 
+Publish your app on npm with version tags enabling users to easily install specific versions.
+
+❌ **Otherwise:** 
+Users can't access previous versions, which might be necessary for compatibility or troubleshooting.
+
+### 9.7. Update Your App's Version Documents
+
+✅ **Do:** 
+Inform users about changes, enhancements, and bug fixes in each version by providing clear release notes; A changelog helps users understand what has changed between versions and whether it affects their use case.
+
+❌ **Otherwise:** 
+Users won't know what to expect in new versions, which can lead to frustration or confusion. They also may struggle to assess whether they should upgrade or not.
+
+# 10 Appendix: CLI Frameworks
+
+### 10.1 CLI Frameworks Table
 
 | Name  | Description | npm | GitHub | Stars and downloads |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -949,7 +1063,7 @@ References for other CLIs which collect analytics are [Angular CLI](https://angu
 | vue-termui  | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)      | [Link to GitHub](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
 | clack       | Effortlessly build beautiful command-line apps   | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)
 
-# 10 Appendix: CLI educational resources
+# 11 Appendix: CLI educational resources
 
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
