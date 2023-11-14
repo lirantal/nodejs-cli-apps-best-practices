@@ -22,7 +22,7 @@
 <!-- Shields -->
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
-<img src="https://badgen.net/badge/Last%20Update/Jan%202021/green" />
+<img src="https://badgen.net/badge/Last%20Update/Oct%202023/green" />
 <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
   <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" alt="Node.js CLI Apps Best Practices"/>
 </a>
