@@ -226,12 +226,6 @@ Most terminals used today to interact with command line applications support col
 
 A colorful display in your command line application output may further contribute to a richer experience and increased interaction. That said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output. Even outside of build servers, a CLI may be used through an IDE's console that may not handle certain characters. Manual opt-out must be available.
 
-Reference projects:
-
-- [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
-- [kleur](https://www.npmjs.com/package/kleur)
-
 📦 **Recommended packages**
 
 Reference to Open Source Node.js packages:
