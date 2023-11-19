@@ -218,12 +218,6 @@ La mayoría de los terminales utilizados hoy en día para interactuar con aplica
 
 Una pantalla con color en la salida puede contribuir aún más a una experiencia más rica y a una mayor interacción. Dicho esto, los terminales no compatibles pueden experimentar una salida en forma de información confusa. Además, se puede usar una CLI en trabajos de compilación con integración continua que puede no admitir resultados coloreados. Incluso fuera de los servidores de compilación, se puede usar una CLI a través de la consola de un IDE que puede no manejar ciertos caracteres. La exclusión manual debe estar disponible.
 
-Proyectos de referencia:
-
-- [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
-- [kleur](https://www.npmjs.com/package/kleur)
-
 📦 **Paquetes recomendados**
 
 Paquetes de referencia Open Source para Node.js:
@@ -711,7 +705,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **De lo contrario:** Es posible que los usuarios que se enfrenten a mensajes de error, sin indicios de la acción a realizar para resolver el error, no puedan usar con éxito su aplicación CLI.
 
-ℹ️ **Details**
+ℹ️ **Detalles**
 
 Ejemplo:
 
@@ -727,7 +721,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **De lo contrario:** No omita las opciones de depuración. Será más difícil recopilar feedback de los usuarios y determinar la causa de los errores.
 
-ℹ️ **Detalles**
+ℹ️ **Details**
 
 Utilice variables de entorno, así como argumentos de línea de comandos para establecer la depuración y activar niveles de verbosidad. Donde tenga sentido en su código, coloque mensajes de depuración que ayuden al usuario y a los colaboradores a comprender el flujo del programa, las entradas y salidas y otras piezas de información que faciliten la resolución de problemas.
 
