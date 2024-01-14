@@ -15,14 +15,14 @@ In this guide I have compiled a list of best practices across areas of focus whi
 
 ### Features:
 
-- ✅ 36 best practices for building successful Node.js CLI applications
+- ✅ 37 best practices for building successful Node.js CLI applications
 - ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Contributions are welcome
 
 <!-- Shields -->
 <p align="center">
 <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img src="https://badgen.net/badge/License/CC BY-SA 4.0/green"/></a>
-<img src="https://badgen.net/badge/Last%20Update/Oct%202023/green" />
+<img src="https://badgen.net/badge/Last%20Update/Jan%202024/green" />
 <a href="https://www.github.com/lirantal/nodejs-cli-apps-best-practices" target="_blank">
   <img src="https://badgen.net/badge/Node.js CLI Apps/Best Practices/purple" alt="Node.js CLI Apps Best Practices"/>
 </a>
