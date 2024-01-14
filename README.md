@@ -130,9 +130,11 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 9.5 [Backward Compatibility](#95-backward-compatibility)
   - 9.6 [Publish Versioned Releases on npm](#96-publish-versioned-releases-on-npm)
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
-- 10 Appendix: CLI Frameworks
-  - 10.1 [CLI Frameworks Table](#101-cli-frameworks-table)
-- 11 Appendix: CLI educational resources
+- 10 Security
+  - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
+- 11 Appendix: CLI Frameworks
+  - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+- 12 Appendix: CLI educational resources
 
 ---
 
@@ -1041,9 +1043,37 @@ Inform users about changes, enhancements, and bug fixes in each version by provi
 ❌ **Otherwise:** 
 Users won't know what to expect in new versions, which can lead to frustration or confusion. They also may struggle to assess whether they should upgrade or not.
 
-# 10 Appendix: CLI Frameworks
+# 10 Security
 
-### 10.1 CLI Frameworks Table
+This section deals with security concerns when developing Node.js command line applications.
+
+In this section:
+
+- 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
+
+### 10.1 Minimize Argument Injection
+
+✅ **Do:**
+Carefully consider which command-line arguments are enabled by your CLI and which commands they are open to. If possible, avoid sensitive system tasks such as file system read/write.
+
+❌ **Otherwise:**
+You risk attackers exploiting command-line argument flags in your CLI to facilitate attack vectors such as file read/write, command execution, and others.
+
+ℹ️ **Details**
+
+Argument injection attacks take advantage of vulnerabilities in how command-line applications parse user input. They happen when untrusted user input gets included as part of a command that the application then executes. In argument injection, attackers specially craft the input used as arguments and parameters in the command in order to carry out malicious actions or access unauthorized data.
+
+Prior-art of security incidents in CLIs due to argument injection:
+- Vulnerability in [git-interface](https://security.snyk.io/vuln/SNYK-JS-GITINTERFACE-2774028)
+- Vulnerability in [git-pull-or-clone](https://security.snyk.io/vuln/SNYK-JS-GITPULLORCLONE-2434307)
+- Vulnerability in [ungit](https://security.snyk.io/vuln/SNYK-JS-UNGIT-2414099)
+- Vulnerability in [simple-git](https://security.snyk.io/vuln/SNYK-JS-SIMPLEGIT-2421199)
+
+References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
+
+# 11 Appendix: CLI Frameworks
+
+### 11.1 CLI Frameworks Table
 
 | Name  | Description | npm | GitHub | Stars and downloads |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
@@ -1057,7 +1087,7 @@ Users won't know what to expect in new versions, which can lead to frustration o
 | vue-termui  | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)      | [Link to GitHub](https://github.com/vue-terminal/vue-termui)       | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)        |
 | clack       | Effortlessly build beautiful command-line apps   | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)
 
-# 11 Appendix: CLI educational resources
+# 12 Appendix: CLI educational resources
 
 * https://clig.dev/
 * https://primer.style/cli/getting-started/principles
