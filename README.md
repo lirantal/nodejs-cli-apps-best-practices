@@ -361,6 +361,10 @@ The flip side of using `npm-shrinkwrap.json` is the security implications you ar
 > Use `npm shrinkwrap` command to generate the shrinkwrap lockfile, which is of the same
 > format as that of a `package-lock.json` file.
 
+Another method for vendoring dependencies is to bundle them within the published package, which has the advantage of speeding up installations as it reduces the need to resolve dependencies as well as network requests and bandwidth for download, yet it comes with the disadvantages of being an opaque box for which it is difficult to analyze the dependency tree of the project and result in security tools like Snyk, not reporting vulnerabilities (because Snyk ignores `devDependencies` by default, to reduce noise for developers)
+- Packages are declared as `devDependencies`, so that the package managers will not find any production dependencies to install.
+- The [ncc](https://www.npmjs.com/package/@vercel/ncc) is used to compile a Node.js module into a single file with all of its dependencies in-lined.
+
 References:
 
 - [Do you really know how a lockfile works for yarn and npm packages?](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
