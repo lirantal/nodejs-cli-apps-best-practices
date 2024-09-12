@@ -1,6 +1,18 @@
-<p align="center">
-  <img src=".github/node-js-cli-apps-best-practices_es.png" height="400px" />
-</p>
+<div align="center">
+  <p>
+    <a href="https://nodejs-security.com">
+      <img alt="Node.js Security" align="center" src="https://img.shields.io/badge/%F0%9F%A6%84-Learn%20Node.js%20Security%E2%86%92-gray.svg?colorA=5734F5&colorB=5734F5&style=flat" />
+    </a>
+  </p>
+  
+  ![Screenshot 2024-09-12 at 20 08 07](https://github.com/user-attachments/assets/970a97fd-16bd-4b3c-b535-ae7445b52d4c)
+
+  <p>
+    Learn Node.js Secure Coding techniques and best practices from <a href="https://www.lirantal.com">Liran Tal</a>
+  </p>
+</div>
+
+<br/>
 
 <p align="center">
   <h1 align="center">Buenas Prácticas para las Aplicaciones CLI en Node.js</h1>
@@ -45,7 +57,7 @@ Algunos de mis trabajos más recientes con la creación de aplicaciones CLI en N
       <a href="https://github.com/lirantal/dockly"><img src="https://repository-images.githubusercontent.com/71667498/d5576f00-69cd-11e9-83dd-2139ad967fdc" width="150px;" alt="dockly - Immersive terminal interface for managing docker containers and services"/><br /><sub><b>Dockly</b></sub></a><br/>Interfaz de terminal inmersiva para administrar contenedores y servicios acoplables
      </td>
      <td align="center">
-      <a href="https://github.com/lirantal/npq"><img src="https://repository-images.githubusercontent.com/114298694/73d29f00-bb7d-11e9-80f5-5f94f25a76b4" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>Instale paquetes de forma segura con npm/yarn auditándolos como parte de su proceso de instalación
+      <a href="https://github.com/lirantal/npq"><img src="https://repository-images.githubusercontent.com/114298694/d8de4222-8578-4588-80aa-6c942dc48721" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>safely install packages with npm/yarn by auditing them as part of your install process
      </td>
      <td align="center">
       <a href="https://github.com/lirantal/lockfile-lint"><img src="https://repository-images.githubusercontent.com/189734318/d2d03200-5bfb-11ea-9eb6-70144dbe2197" width="150px;" alt="lockfile-lint - Lint an npm or yarn lockfile to analyze and detect security issues"/><br /><sub><b>lockfile-lint</b></sub></a><br/>Lint para lockfile de npm o yarn para analizar y detectar problemas de seguridad
