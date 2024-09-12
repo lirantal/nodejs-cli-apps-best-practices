@@ -1,6 +1,18 @@
-<p align="center">
-  <img src=".github/node-js-cli-apps-best-practices.png" height="400px" />
-</p>
+<div align="center">
+  <p>
+    <a href="https://nodejs-security.com">
+      <img alt="Node.js Security" align="center" src="https://img.shields.io/badge/%F0%9F%A6%84-Learn%20Node.js%20Security%E2%86%92-gray.svg?colorA=5734F5&colorB=5734F5&style=flat" />
+    </a>
+  </p>
+  
+  ![Screenshot 2024-09-12 at 20 08 07](https://github.com/user-attachments/assets/970a97fd-16bd-4b3c-b535-ae7445b52d4c)
+
+  <p>
+    Learn Node.js Secure Coding techniques and best practices from <a href="https://www.lirantal.com">Liran Tal</a>
+  </p>
+</div>
+
+<br/>
 
 <p align="center">
   <h1 align="center">Node.js CLI Apps Best Practices</h1>
