@@ -28,7 +28,7 @@
 ### 特点:
 
 - ✅ 37 best practices for building successful Node.js CLI applications
-- ✅ Read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
+- ✅ 以不同语言阅读: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), 或 [帮助将](https://crowdin.com/project/nodejs-cli-apps-best-practices) 翻译成其他语言。 [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 欢迎贡献
 
 <!-- Shields -->
@@ -57,7 +57,7 @@
       <a href="https://github.com/lirantal/dockly"><img width="150px;" alt="dockly - Immersive terminal interface for managing docker containers and services" src="https://repository-images.githubusercontent.com/71667498/d5576f00-69cd-11e9-83dd-2139ad967fdc"><br><sub><b>Dockly</b></sub></a><br>用于管理 docker 容器和服务的沉浸式终端界面
      </td>
      <td align="center">
-      <a href="https://github.com/lirantal/npq"><img src="https://repository-images.githubusercontent.com/114298694/d8de4222-8578-4588-80aa-6c942dc48721" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>safely install packages with npm/yarn by auditing them as part of your install process
+      <a href="https://github.com/lirantal/npq"><img src="https://github.com/user-attachments/assets/a201d041-2ce2-4e2d-b066-1395078a83e3" width="150px;" alt="npq - safely install packages with npm/yarn by auditing them as part of your install process"/><br /><sub><b>npq</b></sub></a><br/>safely install packages with npm/yarn by auditing them as part of your install process
      </td>
      <td align="center">
       <a href="https://github.com/lirantal/lockfile-lint"><img width="150px;" alt="lockfile-lint - Lint an npm or yarn lockfile to analyze and detect security issues" src="https://repository-images.githubusercontent.com/189734318/d2d03200-5bfb-11ea-9eb6-70144dbe2197"><br><sub><b>lockfile-lint</b></sub></a><br>创建 npm 或 yarn 锁定文件以分析和检测安全问题
@@ -1005,6 +1005,7 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | prompts    | Lightweight, beautiful and user-friendly interactive prompts                                          | [Link to npm](https://npmjs.org/package/prompts)            | [Link to GitHub](https://github.com/terkelg/prompts)                             | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)            |
 | vue-termui | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)     | [前往Github](https://github.com/vue-terminal/vue-termui)                           | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg) |
 | clack      | Effortlessly build beautiful command-line apps                                                        | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)    |
+| top CLI    | Top CLI framework                                                                                     |                                                             | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                   |
 
 # 12 Appendix: CLI educational resources
 
