@@ -15,9 +15,11 @@ Always read `references/best-practices.md` before producing any output. It conta
 
 ## Determining the mode
 
-- **Audit mode**: user provides existing CLI code or files to review → produce a structured audit report
-- **Development guide mode**: user is asking how to build or implement something → proactively surface relevant practices with examples
-- **Both**: user says "review and help me improve" → audit first, then provide concrete guidance for each failing practice
+| Trigger | Mode | Action |
+|---------|------|--------|
+| User provides existing CLI code or files to review | **Audit** | Produce a structured audit report |
+| User asks how to build or implement something | **Development guide** | Surface relevant practices with examples |
+| User says "review and help me improve" | **Both** | Audit first, then provide concrete guidance for each failing practice |
 
 ---
 
@@ -140,18 +142,6 @@ When building a new CLI feature or tool, don't wait to be asked — surface rele
 2. Examine the provided files against each applicable practice
 3. Produce the structured audit report with per-section table and priority recommendations
 
-**Expected output shape:**
-```
-## Node.js CLI Best Practices Audit
-### Summary
-✅ 3 practices followed  ❌ 12 not implemented  ⚠️ 2 need attention  ➖ 20 not applicable
-### 1. Command Line Experience
-| # | Practice | Status | Finding |
-...
-### Priority recommendations
-**High priority** (user-facing or CI-breaking): ...
-```
-
 ---
 
 ### Example 2: Development guide mode (new CLI from scratch)
@@ -162,19 +152,6 @@ When building a new CLI feature or tool, don't wait to be asked — surface rele
 1. Read `references/best-practices.md`
 2. Identify all practices relevant to this CLI type (cross-platform, npm-published, table output)
 3. Organize guidance by development phase (project setup → argument design → I/O → errors → UX → versioning → security)
-
-**Expected output shape:**
-```
-## Node.js CLI best practices for [log-parser]
-### Checklist
-- [ ] §7.1 bin object in package.json
-- [ ] §4.4 Shebang: #!/usr/bin/env node
-...
-### Implementation
-[concrete, copy-pasteable code per phase]
-### Recommended packages
-- `commander` — argument parsing ...
-```
 
 ---
 
