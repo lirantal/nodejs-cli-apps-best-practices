@@ -1,11 +1,17 @@
 ---
 name: nodejs-cli-best-practices
-description: Guide and audit Node.js CLI application development against 37 established best practices covering UX, distribution, interoperability, accessibility, testing, error handling, development setup, analytics, versioning, and security. Use this skill whenever building, extending, reviewing, or scaffolding a Node.js command-line tool — including when adding commands, flags, argument parsing, error handling, color output, STDIN support, configuration precedence, exit codes, --version flags, npm distribution, or any other CLI feature. If someone is working on Node.js CLI code, this skill applies even if they don't explicitly ask about best practices. Also trigger when someone asks "how should I implement X in my CLI" or "what's the right way to do Y in a Node.js CLI".
+description: Guide and audit Node.js CLI application development against 37 established best practices covering UX, distribution, interoperability, accessibility, testing, error handling, development setup, analytics, versioning, and security. Use this skill when building, extending, reviewing, or scaffolding a Node.js CLI — including when someone says "audit my CLI", "review my CLI code", "I'm building a CLI tool", or asks about adding argument parsing, error handling, color output, STDIN, --json flags, exit codes, --version flags, or npm publishing. Applies even when best practices are not explicitly mentioned. Also trigger for "how should I implement X in my CLI" or "what's the right way to do Y in a Node.js CLI". Do NOT use for Node.js backend or API development with no CLI entry point.
+metadata:
+  version: 1.0.0
+  category: nodejs
+  tags: [nodejs, cli, best-practices, audit, command-line]
 ---
 
 This skill operates in two modes — **audit** for reviewing existing CLI code and **development guide** for building new features or tools.
 
-Read `references/best-practices.md` for the complete reference of all 37 practices, including code examples and recommended packages. Use it as your source of truth in both modes.
+## Critical
+
+Always read `references/best-practices.md` before producing any output. It contains the complete reference for all 37 practices with code examples and recommended packages. It is the source of truth for both modes — do not rely on general knowledge alone, as several practices (specific package recommendations, §X.X numbering, configuration precedence order) are specific to this guide.
 
 ## Determining the mode
 
@@ -120,3 +126,75 @@ When building a new CLI feature or tool, don't wait to be asked — surface rele
 | Configuration persistence | §1.3, §2.3 |
 | Node.js version targeting | §4.3 |
 | Analytics / telemetry | §8.1 |
+
+---
+
+## Examples
+
+### Example 1: Audit mode
+
+**User says:** "Audit my Node.js CLI against best practices. Here's my entry file and package.json."
+
+**Actions:**
+1. Read `references/best-practices.md`
+2. Examine the provided files against each applicable practice
+3. Produce the structured audit report with per-section table and priority recommendations
+
+**Expected output shape:**
+```
+## Node.js CLI Best Practices Audit
+### Summary
+✅ 3 practices followed  ❌ 12 not implemented  ⚠️ 2 need attention  ➖ 20 not applicable
+### 1. Command Line Experience
+| # | Practice | Status | Finding |
+...
+### Priority recommendations
+**High priority** (user-facing or CI-breaking): ...
+```
+
+---
+
+### Example 2: Development guide mode (new CLI from scratch)
+
+**User says:** "I'm building a Node.js CLI that parses log files and outputs a summary table. It needs to work cross-platform and I want to publish it on npm."
+
+**Actions:**
+1. Read `references/best-practices.md`
+2. Identify all practices relevant to this CLI type (cross-platform, npm-published, table output)
+3. Organize guidance by development phase (project setup → argument design → I/O → errors → UX → versioning → security)
+
+**Expected output shape:**
+```
+## Node.js CLI best practices for [log-parser]
+### Checklist
+- [ ] §7.1 bin object in package.json
+- [ ] §4.4 Shebang: #!/usr/bin/env node
+...
+### Implementation
+[concrete, copy-pasteable code per phase]
+### Recommended packages
+- `commander` — argument parsing ...
+```
+
+---
+
+### Example 3: Development guide mode (targeted feature)
+
+**User says:** "My CLI is crashing and just dumping stack traces. How do I add proper error handling?"
+
+**Actions:**
+1. Read `references/best-practices.md` sections §6.1–§6.5
+2. Surface only the directly relevant practices
+3. Provide a concrete, copy-pasteable error handling wrapper
+
+---
+
+## Common mistakes to avoid
+
+| Mistake | Why it matters | Correct approach |
+|---------|---------------|------------------|
+| Marking §4.1 (Docker) as ❌ for a small personal CLI | Docker is rarely needed; not applicable is honest | Use ➖ when the practice genuinely doesn't fit the project's scope |
+| Only auditing the entry file, ignoring package.json | Several high-impact violations (§7.1, §7.3, §2.1, §4.3) live in package.json | Always audit both the entry file and package.json when both are provided |
+| Recommending `package-lock.json` for §2.2 | The practice specifically calls for `npm-shrinkwrap.json` for published CLIs | Reference `references/best-practices.md` for the exact requirement |
+| Skipping the priority grouping in audit reports | Users need to know what to fix first, not just what's wrong | Always include High / Medium / Low priority sections with concrete fixes |
+| Providing a development guide without code examples | Prose guidance alone is not actionable | Every recommended practice should include at least one copy-pasteable code block |
