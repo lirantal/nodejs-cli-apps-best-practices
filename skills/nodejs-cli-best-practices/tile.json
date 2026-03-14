@@ -1,6 +1,6 @@
 {
   "name": "lirantal/nodejs-cli-best-practices",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": false,
   "summary": "Guide and audit Node.js CLI application development against 37 established best practices covering UX, distribution, interoperability, accessibility, testing, error handling, development setup, analytics, versioning, and security. Use this skill when building, extending, reviewing, or scaffolding a Node.js CLI — including when someone says \"audit my CLI\", \"review my CLI code\", \"I'm building a CLI tool\", or asks about adding argument parsing, error handling, color output, STDIN, --json flags, exit codes, --version flags, or npm publishing. Applies even when best practices are not explicitly mentioned. Also trigger for \"how should I implement X in my CLI\" or \"what's the right way to do Y in a Node.js CLI\". Do NOT use for Node.js backend or API development with no CLI entry point.",
   "skills": {
