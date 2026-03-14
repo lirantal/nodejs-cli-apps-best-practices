@@ -150,14 +150,14 @@
 
 ---
 
-# 1 Command Line Experience
+# 1 Опыт работы с командной строкой
 
-Этот раздел посвящен лучшим практикам создания красивых и особо удобных для пользователей CLI-приложениям на Node.js.
+Этот раздел посвящен лучшим практикам создания красивых и удобных Node.js приложений командной строки для пользователей.
 
 В этом разделе:
 
 - 1.1 [Соблюдение POSIX аргументов](#11-respect-posix-args)
-- 1.2 [Создание эмпатичных CLI](#12-build-empathic-clis)
+- 1.2 [Создание отзывчивых CLI](#12-build-empathic-clis)
 - 1.3 [Сохранение данных о состоянии](#13-stateful-data)
 - 1.4 [Обеспечение красочного опыта](#14-provide-a-colorful-experience)
 - 1.5 [Продвинутые взаимодействия](#15-rich-interactions)
@@ -167,11 +167,11 @@
 
 <br/>
 
-### 1.1 <0>Соблюдение POSIX аргументов</0>
+### 1.1 Соблюдение POSIX аргументов</0>
 
-✅ **Делай:** Используй [POSIX-совместимый](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) синтаксис командных аргументов, который широко признан в качестве стандарта для инструментов командной строки.
+✅ **Делай:** Используй [POSIX-совместимый](https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap12.html) синтаксис аргументов командной строки, который широко признан в качестве стандарта.
 
-❌ **Otherwise:** Пользователи могут разочароваться, если синтаксис для аргументов, опций или команд в CLI отличается от фактического Unix стандарта, к которому они привыкли.
+❌ **Иначе:** Пользователи могут разочароваться, если синтаксис для аргументов, опций или команд в CLI отличается от фактического Unix стандарта, к которому они привыкли.
 
 ℹ️ **Детали**
 
@@ -179,29 +179,25 @@ Unix-like operating systems popularized the use of the command line and tools su
 
 Несколько примеров ожидаемого поведения:
 
-- option-arguments or options can be notated in help or examples as square brackets (`[]`) to indicate they are optional, or with angle brackets (`<>`) to indicate they are required.
-- allow short-form single letter arguments as aliases for long-form arguments (see reference from the [GNU Coding Standards](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html)).
-- options specified using the short form singular `-` may contain one alphanumeric character.
-- specifying multiple options with no values may be grouped, such as `myCli -abc` being equivalent to `myCli -a -b -c`.
+- параметры-аргументы или опции могут быть указаны в справке или примерах в качестве квадратных скобок (`[]`), чтобы указать, что они необязательны, или в угловых скобках (`<>`), чтобы указать, что они обязательны.
+- резрешите использовать короткие аргументы, состоящие из одной буквы, в качестве псевдонимов для длинных аргументов (см. ссылку на [Стандарты кодирования GNU](https://www.gnu.org/prep/standards/html_node/Command_002dLine-Interfaces.html))
+-
+- указание нескольких параметров без значений может быть сгруппировано, например, `myCli -abc` эквивалентно `myCli -a -b -c`.
 
-Command line power-users will expect your command line application to have similar conventions as other Unix apps.
+Опытные пользователи командной строки ожидают, что ваше CLI-приложение будет иметь те же соглашения, что и другие приложения Unix.
 
 📦 **Рекомендованные библиотеки**
 
-Reference to Open Source Node.js packages:
+Ссылки на Open Source Node.js библиотеки:
 
 - [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
 
-### 1.2 Build empathic CLIs
+### 1.2 Создание отзывчивых CLI
 
-✅ **Do:** Put workflows in place that assist the user to interact with the CLI successfully, when otherwise such interactions would result in errors and frustration.
+✅ **Делай:** Внедрите рабочие процессы, которые помогают пользователю успешно взаимодействовать с интерфейсом командной строки, в противном случае такие взаимодействия приведут к ошибкам и разочарованию.
 
-❌ **Otherwise:** Failing to provide actionable assistance in supporting the user will result in frustration due to the lack of capability to operate the CLI.
-
-ℹ️ **Details**
-
-A command line interface for your program is no different than a web user interface in the sense of doing as much as you can as the program author to ensure that it is being used successfully.
+❌ **Иначе:** Неспособность оказать действенную помощь в поддержке пользователя приведет к разочарованию из-за отсутствия возможности управлять интерфейсом командной строки.
 
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input, and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successful interaction.
 
