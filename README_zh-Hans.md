@@ -27,8 +27,9 @@
 
 ### 特点:
 
+- 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
 - ✅ 37 best practices for building successful Node.js CLI applications
-- ✅ 以不同语言阅读: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), 或 [帮助将](https://crowdin.com/project/nodejs-cli-apps-best-practices) 翻译成其他语言。 [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
+- 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 欢迎贡献
 
 <!-- Shields -->
@@ -40,6 +41,9 @@
 </a>
 <a href="https://crowdin.com/project/nodejs-cli-apps-best-practices" target="_blank">
   <img src="https://badges.crowdin.net/nodejs-cli-apps-best-practices/localized.svg"/>
+</a>
+<a href="https://tessl.io/registry/lirantal/nodejs-cli-best-practices" alt="tessl">
+  <img src="https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Flirantal%2Fnodejs-cli-best-practices"/>
 </a>
 </p>
 
