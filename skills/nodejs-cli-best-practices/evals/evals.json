@@ -1,0 +1,64 @@
+{
+  "skill_name": "nodejs-cli-best-practices",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Audit my Node.js CLI tool against best practices and give me a full report of what's wrong and what to fix. The main entry file is bad-cli.js and the bad-package.json.",
+      "expected_output": "A structured audit report with a summary score, per-section findings table (status per practice), and prioritized recommendations with code fixes. Should identify violations including: wrong shebang (§4.4), manual argv parsing with non-POSIX syntax (§1.1), missing --version flag (§9.1), exit codes without values (§6.4), string path concatenation (§3.3/§7.2), hardcoded ANSI codes with no graceful degradation (§1.4/§4.2), missing --json flag (§3.2), no debug mode (§6.3), non-actionable error messages without codes (§6.1/§6.2), and package.json violations including bin as string not object (§7.1), no files field (§7.3), no engines field (§4.3), heavy dependencies (§2.1), and broken postinstall script (§3.3).",
+      "files": [
+        "evals/fixtures/bad-cli.js",
+        "evals/fixtures/bad-package.json"
+      ],
+      "assertions": [
+        {"text": "Output contains a structured summary with counts of passing/failing practices (e.g. a summary line or table header showing how many passed vs failed)"},
+        {"text": "Output identifies the wrong shebang (#!/usr/local/bin/node) as a violation and recommends #!/usr/bin/env node"},
+        {"text": "Output identifies missing --version flag as a violation (references §9.1 or --version)"},
+        {"text": "Output identifies process.exit() without exit code as a violation and recommends process.exit(0)/process.exit(1)"},
+        {"text": "Output identifies string path concatenation (e.g. __dirname + '/../...') as a violation and recommends path.join()"},
+        {"text": "Output identifies the hardcoded ANSI escape codes / lack of NO_COLOR support or TTY detection as a violation"},
+        {"text": "Output identifies the absence of a --json flag or structured output capability as a violation"},
+        {"text": "Output identifies the absence of a debug mode (no DEBUG env var or --debug flag) as a violation"},
+        {"text": "Output identifies non-actionable or codeless error messages as a violation (e.g. 'No API key configured' without instructions)"},
+        {"text": "Output identifies the package.json bin field being a string instead of an object as a violation"},
+        {"text": "Output identifies the missing files field in package.json as a violation"},
+        {"text": "Output identifies at least one heavy/deprecated dependency (e.g. moment, request, lodash) as a concern"},
+        {"text": "Output includes at least one concrete code fix example (a code block showing the corrected code)"},
+        {"text": "Output organizes or prioritizes findings by severity or impact (e.g. high/medium/low or similar grouping)"}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I'm building a new Node.js CLI tool from scratch. It will scan a project directory for outdated npm dependencies, display results in a formatted table, and support a --json flag for CI pipeline integration. It needs to work cross-platform and will be published on npm. What Node.js CLI best practices should I follow when building this?",
+      "expected_output": "A comprehensive development guide organized by phase or topic, covering: project setup (§7.1 bin object, §7.3 files field, §4.4 shebang, §2.2 shrinkwrap, §4.3 engines field), argument design (§1.1 POSIX flags including the --json flag, §1.7 zero-config, §3.4 config precedence), I/O (§3.2 structured JSON output, §4.2 graceful degradation, §3.1 STDIN), error handling (§6.1 error codes, §6.2 actionable messages, §6.4 exit codes, §6.3 debug mode), UX (§1.4 colors with NO_COLOR, §1.5 spinners), versioning (§9.1 --version flag, §9.3 package.json source of truth), security (§10.1 argument injection since this CLI runs child processes). Should include code examples and package recommendations.",
+      "files": [],
+      "assertions": [
+        {"text": "Output covers project setup: bin object in package.json (§7.1) and/or files field (§7.3) and/or shebang best practice (§4.4)"},
+        {"text": "Output covers POSIX-compliant argument design (§1.1), including mention of a proper arg parsing library (e.g. commander, yargs, meow)"},
+        {"text": "Output specifically addresses the --json flag for structured/CI output (§3.2)"},
+        {"text": "Output covers colors with graceful degradation (NO_COLOR, TTY detection, or the --no-color flag) (§1.4, §4.2)"},
+        {"text": "Output covers proper exit codes — process.exit(0) on success, process.exit(1) on failure (§6.4)"},
+        {"text": "Output covers error handling with trackable error codes or actionable messages (§6.1 or §6.2)"},
+        {"text": "Output covers the --version flag (§9.1)"},
+        {"text": "Output covers at least one cross-platform concern (path handling, shebang, or spawn behavior) (§3.3 or §4.4)"},
+        {"text": "Output includes at least 3 specific package recommendations with npm install commands or package names"},
+        {"text": "Output includes at least one concrete code example (a code block, not just prose)"},
+        {"text": "Output covers security concern about argument injection (§10.1), relevant since this CLI likely spawns child processes"}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "My Node.js CLI currently crashes with unhandled exceptions and just dumps stack traces to the user. How do I implement proper error handling following best practices?",
+      "expected_output": "Targeted guidance covering: §6.1 trackable error codes (unique codes users can look up), §6.2 actionable error messages (tell users exactly what to do, not just what failed), §6.4 proper exit codes with process.exit(1) on failure and process.exit(0) on success, §6.3 debug mode via DEBUG env var or --debug flag to expose stack traces only when requested, and optionally §6.5 effortless bug report URLs. Should include concrete, copy-pasteable code showing a robust error handling wrapper pattern.",
+      "files": [],
+      "assertions": [
+        {"text": "Output covers trackable error codes — unique codes (e.g. E4002) that users can look up in documentation (§6.1)"},
+        {"text": "Output covers actionable error messages — errors that tell the user what to do, not just what failed (§6.2)"},
+        {"text": "Output covers proper exit codes — process.exit(1) on failure, process.exit(0) on success (§6.4)"},
+        {"text": "Output covers debug mode — showing stack traces only when DEBUG env var or --debug flag is set (§6.3)"},
+        {"text": "Output includes a concrete, copy-pasteable code example of an error handling pattern (e.g. try/catch wrapping main(), or a central error handler)"},
+        {"text": "Output addresses the specific user complaint: stack traces should be hidden by default and only shown in debug mode"},
+        {"text": "Output mentions or recommends the 'debug' npm package, or describes the DEBUG=* pattern"}
+      ]
+    }
+  ]
+}
