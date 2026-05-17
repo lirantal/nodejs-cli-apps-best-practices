@@ -16,7 +16,7 @@ A quick search of existing issues helps avoid duplicates, but don't agonize over
 
 PRs are expected to meet a few baseline requirements before review:
 
-- **Tests are required** for any behavior change — new features need new tests, bug fixes need a regression test that fails without the fix.
+- **Tests are required** for any behavior change, new features need new tests, bug fixes need a regression test that fails without the fix.
 - **Existing tests must pass** locally and in CI. Don't disable or skip tests to make a PR green.
 - **Coverage should not regress.** If your change drops coverage meaningfully, add tests or explain why in the PR description.
 - **Linters and type checks must pass.** Run them locally before pushing; CI will reject otherwise.
@@ -31,7 +31,7 @@ Large or speculative changes: open an issue first to align on direction before i
 
 This project follows [Conventional Commits](https://www.conventionalcommits.org/). The format is:
 
-```
+```text
 <type>(<optional scope>): <short summary>
 ```
 
@@ -47,7 +47,7 @@ Common types:
 
 Examples:
 
-```
+```text
 feat: support multiple input files
 fix(parser): handle empty input gracefully
 docs: clarify install instructions
