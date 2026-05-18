@@ -1025,6 +1025,10 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 
 ---
 
+## Contributing
+
+Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing to this project.
+
 # Autor
 
 **Node.js CLI Apps Best Practices** © [Liran Tal](https://github.com/lirantal), Lanzado bajo la licencia [CC BY-SA 4.0](./LICENSE).
