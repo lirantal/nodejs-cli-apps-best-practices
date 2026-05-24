@@ -18,3 +18,4 @@ jobs:
         with:
           token: ${{ secrets.TESSL_API_TOKEN }}
       - run: tessl tile publish
+        # Optional: set `working-directory` on this step to publish from a subdirectory.
