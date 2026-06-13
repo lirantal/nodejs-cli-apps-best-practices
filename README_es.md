@@ -240,6 +240,7 @@ Una pantalla con color en la salida puede contribuir aún más a una experiencia
 
 Paquetes de referencia Open Source para Node.js:
 
+- [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)

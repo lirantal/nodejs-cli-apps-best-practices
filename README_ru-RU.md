@@ -236,6 +236,7 @@ A colorful display in your command line application output may further contribut
 
 Reference to Open Source Node.js packages:
 
+- [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
 - [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
