@@ -59,6 +59,16 @@
         {"text": "Output addresses the specific user complaint: stack traces should be hidden by default and only shown in debug mode"},
         {"text": "Output mentions or recommends the 'debug' npm package, or describes the DEBUG=* pattern"}
       ]
+    },
+    {
+      "id": 4,
+      "prompt": "Audit my Node.js CLI tool for security vulnerabilities, specifically looking for argument injection.",
+      "expected_output": "The audit should identify the use of unsanitized user input in child process execution (e.g., execSync, spawn) as a critical security vulnerability (§10.1). It should recommend sanitization, using array-based execution forms, or validated allowlists.",
+      "files": ["evals/fixtures/arg-injection.js"],
+      "assertions": [
+        {"text": "Output identifies the argument injection vulnerability in child_process calls (§10.1)"},
+        {"text": "Output recommends using array-based execution forms (e.g., spawn('git', ['clone', '--', input])) or validated allowlists"}
+      ]
     }
   ]
 }
