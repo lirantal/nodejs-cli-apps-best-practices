@@ -264,7 +264,7 @@
 
 对开源 Node.js 包的参考：
 
-- [enquirer](https://www.npmjs.com/package/enquirer)
+- [@inquirer/prompts](https://www.npmjs.com/package/@inquirer/prompts)
 - [ora](https://www.npmjs.com/package/ora)
 - [ink](https://www.npmjs.com/package/ink)
 - [prompts](https://www.npmjs.com/package/prompts)
@@ -1003,7 +1003,7 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | 名称         | 简介                                                                                                    | npm                                                         | GitHub                                                                           | 关注以及下载量                                                                                                           |
 | ---------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
 | oclif      | 构建命令行界面的框架。                                                                                           | [前往 npm](https://www.npmjs.com/package/oclif)               | [前往Github](https://github.com/oclif/oclif)                                       | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                  |
-| inquire    | 一个通用交互式命令行用户界面。                                                                                       | [前往 npm](https://www.npmjs.com/package/inquirer)            | [前往Github](https://github.com/SBoudrias/Inquirer.js)                             | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/inquirer.svg)     |
+| @inquirer/prompts    | 一个通用交互式命令行用户界面。                                                                                       | [前往 npm](https://www.npmjs.com/package/@inquirer/prompts)            | [前往Github](https://github.com/SBoudrias/Inquirer.js)                             | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/@inquirer/prompts.svg)     |
 | ink        | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。                                                       | [前往 npm](https://www.npmjs.com/package/ink)                 | [前往Github](https://github.com/vadimdemedes/ink)                                  | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)               |
 | pastel     | Next.js-like framework for CLIs made with Ink.                                                        | [前往 npm](https://www.npmjs.com/package/pastel)              | [Link to Github](https://github.com/vadimdemedes/pastel)                         | ![](https://img.shields.io/github/stars/vadimdemedes/pastel)![](https://img.shields.io/npm/dt/pastel.svg)         |
 | ink UI     | Collection of customizable UI components for CLIs made with Ink.                                      | [Link to npm](https://www.npmjs.com/package/@inkjs/ui)      | [Link to Github](https://github.com/vadimdemedes/ink-ui)                         | ![](https://img.shields.io/github/stars/vadimdemedes/ink-ui)![](https://img.shields.io/npm/dt/@inkjs/ui.svg)      |

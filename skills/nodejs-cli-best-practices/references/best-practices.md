@@ -24,15 +24,11 @@ All 37 practices condensed for use during audits and development guidance.
 ```js
 // Instead of: throw new Error('API key required')
 // Do: prompt when input is missing
-const { apiKey } = await inquirer.prompt([{
-  type: 'password',
-  name: 'apiKey',
-  message: 'Enter your API key:',
-  when: !options.apiKey
-}]);
+import { password } from '@inquirer/prompts';
+const apiKey = options.apiKey ?? await password({ message: 'Enter your API key:' });
 ```
 
-**Packages:** `enquirer`, `inquirer`, `prompts`
+**Packages:** `@inquirer/prompts`, `prompts`
 
 ---
 
@@ -80,7 +76,7 @@ await fetchData();
 spinner.succeed('Done');
 ```
 
-**Packages:** `enquirer`, `ora`, `ink`, `prompts`, `listr2`
+**Packages:** `@inquirer/prompts`, `ora`, `ink`, `prompts`, `listr2`
 
 ---
 
@@ -553,8 +549,7 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 | `oclif` | Large plugin-based CLIs | `npm i oclif` |
 | `meow` | Minimal single-command CLIs | `npm i meow` |
 | `ink` | React-based terminal UIs | `npm i ink` |
-| `inquirer` | Interactive prompts | `npm i inquirer` |
-| `enquirer` | Lightweight prompts | `npm i enquirer` |
+| `@inquirer/prompts` | Interactive prompts | `npm i @inquirer/prompts` |
 | `ora` | Spinners / loaders | `npm i ora` |
 | `listr2` | Task lists with progress | `npm i listr2` |
 | `chalk` | Terminal colors | `npm i chalk` |
