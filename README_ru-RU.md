@@ -194,6 +194,7 @@ Unix-like operating systems popularized the use of the command line and tools su
 
 Ссылки на Open Source Node.js библиотеки:
 
+- [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
 - [Optique](https://optique.dev/)

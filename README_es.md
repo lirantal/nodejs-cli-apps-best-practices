@@ -194,6 +194,7 @@ Los usuarios avanzados con la línea de comando esperarán que su aplicación de
 
 Paquetes de referencia Open Source para Node.js:
 
+- [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js#readme)
 - [yargs](https://github.com/yargs/yargs)
 - [Optique](https://optique.dev/)

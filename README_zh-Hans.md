@@ -194,6 +194,7 @@
 
 对开源 Node.js 包的参考：
 
+- [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js/blob/master/README_zh-Hans.md)
 - [yargs](https://github.com/yargs/yargs)
 - [Optique](https://optique.dev/)
