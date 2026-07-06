@@ -1050,4 +1050,4 @@ Este proyecto sigue las especificaciones de todos los [contribuyentes](https://g
 
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-Este trabajo está bajo una licencia Creative Commons Attribution-ShareAlike 4.0 Licencia Internacional.
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.

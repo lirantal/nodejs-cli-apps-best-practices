@@ -1050,4 +1050,4 @@ Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing 
 
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-本作品采用知识共享署名-ShareAlike 4.0 国际许可协议授权。
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
