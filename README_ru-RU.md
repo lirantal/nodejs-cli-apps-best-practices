@@ -82,17 +82,19 @@
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://github.com/0x219"><img src="https://avatars2.githubusercontent.com/u/50414099?v=4" width="100px;" alt=""/><br /><sub><b>是你吖小刘</b></sub></a><br /><a href="#translation-vvni" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://terkel.com"><img src="https://avatars2.githubusercontent.com/u/2302254?v=4" width="100px;" alt=""/><br /><sub><b>Terkel</b></sub></a><br /><a href="#content-terkelg" title="Content">🖋</a></td>
-    <td align="center"><a href="http://jasonkarns.com"><img src="https://avatars2.githubusercontent.com/u/119972?v=4" width="100px;" alt=""/><br /><sub><b>Jason Karns</b></sub></a><br /><a href="#content-jasonkarns" title="Content">🖋</a></td>
-    <td align="center"><a href="https://about.me/davesag"><img src="https://avatars0.githubusercontent.com/u/387098?v=4" width="100px;" alt=""/><br /><sub><b>Dave Sag</b></sub></a><br /><a href="#maintenance-davesag" title="Maintenance">🚧</a></td>
-    <td align="center"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4" width="100px;" alt=""/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
-    <td align="center"><a href="https://twitter.com/MSuresh100"><img src="https://avatars3.githubusercontent.com/u/12813750?v=4" width="100px;" alt=""/><br /><sub><b>Sureshraj</b></sub></a><br /><a href="#content-m-sureshraj" title="Content">🖋</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lzm0x219"><img src="https://avatars2.githubusercontent.com/u/50414099?v=4?s=100" width="100px;" alt="Ming"/><br /><sub><b>Ming</b></sub></a><br /><a href="#translation-lzm0x219" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://terkel.com"><img src="https://avatars2.githubusercontent.com/u/2302254?v=4?s=100" width="100px;" alt="Terkel"/><br /><sub><b>Terkel</b></sub></a><br /><a href="#content-terkelg" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://jasonkarns.com"><img src="https://avatars2.githubusercontent.com/u/119972?v=4?s=100" width="100px;" alt="Jason Karns"/><br /><sub><b>Jason Karns</b></sub></a><br /><a href="#content-jasonkarns" title="Content">🖋</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://about.me/davesag"><img src="https://avatars0.githubusercontent.com/u/387098?v=4?s=100" width="100px;" alt="Dave Sag"/><br /><sub><b>Dave Sag</b></sub></a><br /><a href="#maintenance-davesag" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://josejpr.com"><img src="https://avatars0.githubusercontent.com/u/12954959?v=4?s=100" width="100px;" alt="José J. Pérez Rivas"/><br /><sub><b>José J. Pérez Rivas</b></sub></a><br /><a href="#translation-JoseJPR" title="Translation">🌍</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://twitter.com/MSuresh100"><img src="https://avatars3.githubusercontent.com/u/12813750?v=4?s=100" width="100px;" alt="Sureshraj"/><br /><sub><b>Sureshraj</b></sub></a><br /><a href="#content-m-sureshraj" title="Content">🖋</a></td>
+    </tr>
+  </tbody>
 </table>
 
-<!-- markdownlint-enable -->
+<!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
@@ -1041,9 +1043,7 @@ This project follows the [all-contributors](https://github.com/all-contributors/
 
 <!-- Project Logo -->
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
 [![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
-
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # License

@@ -1,15 +1,18 @@
 {
   "files": [
-    "README.md"
+    "README.md",
+    "README_es.md",
+    "README_ru-RU.md",
+    "README_zh-Hans.md"
   ],
   "imageSize": 100,
   "commit": false,
   "contributors": [
     {
-      "login": "0x219",
-      "name": "是你呀小刘",
+      "login": "lzm0x219",
+      "name": "Ming",
       "avatar_url": "https://avatars2.githubusercontent.com/u/50414099?v=4",
-      "profile": "https://github.com/0x219",
+      "profile": "https://github.com/lzm0x219",
       "contributions": [
         "translation"
       ]
