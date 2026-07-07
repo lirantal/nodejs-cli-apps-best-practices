@@ -1,6 +1,6 @@
 # Node.js CLI Best Practices — Reference
 
-All 37 practices condensed for use during audits and development guidance.
+All 38 practices condensed for use during audits and development guidance.
 
 ---
 
@@ -33,13 +33,18 @@ const { values, positionals } = parseArgs({
 ---
 
 ### §1.2 Build empathic CLIs
-**Rule:** When the user omits required input, don't just error — prompt them interactively to recover.
+**Rule:** When the user omits required input, don't just error — prompt them interactively to recover when the command is running in an interactive terminal. In CI, scripts, and pipelines, fail with an actionable message instead.
 
 ```js
 // Instead of: throw new Error('API key required')
-// Do: prompt when input is missing
+// Do: prompt when input is missing and prompting is safe
 import { password } from '@inquirer/prompts';
-const apiKey = options.apiKey ?? await password({ message: 'Enter your API key:' });
+
+const isInteractive = process.stdin.isTTY && process.stdout.isTTY && !process.env.CI;
+
+if (!options.apiKey && isInteractive) {
+  options.apiKey = await password({ message: 'Enter your API key:' });
+}
 ```
 
 **Packages:** `@inquirer/prompts`, `prompts`
@@ -176,7 +181,7 @@ if (!process.stdin.isTTY) {
   const rl = require('readline').createInterface({ input: process.stdin });
   rl.on('line', (line) => processLine(line));
 } else {
-  // use --file argument or prompt
+  // use --file argument or prompt only if §3.5 allows interactivity
 }
 ```
 
@@ -240,6 +245,29 @@ childProcess.spawn('node', ['program.js'])
 5. System-level config (`/etc/myapp`)
 
 **Packages:** `cosmiconfig` (handles config file discovery automatically)
+
+---
+
+### §3.5 Gate interactive behavior
+**Rule:** Only prompt when `stdin` and `stdout` are interactive TTYs and the command is not running in CI or `--no-input` mode. Never consume piped STDIN as prompt answers unless the command is explicitly designed to process STDIN.
+
+```js
+const isInteractive =
+  process.stdin.isTTY &&
+  process.stdout.isTTY &&
+  !process.env.CI &&
+  !options.noInput;
+
+if (!options.projectName) {
+  if (isInteractive) {
+    options.projectName = await promptForProjectName();
+  } else {
+    throw new Error('Missing project name. Pass --project-name or set MYCLI_PROJECT_NAME.');
+  }
+}
+```
+
+**Violation pattern:** A CLI starts prompting when run in CI, cron, or after `cat data.json | mycli`, causing the process to hang or treating piped data as user input.
 
 ---
 
