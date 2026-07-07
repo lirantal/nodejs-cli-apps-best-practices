@@ -33,7 +33,7 @@
       "files": [],
       "assertions": [
         {"text": "Output covers project setup: bin object in package.json (§7.1) and/or files field (§7.3) and/or shebang best practice (§4.4)"},
-        {"text": "Output covers POSIX-compliant argument design (§1.1), including mention of a proper arg parsing library (e.g. commander, yargs, meow)"},
+        {"text": "Output covers POSIX-compliant argument design (§1.1), including mention of a proper arg parsing option (e.g. node:util parseArgs, commander, yargs, Optique)"},
         {"text": "Output specifically addresses the --json flag for structured/CI output (§3.2)"},
         {"text": "Output covers colors with graceful degradation (NO_COLOR, TTY detection, or the --no-color flag) (§1.4, §4.2)"},
         {"text": "Output covers proper exit codes — process.exit(0) on success, process.exit(1) on failure (§6.4)"},
