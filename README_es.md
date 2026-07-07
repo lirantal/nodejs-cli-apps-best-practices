@@ -192,9 +192,30 @@ Algunos ejemplos de comportamiento:
 
 Los usuarios avanzados con la línea de comando esperarán que su aplicación de línea de comando tenga convenciones similares a otras aplicaciones de Unix.
 
+For small and medium CLIs that target modern Node.js, start with `parseArgs()` from `node:util` before adding a runtime dependency. It parses `process.argv` into structured `values` and `positionals`, supports long and short flags, default values, repeated options, strict validation, and boolean negation with `--no-` when enabled. Reach for CLI frameworks such as `commander`, `yargs`, or `Optique` when you need subcommands, generated help, shell completion, coercion, or plugin-style composition.
+
+Ejemplo:
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    help: { type: 'boolean', short: 'h' },
+    json: { type: 'boolean' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+
+if (values.help) {
+  // print help and exit
+}
+```
+
 📦 **Paquetes recomendados**
 
-Paquetes de referencia Open Source para Node.js:
+Reference options:
 
 - [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js#readme)
@@ -240,14 +261,26 @@ La mayoría de los terminales utilizados hoy en día para interactuar con aplica
 
 Una pantalla con color en la salida puede contribuir aún más a una experiencia más rica y a una mayor interacción. Dicho esto, los terminales no compatibles pueden experimentar una salida en forma de información confusa. Además, se puede usar una CLI en trabajos de compilación con integración continua que puede no admitir resultados coloreados. Incluso fuera de los servidores de compilación, se puede usar una CLI a través de la consola de un IDE que puede no manejar ciertos caracteres. La exclusión manual debe estar disponible.
 
+For lightweight styling on modern Node.js, prefer `styleText()` from `node:util`. It formats terminal text while accounting for stream color support and the common color-control environment variables. Use third-party color packages when you need older Node.js support, a richer theming API, or compatibility with an existing styling stack.
+
+Ejemplo:
+
+```js
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
+
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
+```
+
 📦 **Paquetes recomendados**
 
-Paquetes de referencia Open Source para Node.js:
+Reference options:
 
 - [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
+- [picocolors](https://www.npmjs.com/package/picocolors)
 
 ### 1.5 Interacciones enriquecidas
 
@@ -307,7 +340,7 @@ Proyectos de referencia que se construyen bajo la idea de la Cero Configuración
 
 ❌ **De lo contrario:** Su programa no funcionará bien con otros programas y provocará un comportamiento inesperado.
 
-ℹ️ **Detalles**
+ℹ️ **Details**
 
 Especialmente para las aplicaciones CLI, es común interactuar con la entrada del usuario y una gestión inadecuada de eventos del teclado, eso puede provocar que su aplicación no responda a las interrupciones SIGINT, comúnmente utilizadas por los usuarios cuando presionan las teclas `CTRL+C`.
 
@@ -411,7 +444,7 @@ En esta sección:
 $ curl -s "https://api.example.com/data.json" | your_node_cli
 ```
 
-ℹ️ **Detalles**
+ℹ️ **Details**
 
 Si la aplicación de línea de comando funciona con datos, como realizar algún tipo de tarea en un archivo JSON que generalmente se especifica con el argumento `--file <file.json>`.
 
@@ -624,7 +657,7 @@ Hay muchas formas de empaquetar y distribuir un ejecutable, y prepararlo como un
 
 ❌ **De lo contrario:** Proveer de una salida con color, el uso de interactivos y otras interfaces enriquecidas en pantallas para los usuarios que no tienen un terminal compatible puede empeorar significativamente la experiencia del usuario final y que opten por no usar su aplicación CLI.
 
-ℹ️ **Detalles**
+ℹ️ **Details**
 
 Es común proporcionar una pantalla de terminal enriquecida en color, gráficos ascii o incluso animación en la terminal como un potente mecanismo de aviso. Estos pueden contribuir a una muy buena experiencia de usuario para aquellos que tienen un terminal compatible, sin embargo, puede mostrar texto ilegible o ser completamente inoperable para aquellos sin él.
 
@@ -718,7 +751,7 @@ Si es posible, muestre de forma extendida los mensajes de error con información
 
 Asegúrese de que, cuando se devuelvan mensajes de error, incluyan un número de referencia o códigos de error específicos que luego se puedan consultar. Al igual que los códigos de estado HTTP, las aplicaciones CLI requieren errores con nombre o códigos.
 
-Ejemplo:
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -734,7 +767,7 @@ Error (E4002): please provide an API token via environment variables
 
 ℹ️ **Detalles**
 
-Ejemplo:
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -754,7 +787,7 @@ Utilice variables de entorno, así como argumentos de línea de comandos para es
 
 📦 **Paquetes recomendados**
 
-Referencia a los paquetes Open Source para Node.js:
+Paquetes de referencia Open Source para Node.js:
 
 - [debug](https://www.npmjs.com/package/debug)
 
@@ -764,7 +797,7 @@ Referencia a los paquetes Open Source para Node.js:
 
 ❌ **De lo contrario:** Un código de salida incorrecto impedirá el uso de su CLI en flujos de integración continua y otros casos de uso de scripts de línea de comandos.
 
-ℹ️ **Detalles**
+ℹ️ **Details**
 
 Los scripts de la línea de comandos a menudo utilizan el `$?` del shell para determinar el código de estado de un programa y actuar sobre él. Esto también se utiliza en flujos de integración continua (CI) para determinar si un paso se completó con éxito o no.
 
@@ -1050,4 +1083,4 @@ Este proyecto sigue las especificaciones de todos los [contribuyentes](https://g
 
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-Este trabajo está bajo una licencia Creative Commons Attribution-ShareAlike 4.0 Licencia Internacional.
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
