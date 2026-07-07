@@ -150,8 +150,9 @@
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Security
   - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
-- 11 Appendix: CLI Frameworks
+- 11 Appendix: CLI Frameworks and Tools
   - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+  - 11.2 [CLI Tools Table](#112-cli-tools-table)
 - 12 Appendix: CLI educational resources
 
 ---
@@ -192,9 +193,30 @@
 
 命令行高级用户希望您的命令行应用程序具有与其他 Unix 应用程序类似的约定。
 
+For small and medium CLIs that target modern Node.js, start with `parseArgs()` from `node:util` before adding a runtime dependency. It parses `process.argv` into structured `values` and `positionals`, supports long and short flags, default values, repeated options, strict validation, and boolean negation with `--no-` when enabled. Reach for CLI frameworks such as `commander`, `yargs`, or `Optique` when you need subcommands, generated help, shell completion, coercion, or plugin-style composition.
+
+例子：
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    help: { type: 'boolean', short: 'h' },
+    json: { type: 'boolean' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+
+if (values.help) {
+  // print help and exit
+}
+```
+
 📦 **推荐的软件包**
 
-对开源 Node.js 包的参考：
+Reference options:
 
 - [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js/blob/master/README_zh-Hans.md)
@@ -240,14 +262,26 @@
 
 您的命令行应用程序输出中的彩色显示可能会进一步促进更丰富的体验和增强互动。 尽管如此，不受支持的终端可能会在屏幕上以累赘信息的形式出现退化的输出。 此外，CLI 可能被用于不支持彩色输出的持续集成构建作业。 如今，大多数用于与命令行应用程序交互的终端都支持彩色文本，例如通过特制 ANSI 编码字符启用的文本。 命令行应用程序输出中的彩色显示可能会进一步促进更丰富的体验和更多的交互。也就是说，不受支持的终端可能会经历屏幕上乱码信息形式的输出降级。此外，CLI 可以在可能不支持彩色输出的持续集成构建作业中使用。即使在构建服务器之外，也可以通过 IDE 的控制台使用 CLI，该控制台可能无法处理某些字符。必须可以手动选择退出。
 
+For lightweight styling on modern Node.js, prefer `styleText()` from `node:util`. It formats terminal text while accounting for stream color support and the common color-control environment variables. Use third-party color packages when you need older Node.js support, a richer theming API, or compatibility with an existing styling stack.
+
+示例：
+
+```js
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
+
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
+```
+
 📦 **推荐的软件包**
 
-对开源 Node.js 包的参考：
+Reference options:
 
 - [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
+- [picocolors](https://www.npmjs.com/package/picocolors)
 
 ### 1.5 丰富的交互
 
@@ -307,7 +341,7 @@
 
 ❌ **否则:** 您的程序不能与其他程序很好地配合，并会引入意外的行为。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 尤其是对于 CLI 应用程序，与用户输入交互是很常见的，如果管理不当，可能会导致您的应用程序无法响应 SIGINT 中断，用户在按下 `CTRL+C` 键时通常会使用 SIGINT 中断。
 
@@ -411,7 +445,7 @@ Another method for vendoring dependencies is to bundle them within the published
 $ curl -s "https://api.example.com/data.json" | your_node_cli
 ```
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 如果命令行应用程序使用数据，比如对通常使用 `--file<file.json>` 命令行参数指定的 JSON 文件执行某种任务。
 
@@ -624,7 +658,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 对于没有受支持终端的用户，使用终端交互(如提示和其他显示丰富的界面)可能会显著降低最终用户体验，并阻碍他们使用 CLI 应用程序，因为它具有丰富多彩的输出。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 通常以彩色输出的形式提供丰富的终端显示器， ascii 图表，甚至在终端和强大的快速机制上动画。 对于那些拥有支持的终端的人来说，这些可能有助于极好的用户体验，但是，对于那些没有终端的人来说，它可能会显示乱码文本或完全无法操作。
 
@@ -718,7 +752,7 @@ expect(output).to.contain("Examples:"));
 
 返回错误消息时，请确保它们包含参考号或特定的错误代码，以便以后查阅。与 HTTP 状态代码非常相似，因此 CLI 应用程序需要命名或编码错误。 就像HTTP状态码一样，CLI应用程序需要命名或编码错误。
 
-例子：
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -734,7 +768,7 @@ Error (E4002): please provide an API token via environment variables
 
 ℹ️ **详情**
 
-示例：
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -764,7 +798,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **否则:** 不正确或缺失的退出代码将阻碍 CLI 在持续集成流程和其他命令行脚本编写用例中的使用。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 命令行脚本经常利用 shell 的 `$?` 推断程序的状态码并对其执行操作。 在持续集成 (CI) 流程中也可以使用它来确定步骤是否成功完成。
 
@@ -999,7 +1033,7 @@ Prior-art of security incidents in CLIs due to argument injection:
 
 References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
 
-# 11 Appendix: CLI Frameworks
+# 11 Appendix: CLI Frameworks and Tools
 
 ### 11.1 CLI Frameworks Table
 
@@ -1017,6 +1051,14 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | top CLI           | Top CLI framework                                                                                     |                                                             | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                        |
 | termcn            | Beautiful terminal CLIs                                                                               |                                                             | [Link to GitHub](https://www.termcn.dev)                                         |                                                                                                                        |
 | Optique           | Type-safe combinatorial CLI parser for TypeScript                                                     | [Link to npm](https://www.npmjs.com/package/@optique/core)  | [Link to GitHub](https://github.com/dahlia/optique)                              |                                                                                                                        |
+
+### 11.2 CLI Tools Table
+
+CLI projects often need supporting tools beyond the libraries and frameworks used in the application code itself. These tools help with demos, documentation, release assets, and project maintenance.
+
+| Name | Description                                                                         | Install                                                                | GitHub                                                 | Use case                                                          |
+| ---- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------- |
+| VHS  | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation) | [Link to GitHub](https://github.com/charmbracelet/vhs) | Create repeatable CLI demos for READMEs, docs, and release notes. |
 
 # 12 Appendix: CLI educational resources
 
@@ -1050,4 +1092,4 @@ Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing 
 
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-本作品采用知识共享署名-ShareAlike 4.0 国际许可协议授权。
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.

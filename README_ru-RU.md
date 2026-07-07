@@ -150,8 +150,9 @@
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Security
   - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
-- 11 Appendix: CLI Frameworks
+- 11 Appendix: CLI Frameworks and Tools
   - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+  - 11.2 [CLI Tools Table](#112-cli-tools-table)
 - 12 Appendix: CLI educational resources
 
 ---
@@ -192,9 +193,30 @@ Unix-like operating systems popularized the use of the command line and tools su
 
 Опытные пользователи командной строки ожидают, что ваше CLI-приложение будет иметь те же соглашения, что и другие приложения Unix.
 
+For small and medium CLIs that target modern Node.js, start with `parseArgs()` from `node:util` before adding a runtime dependency. It parses `process.argv` into structured `values` and `positionals`, supports long and short flags, default values, repeated options, strict validation, and boolean negation with `--no-` when enabled. Reach for CLI frameworks such as `commander`, `yargs`, or `Optique` when you need subcommands, generated help, shell completion, coercion, or plugin-style composition.
+
+Example:
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    help: { type: 'boolean', short: 'h' },
+    json: { type: 'boolean' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+
+if (values.help) {
+  // print help and exit
+}
+```
+
 📦 **Рекомендованные библиотеки**
 
-Ссылки на Open Source Node.js библиотеки:
+Reference options:
 
 - [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js#readme)
@@ -236,14 +258,26 @@ Most terminals used today to interact with command line applications support col
 
 A colorful display in your command line application output may further contribute to a richer experience and increased interaction. That said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output. Even outside of build servers, a CLI may be used through an IDE's console that may not handle certain characters. Manual opt-out must be available.
 
+For lightweight styling on modern Node.js, prefer `styleText()` from `node:util`. It formats terminal text while accounting for stream color support and the common color-control environment variables. Use third-party color packages when you need older Node.js support, a richer theming API, or compatibility with an existing styling stack.
+
+Example:
+
+```js
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
+
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
+```
+
 📦 **Recommended packages**
 
-Reference to Open Source Node.js packages:
+Reference options:
 
 - [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
+- [picocolors](https://www.npmjs.com/package/picocolors)
 
 ### 1.5 Rich interactions
 
@@ -261,7 +295,7 @@ Many CLIs provide default command line arguments without requiring any further i
 
 📦 **Recommended packages**
 
-Reference to Open Source Node.js packages:
+Ссылки на Open Source Node.js библиотеки:
 
 - [@inquirer/prompts](https://www.npmjs.com/package/@inquirer/prompts)
 - [ora](https://www.npmjs.com/package/ora)
@@ -999,7 +1033,7 @@ Prior-art of security incidents in CLIs due to argument injection:
 
 References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
 
-# 11 Appendix: CLI Frameworks
+# 11 Appendix: CLI Frameworks and Tools
 
 ### 11.1 CLI Frameworks Table
 
@@ -1017,6 +1051,14 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | top CLI           | Top CLI framework                                                                                                         |                                                                | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                        |
 | termcn            | Beautiful terminal CLIs                                                                                                   |                                                                | [Link to GitHub](https://www.termcn.dev)                                         |                                                                                                                        |
 | Optique           | Type-safe combinatorial CLI parser for TypeScript                                                                         | [Link to npm](https://www.npmjs.com/package/@optique/core)     | [Link to GitHub](https://github.com/dahlia/optique)                              |                                                                                                                        |
+
+### 11.2 CLI Tools Table
+
+CLI projects often need supporting tools beyond the libraries and frameworks used in the application code itself. These tools help with demos, documentation, release assets, and project maintenance.
+
+| Name | Description                                                                         | Install                                                                | GitHub                                                 | Use case                                                          |
+| ---- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------- |
+| VHS  | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation) | [Link to GitHub](https://github.com/charmbracelet/vhs) | Create repeatable CLI demos for READMEs, docs, and release notes. |
 
 # 12 Appendix: CLI educational resources
 
