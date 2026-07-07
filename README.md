@@ -28,7 +28,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
-- ✅ 38 best practices for building successful Node.js CLI applications
+- ✅ 39 best practices for building successful Node.js CLI applications
 - 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Contributions are welcome
 
@@ -112,6 +112,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
   - 1.7 [Zero configuration](#17-zero-configuration)
   - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
+  - 1.9 [Provide helpful help](#19-provide-helpful-help)
 - 2 Distribution
   - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
@@ -172,6 +173,7 @@ In this section:
 - 1.6 [Hyperlinks everywhere](#16-hyperlinks-everywhere)
 - 1.7 [Zero configuration](#17-zero-configuration)
 - 1.8 [Respect POSIX signals](#18-respect-posix-signals)
+- 1.9 [Provide helpful help](#19-provide-helpful-help)
 
 <br/>
 
@@ -367,6 +369,47 @@ Especially for CLI applications, it is common to interact with user input and im
 may result in your app failing to respond to SIGINT interrupts, commonly used by users when they hit the `CTRL+C` keys.
 
 The problem of not respecting process signals worsens when the program is being orchestrated by non-human interaction. For example, a CLI that runs in a docker container but will not respond to software interrupt signals sent to it.
+
+### 1.9 Provide helpful help
+
+✅ **Do:**
+Support `-h` and `--help`, show useful help when a command cannot run without arguments, and provide contextual help for subcommands.
+
+❌ **Otherwise:**
+Users may need to guess valid flags and arguments, inspect source code, or search external documentation for workflows that should be discoverable from the command line.
+
+ℹ️ **Details**
+
+Help output is part of the user interface. It should explain what the command does, show valid usage, list important options, distinguish required and optional arguments, and include examples for common workflows.
+
+For CLIs with subcommands, each subcommand should have its own help output, such as `my-cli deploy --help`, so users do not need to scan a global help page for the command they are using.
+
+If the user provides conflicting or invalid arguments, print a clear message that names the conflict and points to the relevant help. When a command cannot run meaningfully without arguments, show the help output instead of a generic failure. If the command can run safely without arguments, do not force help output.
+
+Example:
+
+```sh
+$ my-cli --help
+
+Usage:
+  my-cli deploy <environment> [options]
+
+Options:
+  -h, --help          Show help
+  --config <path>    Path to a config file
+  --dry-run          Show what would change without deploying
+
+Examples:
+  my-cli deploy production --dry-run
+  my-cli deploy staging --config ./deploy.json
+```
+
+Use conventional help formatting so users can scan usage, options, and examples quickly. Mature or operating-system-packaged CLIs can also provide man pages for offline help.
+
+References:
+
+- [docopt](http://docopt.org/)
+- [Command Line Interface Guidelines: Help](https://clig.dev/#help)
 
 # 2 Distribution
 
