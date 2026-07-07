@@ -12,9 +12,23 @@ All 37 practices condensed for use during audits and development guidance.
 - Optional args in `[brackets]`, required in `<angle-brackets>`
 - Multiple short flags can be grouped: `-abc` = `-a -b -c`
 
+For small and medium CLIs on modern Node.js, prefer dependency-free parsing with `parseArgs()` from `node:util` before adding a CLI framework.
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    verbose: { type: 'boolean', short: 'v' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+```
+
 **Violation pattern:** Custom positional syntax like `cmd ACTION key=value` instead of `cmd --action --key value`
 
-**Packages:** `commander`, `yargs`, `meow`
+**Options:** built-in `node:util` `parseArgs`, `commander`, `yargs`, `Optique`
 
 ---
 
@@ -50,19 +64,16 @@ config.get('apiKey');
 **Rule:** Use colors to improve readability, but always support opt-out via `NO_COLOR` env var, `--no-color` flag, or auto-detection of non-TTY environments.
 
 ```js
-import chalk from 'chalk';
-// chalk automatically respects NO_COLOR and non-TTY
-console.log(chalk.green('Success'));
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
 
-// Manual check if needed
-if (process.stdout.isTTY && !process.env.NO_COLOR) {
-  // apply color
-}
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
 ```
 
 **Violation pattern:** Hardcoded ANSI escape codes with no opt-out mechanism.
 
-**Packages:** `chalk`, `kleur`, `picocolors`
+**Options:** built-in `node:util` `styleText`, `chalk`, `kleur`, `picocolors`
 
 ---
 
@@ -127,7 +138,7 @@ process.on('SIGINT', () => {
 | `moment` | `date-fns`, native `Intl` |
 | `lodash` | native array/object methods |
 | `request` | native `fetch`, `got`, `undici` |
-| `colors` | `chalk`, `kleur`, `picocolors` |
+| `colors` | native `util.styleText`, `chalk`, `kleur`, `picocolors` |
 
 **Tool:** [bundlephobia.com](https://bundlephobia.com) to check package cost.
 
@@ -546,12 +557,15 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 |-----------|----------|-----|
 | `commander` | General-purpose, minimal | `npm i commander` |
 | `yargs` | Complex CLIs with subcommands | `npm i yargs` |
+| `node:util` `parseArgs` | Small and medium CLIs that can use modern Node.js built-ins | built-in |
 | `oclif` | Large plugin-based CLIs | `npm i oclif` |
 | `meow` | Minimal single-command CLIs | `npm i meow` |
+| `Optique` | Type-safe TypeScript CLI parsers | `npm i @optique/core` |
 | `ink` | React-based terminal UIs | `npm i ink` |
 | `@inquirer/prompts` | Interactive prompts | `npm i @inquirer/prompts` |
 | `ora` | Spinners / loaders | `npm i ora` |
 | `listr2` | Task lists with progress | `npm i listr2` |
+| `node:util` `styleText` | Dependency-free terminal colors on modern Node.js | built-in |
 | `chalk` | Terminal colors | `npm i chalk` |
 | `debug` | Debug logging | `npm i debug` |
 | `cosmiconfig` | Config file discovery | `npm i cosmiconfig` |
