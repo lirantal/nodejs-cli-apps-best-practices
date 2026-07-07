@@ -551,7 +551,7 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 
 ---
 
-## 11. Appendix: CLI Frameworks
+## 11. Appendix: CLI Frameworks and Tools
 
 | Framework | Best for | npm |
 |-----------|----------|-----|
@@ -570,3 +570,9 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 | `debug` | Debug logging | `npm i debug` |
 | `cosmiconfig` | Config file discovery | `npm i cosmiconfig` |
 | `conf` | Persistent config storage | `npm i conf` |
+
+### CLI Tools
+
+| Tool | Best for | Install |
+|------|----------|---------|
+| `vhs` | Scripted terminal recordings for README demos, documentation, and release notes | See https://github.com/charmbracelet/vhs#installation |
