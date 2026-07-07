@@ -150,8 +150,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Security
   - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
-- 11 Appendix: CLI Frameworks
+- 11 Appendix: CLI Frameworks and Tools
   - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+  - 11.2 [CLI Tools Table](#112-cli-tools-table)
 - 12 Appendix: CLI educational resources
 
 ---
@@ -1129,7 +1130,7 @@ Prior-art of security incidents in CLIs due to argument injection:
 
 References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
 
-# 11 Appendix: CLI Frameworks
+# 11 Appendix: CLI Frameworks and Tools
 
 ### 11.1 CLI Frameworks Table
 
@@ -1147,6 +1148,14 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | top CLI     | Top CLI framework  |  | [Link to GitHub](https://github.com/TopCli) | 
 | termcn      | Beautiful terminal CLIs | | [Link to GitHub](https://www.termcn.dev)
 | Optique | Type-safe combinatorial CLI parser for TypeScript | [Link to npm](https://www.npmjs.com/package/@optique/core) | [Link to GitHub](https://github.com/dahlia/optique) | 
+
+### 11.2 CLI Tools Table
+
+CLI projects often need supporting tools beyond the libraries and frameworks used in the application code itself. These tools help with demos, documentation, release assets, and project maintenance.
+
+| Name | Description | Install | GitHub | Use case |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| VHS | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation) | [Link to GitHub](https://github.com/charmbracelet/vhs) | Create repeatable CLI demos for READMEs, docs, and release notes. |
 
 # 12 Appendix: CLI educational resources
 
