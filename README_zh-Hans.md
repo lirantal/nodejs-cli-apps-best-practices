@@ -28,7 +28,7 @@
 ### 特点:
 
 - 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
-- ✅ 37 best practices for building successful Node.js CLI applications
+- ✅ 41 best practices for building successful Node.js CLI applications
 - 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 欢迎贡献
 
@@ -112,6 +112,7 @@
   - 1.6 [无处不在的超链接](#16-%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E8%B6%85%E9%93%BE%E6%8E%A5)
   - 1.7 [零配置](#17-%E9%9B%B6%E9%85%8D%E7%BD%AE)
   - 1.8 [遵守 POSIX 信号](#18-%E9%81%B5%E5%AE%88POSIX%E4%BF%A1%E5%8F%B7)
+  - 1.9 [Provide helpful help](#19-provide-helpful-help)
 - 2 分发
   - 2.1 [选择占用较小的依赖项](#21-%E9%80%89%E6%8B%A9%E5%8D%A0%E7%94%A8%E8%BE%83%E5%B0%8F%E7%9A%84%E4%BE%9D%E8%B5%96%E9%A1%B9)
   - 2.2 [使用 shrinkwrap, Luke](#22-%E4%BD%BF%E7%94%A8shrinkwrap,-Luke)
@@ -121,6 +122,9 @@
   - 3.2 [启用结构化输出](#32-%E5%90%AF%E7%94%A8%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA)
   - 3.3 [跨平台规范](#33-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E8%A7%84%E8%8C%83)
   - 3.4 [支持配置优先](#34-支持配置优先)
+  - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+  - 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+  - 3.7 [Provide shell completion](#37-provide-shell-completion)
 - 4 辅助功能
   - 4.1 [容器化 CLI](#41-%E5%AE%B9%E5%99%A8%E5%8C%96CLI)
   - 4.2 [优雅降级](#42-%E4%BC%98%E9%9B%85%E9%99%8D%E7%BA%A7)
@@ -150,8 +154,9 @@
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Security
   - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
-- 11 Appendix: CLI Frameworks
+- 11 Appendix: CLI Frameworks and Tools
   - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+  - 11.2 [CLI Tools Table](#112-cli-tools-table)
 - 12 Appendix: CLI educational resources
 
 ---
@@ -170,6 +175,7 @@
 - 1.6 [无处不在的超链接](#16-%E6%97%A0%E5%A4%84%E4%B8%8D%E5%9C%A8%E7%9A%84%E8%B6%85%E9%93%BE%E6%8E%A5)
 - 1.7 [零配置](#17-%E9%9B%B6%E9%85%8D%E7%BD%AE)
 - 1.8 [遵守 POSIX 信号](#18-%E9%81%B5%E5%AE%88POSIX%E4%BF%A1%E5%8F%B7)
+- 1.9 [Provide helpful help](#19-provide-helpful-help)
 
 <br/>
 
@@ -192,9 +198,30 @@
 
 命令行高级用户希望您的命令行应用程序具有与其他 Unix 应用程序类似的约定。
 
+For small and medium CLIs that target modern Node.js, start with `parseArgs()` from `node:util` before adding a runtime dependency. It parses `process.argv` into structured `values` and `positionals`, supports long and short flags, default values, repeated options, strict validation, and boolean negation with `--no-` when enabled. Reach for CLI frameworks such as `commander`, `yargs`, or `Optique` when you need subcommands, generated help, shell completion, coercion, or plugin-style composition.
+
+例子：
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    help: { type: 'boolean', short: 'h' },
+    json: { type: 'boolean' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+
+if (values.help) {
+  // print help and exit
+}
+```
+
 📦 **推荐的软件包**
 
-对开源 Node.js 包的参考：
+Reference options:
 
 - [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js/blob/master/README_zh-Hans.md)
@@ -212,6 +239,8 @@
 一个程序的命令行界面与 web 用户界面没有什么不同，因为您可以按照程序作者的意愿完成尽可能多的工作，以确保它被成功地使用。
 
 通过构建支持代入用户感受的 CLI 来优化成功的交互。 作为一个例子，让我们研究一下 `curl` 程序期望 URL 作为其主要数据输入，而用户未能提供它的情况。 此类失败将导致阅读（希望）描述性错误消息或查看 `curl --help` 输出。 然而，考虑用户感受的 CLI 会呈现一个交互式提示来捕获用户的输入，从而实现成功的交互。
+
+Interactive recovery is only empathetic when the invocation is actually interactive. If the CLI is running in CI, a scheduled job, or a pipeline, skip prompts and provide an actionable error that explains which flag, environment variable, or configuration file can provide the missing value instead.
 
 ### 1.3 状态数据
 
@@ -240,14 +269,26 @@
 
 您的命令行应用程序输出中的彩色显示可能会进一步促进更丰富的体验和增强互动。 尽管如此，不受支持的终端可能会在屏幕上以累赘信息的形式出现退化的输出。 此外，CLI 可能被用于不支持彩色输出的持续集成构建作业。 如今，大多数用于与命令行应用程序交互的终端都支持彩色文本，例如通过特制 ANSI 编码字符启用的文本。 命令行应用程序输出中的彩色显示可能会进一步促进更丰富的体验和更多的交互。也就是说，不受支持的终端可能会经历屏幕上乱码信息形式的输出降级。此外，CLI 可以在可能不支持彩色输出的持续集成构建作业中使用。即使在构建服务器之外，也可以通过 IDE 的控制台使用 CLI，该控制台可能无法处理某些字符。必须可以手动选择退出。
 
+For lightweight styling on modern Node.js, prefer `styleText()` from `node:util`. It formats terminal text while accounting for stream color support and the common color-control environment variables. Use third-party color packages when you need older Node.js support, a richer theming API, or compatibility with an existing styling stack.
+
+示例：
+
+```js
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
+
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
+```
+
 📦 **推荐的软件包**
 
-对开源 Node.js 包的参考：
+Reference options:
 
 - [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
+- [picocolors](https://www.npmjs.com/package/picocolors)
 
 ### 1.5 丰富的交互
 
@@ -307,11 +348,50 @@
 
 ❌ **否则:** 您的程序不能与其他程序很好地配合，并会引入意外的行为。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 尤其是对于 CLI 应用程序，与用户输入交互是很常见的，如果管理不当，可能会导致您的应用程序无法响应 SIGINT 中断，用户在按下 `CTRL+C` 键时通常会使用 SIGINT 中断。
 
 不遵守进程信号的问题在由非人之间的互动引导下来时更加严重。 例如，在 Docker 容器中运行但不会响应发送给它的软件中断信号的 CLI。
+
+### 1.9 Provide helpful help
+
+✅ **Do:** Support `-h` and `--help`, show useful help when a command cannot run without arguments, and provide contextual help for subcommands.
+
+❌ **Otherwise:** Users may need to guess valid flags and arguments, inspect source code, or search external documentation for workflows that should be discoverable from the command line.
+
+ℹ️ **详情**
+
+Help output is part of the user interface. It should explain what the command does, show valid usage, list important options, distinguish required and optional arguments, and include examples for common workflows.
+
+For CLIs with subcommands, each subcommand should have its own help output, such as `my-cli deploy --help`, so users do not need to scan a global help page for the command they are using.
+
+If the user provides conflicting or invalid arguments, print a clear message that names the conflict and points to the relevant help. When a command cannot run meaningfully without arguments, show the help output instead of a generic failure. If the command can run safely without arguments, do not force help output.
+
+Example:
+
+```sh
+$ my-cli --help
+
+Usage:
+  my-cli deploy <environment> [options]
+
+Options:
+  -h, --help          Show help
+  --config <path>    Path to a config file
+  --dry-run          Show what would change without deploying
+
+Examples:
+  my-cli deploy production --dry-run
+  my-cli deploy staging --config ./deploy.json
+```
+
+Use conventional help formatting so users can scan usage, options, and examples quickly. Mature or operating-system-packaged CLIs can also provide man pages for offline help.
+
+参考文献：
+
+- [docopt](http://docopt.org/)
+- [Command Line Interface Guidelines: Help](https://clig.dev/#help)
 
 # 2 分发
 
@@ -363,7 +443,7 @@ Another method for vendoring dependencies is to bundle them within the published
 - Packages are declared as `devDependencies`, so that the package managers will not find any production dependencies to install.
 - The [ncc](https://www.npmjs.com/package/@vercel/ncc) is used to compile a Node.js module into a single file with all of its dependencies in-lined.
 
-参考文献：
+References:
 
 - [您真的知道锁文件如何处理 yarn 和 npm 软件包吗？](https://snyk.io/blog/making-sense-of-package-lock-files-in-the-npm-ecosystem/)
 - [Yarn 文档：应该将锁定文件提交到存储库吗？](https://next.yarnpkg.com/advanced/qa#should-lockfiles-be-committed-to-the-repository)
@@ -374,7 +454,7 @@ Another method for vendoring dependencies is to bundle them within the published
 
 ❌ **否则:** 用户的文件系统可能包含单独配置文件形式的残留物，以及 CLI 工具在安装时引入的可识别数据。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 如 [有状态数据部分](#13-%E6%9C%89%E7%8A%B6%E6%80%81%E6%95%B0%E6%8D%AE) 所述，如果您的 CLI 应用程序使用持久性存储（例如保存配置文件），则 CLI 应用程序还应负责在卸载时删除其配置文件。
 
@@ -393,6 +473,8 @@ Another method for vendoring dependencies is to bundle them within the published
 - _我可以导出此 CLI 的输出以便于分析吗？_
 - _我可以将此 CLI 的输出通过管道传递到另一个命令行工具的输入吗？_
 - _我可以通过管道将其他工具的结果发送到此 CLI 吗？_
+- _Can I keep diagnostic messages from polluting piped or machine-readable output?_
+- _Can the shell help users discover commands, flags, and valid values while they type?_
 
 在本节中：
 
@@ -400,6 +482,9 @@ Another method for vendoring dependencies is to bundle them within the published
 - 3.2 [启用结构化输出](#32-%E5%90%AF%E7%94%A8%E7%BB%93%E6%9E%84%E5%8C%96%E8%BE%93%E5%87%BA)
 - 3.3 [跨平台规范](#33-%E8%B7%A8%E5%B9%B3%E5%8F%B0%E8%A7%84%E8%8C%83)
 - 3.4 [支持配置优先](#34-支持配置优先)
+- 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+- 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+- 3.7 [Provide shell completion](#37-provide-shell-completion)
 
 ### 3.1 接受 STDIN 输入
 
@@ -415,21 +500,17 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 如果命令行应用程序使用数据，比如对通常使用 `--file<file.json>` 命令行参数指定的 JSON 文件执行某种任务。
 
-下面是一个基于官方 [Node.js API 文档的 readline 模块](https://nodejs.org/api/readline.html) 示例，该示例说明如何从命令管道获取输入：
+An example that is based on the official [Node.js API docs for the readline module](https://nodejs.org/api/readline.html) of how taking input from a command pipe is as follows:
 
 ```js
-const readline = require("readline");
+const readline = require("node:readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
 });
 
-rl.question("What do you think of Node.js? ", (answer) => {
-  // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
+rl.on("line", (line) => {
+  processInput(line);
 });
 ```
 
@@ -438,6 +519,8 @@ rl.question("What do you think of Node.js? ", (answer) => {
 ```sh
 echo "Node.js is amazing" | node cli.js
 ```
+
+If the command needs to ask a human a question instead, keep that behavior separate from piped input and follow [Gate interactive behavior](#35-gate-interactive-behavior).
 
 ### 3.2 启用结构化输出
 
@@ -593,6 +676,106 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 - [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
 
+### 3.5 Gate interactive behavior
+
+✅ **Do:** Only use prompts and other interactive elements when the command is connected to an interactive terminal. Provide explicit flags, environment variables, or configuration file options for unattended usage.
+
+❌ **Otherwise:** The CLI may hang in CI, cron jobs, scripts, and pipelines, or accidentally consume piped STDIN as if it were a user's typed answer.
+
+ℹ️ **Details**
+
+Interactive prompts are useful when a person is present and can answer them. They are harmful when the same command is used by automation, or when another command is piping data into STDIN for the CLI to process. A command should not change from non-interactive to interactive based on ambiguous input.
+
+Use TTY detection, CI detection, and an explicit opt-out such as `--no-input` to decide whether prompting is safe. If prompting is not safe, fail fast with an actionable message that tells the user how to pass the required value.
+
+Example:
+
+```js
+const isInteractive =
+  process.stdin.isTTY &&
+  process.stdout.isTTY &&
+  !process.env.CI &&
+  !options.noInput;
+
+if (!options.projectName) {
+  if (isInteractive) {
+    options.projectName = await promptForProjectName();
+  } else {
+    throw new Error(
+      'Missing project name. Pass --project-name, set MYCLI_PROJECT_NAME, or run in an interactive terminal.'
+    );
+  }
+}
+```
+
+References:
+
+- [Command Line Interface Guidelines: Interactivity](https://clig.dev/#interactivity)
+
+### 3.6 Distinguish STDOUT from STDERR
+
+✅ **Do:** Send the command's primary output to standard output (STDOUT), and send diagnostics such as progress, warnings, debug logs, prompts, and errors to standard error (STDERR).
+
+❌ **Otherwise:** Users who pipe or parse your CLI output may receive mixed data and diagnostics, causing scripts, JSON parsers, and other command line tools to fail unexpectedly.
+
+ℹ️ **详情**
+
+STDERR is not only for errors. It is the side channel for human-facing or diagnostic messages that should remain visible to the user without becoming part of the command's data output. This distinction is especially important for commands that support [structured output](#32-enable-structured-output), because output such as `my-cli --json | jq` must stay valid JSON.
+
+Use `process.stdout.write()` or `console.log()` for the actual command result. Use `process.stderr.write()` or `console.error()` for progress messages, warnings, debug information, prompts, and error messages.
+
+Example:
+
+```js
+if (options.json) {
+  process.stdout.write(`${JSON.stringify(result)}\n`);
+} else {
+  process.stdout.write(`${formatTable(result)}\n`);
+}
+
+if (options.verbose) {
+  process.stderr.write(`Processed ${result.length} entries\n`);
+}
+
+if (warnings.length > 0) {
+  process.stderr.write(`Warning: ${warnings.length} entries were skipped\n`);
+}
+```
+
+### 3.7 Provide shell completion
+
+✅ **Do:** For CLIs with subcommands, many flags, or dynamic operands, provide opt-in shell completion so users can discover valid commands, options, and values from their shell.
+
+❌ **Otherwise:** Users need to memorize flags, repeatedly inspect `--help`, or guess command names and option values that the CLI already knows how to validate.
+
+ℹ️ **详情**
+
+Shell completion is activated by the user's shell, but the CLI author usually owns the command metadata that makes completion useful. Keep completions generated from the same command, option, and subcommand definitions used by your parser and help output so they do not drift from real behavior.
+
+Expose completion through an explicit command such as `my-cli completion` or `my-cli autocomplete`, and document supported shells. Bash, Zsh, Fish, and PowerShell have different completion systems, so avoid implying one generated script works everywhere.
+
+Example:
+
+```sh
+$ my-cli completion bash > "${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion/completions/my-cli"
+$ my-cli completion zsh > /usr/local/share/zsh/site-functions/_my-cli
+```
+
+If the shell invokes your CLI to compute contextual candidates, write only completion candidates to STDOUT and keep diagnostics, warnings, and debug output on STDERR. This mirrors [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr) and keeps shell completion parsers from receiving noisy output.
+
+Completion setup should be explicit and reversible. Do not mutate `.bashrc`, `.zshrc`, PowerShell profiles, or other shell startup files from npm lifecycle scripts. Provide a documented command or generated script instead, and let users choose whether and where to install it.
+
+Reference options:
+
+- [yargs `.completion()`](https://github.com/yargs/yargs/blob/main/docs/api.md#completioncmd-description-fn)
+- [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete)
+- [tabtab](https://github.com/mklabs/tabtab)
+
+References:
+
+- [Bash Programmable Completion](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html)
+- [npm completion](https://docs.npmjs.com/cli/v11/commands/npm-completion/)
+
 # 4 辅助功能
 
 本节介绍与最佳实践有关的内容，这些最佳实践是将 Node.js CLI 应用程序提供给希望使用它但缺少维护人员为其设计应用程序的环境的用户。
@@ -663,7 +846,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 使用硬编码的 Node.js 运行时位置（如 `#!/usr/local/bin/node`）仅适用于您自己的环境，可能会导致 Node.js CLI 在 Node.js 位置不同的其他环境中无法运行。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 通过将入口点文件作为 `node cli.js` 运行，然后将 `#!/usr/local/bin/node` 添加到 `cli.js` 文件的顶部，开发 Node.js CLI 可能是一个简单的开始，但是后者仍然是一种有缺陷的方法，因为无法为其他用户的环境保证 `node` 可执行文件的位置。
 
@@ -681,7 +864,7 @@ const process = childProcess.exec(`${cliExecPath} || ${cliExecPath2}`);
 
 ❌ **否则:** 开发人员在与英语默认语言环境不同的系统上测试时，将会遇到测试失败的情况。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 当您选择通过运行 CLI 并分析输出来测试 CLI 时，您可能倾向于 grep 特定功能，以确保它们存在于输出中，例如在不带参数的情况下运行 CLI 时正确提供示例。例如： e.g:
 
@@ -718,7 +901,7 @@ expect(output).to.contain("Examples:"));
 
 返回错误消息时，请确保它们包含参考号或特定的错误代码，以便以后查阅。与 HTTP 状态代码非常相似，因此 CLI 应用程序需要命名或编码错误。 就像HTTP状态码一样，CLI应用程序需要命名或编码错误。
 
-例子：
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -734,7 +917,7 @@ Error (E4002): please provide an API token via environment variables
 
 ℹ️ **详情**
 
-示例：
+Example:
 
 ```sh
 $ my-cli-tool --doSomething
@@ -748,7 +931,7 @@ Error (E4002): please provide an API token via environment variables
 
 ❌ **否则:** 不要跳过调试功能。 收集用户的反馈，让他们找出错误的原因将会比较困难。
 
-ℹ️ **Details**
+ℹ️ **详情**
 
 使用环境变量以及命令行参数来启用扩展的调试详细级别。 在您的代码中有意义的地方，植入有助于用户和维护者理解程序流、输入和输出以及其他使问题解决更容易的调试消息。
 
@@ -811,7 +994,7 @@ try {
 
 ❌ **否则：** 您最终将把程序包的名称与可执行文件耦合在一起。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 以下 `package.json` 显示了将可执行文件的名称与文件名及其在项目中的位置解耦的示例：
 
@@ -827,7 +1010,7 @@ try {
 
 ❌ **否则：** 您最终将获得不正确的文件路径，并且将无法访问文件。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 您可能发现自己需要访问项目文件范围内的文件。 或者访问用户输入提供的 文件，如日志、JSON 文件或其他文件。 混淆 `process.cwd()` 和 `__dirname` 可能会导致错误并且不使用其中任意一个。
 
@@ -842,7 +1025,7 @@ try {
 
 ❌ **否则：** 最后，您将得到一个软件包，其中包含运行 CLI 应用程序可能不需要的文件。 例如（测试文件，开发配置等）。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 为了保持已发布的 [包体积小](＃21-选择占用较小的依赖项)，我们应仅包含文件 运行我们的 CLI 应用程序所需的文件。有关更多详细信息，请参见此 [文章](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b)。 有关更多详细信息，请参见此 [文章](https://medium.com/@nodejs/publishing-npm-packages-c4c615a0fc6b)。
 
@@ -869,7 +1052,7 @@ try {
 
 ❌ **否则:** 您可能会担心用户的隐私问题以及用户意想不到且令人惊讶的 CLI 行为。
 
-ℹ️ **详情**
+ℹ️ **Details**
 
 可以理解，作为 CLI 应用程序的维护者，您希望更好地了解用户如何使用它。 可以理解，作为 CLI 应用程序的维护者，您希望更好地了解用户如何使用它。 然而，在不征得用户同意的情况下，偷偷地和默认的“电话回家”类型的行为会受到谴责。
 
@@ -999,24 +1182,35 @@ Prior-art of security incidents in CLIs due to argument injection:
 
 References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
 
-# 11 Appendix: CLI Frameworks
+# 11 Appendix: CLI Frameworks and Tools
 
 ### 11.1 CLI Frameworks Table
 
-| 名称                | 简介                                                                                                    | npm                                                         | GitHub                                                                           | 关注以及下载量                                                                                                                |
-| ----------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| oclif             | 构建命令行界面的框架。                                                                                           | [前往 npm](https://www.npmjs.com/package/oclif)               | [前往Github](https://github.com/oclif/oclif)                                       | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                       |
-| @inquirer/prompts | 一个通用交互式命令行用户界面。                                                                                       | [前往 npm](https://www.npmjs.com/package/@inquirer/prompts)   | [前往Github](https://github.com/SBoudrias/Inquirer.js)                             | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/@inquirer/prompts.svg) |
-| ink               | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。                                                       | [前往 npm](https://www.npmjs.com/package/ink)                 | [前往Github](https://github.com/vadimdemedes/ink)                                  | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)                    |
-| pastel            | Next.js-like framework for CLIs made with Ink.                                                        | [前往 npm](https://www.npmjs.com/package/pastel)              | [Link to Github](https://github.com/vadimdemedes/pastel)                         | ![](https://img.shields.io/github/stars/vadimdemedes/pastel)![](https://img.shields.io/npm/dt/pastel.svg)              |
-| ink UI            | Collection of customizable UI components for CLIs made with Ink.                                      | [Link to npm](https://www.npmjs.com/package/@inkjs/ui)      | [Link to Github](https://github.com/vadimdemedes/ink-ui)                         | ![](https://img.shields.io/github/stars/vadimdemedes/ink-ui)![](https://img.shields.io/npm/dt/@inkjs/ui.svg)           |
-| blessed           | 一个类似曲线的库，为node.js设置一个高级终端界面 API 。                                                                     | [Link to npm](https://www.npmjs.com/package/blessed)        | [Link to GitHub](https://github.com/chjj/blessed)                                | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)                    |
-| prompts           | Lightweight, beautiful and user-friendly interactive prompts                                          | [Link to npm](https://npmjs.org/package/prompts)            | [Link to GitHub](https://github.com/terkelg/prompts)                             | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)                 |
-| vue-termui        | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease. | [Link to npm](https://www.npmjs.org/package/vue-termui)     | [前往Github](https://github.com/vue-terminal/vue-termui)                           | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)      |
-| clack             | Effortlessly build beautiful command-line apps                                                        | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)         |
-| top CLI           | Top CLI framework                                                                                     |                                                             | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                        |
-| termcn            | Beautiful terminal CLIs                                                                               |                                                             | [Link to GitHub](https://www.termcn.dev)                                         |                                                                                                                        |
-| Optique           | Type-safe combinatorial CLI parser for TypeScript                                                     | [Link to npm](https://www.npmjs.com/package/@optique/core)  | [Link to GitHub](https://github.com/dahlia/optique)                              |                                                                                                                        |
+| 名称                | 简介                                                                                                           | npm                                                         | GitHub                                                                           | 关注以及下载量                                                                                                                |
+| ----------------- | ------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| oclif             | 构建命令行界面的框架。                                                                                                  | [前往 npm](https://www.npmjs.com/package/oclif)               | [前往Github](https://github.com/oclif/oclif)                                       | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                       |
+| yargs             | A command line parser for complex CLIs with commands, options, generated help, and shell completion support. | [前往 npm](https://www.npmjs.com/package/yargs)               | [前往Github](https://github.com/yargs/yargs)                                       | ![](https://img.shields.io/github/stars/yargs/yargs)![](https://img.shields.io/npm/dt/yargs.svg)                       |
+| @inquirer/prompts | 一个通用交互式命令行用户界面。                                                                                              | [前往 npm](https://www.npmjs.com/package/@inquirer/prompts)   | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js)                       | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/@inquirer/prompts.svg) |
+| ink               | Ink 提供了React在浏览器中提供的基于组件的用户界面构建体验，但是有了命令行应用的体验。                                                              | [前往 npm](https://www.npmjs.com/package/ink)                 | [前往Github](https://github.com/vadimdemedes/ink)                                  | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)                    |
+| pastel            | Next.js-like framework for CLIs made with Ink.                                                               | [Link to npm](https://www.npmjs.com/package/pastel)         | [Link to Github](https://github.com/vadimdemedes/pastel)                         | ![](https://img.shields.io/github/stars/vadimdemedes/pastel)![](https://img.shields.io/npm/dt/pastel.svg)              |
+| ink UI            | Collection of customizable UI components for CLIs made with Ink.                                             | [Link to npm](https://www.npmjs.com/package/@inkjs/ui)      | [Link to Github](https://github.com/vadimdemedes/ink-ui)                         | ![](https://img.shields.io/github/stars/vadimdemedes/ink-ui)![](https://img.shields.io/npm/dt/@inkjs/ui.svg)           |
+| blessed           | 一个类似曲线的库，为node.js设置一个高级终端界面 API 。                                                                            | [Link to npm](https://www.npmjs.com/package/blessed)        | [Link to GitHub](https://github.com/chjj/blessed)                                | ![](https://img.shields.io/github/stars/chjj/blessed)![](https://img.shields.io/npm/dt/blessed.svg)                    |
+| prompts           | Lightweight, beautiful and user-friendly interactive prompts                                                 | [Link to npm](https://npmjs.org/package/prompts)            | [前往Github](https://github.com/terkelg/prompts)                                   | ![](https://img.shields.io/github/stars/terkelg/prompts)![](https://img.shields.io/npm/dt/prompts.svg)                 |
+| vue-termui        | A Vue.js based terminal UI framework that allows you to build modern terminal applications with ease.        | [Link to npm](https://www.npmjs.org/package/vue-termui)     | [Link to GitHub](https://github.com/vue-terminal/vue-termui)                     | ![](https://img.shields.io/github/stars/vue-terminal/vue-termui)![](https://img.shields.io/npm/dt/vue-termui.svg)      |
+| clack             | Effortlessly build beautiful command-line apps                                                               | [Link to npm](https://www.npmjs.com/package/@clack/prompts) | [Link to GitHub](https://github.com/natemoo-re/clack/tree/main/packages/prompts) | ![](https://img.shields.io/github/stars/natemoo-re/clack)![](https://img.shields.io/npm/dt/@clack/prompts.svg)         |
+| top CLI           | Top CLI framework                                                                                            |                                                             | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                        |
+| termcn            | Beautiful terminal CLIs                                                                                      |                                                             | [Link to GitHub](https://www.termcn.dev)                                         |                                                                                                                        |
+| Optique           | Type-safe combinatorial CLI parser for TypeScript                                                            | [Link to npm](https://www.npmjs.com/package/@optique/core)  | [Link to GitHub](https://github.com/dahlia/optique)                              |                                                                                                                        |
+
+### 11.2 CLI Tools Table
+
+CLI projects often need supporting tools beyond the libraries and frameworks used in the application code itself. These tools help with demos, documentation, release assets, and project maintenance.
+
+| Name                       | Description                                                                         | Install                                                                 | GitHub                                                         | Use case                                                          |
+| -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| VHS                        | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation)  | [Link to GitHub](https://github.com/charmbracelet/vhs)         | Create repeatable CLI demos for READMEs, docs, and release notes. |
+| @oclif/plugin-autocomplete | An oclif plugin for generating shell autocomplete support.                          | [Link to npm](https://www.npmjs.com/package/@oclif/plugin-autocomplete) | [Link to GitHub](https://github.com/oclif/plugin-autocomplete) | Add completion support to oclif-based CLIs.                       |
+| tabtab                     | Completion helpers for Node.js CLI programs.                                        | [Link to npm](https://www.npmjs.com/package/tabtab)                     | [Link to GitHub](https://github.com/mklabs/tabtab)             | Build custom Bash, Zsh, and Fish completion flows.                |
 
 # 12 Appendix: CLI educational resources
 
@@ -1050,4 +1244,4 @@ Please consult [CONTRIBUTING](./CONTRIBUTING.md) for guidelines on contributing 
 
 [![License](https://badgen.net/badge/License/CC%20BY-SA%204.0/green)](http://creativecommons.org/licenses/by-sa/4.0/)
 
-本作品采用知识共享署名-ShareAlike 4.0 国际许可协议授权。
+This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
