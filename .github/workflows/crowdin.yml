@@ -18,6 +18,7 @@ jobs:
           upload_sources: true
           upload_translations: false
           download_translations: true
+          skip_untranslated_strings: true
           push_translations: true
           localization_branch_name: l10n_crowdin_action
           create_pull_request: true
