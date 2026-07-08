@@ -17,5 +17,7 @@ jobs:
       - uses: tesslio/setup-tessl@25ec223fc0da33b41b8044ff5ab2b85235f4f91e # v2
         with:
           token: ${{ secrets.TESSL_API_TOKEN }}
+      - run: tessl tile lint
+        working-directory: skills/nodejs-cli-best-practices
       - run: tessl tile publish
-        # Optional: set `working-directory` on this step to publish from a subdirectory.
+        working-directory: skills/nodejs-cli-best-practices
