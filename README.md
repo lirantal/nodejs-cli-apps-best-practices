@@ -28,7 +28,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
-- ✅ 40 best practices for building successful Node.js CLI applications
+- ✅ 41 best practices for building successful Node.js CLI applications
 - 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Contributions are welcome
 
@@ -124,6 +124,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
   - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
   - 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+  - 3.7 [Provide shell completion](#37-provide-shell-completion)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful degradation](#42-graceful-degradation)
@@ -500,6 +501,7 @@ This section answers questions such as:
 - _Can I pipe the output of this CLI to the input of another command line tool?_
 - _Can I pipe the result of another tool to this CLI?_
 - _Can I keep diagnostic messages from polluting piped or machine-readable output?_
+- _Can the shell help users discover commands, flags, and valid values while they type?_
 
 In this section:
 
@@ -509,6 +511,7 @@ In this section:
 - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
 - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
 - 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+- 3.7 [Provide shell completion](#37-provide-shell-completion)
 
 ### 3.1 Accept input as STDIN
 
@@ -786,6 +789,42 @@ if (warnings.length > 0) {
   process.stderr.write(`Warning: ${warnings.length} entries were skipped\n`);
 }
 ```
+
+### 3.7 Provide shell completion
+
+✅ **Do:**
+For CLIs with subcommands, many flags, or dynamic operands, provide opt-in shell completion so users can discover valid commands, options, and values from their shell.
+
+❌ **Otherwise:**
+Users need to memorize flags, repeatedly inspect `--help`, or guess command names and option values that the CLI already knows how to validate.
+
+ℹ️ **Details**
+
+Shell completion is activated by the user's shell, but the CLI author usually owns the command metadata that makes completion useful. Keep completions generated from the same command, option, and subcommand definitions used by your parser and help output so they do not drift from real behavior.
+
+Expose completion through an explicit command such as `my-cli completion` or `my-cli autocomplete`, and document supported shells. Bash, Zsh, Fish, and PowerShell have different completion systems, so avoid implying one generated script works everywhere.
+
+Example:
+
+```sh
+$ my-cli completion bash > "${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion/completions/my-cli"
+$ my-cli completion zsh > /usr/local/share/zsh/site-functions/_my-cli
+```
+
+If the shell invokes your CLI to compute contextual candidates, write only completion candidates to STDOUT and keep diagnostics, warnings, and debug output on STDERR. This mirrors [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr) and keeps shell completion parsers from receiving noisy output.
+
+Completion setup should be explicit and reversible. Do not mutate `.bashrc`, `.zshrc`, PowerShell profiles, or other shell startup files from npm lifecycle scripts. Provide a documented command or generated script instead, and let users choose whether and where to install it.
+
+Reference options:
+
+- [yargs `.completion()`](https://github.com/yargs/yargs/blob/main/docs/api.md#completioncmd-description-fn)
+- [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete)
+- [tabtab](https://github.com/mklabs/tabtab)
+
+References:
+
+- [Bash Programmable Completion](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html)
+- [npm completion](https://docs.npmjs.com/cli/v11/commands/npm-completion/)
 
 # 4 Accessibility
 
@@ -1255,6 +1294,7 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | Name  | Description | npm | GitHub | Stars and downloads |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | oclif  | A framework for building a command line interface.  | [Link to npm](https://www.npmjs.com/package/oclif) | [Link to GitHub](https://github.com/oclif/oclif) | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)
+| yargs | A command line parser for complex CLIs with commands, options, generated help, and shell completion support. | [Link to npm](https://www.npmjs.com/package/yargs) | [Link to GitHub](https://github.com/yargs/yargs) | ![](https://img.shields.io/github/stars/yargs/yargs)![](https://img.shields.io/npm/dt/yargs.svg)
 | @inquirer/prompts  | A collection of common interactive command line user interfaces.  | [Link to npm](https://www.npmjs.com/package/@inquirer/prompts) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js) |![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/@inquirer/prompts.svg)
 | ink | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink) | [Link to Github](https://github.com/vadimdemedes/ink) | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)
 | pastel | Next.js-like framework for CLIs made with Ink. | [Link to npm](https://www.npmjs.com/package/pastel) | [Link to Github](https://github.com/vadimdemedes/pastel) | ![](https://img.shields.io/github/stars/vadimdemedes/pastel)![](https://img.shields.io/npm/dt/pastel.svg)
@@ -1274,6 +1314,8 @@ CLI projects often need supporting tools beyond the libraries and frameworks use
 | Name | Description | Install | GitHub | Use case |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | VHS | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation) | [Link to GitHub](https://github.com/charmbracelet/vhs) | Create repeatable CLI demos for READMEs, docs, and release notes. |
+| @oclif/plugin-autocomplete | An oclif plugin for generating shell autocomplete support. | [Link to npm](https://www.npmjs.com/package/@oclif/plugin-autocomplete) | [Link to GitHub](https://github.com/oclif/plugin-autocomplete) | Add completion support to oclif-based CLIs. |
+| tabtab | Completion helpers for Node.js CLI programs. | [Link to npm](https://www.npmjs.com/package/tabtab) | [Link to GitHub](https://github.com/mklabs/tabtab) | Build custom Bash, Zsh, and Fish completion flows. |
 
 # 12 Appendix: CLI educational resources
 
