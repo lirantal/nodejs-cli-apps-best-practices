@@ -29,7 +29,7 @@
     {
       "id": 2,
       "prompt": "I'm building a new Node.js CLI tool from scratch. It will scan a project directory for outdated npm dependencies, display results in a formatted table, and support a --json flag for CI pipeline integration. It needs to work cross-platform and will be published on npm. What Node.js CLI best practices should I follow when building this?",
-      "expected_output": "A comprehensive development guide organized by phase or topic, covering: project setup (§7.1 bin object, §7.3 files field, §4.4 shebang, §2.2 shrinkwrap, §4.3 engines field), argument design (§1.1 POSIX flags including the --json flag, §1.7 zero-config, §1.9 help output, §3.4 config precedence), I/O (§3.2 structured JSON output, §4.2 graceful degradation, §3.1 STDIN, §3.5 gated interactivity), error handling (§6.1 error codes, §6.2 actionable messages, §6.4 exit codes, §6.3 debug mode), UX (§1.4 colors with NO_COLOR, §1.5 spinners), versioning (§9.1 --version flag, §9.3 package.json source of truth), security (§10.1 argument injection since this CLI runs child processes). Should include code examples and package recommendations.",
+      "expected_output": "A comprehensive development guide organized by phase or topic, covering: project setup (§7.1 bin object, §7.3 files field, §4.4 shebang, §2.2 shrinkwrap, §4.3 engines field), argument design (§1.1 POSIX flags including the --json flag, §1.7 zero-config, §1.9 help output, §3.4 config precedence), I/O (§3.2 structured JSON output, §4.2 graceful degradation, §3.1 STDIN, §3.5 gated interactivity, §3.6 STDOUT/STDERR separation), error handling (§6.1 error codes, §6.2 actionable messages, §6.4 exit codes, §6.3 debug mode), UX (§1.4 colors with NO_COLOR, §1.5 spinners), versioning (§9.1 --version flag, §9.3 package.json source of truth), security (§10.1 argument injection since this CLI runs child processes). Should include code examples and package recommendations.",
       "files": [],
       "assertions": [
         {"text": "Output covers project setup: bin object in package.json (§7.1) and/or files field (§7.3) and/or shebang best practice (§4.4)"},
@@ -37,6 +37,7 @@
         {"text": "Output covers help output, including -h/--help or subcommand-specific help (§1.9)"},
         {"text": "Output specifically addresses the --json flag for structured/CI output (§3.2)"},
         {"text": "Output covers gating prompts or interactivity for non-TTY, CI, or piped STDIN environments (§3.5)"},
+        {"text": "Output covers keeping primary or machine-readable output on STDOUT and diagnostics/logs/errors on STDERR (§3.6)"},
         {"text": "Output covers colors with graceful degradation (NO_COLOR, TTY detection, or the --no-color flag) (§1.4, §4.2)"},
         {"text": "Output covers proper exit codes — process.exit(0) on success, process.exit(1) on failure (§6.4)"},
         {"text": "Output covers error handling with trackable error codes or actionable messages (§6.1 or §6.2)"},

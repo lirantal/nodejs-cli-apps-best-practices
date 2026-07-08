@@ -1,6 +1,6 @@
 # Node.js CLI Best Practices — Reference
 
-All 39 practices condensed for use during audits and development guidance.
+All 40 practices condensed for use during audits and development guidance.
 
 ---
 
@@ -292,6 +292,29 @@ if (!options.projectName) {
 ```
 
 **Violation pattern:** A CLI starts prompting when run in CI, cron, or after `cat data.json | mycli`, causing the process to hang or treating piped data as user input.
+
+---
+
+### §3.6 Distinguish STDOUT from STDERR
+**Rule:** Send primary command output to STDOUT. Send diagnostics such as progress, warnings, debug logs, prompts, and errors to STDERR.
+
+```js
+if (options.json) {
+  process.stdout.write(`${JSON.stringify(result)}\n`);
+} else {
+  process.stdout.write(`${formatTable(result)}\n`);
+}
+
+if (options.verbose) {
+  process.stderr.write(`Processed ${result.length} entries\n`);
+}
+
+if (warnings.length > 0) {
+  process.stderr.write(`Warning: ${warnings.length} entries were skipped\n`);
+}
+```
+
+**Violation pattern:** `my-cli --json | jq` fails because progress logs, warnings, or debug output were printed to STDOUT with the JSON result.
 
 ---
 

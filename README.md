@@ -28,7 +28,7 @@ In this guide I have compiled a list of best practices across areas of focus whi
 ### Features:
 
 - 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
-- ✅ 39 best practices for building successful Node.js CLI applications
+- ✅ 40 best practices for building successful Node.js CLI applications
 - 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Suggest new languages](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Contributions are welcome
 
@@ -123,6 +123,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
   - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
   - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+  - 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful degradation](#42-graceful-degradation)
@@ -498,6 +499,7 @@ This section answers questions such as:
 - _Can I export the output of this CLI for easy parsing?_
 - _Can I pipe the output of this CLI to the input of another command line tool?_
 - _Can I pipe the result of another tool to this CLI?_
+- _Can I keep diagnostic messages from polluting piped or machine-readable output?_
 
 In this section:
 
@@ -506,6 +508,7 @@ In this section:
 - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
 - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
 - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+- 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
 
 ### 3.1 Accept input as STDIN
 
@@ -751,6 +754,38 @@ if (!options.projectName) {
 References:
 
 - [Command Line Interface Guidelines: Interactivity](https://clig.dev/#interactivity)
+
+### 3.6 Distinguish STDOUT from STDERR
+
+✅ **Do:**
+Send the command's primary output to standard output (STDOUT), and send diagnostics such as progress, warnings, debug logs, prompts, and errors to standard error (STDERR).
+
+❌ **Otherwise:**
+Users who pipe or parse your CLI output may receive mixed data and diagnostics, causing scripts, JSON parsers, and other command line tools to fail unexpectedly.
+
+ℹ️ **Details**
+
+STDERR is not only for errors. It is the side channel for human-facing or diagnostic messages that should remain visible to the user without becoming part of the command's data output. This distinction is especially important for commands that support [structured output](#32-enable-structured-output), because output such as `my-cli --json | jq` must stay valid JSON.
+
+Use `process.stdout.write()` or `console.log()` for the actual command result. Use `process.stderr.write()` or `console.error()` for progress messages, warnings, debug information, prompts, and error messages.
+
+Example:
+
+```js
+if (options.json) {
+  process.stdout.write(`${JSON.stringify(result)}\n`);
+} else {
+  process.stdout.write(`${formatTable(result)}\n`);
+}
+
+if (options.verbose) {
+  process.stderr.write(`Processed ${result.length} entries\n`);
+}
+
+if (warnings.length > 0) {
+  process.stderr.write(`Warning: ${warnings.length} entries were skipped\n`);
+}
+```
 
 # 4 Accessibility
 
