@@ -28,7 +28,7 @@
 ### Особенности:
 
 - 🤖 AI agents ready [SKILL.md](./skills/nodejs-cli-best-practices/) file
-- 37 лучших методов построения успешных CLI-приложений на Node.js
+- ✅ 41 best practices for building successful Node.js CLI applications
 - 🗣️ Localized across multiple languages - read in a different language: [🇨🇳](./README_zh-Hans.md), [🇪🇸](./README_es.md), or [help translate](https://crowdin.com/project/nodejs-cli-apps-best-practices) to other languages. [Предложить новые языки](https://crowdin.com/project/nodejs-cli-apps-best-practices/discussions).
 - 🙏 Пожертвования приветствуются
 
@@ -112,6 +112,7 @@
   - 1.6 [Гиперссылки везде](#16-hyperlinks-everywhere)
   - 1.7 [Нулевая конфигурация](#17-zero-configuration)
   - 1.8 [Соблюдение POSIX сигналов](#18-respect-posix-signals)
+  - 1.9 [Provide helpful help](#19-provide-helpful-help)
 - 2 Distribution
   - 2.1 [Prefer a small dependency footprint](#21-prefer-a-small-dependency-footprint)
   - 2.2 [Use the shrinkwrap, Luke](#22-use-the-shrinkwrap-luke)
@@ -121,6 +122,9 @@
   - 3.2 [Enable structured output](#32-enable-structured-output)
   - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
   - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
+  - 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+  - 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+  - 3.7 [Provide shell completion](#37-provide-shell-completion)
 - 4 Accessibility
   - 4.1 [Containerize the CLI](#41-containerize-the-cli)
   - 4.2 [Graceful degradation](#42-graceful-degradation)
@@ -150,8 +154,9 @@
   - 9.7 [Update Your App's Version Documents](#97-update-your-apps-version-documents)
 - 10 Security
   - 10.1 [Minimize Argument Injection](#101-minimize-argument-injection)
-- 11 Appendix: CLI Frameworks
+- 11 Appendix: CLI Frameworks and Tools
   - 11.1 [CLI Frameworks Table](#111-cli-frameworks-table)
+  - 11.2 [CLI Tools Table](#112-cli-tools-table)
 - 12 Appendix: CLI educational resources
 
 ---
@@ -170,6 +175,7 @@
 - 1.6 [Гиперссылки везде](#16-hyperlinks-everywhere)
 - 1.7 [Нулевая конфигурация](#17-zero-configuration)
 - 1.7 [Нулевая конфигурация](#18-respect-posix-signals)
+- 1.9 [Provide helpful help](#19-provide-helpful-help)
 
 <br/>
 
@@ -192,9 +198,30 @@ Unix-like operating systems popularized the use of the command line and tools su
 
 Опытные пользователи командной строки ожидают, что ваше CLI-приложение будет иметь те же соглашения, что и другие приложения Unix.
 
+For small and medium CLIs that target modern Node.js, start with `parseArgs()` from `node:util` before adding a runtime dependency. It parses `process.argv` into structured `values` and `positionals`, supports long and short flags, default values, repeated options, strict validation, and boolean negation with `--no-` when enabled. Reach for CLI frameworks such as `commander`, `yargs`, or `Optique` when you need subcommands, generated help, shell completion, coercion, or plugin-style composition.
+
+Example:
+
+```js
+import { parseArgs } from 'node:util';
+
+const { values, positionals } = parseArgs({
+  options: {
+    help: { type: 'boolean', short: 'h' },
+    json: { type: 'boolean' },
+    output: { type: 'string', short: 'o' },
+  },
+  allowPositionals: true,
+});
+
+if (values.help) {
+  // print help and exit
+}
+```
+
 📦 **Рекомендованные библиотеки**
 
-Ссылки на Open Source Node.js библиотеки:
+Reference options:
 
 - [built-in `{ parseArgs } from 'node:util'`](https://nodejs.org/api/util.html#utilparseargsconfig)
 - [commander](https://github.com/tj/commander.js#readme)
@@ -208,6 +235,8 @@ Unix-like operating systems popularized the use of the command line and tools su
 ❌ **Иначе:** Неспособность оказать действенную помощь в поддержке пользователя приведет к разочарованию из-за отсутствия возможности управлять интерфейсом командной строки.
 
 Optimize for successful interactions by building empathic CLIs that support the user. As an example, let's explore the case of the `curl` program that expects a URL as its primary data input, and the user failing to provide it. Such failure will lead to reading through a (hopefully) descriptive error messages or reviewing a `curl --help` output. However, an empathic CLI would have presented an interactive prompt to capture input from the user, resulting in a successful interaction.
+
+Interactive recovery is only empathetic when the invocation is actually interactive. If the CLI is running in CI, a scheduled job, or a pipeline, skip prompts and provide an actionable error that explains which flag, environment variable, or configuration file can provide the missing value instead.
 
 ### 1.3 Stateful data
 
@@ -236,14 +265,26 @@ Most terminals used today to interact with command line applications support col
 
 A colorful display in your command line application output may further contribute to a richer experience and increased interaction. That said, unsupported terminals may experience a degraded output in the form of garbled information on the screen. Furthermore, a CLI may be used in a continuous integration build job which may not support colored output. Even outside of build servers, a CLI may be used through an IDE's console that may not handle certain characters. Manual opt-out must be available.
 
+For lightweight styling on modern Node.js, prefer `styleText()` from `node:util`. It formats terminal text while accounting for stream color support and the common color-control environment variables. Use third-party color packages when you need older Node.js support, a richer theming API, or compatibility with an existing styling stack.
+
+Example:
+
+```js
+import { stderr } from 'node:process';
+import { styleText } from 'node:util';
+
+console.log(styleText('green', 'Success'));
+console.error(styleText('red', 'Failed', { stream: stderr }));
+```
+
 📦 **Recommended packages**
 
-Reference to Open Source Node.js packages:
+Reference options:
 
 - [built-in `{ styleText } from 'node:util'`](https://nodejs.org/api/util.html#utilstyletextformat-text-options)
 - [chalk](https://www.npmjs.com/package/chalk)
-- [colors](https://www.npmjs.com/package/colors)
 - [kleur](https://www.npmjs.com/package/kleur)
+- [picocolors](https://www.npmjs.com/package/picocolors)
 
 ### 1.5 Rich interactions
 
@@ -261,7 +302,7 @@ Many CLIs provide default command line arguments without requiring any further i
 
 📦 **Recommended packages**
 
-Reference to Open Source Node.js packages:
+Ссылки на Open Source Node.js библиотеки:
 
 - [@inquirer/prompts](https://www.npmjs.com/package/@inquirer/prompts)
 - [ora](https://www.npmjs.com/package/ora)
@@ -308,6 +349,45 @@ Reference projects which are built around Zero configuration:
 Especially for CLI applications, it is common to interact with user input and improperly managing keyboard events may result in your app failing to respond to SIGINT interrupts, commonly used by users when they hit the `CTRL+C` keys.
 
 The problem of not respecting process signals worsens when the program is being orchestrated by non-human interaction. For example, a CLI that runs in a docker container but will not respond to software interrupt signals sent to it.
+
+### 1.9 Provide helpful help
+
+✅ **Do:** Support `-h` and `--help`, show useful help when a command cannot run without arguments, and provide contextual help for subcommands.
+
+❌ **Otherwise:** Users may need to guess valid flags and arguments, inspect source code, or search external documentation for workflows that should be discoverable from the command line.
+
+ℹ️ **Details**
+
+Help output is part of the user interface. It should explain what the command does, show valid usage, list important options, distinguish required and optional arguments, and include examples for common workflows.
+
+For CLIs with subcommands, each subcommand should have its own help output, such as `my-cli deploy --help`, so users do not need to scan a global help page for the command they are using.
+
+If the user provides conflicting or invalid arguments, print a clear message that names the conflict and points to the relevant help. When a command cannot run meaningfully without arguments, show the help output instead of a generic failure. If the command can run safely without arguments, do not force help output.
+
+Example:
+
+```sh
+$ my-cli --help
+
+Usage:
+  my-cli deploy <environment> [options]
+
+Options:
+  -h, --help          Show help
+  --config <path>    Path to a config file
+  --dry-run          Show what would change without deploying
+
+Examples:
+  my-cli deploy production --dry-run
+  my-cli deploy staging --config ./deploy.json
+```
+
+Use conventional help formatting so users can scan usage, options, and examples quickly. Mature or operating-system-packaged CLIs can also provide man pages for offline help.
+
+References:
+
+- [docopt](http://docopt.org/)
+- [Command Line Interface Guidelines: Help](https://clig.dev/#help)
 
 # 2 Distribution
 
@@ -389,6 +469,8 @@ This section answers questions such as:
 - _Can I export the output of this CLI for easy parsing?_
 - _Can I pipe the output of this CLI to the input of another command line tool?_
 - _Can I pipe the result of another tool to this CLI?_
+- _Can I keep diagnostic messages from polluting piped or machine-readable output?_
+- _Can the shell help users discover commands, flags, and valid values while they type?_
 
 In this section:
 
@@ -396,6 +478,9 @@ In this section:
 - 3.2 [Enable structured output](#32-enable-structured-output)
 - 3.3 [Cross-platform etiquette](#33-cross-platform-etiquette)
 - 3.4 [Support configuration precedence](#34-support-configuration-precedence)
+- 3.5 [Gate interactive behavior](#35-gate-interactive-behavior)
+- 3.6 [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr)
+- 3.7 [Provide shell completion](#37-provide-shell-completion)
 
 ### 3.1 Accept input as STDIN
 
@@ -411,21 +496,17 @@ $ curl -s "https://api.example.com/data.json" | your_node_cli
 
 If the command line application works with data, such as performing some kind of task on a JSON file that is usually specified with `--file <file.json>` command line argument.
 
-An example that is based on the official [Node.js API docs for the for readline module](https://nodejs.org/api/readline.html) of how taking input from a command pipe is as follows:
+An example that is based on the official [Node.js API docs for the readline module](https://nodejs.org/api/readline.html) of how taking input from a command pipe is as follows:
 
 ```js
-const readline = require("readline");
+const readline = require("node:readline");
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
 });
 
-rl.question("What do you think of Node.js? ", (answer) => {
-  // TODO: Log the answer in a database
-  console.log(`Thank you for your valuable feedback: ${answer}`);
-
-  rl.close();
+rl.on("line", (line) => {
+  processInput(line);
 });
 ```
 
@@ -434,6 +515,8 @@ Then pipe the input to the above Node.js application:
 ```sh
 echo "Node.js is amazing" | node cli.js
 ```
+
+If the command needs to ask a human a question instead, keep that behavior separate from piped input and follow [Gate interactive behavior](#35-gate-interactive-behavior).
 
 ### 3.2 Enable structured output
 
@@ -588,6 +671,106 @@ Configuration order of precedence for command line applications should follow th
 Reference projects:
 
 - [cosmiconfig](https://github.com/davidtheclark/cosmiconfig)
+
+### 3.5 Gate interactive behavior
+
+✅ **Do:** Only use prompts and other interactive elements when the command is connected to an interactive terminal. Provide explicit flags, environment variables, or configuration file options for unattended usage.
+
+❌ **Otherwise:** The CLI may hang in CI, cron jobs, scripts, and pipelines, or accidentally consume piped STDIN as if it were a user's typed answer.
+
+ℹ️ **Details**
+
+Interactive prompts are useful when a person is present and can answer them. They are harmful when the same command is used by automation, or when another command is piping data into STDIN for the CLI to process. A command should not change from non-interactive to interactive based on ambiguous input.
+
+Use TTY detection, CI detection, and an explicit opt-out such as `--no-input` to decide whether prompting is safe. If prompting is not safe, fail fast with an actionable message that tells the user how to pass the required value.
+
+Example:
+
+```js
+const isInteractive =
+  process.stdin.isTTY &&
+  process.stdout.isTTY &&
+  !process.env.CI &&
+  !options.noInput;
+
+if (!options.projectName) {
+  if (isInteractive) {
+    options.projectName = await promptForProjectName();
+  } else {
+    throw new Error(
+      'Missing project name. Pass --project-name, set MYCLI_PROJECT_NAME, or run in an interactive terminal.'
+    );
+  }
+}
+```
+
+References:
+
+- [Command Line Interface Guidelines: Interactivity](https://clig.dev/#interactivity)
+
+### 3.6 Distinguish STDOUT from STDERR
+
+✅ **Do:** Send the command's primary output to standard output (STDOUT), and send diagnostics such as progress, warnings, debug logs, prompts, and errors to standard error (STDERR).
+
+❌ **Otherwise:** Users who pipe or parse your CLI output may receive mixed data and diagnostics, causing scripts, JSON parsers, and other command line tools to fail unexpectedly.
+
+ℹ️ **Details**
+
+STDERR is not only for errors. It is the side channel for human-facing or diagnostic messages that should remain visible to the user without becoming part of the command's data output. This distinction is especially important for commands that support [structured output](#32-enable-structured-output), because output such as `my-cli --json | jq` must stay valid JSON.
+
+Use `process.stdout.write()` or `console.log()` for the actual command result. Use `process.stderr.write()` or `console.error()` for progress messages, warnings, debug information, prompts, and error messages.
+
+Example:
+
+```js
+if (options.json) {
+  process.stdout.write(`${JSON.stringify(result)}\n`);
+} else {
+  process.stdout.write(`${formatTable(result)}\n`);
+}
+
+if (options.verbose) {
+  process.stderr.write(`Processed ${result.length} entries\n`);
+}
+
+if (warnings.length > 0) {
+  process.stderr.write(`Warning: ${warnings.length} entries were skipped\n`);
+}
+```
+
+### 3.7 Provide shell completion
+
+✅ **Do:** For CLIs with subcommands, many flags, or dynamic operands, provide opt-in shell completion so users can discover valid commands, options, and values from their shell.
+
+❌ **Otherwise:** Users need to memorize flags, repeatedly inspect `--help`, or guess command names and option values that the CLI already knows how to validate.
+
+ℹ️ **Details**
+
+Shell completion is activated by the user's shell, but the CLI author usually owns the command metadata that makes completion useful. Keep completions generated from the same command, option, and subcommand definitions used by your parser and help output so they do not drift from real behavior.
+
+Expose completion through an explicit command such as `my-cli completion` or `my-cli autocomplete`, and document supported shells. Bash, Zsh, Fish, and PowerShell have different completion systems, so avoid implying one generated script works everywhere.
+
+Example:
+
+```sh
+$ my-cli completion bash > "${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion/completions/my-cli"
+$ my-cli completion zsh > /usr/local/share/zsh/site-functions/_my-cli
+```
+
+If the shell invokes your CLI to compute contextual candidates, write only completion candidates to STDOUT and keep diagnostics, warnings, and debug output on STDERR. This mirrors [Distinguish STDOUT from STDERR](#36-distinguish-stdout-from-stderr) and keeps shell completion parsers from receiving noisy output.
+
+Completion setup should be explicit and reversible. Do not mutate `.bashrc`, `.zshrc`, PowerShell profiles, or other shell startup files from npm lifecycle scripts. Provide a documented command or generated script instead, and let users choose whether and where to install it.
+
+Reference options:
+
+- [yargs `.completion()`](https://github.com/yargs/yargs/blob/main/docs/api.md#completioncmd-description-fn)
+- [@oclif/plugin-autocomplete](https://github.com/oclif/plugin-autocomplete)
+- [tabtab](https://github.com/mklabs/tabtab)
+
+References:
+
+- [Bash Programmable Completion](https://www.gnu.org/software/bash/manual/html_node/Programmable-Completion.html)
+- [npm completion](https://docs.npmjs.com/cli/v11/commands/npm-completion/)
 
 # 4 Accessibility
 
@@ -999,13 +1182,14 @@ Prior-art of security incidents in CLIs due to argument injection:
 
 References for [Blamer npm package vulnerable to argument injection](https://www.nodejs-security.com/blog/destroyed-by-dashes-how-two-hyphens-cause-argument-injection-vulnerability-in-blamer-npm-package), and [Node.js Secure Coding: Defending Against Command Injection](https://www.nodejs-security.com/book/command-injection) book.
 
-# 11 Appendix: CLI Frameworks
+# 11 Appendix: CLI Frameworks and Tools
 
 ### 11.1 CLI Frameworks Table
 
 | Name              | Description                                                                                                               | npm                                                            | GitHub                                                                           | Stars and downloads                                                                                                    |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
 | oclif             | A framework for building a command line interface.                                                                        | [Link to npm](https://www.npmjs.com/package/oclif)             | [Link to GitHub](https://github.com/oclif/oclif)                                 | ![](https://img.shields.io/github/stars/oclif/oclif)![](https://img.shields.io/npm/dt/oclif.svg)                       |
+| yargs             | A command line parser for complex CLIs with commands, options, generated help, and shell completion support.              | [Link to npm](https://www.npmjs.com/package/yargs)             | [Link to GitHub](https://github.com/yargs/yargs)                                 | ![](https://img.shields.io/github/stars/yargs/yargs)![](https://img.shields.io/npm/dt/yargs.svg)                       |
 | @inquirer/prompts | A collection of common interactive command line user interfaces.                                                          | [Link to npm](https://www.npmjs.com/package/@inquirer/prompts) | [Link to GitHub](https://github.com/SBoudrias/Inquirer.js)                       | ![](https://img.shields.io/github/stars/sboudrias/inquirer.js)![](https://img.shields.io/npm/dt/@inquirer/prompts.svg) |
 | ink               | Ink provides the same component-based UI building experience that React offers in the browser, but for command-line apps. | [Link to npm](https://www.npmjs.com/package/ink)               | [Link to Github](https://github.com/vadimdemedes/ink)                            | ![](https://img.shields.io/github/stars/vadimdemedes/ink)![](https://img.shields.io/npm/dt/ink.svg)                    |
 | pastel            | Next.js-like framework for CLIs made with Ink.                                                                            | [Link to npm](https://www.npmjs.com/package/pastel)            | [Link to Github](https://github.com/vadimdemedes/pastel)                         | ![](https://img.shields.io/github/stars/vadimdemedes/pastel)![](https://img.shields.io/npm/dt/pastel.svg)              |
@@ -1017,6 +1201,16 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | top CLI           | Top CLI framework                                                                                                         |                                                                | [Link to GitHub](https://github.com/TopCli)                                      |                                                                                                                        |
 | termcn            | Beautiful terminal CLIs                                                                                                   |                                                                | [Link to GitHub](https://www.termcn.dev)                                         |                                                                                                                        |
 | Optique           | Type-safe combinatorial CLI parser for TypeScript                                                                         | [Link to npm](https://www.npmjs.com/package/@optique/core)     | [Link to GitHub](https://github.com/dahlia/optique)                              |                                                                                                                        |
+
+### 11.2 CLI Tools Table
+
+CLI projects often need supporting tools beyond the libraries and frameworks used in the application code itself. These tools help with demos, documentation, release assets, and project maintenance.
+
+| Name                       | Description                                                                         | Install                                                                 | GitHub                                                         | Use case                                                          |
+| -------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
+| VHS                        | A tool for scripting, recording, and rendering terminal sessions as GIFs or videos. | [Installation docs](https://github.com/charmbracelet/vhs#installation)  | [Link to GitHub](https://github.com/charmbracelet/vhs)         | Create repeatable CLI demos for READMEs, docs, and release notes. |
+| @oclif/plugin-autocomplete | An oclif plugin for generating shell autocomplete support.                          | [Link to npm](https://www.npmjs.com/package/@oclif/plugin-autocomplete) | [Link to GitHub](https://github.com/oclif/plugin-autocomplete) | Add completion support to oclif-based CLIs.                       |
+| tabtab                     | Completion helpers for Node.js CLI programs.                                        | [Link to npm](https://www.npmjs.com/package/tabtab)                     | [Link to GitHub](https://github.com/mklabs/tabtab)             | Build custom Bash, Zsh, and Fish completion flows.                |
 
 # 12 Appendix: CLI educational resources
 
