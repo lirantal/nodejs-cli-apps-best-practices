@@ -1,6 +1,6 @@
 ---
 name: nodejs-cli-best-practices
-description: Guide and audit Node.js CLI application development against 38 established best practices covering UX, distribution, interoperability, accessibility, testing, error handling, development setup, analytics, versioning, and security. Use this skill when building, extending, reviewing, or scaffolding a Node.js CLI — including when someone says "audit my CLI", "review my CLI code", "I'm building a CLI tool", or asks about adding argument parsing, error handling, color output, STDIN, --json flags, exit codes, --version flags, or npm publishing. Applies even when best practices are not explicitly mentioned. Also trigger for "how should I implement X in my CLI" or "what's the right way to do Y in a Node.js CLI". Do NOT use for Node.js backend or API development with no CLI entry point.
+description: Guide and audit Node.js CLI application development against 39 established best practices covering UX, distribution, interoperability, accessibility, testing, error handling, development setup, analytics, versioning, and security. Use this skill when building, extending, reviewing, or scaffolding a Node.js CLI — including when someone says "audit my CLI", "review my CLI code", "I'm building a CLI tool", or asks about adding argument parsing, help output, error handling, color output, STDIN, --json flags, exit codes, --version flags, or npm publishing. Applies even when best practices are not explicitly mentioned. Also trigger for "how should I implement X in my CLI" or "what's the right way to do Y in a Node.js CLI". Do NOT use for Node.js backend or API development with no CLI entry point.
 metadata:
   version: 1.0.0
   category: nodejs
@@ -11,7 +11,7 @@ This skill operates in two modes — **audit** for reviewing existing CLI code a
 
 ## Critical
 
-Always read `references/best-practices.md` before producing any output. It contains the complete reference for all 38 practices with code examples and recommended packages. It is the source of truth for both modes — do not rely on general knowledge alone, as several practices (specific package recommendations, §X.X numbering, configuration precedence order) are specific to this guide.
+Always read `references/best-practices.md` before producing any output. It contains the complete reference for all 39 practices with code examples and recommended packages. It is the source of truth for both modes — do not rely on general knowledge alone, as several practices (specific package recommendations, §X.X numbering, configuration precedence order) are specific to this guide.
 
 ## Determining the mode
 
@@ -78,7 +78,7 @@ When building a new CLI feature or tool, don't wait to be asked — surface rele
 **For a "building a CLI from scratch" request**, organize guidance by development phase:
 
 1. **Project setup** (§7.1, §7.3, §4.4, §2.2): bin object, shebang, files field, shrinkwrap
-2. **Argument design** (§1.1, §1.2, §1.7, §3.4): POSIX compliance, empathic fallbacks, zero-config, config precedence
+2. **Argument design** (§1.1, §1.2, §1.7, §1.9, §3.4): POSIX compliance, empathic fallbacks, zero-config, help output, config precedence
 3. **I/O and interoperability** (§3.1, §3.2, §3.5, §4.2): STDIN, structured output, gated interactivity, graceful degradation
 4. **Error handling** (§6.1–§6.5): trackable codes, actionable messages, debug mode, exit codes
 5. **UX polish** (§1.4, §1.5, §1.6): colors, rich interactions, hyperlinks
@@ -112,7 +112,8 @@ When building a new CLI feature or tool, don't wait to be asked — surface rele
 
 | Topic | Sections |
 |-------|----------|
-| Argument parsing / flags | §1.1, §1.7, §3.4 |
+| Argument parsing / flags | §1.1, §1.7, §1.9, §3.4 |
+| Help / usage output | §1.9 |
 | Prompts / interactivity | §1.2, §1.5, §3.5 |
 | Colors / styling | §1.4, §4.2 |
 | STDIN / piping | §3.1, §3.5 |

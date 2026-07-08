@@ -1,6 +1,6 @@
 # Node.js CLI Best Practices — Reference
 
-All 38 practices condensed for use during audits and development guidance.
+All 39 practices condensed for use during audits and development guidance.
 
 ---
 
@@ -130,6 +130,30 @@ process.on('SIGINT', () => {
 ```
 
 **Violation pattern:** App freezes or leaves orphaned processes when user presses Ctrl+C.
+
+---
+
+### §1.9 Provide helpful help
+**Rule:** Support `-h` and `--help`, show help when a command cannot run without arguments, and provide contextual help for subcommands.
+
+```sh
+$ my-cli --help
+
+Usage:
+  my-cli deploy <environment> [options]
+
+Options:
+  -h, --help          Show help
+  --config <path>    Path to a config file
+  --dry-run          Show what would change without deploying
+
+Examples:
+  my-cli deploy production --dry-run
+```
+
+**Violation pattern:** A CLI has no `--help` flag, no subcommand-specific help, or reports conflicting flags without saying which flags conflict or where to learn the valid usage.
+
+**References:** `docopt`, Command Line Interface Guidelines help section, man pages for mature CLIs.
 
 ---
 
