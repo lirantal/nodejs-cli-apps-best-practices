@@ -1,6 +1,6 @@
 # Node.js CLI Best Practices — Reference
 
-All 40 practices condensed for use during audits and development guidance.
+All 41 practices condensed for use during audits and development guidance.
 
 ---
 
@@ -318,6 +318,24 @@ if (warnings.length > 0) {
 
 ---
 
+### §3.7 Provide shell completion
+**Rule:** For CLIs with subcommands, many flags, or dynamic operands, provide opt-in shell completion/autocomplete so users can discover valid commands, options, and values while they type.
+
+```sh
+my-cli completion bash > "${XDG_DATA_HOME:-$HOME/.local/share}/bash-completion/completions/my-cli"
+my-cli completion zsh > /usr/local/share/zsh/site-functions/_my-cli
+```
+
+Generate completions from the same command metadata used by parsing and help output. If the shell invokes the CLI for contextual candidates, write only candidates to STDOUT and keep diagnostics on STDERR.
+
+**Violation pattern:** A substantial CLI has many subcommands or flags but no completion command, stale hand-written completion scripts, or an npm lifecycle script that mutates `.bashrc`, `.zshrc`, or PowerShell profiles without explicit user opt-in.
+
+**Options:** yargs `.completion()`, `@oclif/plugin-autocomplete`, `tabtab`
+
+**References:** Bash Programmable Completion, npm `completion`, yargs `.completion()`, `@oclif/plugin-autocomplete`, `tabtab`
+
+---
+
 ## 4. Accessibility
 
 ### §4.1 Containerize the CLI
@@ -631,7 +649,7 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 | Framework | Best for | npm |
 |-----------|----------|-----|
 | `commander` | General-purpose, minimal | `npm i commander` |
-| `yargs` | Complex CLIs with subcommands | `npm i yargs` |
+| `yargs` | Complex CLIs with subcommands and shell completion | `npm i yargs` |
 | `node:util` `parseArgs` | Small and medium CLIs that can use modern Node.js built-ins | built-in |
 | `oclif` | Large plugin-based CLIs | `npm i oclif` |
 | `meow` | Minimal single-command CLIs | `npm i meow` |
@@ -645,6 +663,8 @@ if (!ALLOWED.includes(userInput)) throw new Error('Invalid operation');
 | `debug` | Debug logging | `npm i debug` |
 | `cosmiconfig` | Config file discovery | `npm i cosmiconfig` |
 | `conf` | Persistent config storage | `npm i conf` |
+| `@oclif/plugin-autocomplete` | Autocomplete support for oclif-based CLIs | `npm i @oclif/plugin-autocomplete` |
+| `tabtab` | Custom Bash, Zsh, and Fish completion helpers for Node.js CLIs | `npm i tabtab` |
 
 ### CLI Tools
 
