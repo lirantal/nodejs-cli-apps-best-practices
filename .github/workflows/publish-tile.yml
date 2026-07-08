@@ -19,5 +19,5 @@ jobs:
           token: ${{ secrets.TESSL_TOKEN }}
       - run: tessl tile lint
         working-directory: skills/nodejs-cli-best-practices
-      - run: tessl tile publish
+      - run: tessl tile publish --bump patch
         working-directory: skills/nodejs-cli-best-practices
