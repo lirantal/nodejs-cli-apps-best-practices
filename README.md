@@ -1306,6 +1306,7 @@ References for [Blamer npm package vulnerable to argument injection](https://www
 | top CLI     | Top CLI framework  |  | [Link to GitHub](https://github.com/TopCli) | 
 | termcn      | Beautiful terminal CLIs | | [Link to GitHub](https://www.termcn.dev)
 | Optique | Type-safe combinatorial CLI parser for TypeScript | [Link to npm](https://www.npmjs.com/package/@optique/core) | [Link to GitHub](https://github.com/dahlia/optique) | 
+| pixel gui | building graphical applications in the terminal | [Link to GitHub](https://pixelgui.com) |
 
 ### 11.2 CLI Tools Table
 
